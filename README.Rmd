@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# templateRpackage
+# labeleR
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/EcologyR/templateRpackage/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EcologyR/templateRpackage/actions/workflows/R-CMD-check.yaml)
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 <!-- `r badger::badge_codefactor("ecologyr/templaterpackage")` -->
 <!-- badges: end -->
 
-The goal of templateRpackage is to ...
+Package to create your own labels, certificates, and much more! :)
 
 ## Installation
 
