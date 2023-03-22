@@ -1,0 +1,12 @@
+^templateRpackage\.Rproj$
+^\.Rproj\.user$
+
+^README\.Rmd$
+^data-raw$
+^\.github$
+^LICENSE\.md$
+^codecov\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+.Rprofile
