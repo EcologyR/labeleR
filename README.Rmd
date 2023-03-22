@@ -65,7 +65,7 @@ In that case, don't forget to commit and push the resulting figure files, so the
 If using this package, please cite it:
 
 ```{r comment=NA}
-citation("templateRpackage")
+#citation("labeleR")
 ```
 
 
