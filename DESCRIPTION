@@ -4,13 +4,11 @@ Version: 0.0.0.9000
 Authors@R: 
   c(    
   person("Julia G.", "de Aledo", , "juliagdealedo@gmail.com", role = "aut",
-           comment = c(ORCID = "0000-0001-9065-9316"),
+           comment = c(ORCID = "0000-0001-9065-9316")),
   person("Ignacio", "Ramos-Gutiérrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-8675-0114"))
-)
-
-  )
-Description: With this packages you can create labels, herbarium labels, ID cards, custom certificates 
+    )
+Description: With this packages you can create labels, herbarium labels, ID cards, custom certificates
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
