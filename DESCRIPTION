@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0001-9065-9316"))
 
   )
-Description: What the package does (one paragraph).
+Description: Package to create your own labels, certificates, and much more! :)
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
