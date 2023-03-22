@@ -1,11 +1,13 @@
-Package: templateRpackage
-Title: What the Package Does (One Line, Title Case)
+Package: labeleR
+Title: Package to create your own labels, certificates, and much more! :)
 Version: 0.0.0.9000
 Authors@R: 
   c(
-    person("Francisco", "Rodriguez-Sanchez", , "f.rodriguez.sanc@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-7981-1599")),
-    person("My", "coauthor", role = "aut")
+    person("Ignacio", "Ramos-Gutiérrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-8675-0114")),
+    person("Julia G.", "de Aledo", , "juliagdealedo@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0001-9065-9316"))
+
   )
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
