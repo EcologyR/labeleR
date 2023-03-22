@@ -10,7 +10,7 @@ Authors@R:
 )
 
   )
-Description: Package to create your own labels, certificates, and much more! :)
+Description: With this packages you can create labels, herbarium labels, ID cards, custom certificates 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
