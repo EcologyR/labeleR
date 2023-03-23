@@ -1,5 +1,6 @@
 ---
 title: ''
+geometry: "left=2cm,right=2cm,top=1cm,bottom=1cm"
 output:
   pdf_document: default
   word_document: default
