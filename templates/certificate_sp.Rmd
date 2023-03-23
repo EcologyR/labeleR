@@ -9,7 +9,9 @@ classoption: landscape
 ---
 \pagenumbering{gobble}
 \begin{center}
+\includegraphics[height=4cm]{templates/logo.png}
 \hfill
+\includegraphics[height=4cm]{templates/logo2.png} \\
 \bigskip
 {\Huge\bf Certificado de participación } \\
 \bigskip

@@ -16,13 +16,12 @@ df <- df %>% filter(Certificado=="no")
 template <- readr::read_file("templates/certificate_sp.Rmd")
 # template <-  readr::read_file("certificate_template_pdf.Rmd")
 #run through all students, generate personalized certificate for each
-for (i in 1:nrow(df))
-{
+for (i in 1:nrow(df)){
 
   #replace the placeholder words in the template with the student information
   template_cert <- template %>%
-    str_replace_all("<<ACTO>>", "congreso") %>%
-    str_replace_all("<<GRUPO>>", "AEET") %>%
+    str_replace_all("<<ACTO>>", "taller") %>%
+    str_replace_all("<<GRUPO>>", "de mi casa") %>%
     str_replace_all("<<FIRMANTE>>", "Ignacio Ramos") %>%
     str_replace_all("<<PUESTO>>", "Rey de España")
 
@@ -39,7 +38,7 @@ for (i in 1:nrow(df))
   out_file_pdf = paste0(out_file, '.pdf')
 
   #save customized Rmd to a temporary file
-  write_file(current_cert, "tmp.Rmd")
+  write_file(personal_cert, "tmp.Rmd")
 
   #create the certificates using R markdown.
   #it will detect the ending of the output file and use the right format
