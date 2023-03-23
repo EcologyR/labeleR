@@ -34,7 +34,7 @@ classoption: landscape
 \bigskip
 \bigskip
 \bigskip
-{\Large <<Firmante>>}\\
-{\Large <<Puesto>>}\\
+{\Large <<FIRMANTE>>}\\
+{\Large <<PUESTO>>}\\
 
 \end{center}
