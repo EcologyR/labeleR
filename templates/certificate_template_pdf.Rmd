@@ -1,0 +1,40 @@
+---
+title: ''
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+classoption: landscape
+---
+\pagenumbering{gobble}
+\begin{center}
+\hfill
+\bigskip
+{\Huge\bf Certificado de participación } \\
+\bigskip
+{\Huge <<Ponente>> } \\
+\bigskip
+\bigskip
+{\Large ha participado en <<ACTO>> del <<Fecha>> del grupo} 
+{\Large\bf <<GRUPO>>}
+{\Large con la comunicación <<Tipo>> titulada:} \\
+\bigskip
+\bigskip
+\bigskip
+{\Huge\bf <<Título>> } \\
+\bigskip
+\bigskip
+{\Large Firma:}\\
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\Large <<Firmante>>}\\
+{\Large <<Puesto>>}\\
+
+\end{center}
