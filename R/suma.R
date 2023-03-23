@@ -1,17 +1,26 @@
-#' Sum numeric values
+# url <- 'https://docs.google.com/spreadsheets/d/1uwhi7IROqDcdMEEld7yuyyAoSfuuJUbK2HVlHvUNzFk/edit#gid=0'
+# select.column <- "Certificado"
+# select.value <- "no"
+#' Title
 #'
-#' This function sums numeric vectors
+#' @param url a valid google sheets url including a table
+#' @param select.column column name to filter which rows to include
+#' @param select.value if select.column is not NULL, the value of the rows to be selected
 #'
-#' @param x Numeric
-#' @param y Numeric
-#'
-#' @return A number or numeric vector
+#' @return a data frame
 #' @export
 #'
-#' @examples
-#' suma(2, 3)
-#' suma(c(2, 2), c(3, 3))
-
-suma <- function(x = NULL, y = NULL) {
-  x + y
+#' @examples table <- read_sheet(url='https://docs.google.com/spreadsheets/d/1uwhi7IROqDcdMEEld7yuyyAoSfuuJUbK2HVlHvUNzFk/edit#gid=0', "Certificado", "no")
+read_sheet <- function (url, select.column=NULL, select.value=NULL) {
+  dbase <- gsheet::gsheet2tbl(url)
+  dbase <- as.data.frame (dbase)
+  dbase[is.na(dbase[,select.column]),select.column] <- "-"
+  if(!is.null(select.column)){dbase <- dbase[dbase[,select.column]==select.value,]}
+  return(dbase)
 }
+
+
+
+
+
+
