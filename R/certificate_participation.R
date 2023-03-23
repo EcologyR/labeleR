@@ -8,33 +8,24 @@ library('dplyr')
 library('stringr')
 library(dplyr)
 # load data, read everything in as a string/character
-# Añadir bbdd####
-create_certificate <- function(
-    certificate =c("attendance", "participation"),
+
+create_certificate_participation <- function(
     language =c("spanish", "english"),
     url=NULL,
     type=NULL,
     organiser=NULL,
+    hours=NULL,
     signer=NULL,
     signer.position=NULL,
-    hours=NULL,
     lpic=NULL,
     rpic=NULL,
     signature.pic = NULL,
     name.column=NULL,
+    affiliation.column=NULL,
     date.column=NULL,
     title.column=NULL,
-    affiliation.column=NULL,
-    comm.type.column = NULL
+    comm.type.column = NULL){
 
-    ){
-  url <- 'https://docs.google.com/spreadsheets/d/1uwhi7IROqDcdMEEld7yuyyAoSfuuJUbK2HVlHvUNzFk/edit#gid=0'
-  certificate= "attendance";language="sp";type="workshop";organiser="AEET"; signer="Darth vader";
-  signer.position="Tu padre"; lpic=NULL; rpic=NULL; signature.pic=NULL ;
-  name.column="Ponente"; date.column="Fecha" ; title.column="Titulo";  affiliation.column="Afiliacion";
-  hours=3; comm.type.column="Tipo"
-
-match.arg(certificate,c("attendance", "participation"), F )
 
   if (language%in%c("sp", "s")){language<- "spanish"}
   if (language%in%c("en", "e")){language<- "english"}
@@ -64,10 +55,8 @@ if(!(affiliation.column)%in%colnames(df) &
 
 
 # load either pdf or word certificate template
-if(certificate=="attendance"    & language == "english"){template <- readr::read_file("templates/participation_en.Rmd")}
-if(certificate=="attendance"    & language == "spanish"){template <- readr::read_file("templates/participation_es.Rmd")}
-if(certificate=="participation" & language == "english"){template <- readr::read_file("templates/attendance_en.Rmd")}
-if(certificate=="participation" & language == "spanish"){template <- readr::read_file("templates/attendance_es.Rmd")}
+if(language == "english"){template <- readr::read_file("templates/participation_EN.Rmd")}
+if(language == "spanish"){template <- readr::read_file("templates/participation_ES.Rmd")}
 
 
 template_cert <- template %>%
@@ -76,6 +65,8 @@ template_cert <- template %>%
   str_replace_all("<<FIRMANTE>>", signer) %>%
   str_replace_all("<<PUESTO>>", signer.position)%>%
   str_replace_all("<<HORAS>>", hours)
+
+if(!dir.exists("output")){dir.create("output")}
 
 for (i in 1:nrow(df)){
 
@@ -94,7 +85,7 @@ for (i in 1:nrow(df)){
   out_datename = df[i,date.column]
   out_datename <- str_replace_all(out_datename, "/", "_")
   out_file = paste(out_filename, out_datename, sep=("-"))
-  out_file_pdf = paste0(out_file, '.pdf')
+  out_file_pdf = paste0("output/",out_file, '.pdf')
 
   #save customized Rmd to a temporary file
   write_file(personal_cert, "tmp.Rmd")
@@ -108,5 +99,8 @@ for (i in 1:nrow(df)){
 
 }
 if(erase.lpic){file.remove("blank.png")}
-if(erase.rpic){file.remove("blank.png")}
+if(erase.rpic & file.exists("blank.png")){file.remove("blank.png")}
+if(erase.spic & file.exists("blank.png")){file.remove("blank.png")}
 }
+
+
