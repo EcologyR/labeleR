@@ -13,7 +13,7 @@ url <- 'https://docs.google.com/spreadsheets/d/1uwhi7IROqDcdMEEld7yuyyAoSfuuJUbK
 df <- gsheet::gsheet2tbl(url)
 df <- df %>% filter(Certificado=="no")
 # load either pdf or word certificate template
-template <- readr::read_file("templates/certificate_template_pdf.Rmd")
+template <- readr::read_file("templates/certificate_sp.Rmd")
 # template <-  readr::read_file("certificate_template_pdf.Rmd")
 #run through all students, generate personalized certificate for each
 for (i in 1:nrow(df))
@@ -21,10 +21,10 @@ for (i in 1:nrow(df))
 
   #replace the placeholder words in the template with the student information
   template_cert <- template %>%
-    str_replace_all(<<ACTO>>, "congreso") %>%
-    str_replace_all(<<GRUPO>>, "AEET") %>%
-    str_replace_all(<<FIRMANTE>>, "Ignacio Ramos") %>%
-    str_replace_all(<<PUESTO>>, "Rey de España")
+    str_replace_all("<<ACTO>>", "congreso") %>%
+    str_replace_all("<<GRUPO>>", "AEET") %>%
+    str_replace_all("<<FIRMANTE>>", "Ignacio Ramos") %>%
+    str_replace_all("<<PUESTO>>", "Rey de España")
 
   personal_cert <- template_cert %>%
     str_replace_all("<<Ponente>>", df$Ponente[i]) %>%
