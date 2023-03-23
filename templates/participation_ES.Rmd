@@ -1,0 +1,39 @@
+---
+title: ''
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+classoption: landscape
+---
+\pagenumbering{gobble}
+\begin{center}
+\includegraphics[height=4cm]{templates/logo.png}
+\hfill
+\includegraphics[height=4cm]{templates/logo2.png} \\
+\bigskip
+{\Huge\bf Certificado de participación } \\
+\bigskip
+{\Huge <<Ponente>> } \\
+{\Large\bf <<Afiliacion>>} \\
+\bigskip
+\bigskip
+{\Large ha participado en:}
+{\Large <<ACTO>> - <<GRUPO>>} \\
+{\Large con la comunicación <<Tipo>> titulada:} \\
+\bigskip
+\bigskip
+{\Huge\bf <<Titulo>> } \\
+\bigskip
+\bigskip
+{\Large con fecha de <<Fecha>> y una duración de <<HORAS>> hora(s).} \\
+\bigskip
+\bigskip
+{\Large Firmado por:}\\
+\bigskip
+\includegraphics[height=2cm]{templates/firma.jpg}\\
+{\Large <<FIRMANTE>>}\\
+{\Large <<PUESTO>>}\\
+
+\end{center}
