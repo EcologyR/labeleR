@@ -10,8 +10,10 @@ library(dplyr)
 # load data, read everything in as a string/character
 # Añadir bbdd####
 url <- 'https://docs.google.com/spreadsheets/d/1uwhi7IROqDcdMEEld7yuyyAoSfuuJUbK2HVlHvUNzFk/edit#gid=0'
-df <- gsheet::gsheet2tbl(url)
+df <- read_sheet(url, "Certificado", "no")
 df <- df %>% filter(Certificado=="no")
+
+
 # load either pdf or word certificate template
 template <- readr::read_file("templates/certificate_template_pdf.Rmd")
 # template <-  readr::read_file("certificate_template_pdf.Rmd")
@@ -23,8 +25,8 @@ for (i in 1:nrow(df))
   template_cert <- template %>%
     str_replace_all(<<ACTO>>, "congreso") %>%
     str_replace_all(<<GRUPO>>, "AEET") %>%
-    str_replace_all(<<FIRMANTE>>, "Ignacio Ramos") %>%
-    str_replace_all(<<PUESTO>>, "Rey de España")
+    str_replace_all(<<firmante>>, "Ignacio Ramos") %>%
+    str_replace_all(<<puesto>>, "Rey de España")
 
   personal_cert <- template_cert %>%
     str_replace_all("<<Ponente>>", df$Ponente[i]) %>%
