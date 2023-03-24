@@ -1,4 +1,4 @@
-# url <- 'https://docs.google.com/spreadsheets/d/1uwhi7IROqDcdMEEld7yuyyAoSfuuJUbK2HVlHvUNzFk/edit#gid=0'
+# url <- 'https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'
 # select.column <- "Certificado"
 # select.value <- "no"
 #' Title
@@ -10,7 +10,7 @@
 #' @return a data frame
 #' @export
 #'
-#' @examples table <- read_sheet(url='https://docs.google.com/spreadsheets/d/1uwhi7IROqDcdMEEld7yuyyAoSfuuJUbK2HVlHvUNzFk/edit#gid=0', "Certificado", "no")
+#' @examples table <- read_sheet(url='https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0')
 read_sheet <- function (url, select.column=NULL, select.value=NULL) {
   dbase <- gsheet::gsheet2tbl(url)
   dbase <- as.data.frame (dbase)

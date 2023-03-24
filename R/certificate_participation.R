@@ -3,9 +3,7 @@
 #####################################################
 
 # load needed packages
-library('readr')
-library('dplyr')
-library('stringr')
+
 library(dplyr)
 # load data, read everything in as a string/character
 
