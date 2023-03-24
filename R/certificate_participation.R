@@ -65,7 +65,7 @@ create_certificate_participation <- function(
     title.column=NULL,
     comm.type.column = NULL){
 
-  if(!dir.exists("templates")){dir.create("templates"); rm.templ <- F}else{rm.templ <- T}
+  if(!dir.exists("temp")){dir.create("temp")}
 
   if (language%in%c("sp", "s")){language<- "spanish"}
   if (language%in%c("en", "e")){language<- "english"}
@@ -79,13 +79,13 @@ create_certificate_participation <- function(
   if(is.null(hours)){stop("A number of hours name must be specfied")}
   if(!(is.character(hours))) {hours <- as.character(hours)}
   erase.lpic <- F; erase.rpic<-F; erase.spic<-F
-  if(is.null(lpic)){png("templates/blank.png", 150, 150, "px");dev.off(); lpic <- "templates/blank.png";erase.lpic<-T}
-  if(is.null(rpic)){png("templates/blank.png", 150, 150, "px");dev.off(); rpic <- "templates/blank.png";erase.rpic<-T}
-  if(is.null(signature.pic)){png("templates/blank.png", 150, 150, "px");dev.off(); spic <- "templates/blank.png";erase.spic<-T}
+  if(is.null(lpic)){png("temp/blank.png", 150, 150, "px");dev.off(); lpic <- "temp/blank.png";erase.lpic<-T}
+  if(is.null(rpic)){png("temp/blank.png", 150, 150, "px");dev.off(); rpic <- "temp/blank.png";erase.rpic<-T}
+  if(is.null(signature.pic)){png("temp/blank.png", 150, 150, "px");dev.off(); spic <- "temp/blank.png";erase.spic<-T}
 
-  file.copy(lpic, "templates/lpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(rpic, "templates/rpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(signature.pic, "templates/spic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(lpic, "temp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(rpic, "temp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(signature.pic, "temp/spic.png")#create files to call them lpic@rpic to make it homogeneous
 
 
 df <- read_sheet(url, select.column, select.value )
@@ -141,14 +141,14 @@ for (i in 1:nrow(df)){
   file.remove("tmp.Rmd")
 
 }
-file.remove("templates/lpic.png")
-file.remove("templates/rpic.png")
-file.remove("templates/spic.png")
-if(erase.lpic){file.remove("templates/blank.png")}
-if(erase.rpic & file.exists("templates/blank.png")){file.remove("templates/blank.png")}
-if(erase.spic & file.exists("templates/blank.png")){file.remove("templates/blank.png")}
+file.remove("temp/lpic.png")
+file.remove("temp/rpic.png")
+file.remove("temp/spic.png")
+if(erase.lpic){file.remove("temp/blank.png")}
+if(erase.rpic & file.exists("temp/blank.png")){file.remove("temp/blank.png")}
+if(erase.spic & file.exists("temp/blank.png")){file.remove("temp/blank.png")}
 
-if(rm.templ){unlink("temp", recursive = T, force = T)}
+unlink("temp", recursive = T, force = T)
 }
 
 
