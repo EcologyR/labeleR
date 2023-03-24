@@ -1,3 +1,44 @@
+#' Create certificate of attendance
+#'
+#' @param language Select english or spanish
+#' @param url Specify a valid Google Sheets URL
+#' @param select.column Column of the Google Sheets that specifies which rows must be selected
+#' @param select.value Value of \code{select.column} that specifies which rows must be selected
+#' @param type Type of event (conference, workshop, seminar...)
+#' @param title Title of the event
+#' @param organiser Name of the organizing entity
+#' @param hours Number of hours the event has lasted
+#' @param signer Person who credits the certificate
+#' @param signer.position Position of the \code{signer}
+#' @param date Date of the event
+#' @param speaker Name of the speaker of the event
+#' @param lpic PNG object. File route of the top-left image. Can be blank if set to NULL.
+#' @param rpic PNG object. File route of the top-right image. Can be blank if set to NULL.
+#' @param signature.pic PNG object. File route of a signature image. Can be blank if set to NULL.
+#' @param name.column Column name of the Google Sheet column which specifies the attendee's name.
+#'
+#' @return An 'output' folder with the PDF documents inside
+#'
+#' @export
+#'
+#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
+#'
+#' @examples
+#' create_certificate_attendance(
+#'url <- 'https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0',
+#'language="en",
+#'type="class",
+#'title="Potions Class, Hogwarts School year 1992-1993",
+#'signer="A.P.W.B. Dumbledore",
+#'hours=1250,
+#'signer.position="School Headmaster",
+#'rpic="templates/Hogwarts_logo.png",
+#'lpic=NULL,
+#'signature.pic="templates/firma.png" ,
+#'name.column="List_assistants",
+#'speaker="Severus Snape",
+#'date="01/01/2021")
+
 create_certificate_attendance <- function(
     language =c("spanish", "english"),
     url=NULL,
@@ -17,7 +58,7 @@ create_certificate_attendance <- function(
     name.column=NULL){
 
 
-
+  if(!dir.exists("templates")){dir.create("templates"); rm.templ <- F}else{rm.templ <- T}
 
   if (language%in%c("sp", "s")){language<- "spanish"}
   if (language%in%c("en", "e")){language<- "english"}
@@ -33,16 +74,16 @@ create_certificate_attendance <- function(
   if(is.null(speaker)){stop("A speaker must be specfied")}
 
   if(!(is.character(hours))) {hours <- as.character(hours)}
-  erase.lpic <- F; erase.lpic<-F; erase.spic<-F
-  if(is.null(lpic)){png("blank.png", 150, 150, "px");dev.off(); lpic <- "blank.png";erase.lpic<-T}
-  if(is.null(rpic)){png("blank.png", 150, 150, "px");dev.off(); rpic <- "blank.png";erase.rpic<-T}
-  if(is.null(signature.pic)){png("blank.png", 150, 150, "px");dev.off(); spic <- "blank.png";erase.spic<-T}
+  erase.lpic <- F; erase.rpic<-F; erase.spic<-F
+  if(is.null(lpic)){png("templates/blank.png", 150, 150, "px");dev.off(); lpic <- "templates/blank.png";erase.lpic<-T}
+  if(is.null(rpic)){png("templates/blank.png", 150, 150, "px");dev.off(); rpic <- "templates/blank.png";erase.rpic<-T}
+  if(is.null(signature.pic)){png("templates/blank.png", 150, 150, "px");dev.off(); spic <- "templates/blank.png";erase.spic<-T}
 
-  file.copy(lpic, "lpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(rpic, "rpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(signature.pic, "spic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(lpic, "templates/lpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(rpic, "templates/rpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(signature.pic, "templates/spic.png")#create files to call them lpic@rpic to make it homogeneous
 
-  df <- read_sheet(url, select.column, select.value )
+   df <- read_sheet(url, select.column, select.value )
 
   if(!(name.column)%in%colnames(df)){stop("Column '", name.column , "' is not a column of ypur Google Sheets document")}
 
@@ -53,13 +94,13 @@ create_certificate_attendance <- function(
 
 
   template_cert <- template %>%
-    str_replace_all("<<ACTO>>", type) %>%
-    str_replace_all("<<GRUPO>>", title) %>%
-    str_replace_all("<<FIRMANTE>>", signer) %>%
-    str_replace_all("<<PUESTO>>", signer.position)%>%
-    str_replace_all("<<HORAS>>", hours)%>%
-    str_replace_all("<<Fecha>>", date)%>%
-    str_replace_all("<<NOMBRE PONENTE>>", speaker)
+    stringr::str_replace_all("<<ACTO>>", type) %>%
+    stringr::str_replace_all("<<GRUPO>>", title) %>%
+    stringr::str_replace_all("<<FIRMANTE>>", signer) %>%
+    stringr::str_replace_all("<<PUESTO>>", signer.position)%>%
+    stringr::str_replace_all("<<HORAS>>", hours)%>%
+    stringr::str_replace_all("<<Fecha>>", date)%>%
+    stringr::str_replace_all("<<NOMBRE PONENTE>>", speaker)
 
   if(!dir.exists("output")){dir.create("output")}
 
@@ -69,15 +110,15 @@ create_certificate_attendance <- function(
 
 
     personal_cert <- template_cert %>%
-      str_replace_all("<<Asistente>>", df[i, name.column])
+      stringr::str_replace_all("<<Asistente>>", df[i, name.column])
 
 
     #generate an output file name based on student name
     out_filename = df[i,name.column]
-    out_file_pdf = paste0("output/",out_filename, '.pdf')
+    out_file_pdf = paste0("output/attendance_",out_filename, '.pdf')
 
     #save customized Rmd to a temporary file
-    write_file(personal_cert, "tmp.Rmd")
+    readr::write_file(personal_cert, "tmp.Rmd")
 
     #create the certificates using R markdown.
     #it will detect the ending of the output file and use the right format
@@ -88,18 +129,15 @@ create_certificate_attendance <- function(
 
   }
 
-  file.remove("lpic.png")
-  file.remove("rpic.png")
-  file.remove("spic.png")
-  if(erase.lpic){file.remove("blank.png")}
-  if(erase.rpic & file.exists("blank.png")){file.remove("blank.png")}
-  if(erase.spic & file.exists("blank.png")){file.remove("blank.png")}
+  file.remove("templates/lpic.png")
+  file.remove("templates/rpic.png")
+  file.remove("templates/spic.png")
+  if(erase.lpic){file.remove("templates/blank.png")}
+  if(erase.rpic & file.exists("templates/blank.png")){file.remove("templates/blank.png")}
+  if(erase.spic & file.exists("templates/blank.png")){file.remove("templates/blank.png")}
+
+  if(rm.templ){unlink("temp", recursive = T, force = T)}
 }
 
-create_certificate_attendance(
-  url <- 'https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0',
-language="en",type="class",title="Potions Class, Hogwarts School year 1992-1993", signer="A.P.W.B. Dumbledore", hours=1250,
-  signer.position="School Headmaster", lpic="templates/Hogwarts_logo.png", rpic=NULL, signature.pic="firma.jpg" ,
-  name.column="List_assistants",speaker="Severus Snape", date="01/01/2021"
-)
+
 

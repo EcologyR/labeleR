@@ -8,7 +8,6 @@
 #' @param select.value if select.column is not NULL, the value of the rows to be selected
 #'
 #' @return a data frame
-#' @export
 #'
 #' @examples table <- read_sheet(url='https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0')
 read_sheet <- function (url, select.column=NULL, select.value=NULL) {
