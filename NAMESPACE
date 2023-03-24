@@ -2,4 +2,3 @@
 
 export(create_certificate_attendance)
 export(create_certificate_participation)
-export(read_sheet)
