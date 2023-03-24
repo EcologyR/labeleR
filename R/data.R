@@ -9,7 +9,7 @@
 #' \describe{
 #' A data frame with 4 rows and 5 columns
 #' }
-
+"participation.table"
 
 
 
@@ -22,4 +22,4 @@
 #' \describe{
 #' A data frame with 4 rows and 1 column
 #' }
-
+"attendance.table"
