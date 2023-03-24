@@ -85,7 +85,7 @@ create_certificate_attendance <- function(
 
    df <- read_sheet(url, select.column, select.value )
 
-  if(!(name.column)%in%colnames(df)){stop("Column '", name.column , "' is not a column of ypur Google Sheets document")}
+  if(!(name.column)%in%colnames(df)){stop("Column '", name.column , "' is not a column of ypur Google Sheets document. Please select from \n", paste0("-", colnames(df), sep="\n"))}
 
 
   # load either pdf or word certificate template
