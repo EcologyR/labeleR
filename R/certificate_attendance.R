@@ -39,6 +39,8 @@ create_certificate_attendance <- function(
   if(is.null(signature.pic)){png("blank.png", 150, 150, "px");dev.off(); spic <- "blank.png";erase.spic<-T}
 
   file.copy(lpic, "lpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(rpic, "rpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(signature.pic, "spic.png")#create files to call them lpic@rpic to make it homogeneous
 
   df <- read_sheet(url, select.column, select.value )
 
@@ -85,6 +87,10 @@ create_certificate_attendance <- function(
     file.remove("tmp.Rmd")
 
   }
+
+  file.remove("lpic.png")
+  file.remove("rpic.png")
+  file.remove("spic.png")
   if(erase.lpic){file.remove("blank.png")}
   if(erase.rpic & file.exists("blank.png")){file.remove("blank.png")}
   if(erase.spic & file.exists("blank.png")){file.remove("blank.png")}
