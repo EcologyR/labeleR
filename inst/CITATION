@@ -1,15 +1,14 @@
-citHeader("To cite templateRpackage in publications use:")
+citHeader("To cite labeleR in publications use:")
 
 citEntry(
   entry    = "Manual",
-  title    = "templateRpackage",
-  author   = "Francisco Rodriguez-Sanchez",
+  title    = "LabeleR",
+  author   = c("Julia G. de Aledo", "Ignacio Ramos-Gutierrez),
   # journal  = ,
   year     = "2023",
   # volume   = ,
   # number   = ,
   # pages    = ,
-  url      = "https://ecologyr.github.io/templateRpackage/",
-  textVersion = paste("Rodriguez-Sanchez F. 2023. templateRpackage.",
-                      "https://ecologyr.github.io/templateRpackage/")
+  #url      = ,
+  #textVersion = 
 )
