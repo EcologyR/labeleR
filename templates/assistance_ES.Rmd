@@ -30,7 +30,7 @@ classoption: landscape
 \bigskip
 {\Large Firmado por:}\\
 \bigskip
-\includegraphics[height=2cm]{templates/spic.jpg}\\
+\includegraphics[height=2cm]{templates/spic.png}\\
 {\Large <<FIRMANTE>>}\\
 {\Large <<PUESTO>>}\\
 
