@@ -1,0 +1,97 @@
+---
+title: ''
+geometry: "left=0cm,right=0cm,top=5cm,bottom=0cm"
+output:
+  pdf_document: default
+classoption: 
+  - landscape
+header-includes:
+  - \usepackage{pgfpages}
+  - \pgfpagesuselayout{8 on 1}[a4paper]
+---
+\pagenumbering{gobble}
+\hfill
+\begin{center}
+\bigskip
+{\Huge\bf <<List1>> } \\
+{\Huge <<Affiliation1>>} \\
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\Large\bf <<Event>>}\\
+{\Large <<Organization>>}\\
+\end{center}
+
+\pagebreak
+\pagenumbering{gobble}
+\hfill
+\begin{center}
+\bigskip
+{\Huge\bf <<List2>> } \\
+{\Huge <<Affiliation2>>} \\
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\Large\bf <<Event>>}\\
+{\Large <<Organization>>}\\
+\end{center}
+
+\pagebreak
+\pagenumbering{gobble}
+\hfill
+\begin{center}
+\bigskip
+{\Huge\bf <<List3>> } \\
+{\Huge <<Affiliation3>>} \\
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\Large\bf <<Event>>}\\
+{\Large <<Organization>>}\\
+\end{center}
+
+\pagebreak
+\pagenumbering{gobble}
+\hfill
+\begin{center}
+\bigskip
+{\Huge\bf <<List4>> } \\
+{\Huge <<Affiliation4>>} \\
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\Large\bf <<Event>>}\\
+{\Large <<Organization>>}\\
+\end{center}
