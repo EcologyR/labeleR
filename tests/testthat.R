@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(templateRpackage)
+library(labeleR)
 
-test_check("templateRpackage")
+test_check("labeleR")

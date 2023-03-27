@@ -1,4 +1,4 @@
-^templateRpackage\.Rproj$
+^labeleR\.Rproj$
 ^\.Rproj\.user$
 
 ^README\.Rmd$
@@ -10,3 +10,6 @@
 ^docs$
 ^pkgdown$
 .Rprofile
+output/
+prueba2.pdf
+templates/
