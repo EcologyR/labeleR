@@ -1,7 +1,25 @@
-
-data <- read_sheet(url='https://docs.google.com/spreadsheets/d/16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
-
-
+#' Function to create accreditation cards in DIN-A7 size
+#'
+#' @param data a data frame including names and affiliations (optional if \code{affiliation.column} is NULL) to create certificates
+#' @param event Title of the event
+#' @param name.column Column name of the \code{data} data frame which specifies the participant's name.
+#' @param affiliation.column Column name of the \code{data} data frame which specifies the participant's affiliation.
+#' @param lpic PNG object route. File route of the top-left image. Can be blank if set to NULL.
+#' @param rpic PNG object route. File route of the top-right image. Can be blank if set to NULL.
+#'
+#' @return An 'output' folder with the PDF documents inside
+#'
+#' @export
+#'
+#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
+#'
+#' @examples
+#' create_accreditation(data=read_sheet(url='https://docs.google.com/spreadsheets/d/16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0'),
+#' event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
+#' name.column = "List",
+#' affiliation.column="Affiliation",
+#' lpic = "templates/MinMagic.png",
+#' rpic=NULL)
 create_accreditation <- function(data=NULL,
                                  event=NULL,
                                  name.column=NULL,
@@ -78,17 +96,6 @@ create_accreditation <- function(data=NULL,
   unlink("temp", recursive = T, force = T)
 
 }
-create_accreditation(data,
-                     event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
-                     name.column = "List",
-                     affiliation.column="Affiliation",
-                     lpic = "templates/MinMagic.png",
-                     rpic=NULL)
 
 
-data <- read_sheet(url='https://docs.google.com/spreadsheets/d/16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
-event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY"
-name.column = "List"
-affiliation.column="Affiliation"
-lpic = "templates/MinMagic.png"
-rpic=NULL
+

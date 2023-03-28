@@ -1,21 +1,17 @@
-
-
 #' Create certificate of participation
 #'
 #' @param language Select english or spanish
-#' @param url Specify a valid Google Sheets URL
-#' @param select.column Column of the Google Sheets that specifies which rows must be selected
-#' @param select.value Value of \code{select.column} that specifies which rows must be selected
+#' @param data A data frame including information to create the certificate of participation
 #' @param type Type of event (conference, workshop, seminar...)
 #' @param organiser Name of the organizing entity
 #' @param hours Number of hours the event has lasted
 #' @param signer Person who credits the certificate
 #' @param signer.position Position of the \code{signer}
-#' @param lpic PNG object. File route of the top-left image. Can be blank if set to NULL.
-#' @param rpic PNG object. File route of the top-right image. Can be blank if set to NULL.
+#' @param lpic PNG object route. File route of the top-left image. Can be blank if set to NULL.
+#' @param rpic PNG object route. File route of the top-right image. Can be blank if set to NULL.
 #' @param signature.pic PNG object. File route of a signature image. Can be blank if set to NULL.
-#' @param name.column Column name of the Google Sheet column which specifies the particpant name.
-#' @param affiliation.column Column name of the Google Sheet column which specifies the particpant affiliation
+#' @param name.column Column name of the Google Sheet column which specifies the participant's name.
+#' @param affiliation.column Column name of the Google Sheet column which specifies the participant's affiliation
 #' @param date.column Column name of the Google Sheet column which specifies the date.
 #' @param title.column Column name of the Google Sheet column which specifies the communication title.
 #' @param comm.type.column Column name of the Google Sheet column which specifies the communication type (oral, poster, online...)
@@ -29,9 +25,7 @@
 #' @examples
 #' create_certificate_participation(
 #' language ="en",
-#' url="https://docs.google.com/spreadsheets/u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/edit?usp=drive_web&ouid=106603768357414088091",
-#' select.column=NULL,
-#' select.value=NULL,
+#' data= read_sheet("https://docs.google.com/spreadsheets/u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/edit?usp=drive_web&ouid=106603768357414088091"),
 #' type="online seminar",
 #' organiser="Hogwarts School of Witchcraft and Wizardry",
 #' hours=2,
@@ -48,9 +42,7 @@
 #'
 create_certificate_participation <- function(
     language =c("spanish", "english"),
-    url=NULL,
-    select.column=NULL,
-    select.value=NULL,
+    data=NULL,
     type=NULL,
     organiser=NULL,
     hours=NULL,
@@ -71,45 +63,122 @@ create_certificate_participation <- function(
   if (language%in%c("en", "e")){language<- "english"}
   match.arg(language, c("spanish", "english"),F)
 
-  if(is.null(url)){stop("A valid Google Sheets URL must be specfied")}
-  if(is.null(type)){stop("A type of event (conference, workshop, seminar...) must be specfied")}
-  if(is.null(organiser)){stop("An organiser must be specfied")}
-  if(is.null(signer)){stop("An signer name must be specfied")}
-  if(is.null(signer.position)){signer.position <- ""}
-  if(is.null(hours)){stop("A number of hours name must be specfied")}
-  if(!(is.character(hours))) {hours <- as.character(hours)}
-  erase.lpic <- F; erase.rpic<-F; erase.spic<-F
-  if(is.null(lpic)){png("temp/blank.png", 150, 150, "px");dev.off(); lpic <- "temp/blank.png";erase.lpic<-T}
-  if(is.null(rpic)){png("temp/blank.png", 150, 150, "px");dev.off(); rpic <- "temp/blank.png";erase.rpic<-T}
-  if(is.null(signature.pic)){png("temp/blank.png", 150, 150, "px");dev.off(); spic <- "temp/blank.png";erase.spic<-T}
+  if(is.null(data)){
+    stop(" a 'data' data.frame must be provided.
+         To import from Google Sheets use function 'read_sheet()'")
+  }
+  if(is.null(type)){
+    stop("A type of event (conference, workshop, seminar...) must be specfied")
+    }
+  if(is.null(organiser)){
+    stop("An organiser must be specfied")
+    }
+  if(is.null(signer)){
+    stop("An signer name must be specfied")
+    }
+  if(is.null(signer.position)){
+    signer.position <- ""
+    }
+  if(is.null(hours)){
+    stop("A number of hours name must be specfied")
+    }
+  if(!(is.character(hours))) {
+    hours <- as.character(hours)
+    }
+
+  if(is.null(lpic))         {
+    png("temp/blank.png", 150, 150, "px")
+    dev.off()
+    lpic <- "temp/blank.png"
+    erase.lpic<-T
+    }
+  if(is.null(rpic))         {
+    png("temp/blank.png", 150, 150, "px")
+    dev.off()
+    rpic <- "temp/blank.png"
+    erase.rpic<-T
+    }
+  if(is.null(signature.pic)){
+    png("temp/blank.png", 150, 150, "px")
+    dev.off()
+    spic <- "temp/blank.png"
+    erase.spic<-T
+    }
 
   file.copy(lpic, "temp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
   file.copy(rpic, "temp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
   file.copy(signature.pic, "temp/spic.png")#create files to call them lpic@rpic to make it homogeneous
 
 
-df <- read_sheet(url, select.column, select.value )
+df <- data
 
-if(!(name.column)%in%colnames(df)){stop("Column '", name.column , "' is not a column of your Google Sheets document. Please select from \n", paste0("-", colnames(df), sep="\n"))}
-if(!(date.column)%in%colnames(df)){stop("Column '", date.column , "' is not a column of your Google Sheets document. Please select from \n", paste0("-", colnames(df), sep="\n"))}
-if(!(title.column)%in%colnames(df)){stop("Column '", title.column , "' is not a column of your Google Sheets document. Please select from \n", paste0("-", colnames(df), sep="\n"))}
-if(!(comm.type.column)%in%colnames(df)){stop("Column '", comm.type.column , "' is not a column of your Google Sheets document. Please select from \n", paste0("-", colnames(df), sep="\n"))}
-if(!(affiliation.column)%in%colnames(df)){stop("Column '", affiliation.column , "' is not a column of your Google Sheets document. Please select from \n", paste0("-", colnames(df), sep="\n"))}
+if(!(name.column)%in%colnames(df)){
+  stop("Column '", name.column ,
+       "' is not a column of your Google Sheets document. Please select from \n",
+       paste0("-", colnames(df), sep="\n"))
+  }
+if(!(date.column)%in%colnames(df)){
+  stop("Column '", date.column ,
+       "' is not a column of your Google Sheets document. Please select from \n",
+       paste0("-", colnames(df), sep="\n"))
+  }
+if(!(title.column)%in%colnames(df)){
+  stop("Column '", title.column ,
+       "' is not a column of your Google Sheets document. Please select from \n",
+       paste0("-", colnames(df), sep="\n"))
+  }
+if(!(comm.type.column)%in%colnames(df)){
+  stop("Column '", comm.type.column ,
+       "' is not a column of your Google Sheets document. Please select from \n",
+       paste0("-", colnames(df), sep="\n"))
+  }
+if(!(affiliation.column)%in%colnames(df)){
+  stop("Column '", affiliation.column ,
+       "' is not a column of your Google Sheets document. Please select from \n",
+       paste0("-", colnames(df), sep="\n"))
+  }
 
 
 # load either pdf or word certificate template
-if(language == "english"){template <- readr::read_file("templates/participation_EN.Rmd")}
-if(language == "spanish"){template <- readr::read_file("templates/participation_ES.Rmd")}
+if(language == "english"){template <- tmpl_file <- "templates/participation_EN.Rmd"}
+if(language == "spanish"){template <- tmpl_file <- "templates/participation_ES.Rmd"}
 
+file.copy(tmpl_file, "temp/participation.Rmd")#create files to call them lpic@rpic to make it homogeneous
 
-template_cert <- template %>%
-  stringr::str_replace_all("<<ACTO>>", type) %>%
-  stringr::str_replace_all("<<GRUPO>>", organiser) %>%
-  stringr::str_replace_all("<<FIRMANTE>>", signer) %>%
-  stringr::str_replace_all("<<PUESTO>>", signer.position)%>%
-  stringr::str_replace_all("<<HORAS>>", hours)
+tmpl_file   <- "temp/participation.Rmd"
+
+if(language == "english"){out.name <- "Participation"}
+if(language == "spanish"){out.name <- "Participacion"}
+
+for(i in 1:nrow(df)){
+out.name <- paste0(out.name, "_", df[i,name.column], "_", gsub("/","-",df[i,date.column]))
+output_file <- paste0(out.name,'.pdf')
+
+rmarkdown::render(
+  tmpl_file,
+  output_dir = "temp",
+  output_file = output_file,
+  params = list(
+    type=type,
+    organiser=organiser,
+    hours=hours,
+    signer=signer,
+    signer.position=signer.position,
+    name.column = df[i,name.column],
+    affiliation.column = df[i,affiliation.column],
+    date.column=df[i,date.column],
+    title.column=df[i,title.column],
+    comm.type.column = df[i,comm.type.column]
+  ))
 
 if(!dir.exists("output")){dir.create("output")}
+file.copy(paste0("temp/",output_file), paste0("output/",output_file))#create files to call them lpic@rpic to make it homogeneous
+
+}
+unlink("temp", recursive = T, force = T)
+
+
+
 
 for (i in 1:nrow(df)){
 
