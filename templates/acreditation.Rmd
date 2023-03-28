@@ -1,6 +1,6 @@
 ---
 title: ''
-geometry: "left=0cm,right=0cm,top=5cm,bottom=0cm"
+geometry: "left=0cm,right=0cm,top=2cm,bottom=2cm"
 output:
   pdf_document: default
 classoption: 
@@ -8,90 +8,35 @@ classoption:
 header-includes:
   - \usepackage{pgfpages}
   - \pgfpagesuselayout{8 on 1}[a4paper]
+params:
+  event: ""
+  names: ""
+  affiliations: ""
 ---
-\pagenumbering{gobble}
-\hfill
-\begin{center}
-\bigskip
-{\Huge\bf <<List1>> } \\
-{\Huge <<Affiliation1>>} \\
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-{\Large\bf <<Event>>}\\
-{\Large <<Organization>>}\\
-\end{center}
 
-\pagebreak
-\pagenumbering{gobble}
-\hfill
-\begin{center}
-\bigskip
-{\Huge\bf <<List2>> } \\
-{\Huge <<Affiliation2>>} \\
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-{\Large\bf <<Event>>}\\
-{\Large <<Organization>>}\\
-\end{center}
+```{r echo=FALSE, results='asis'}
+for (i in 1:length(params$names)){
+  cat(stringr::str_interp("\\pagenumbering{gobble}
+\\begin{center}
+\\includegraphics[height=4cm]{temp/lpic.png}
+\\hfill
+\\includegraphics[height=4cm]{temp/rpic.png}
+\\linebreak
+\\linebreak
+\\linebreak
+{\\fontsize{30pt}{80pt}\\selectfont\\bf\\vspace{.7cm} ${params$event}}\\\\
+\\bigskip
+\\vfill
+{\\fontsize{60pt}{40pt}\\selectfont\\bf ${params$names[i]} } \\\\ 
+\\bigskip
+{\\fontsize{40pt}{40pt}\\selectfont ${params$affiliations[i]} } \\\\
+\\bigskip
+\\vfill
+\\fontsize{30pt}{20pt}\\selectfont\\hspace{2cm}\\dotfill\\hspace{2cm}
+\\end{center}
+\\pagebreak"))
+}
+```
 
-\pagebreak
-\pagenumbering{gobble}
-\hfill
-\begin{center}
-\bigskip
-{\Huge\bf <<List3>> } \\
-{\Huge <<Affiliation3>>} \\
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-{\Large\bf <<Event>>}\\
-{\Large <<Organization>>}\\
-\end{center}
 
-\pagebreak
-\pagenumbering{gobble}
-\hfill
-\begin{center}
-\bigskip
-{\Huge\bf <<List4>> } \\
-{\Huge <<Affiliation4>>} \\
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-{\Large\bf <<Event>>}\\
-{\Large <<Organization>>}\\
-\end{center}
+
