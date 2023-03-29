@@ -88,21 +88,21 @@ create_certificate_participation <- function(
 
   if(is.null(lpic))         {
     png("temp/blank.png", 150, 150, "px")
+    plot.new()
     dev.off()
     lpic <- "temp/blank.png"
-    erase.lpic<-T
     }
   if(is.null(rpic))         {
     png("temp/blank.png", 150, 150, "px")
+    plot.new()
     dev.off()
     rpic <- "temp/blank.png"
-    erase.rpic<-T
     }
   if(is.null(signature.pic)){
     png("temp/blank.png", 150, 150, "px")
+    plot.new()
     dev.off()
     spic <- "temp/blank.png"
-    erase.spic<-T
     }
 
   file.copy(lpic, "temp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
@@ -139,18 +139,19 @@ if(!(affiliation.column)%in%colnames(df)){
   }
 
 
+
 # load either pdf or word certificate template
 if(language == "english"){template <- tmpl_file <- "templates/participation_EN.Rmd"}
 if(language == "spanish"){template <- tmpl_file <- "templates/participation_ES.Rmd"}
 
-file.copy(tmpl_file, "temp/participation.Rmd")#create files to call them lpic@rpic to make it homogeneous
+file.copy(tmpl_file, "temp/participation.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
 tmpl_file   <- "temp/participation.Rmd"
 
 if(language == "english"){out.name <- "Participation"}
 if(language == "spanish"){out.name <- "Participacion"}
 
-for(i in 1:nrow(df)){
+# for(i in 1:nrow(df)){
 out.name <- paste0(out.name, "_", df[i,name.column], "_", gsub("/","-",df[i,date.column]))
 output_file <- paste0(out.name,'.pdf')
 
