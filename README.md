@@ -21,13 +21,15 @@ Package to create your own labels, certificates, and much more! :)
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("EcologyR/templateRpackage")
+devtools::install_github("EcologyR/labeleR")
 ```
 
 The code to create this package is available
 [here](https://gist.github.com/Pakillo/999e34301c56011138ef164363502465).
 
 ## Example
+
+Examples on progress*
 
 This is a basic example which shows you how to solve a common problem:
 
