@@ -8,46 +8,44 @@ output:
     df_print: paged
 classoption: landscape
 params:
-    type: ""
-    organiser: ""
-    hours: ""
-    signer: ""
-    signer.position: ""
-    name.column: ""
-    affiliation.column: ""
-    date.column: ""
-    title.column: ""
-    comm.type.column: ""
+  type.i: ""
+  organiser.i: ""
+  hours.i: ""
+  signer.i: ""
+  signer.position.i: ""
+  name.column.i: ""
+  affiliation.column.i: ""
+  date.column.i: ""
+  title.column.i: ""
+  comm.type.column.i: ""
 ---
 ```{r echo=FALSE, results='asis'}
   cat(stringr::str_interp("\\pagenumbering{gobble}
 \\begin{center}
-\\includegraphics[height=4cm]{rpic.png}
+
+\\includegraphics[height=4cm]{lpic.png} 
 \\hfill
-\\includegraphics[height=4cm]{lpic.png} \\
-\\bigskip
+\\includegraphics[height=4cm]{rpic.png}
+\\vfill
 {\\Huge\\bf Certificate of participation} \\
-\\bigskip
-{\\Huge ${params$name.column} } \\\\
-{\\Large\\bf ${params$affiliation.column}} \\\\
-\\bigskip
-\\bigskip
+\\vfill
+{\\Huge ${params$name.column.i} } \\\\
+{\\Large\\bf ${params$affiliation.column.i}} \\\\
+\\vfill
 {\\Large has participated in:}
-{\\Large ${params$type} - ${params$organiser}} \\\\
-{\\Large with the communication ${params$comm.type.column} entitled:} \\\\
-\\bigskip
-\\bigskip
-{\\Huge\\bf ${params$title.column }} \\\\
-\\bigskip
-\\bigskip
-{\\Large date ${params$date.column} and a duration of ${params$hours} hour(s).} \\\\
-\\bigskip
-\\bigskip
+{\\Large ${params$type.i} - ${params$organiser.i}} \\\\
+{\\Large with the communication ${params$comm.type.column.i} entitled:} \\\\
+\\vfill
+{\\Huge\\bf ${params$title.column.i }} \\\\
+\\vfill
+{\\Large date ${params$date.column.i} and a duration of ${params$hours.i} hour(s).} \\\\
+\\vfill
 {\\Large Signed by:}\\\\
-\\bigskip
+\\vfill
 \\includegraphics[height=2cm]{spic.png}\\\\
-{\\Large ${params$signer}} \\\\
-{\\Large ${params$signer.position}} \\\\
+{\\Large ${params$signer.i}} \\\\
+{\\Large ${params$signer.position.i}} \\\\
+\\end{center}
 \\pagebreak
-\\end{center}"))
+"))
 ```

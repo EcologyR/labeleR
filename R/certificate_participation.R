@@ -160,65 +160,24 @@ rmarkdown::render(
   output_dir = "temp",
   output_file = output_file,
   params = list(
-    type=type,
-    organiser=organiser,
-    hours=hours,
-    signer=signer,
-    signer.position=signer.position,
-    name.column = df[i,name.column],
-    affiliation.column = df[i,affiliation.column],
-    date.column=df[i,date.column],
-    title.column=df[i,title.column],
-    comm.type.column = df[i,comm.type.column]
-  ))
+    type.i               = type,
+    organiser.i          = organiser,
+    hours.i              = hours,
+    signer.i             = signer,
+    signer.position.i    = signer.position,
+    name.column.i        = df[i,name.column],
+    affiliation.column.i = df[i,affiliation.column],
+    date.column.i        = df[i,date.column],
+    title.column.i       = df[i,title.column],
+    comm.type.column.i   = df[i,comm.type.column]
+  )
+  )
 
 if(!dir.exists("output")){dir.create("output")}
 file.copy(paste0("temp/",output_file), paste0("output/",output_file))#create files to call them lpic@rpic to make it homogeneous
-
-}
-unlink("temp", recursive = T, force = T)
-
-
-
-
-for (i in 1:nrow(df)){
-
-  #replace the placeholder words in the template with the student information
-
-
-  personal_cert <- template_cert %>%
-    stringr::str_replace_all("<<Ponente>>", df[i, name.column]) %>%
-    stringr::str_replace_all("<<Fecha>>", df[i, date.column])%>%
-    stringr::str_replace_all("<<Titulo>>", df[i, title.column])%>%
-    stringr::str_replace_all("<<Afiliacion>>", df[i, affiliation.column])%>%
-    stringr::str_replace_all("<<Tipo>>", df[i, comm.type.column])
-
-  #generate an output file name based on student name
-  out_filename = df[i,name.column]
-  out_datename = df[i,date.column]
-  out_datename <- stringr::str_replace_all(out_datename, "/", "_")
-  out_file = paste(out_filename, out_datename, sep=("-"))
-  out_file_pdf = paste0("output/participation_",out_file, '.pdf')
-
-  #save customized Rmd to a temporary file
-  readr::write_file(personal_cert, "tmp.Rmd")
-
-  #create the certificates using R markdown.
-  #it will detect the ending of the output file and use the right format
-  rmarkdown::render("tmp.Rmd", output_file = out_file_pdf)
-
-  #temporary Rmd file can be deleted.
-  file.remove("tmp.Rmd")
-
-}
-file.remove("temp/lpic.png")
-file.remove("temp/rpic.png")
-file.remove("temp/spic.png")
-if(erase.lpic){file.remove("temp/blank.png")}
-if(erase.rpic & file.exists("temp/blank.png")){file.remove("temp/blank.png")}
-if(erase.spic & file.exists("temp/blank.png")){file.remove("temp/blank.png")}
+#}
 
 unlink("temp", recursive = T, force = T)
-}
 
+}
 
