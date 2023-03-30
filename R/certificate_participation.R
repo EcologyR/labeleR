@@ -57,7 +57,7 @@ create_certificate_participation <- function(
     title.column=NULL,
     comm.type.column = NULL){
 
-  if(!dir.exists("temp")){dir.create("temp")}
+  if(!dir.exists("tmp")){dir.create("tmp")}
 
   if (language%in%c("sp", "s")){language<- "spanish"}
   if (language%in%c("en", "e")){language<- "english"}
@@ -84,57 +84,59 @@ create_certificate_participation <- function(
     }
   if(!(is.character(hours))) {
     hours <- as.character(hours)
-    }
+  }
+
+
 
   if(is.null(lpic))         {
-    png("temp/blank.png", 150, 150, "px")
+    png("tmp/blank.png", 150, 150, "px")
     plot.new()
     dev.off()
-    lpic <- "temp/blank.png"
+    lpic <- "tmp/blank.png"
     }
   if(is.null(rpic))         {
-    png("temp/blank.png", 150, 150, "px")
+    png("tmp/blank.png", 150, 150, "px")
     plot.new()
     dev.off()
-    rpic <- "temp/blank.png"
+    rpic <- "tmp/blank.png"
     }
   if(is.null(signature.pic)){
-    png("temp/blank.png", 150, 150, "px")
+    png("tmp/blank.png", 150, 150, "px")
     plot.new()
     dev.off()
-    spic <- "temp/blank.png"
+    spic <- "tmp/blank.png"
     }
 
-  file.copy(lpic, "temp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(rpic, "temp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(signature.pic, "temp/spic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(lpic, "tmp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(rpic, "tmp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(signature.pic, "tmp/spic.png")#create files to call them lpic@rpic to make it homogeneous
 
 
 df <- data
 
 if(!(name.column)%in%colnames(df)){
   stop("Column '", name.column ,
-       "' is not a column of your Google Sheets document. Please select from \n",
+       "' is not a column of your data frame. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 if(!(date.column)%in%colnames(df)){
   stop("Column '", date.column ,
-       "' is not a column of your Google Sheets document. Please select from \n",
+       "' is not a column of your data frame. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 if(!(title.column)%in%colnames(df)){
   stop("Column '", title.column ,
-       "' is not a column of your Google Sheets document. Please select from \n",
+       "' is not a column of your data frame. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 if(!(comm.type.column)%in%colnames(df)){
   stop("Column '", comm.type.column ,
-       "' is not a column of your Google Sheets document. Please select from \n",
+       "' is not a column of your data frame. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 if(!(affiliation.column)%in%colnames(df)){
   stop("Column '", affiliation.column ,
-       "' is not a column of your Google Sheets document. Please select from \n",
+       "' is not a column of your data frame. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 
@@ -144,9 +146,9 @@ if(!(affiliation.column)%in%colnames(df)){
 if(language == "english"){template <- tmpl_file <- "templates/participation_EN.Rmd"}
 if(language == "spanish"){template <- tmpl_file <- "templates/participation_ES.Rmd"}
 
-file.copy(tmpl_file, "temp/participation.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+file.copy(tmpl_file, "tmp/participation.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
-tmpl_file   <- "temp/participation.Rmd"
+tmpl_file   <- "tmp/participation.Rmd"
 
  for(i in 1:nrow(df)){
 
@@ -158,7 +160,7 @@ output_file <- paste0(out.name,'.pdf')
 
 rmarkdown::render(
   tmpl_file,
-  output_dir = "temp",
+  output_dir = "tmp",
   output_file = output_file,
   params = list(
     type.i               = type,
@@ -175,10 +177,10 @@ rmarkdown::render(
   )
 
 if(!dir.exists("output")){dir.create("output")}
-file.copy(paste0("temp/",output_file), paste0("output/",output_file))#create files to call them lpic@rpic to make it homogeneous
+file.copy(paste0("tmp/",output_file), paste0("output/",output_file))#create files to call them lpic@rpic to make it homogeneous
 }
 
-unlink("temp", recursive = T, force = T)
+unlink("tmp", recursive = T, force = T)
 
 }
 

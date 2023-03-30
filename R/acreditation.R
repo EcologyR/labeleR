@@ -49,42 +49,39 @@ create_accreditation <- function(data=NULL,
     }
 
 
-  if(!dir.exists("temp")){
-    dir.create("temp")
-    rm.templ <- F
-  }else{
-      rm.templ <- T
+  if(!dir.exists("tmp")){
+    dir.create("tmp")
   }
   if(!dir.exists("output")){dir.create("output")}
   erase.lpic <- F
   erase.rpic <- F
   if(is.null(lpic)){
-    png("temp/blank.png", 150, 150, "px")
+    png("tmp/blank.png", 150, 150, "px")
     dev.off()
-    lpic <- "temp/blank.png"
+    lpic <- "tmp/blank.png"
     erase.lpic<-T
     }
   if(is.null(rpic)){
-    png("temp/blank.png", 150, 150, "px")
+    png("tmp/blank.png", 150, 150, "px")
     dev.off()
-    rpic <- "temp/blank.png"
+    rpic <- "tmp/blank.png"
     erase.rpic<-T
     }
-  file.copy(lpic, "temp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(rpic, "temp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(lpic, "tmp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(rpic, "tmp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
    tmpl_file   <- "templates/accreditation.Rmd"
-   file.copy(tmpl_file, "temp/accreditation.Rmd")#create files to call them lpic@rpic to make it homogeneous
+   file.copy(tmpl_file, "tmp/accreditation.Rmd")#create files to call them lpic@rpic to make it homogeneous
 
 
 
 
-  tmpl_file   <- "temp/accreditation.Rmd"
+  tmpl_file   <- "tmp/accreditation.Rmd"
   out.name <- paste0("accreditations")
   output_file <- paste0(out.name,'.pdf')
 
   rmarkdown::render(
                     tmpl_file,
-                    output_dir = "temp",
+                    output_dir = "tmp",
                     output_file = output_file,
   params = list(
     event        = event,
@@ -92,8 +89,8 @@ create_accreditation <- function(data=NULL,
     affiliations = data[,affiliation.column]
   ))
 
-  file.copy(paste0("temp/",output_file), paste0("output/",output_file))#create files to call them lpic@rpic to make it homogeneous
-  unlink("temp", recursive = T, force = T)
+  file.copy(paste0("tmp/",output_file), paste0("output/",output_file))#create files to call them lpic@rpic to make it homogeneous
+  unlink("tmp", recursive = T, force = T)
 
 }
 
