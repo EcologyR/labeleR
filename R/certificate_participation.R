@@ -148,10 +148,11 @@ file.copy(tmpl_file, "temp/participation.Rmd", overwrite = T)#create files to ca
 
 tmpl_file   <- "temp/participation.Rmd"
 
+ for(i in 1:nrow(df)){
+
 if(language == "english"){out.name <- "Participation"}
 if(language == "spanish"){out.name <- "Participacion"}
 
-# for(i in 1:nrow(df)){
 out.name <- paste0(out.name, "_", df[i,name.column], "_", gsub("/","-",df[i,date.column]))
 output_file <- paste0(out.name,'.pdf')
 
@@ -175,7 +176,7 @@ rmarkdown::render(
 
 if(!dir.exists("output")){dir.create("output")}
 file.copy(paste0("temp/",output_file), paste0("output/",output_file))#create files to call them lpic@rpic to make it homogeneous
-#}
+}
 
 unlink("temp", recursive = T, force = T)
 
