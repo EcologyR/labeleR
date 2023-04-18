@@ -59,7 +59,7 @@ create_certificate_participation <- function(
 
   if(!dir.exists("tmp")){dir.create("tmp")}
 
-  if (language%in%c("sp", "s")){language<- "spanish"}
+  if (language%in%c("sp", "s", "es")){language<- "spanish"}
   if (language%in%c("en", "e")){language<- "english"}
   match.arg(language, c("spanish", "english"),F)
 
