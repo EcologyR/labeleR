@@ -21,7 +21,7 @@ Package to create your own labels, certificates, and much more! :)
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("EcologyR/labeleR")
+devtools::install_github("EcologyR/templateRpackage")
 ```
 
 The code to create this package is available
@@ -29,7 +29,6 @@ The code to create this package is available
 
 ## Example
 
-Examples on progress*
 
 This is a basic example which shows you how to solve a common problem:
 
