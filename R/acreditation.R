@@ -57,12 +57,14 @@ create_accreditation <- function(data=NULL,
   erase.rpic <- F
   if(is.null(lpic)){
     png("tmp/blank.png", 150, 150, "px")
+    plot.new()
     dev.off()
     lpic <- "tmp/blank.png"
     erase.lpic<-T
     }
   if(is.null(rpic)){
     png("tmp/blank.png", 150, 150, "px")
+    plot.new()
     dev.off()
     rpic <- "tmp/blank.png"
     erase.rpic<-T
