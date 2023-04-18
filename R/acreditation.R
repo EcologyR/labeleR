@@ -78,8 +78,11 @@ create_accreditation <- function(data=NULL,
 
 
   tmpl_file   <- "tmp/accreditation.Rmd"
-  out.name <- paste0("accreditations")
+  out.name <- paste0("Accreditations")
   output_file <- paste0(out.name,'.pdf')
+
+  if(file.exists(paste0("output/",output_file))){message("Accreditation file already exists. Overwriting.")}
+
 
   rmarkdown::render(
                     tmpl_file,
@@ -91,7 +94,7 @@ create_accreditation <- function(data=NULL,
     affiliations = data[,affiliation.column]
   ))
 
-  file.copy(paste0("tmp/",output_file), paste0("output/",output_file))#create files to call them lpic@rpic to make it homogeneous
+  file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
   unlink("tmp", recursive = T, force = T)
 
 }
