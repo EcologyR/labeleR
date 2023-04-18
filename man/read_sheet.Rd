@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_sheet.R
 \name{read_sheet}
 \alias{read_sheet}
-\title{Title}
+\title{read_sheet}
 \usage{
 read_sheet(url, select.column = NULL, select.value = NULL)
 }
@@ -17,7 +17,7 @@ read_sheet(url, select.column = NULL, select.value = NULL)
 a data frame
 }
 \description{
-Title
+Function to import data from Google Sheets and select which rows to use
 }
 \examples{
 table <- read_sheet(url='https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0')

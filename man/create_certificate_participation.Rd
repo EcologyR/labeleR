@@ -6,9 +6,7 @@
 \usage{
 create_certificate_participation(
   language = c("spanish", "english"),
-  url = NULL,
-  select.column = NULL,
-  select.value = NULL,
+  data = NULL,
   type = NULL,
   organiser = NULL,
   hours = NULL,
@@ -27,11 +25,7 @@ create_certificate_participation(
 \arguments{
 \item{language}{Select english or spanish}
 
-\item{url}{Specify a valid Google Sheets URL}
-
-\item{select.column}{Column of the Google Sheets that specifies which rows must be selected}
-
-\item{select.value}{Value of \code{select.column} that specifies which rows must be selected}
+\item{data}{A data frame including information to create the certificate of participation}
 
 \item{type}{Type of event (conference, workshop, seminar...)}
 
@@ -43,15 +37,15 @@ create_certificate_participation(
 
 \item{signer.position}{Position of the \code{signer}}
 
-\item{lpic}{PNG object. File route of the top-left image. Can be blank if set to NULL.}
+\item{lpic}{PNG object route. File route of the top-left image. Can be blank if set to NULL.}
 
-\item{rpic}{PNG object. File route of the top-right image. Can be blank if set to NULL.}
+\item{rpic}{PNG object route. File route of the top-right image. Can be blank if set to NULL.}
 
 \item{signature.pic}{PNG object. File route of a signature image. Can be blank if set to NULL.}
 
-\item{name.column}{Column name of the Google Sheet column which specifies the particpant name.}
+\item{name.column}{Column name of the Google Sheet column which specifies the participant's name.}
 
-\item{affiliation.column}{Column name of the Google Sheet column which specifies the particpant affiliation}
+\item{affiliation.column}{Column name of the Google Sheet column which specifies the participant's affiliation}
 
 \item{date.column}{Column name of the Google Sheet column which specifies the date.}
 
@@ -68,9 +62,7 @@ Create certificate of participation
 \examples{
 create_certificate_participation(
 language ="en",
-url="https://docs.google.com/spreadsheets/u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/edit?usp=drive_web&ouid=106603768357414088091",
-select.column=NULL,
-select.value=NULL,
+data= read_sheet("https://docs.google.com/spreadsheets/u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/edit?usp=drive_web&ouid=106603768357414088091"),
 type="online seminar",
 organiser="Hogwarts School of Witchcraft and Wizardry",
 hours=2,
