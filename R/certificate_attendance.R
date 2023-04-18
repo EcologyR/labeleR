@@ -25,25 +25,25 @@
 #'
 #' @examples
 #' create_certificate_attendance(
-#'url <- 'https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0',
-#'language="en",
-#'type="class",
-#'title="Potions Class, Hogwarts School year 1992-1993",
-#'signer="A.P.W.B. Dumbledore",
-#'hours=1250,
-#'signer.position="School Headmaster",
-#'rpic="templates/Hogwarts_logo.png",
-#'lpic=NULL,
-#'signature.pic="templates/firma.png" ,
-#'name.column="List_assistants",
-#'speaker="Severus Snape",
-#'date="01/01/2021")
+#' data= read_sheet('https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+#' language="en",
+#' type="class",
+#' title="Potions Class"
+#' organiser="Hogwarts School year 1992-1993",
+#' signer="A.P.W.B. Dumbledore",
+#' signer.position="School Headmaster",
+#' hours=200,
+#' date="01/01/2021",
+#' speaker="Severus Snape",
+#' rpic="templates/Hogwarts_logo.png",
+#' lpic=NULL,
+#' signature.pic="templates/firma.png" ,
+#' name.column="List_assistants"
+)
 
 create_certificate_attendance <- function(
+    data=NULL,
     language =c("spanish", "english"),
-    url=NULL,
-    select.column=NULL,
-    select.value=NULL,
     type=NULL,
     title=NULL,
     organiser=NULL,
@@ -57,87 +57,110 @@ create_certificate_attendance <- function(
     signature.pic = NULL,
     name.column=NULL){
 
-
-  if(!dir.exists("temp")){dir.create("temp"); rm.templ <- F}else{rm.templ <- T}
+  if(!dir.exists("tmp")){dir.create("tmp")}
 
   if (language%in%c("sp", "s")){language<- "spanish"}
   if (language%in%c("en", "e")){language<- "english"}
   match.arg(language, c("spanish", "english"),F)
 
-  if(is.null(url)){stop("A valid Google Sheets URL must be specfied")}
-  if(is.null(type)){stop("A type of event (conference, workshop, seminar...) must be specfied")}
-  if(is.null(title)){stop("A title must be specified")}
-  if(is.null(signer)){stop("An signer name must be specfied")}
-  if(is.null(signer.position)){signer.position <- ""}
-  if(is.null(hours)){stop("A number of hours name must be specfied")}
-  if(is.null(date)){stop("A date must be specfied")}
-  if(is.null(speaker)){stop("A speaker must be specfied")}
+  if(is.null(data)){
+    stop(" a 'data' data.frame must be provided.
+         To import from Google Sheets use function 'read_sheet()'")
+  }
+  if(is.null(type)){
+    stop("A type of event (conference, workshop, seminar...) must be specfied")
+  }
+  if(is.null(organiser)){
+    stop("An organiser must be specfied")
+  }
+  if(is.null(title)){
+    stop("A title must be specfied")
+  }
+  if(is.null(signer)){
+    stop("An signer name must be specfied")
+  }
+  if(is.null(signer.position)){
+    signer.position <- ""
+  }
+  if(is.null(hours)){
+    stop("A number of hours name must be specfied")
+  }
+  if(!(is.character(hours))) {
+    hours <- as.character(hours)
+  }
 
-  if(!(is.character(hours))) {hours <- as.character(hours)}
-  erase.lpic <- F; erase.rpic<-F; erase.spic<-F
-  if(is.null(lpic)){png("temp/blank.png", 150, 150, "px");dev.off(); lpic <- "temp/blank.png";erase.lpic<-T}
-  if(is.null(rpic)){png("temp/blank.png", 150, 150, "px");dev.off(); rpic <- "temp/blank.png";erase.rpic<-T}
-  if(is.null(signature.pic)){png("temp/blank.png", 150, 150, "px");dev.off(); spic <- "temp/blank.png";erase.spic<-T}
 
-  file.copy(lpic, "temp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(rpic, "temp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(signature.pic, "temp/spic.png")#create files to call them lpic@rpic to make it homogeneous
 
-   df <- read_sheet(url, select.column, select.value )
+  if(is.null(lpic))         {
+    png("tmp/blank.png", 150, 150, "px")
+    plot.new()
+    dev.off()
+    lpic <- "tmp/blank.png"
+  }
+  if(is.null(rpic))         {
+    png("tmp/blank.png", 150, 150, "px")
+    plot.new()
+    dev.off()
+    rpic <- "tmp/blank.png"
+  }
+  if(is.null(signature.pic)){
+    png("tmp/blank.png", 150, 150, "px")
+    plot.new()
+    dev.off()
+    signature.pic <- "tmp/blank.png"
+  }
 
-  if(!(name.column)%in%colnames(df)){stop("Column '", name.column , "' is not a column of ypur Google Sheets document. Please select from \n", paste0("-", colnames(df), sep="\n"))}
+  file.copy(lpic, "tmp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(rpic, "tmp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
+  file.copy(signature.pic, "tmp/spic.png")#create files to call them lpic@rpic to make it homogeneous
+
+
+  df <- data
+
+  if(!(name.column)%in%colnames(df)){
+    stop("Column '", name.column ,
+         "' is not a column of your data frame. Please select from \n",
+         paste0("-", colnames(df), sep="\n"))
+  }
 
 
   # load either pdf or word certificate template
-  if(language == "english"){template <- readr::read_file("templates/assistance_EN.Rmd")}
-  if(language == "spanish"){template <- readr::read_file("templates/assistance_ES.Rmd")}
+  if(language == "english"){tmpl_file <- "templates/attendance_EN.Rmd"}
+  if(language == "spanish"){tmpl_file <- "templates/attendance_ES.Rmd"}
 
+  file.copy(tmpl_file, "tmp/attendance.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
-  template_cert <- template %>%
-    stringr::str_replace_all("<<ACTO>>", type) %>%
-    stringr::str_replace_all("<<GRUPO>>", title) %>%
-    stringr::str_replace_all("<<FIRMANTE>>", signer) %>%
-    stringr::str_replace_all("<<PUESTO>>", signer.position)%>%
-    stringr::str_replace_all("<<HORAS>>", hours)%>%
-    stringr::str_replace_all("<<Fecha>>", date)%>%
-    stringr::str_replace_all("<<NOMBRE PONENTE>>", speaker)
+  tmpl_file   <- "tmp/attendance.Rmd"
 
-  if(!dir.exists("output")){dir.create("output")}
+  for(i in 1:nrow(df)){
 
-  for (i in 1:nrow(df)){
+    if(language == "english"){out.name <- "Attendance"}
+    if(language == "spanish"){out.name <- "Asistencia"}
 
-    #replace the placeholder words in the template with the student information
+    out.name <- paste0(out.name, "_", df[i,name.column])
+    output_file <- paste0(out.name,'.pdf')
 
+    rmarkdown::render(
+      tmpl_file,
+      output_dir = "tmp",
+      output_file = output_file,
+      params = list(
+        type            = type,
+        organiser       = organiser,
+        hours           = hours,
+        signer          = signer,
+        signer.position = signer.position,
+        name.column.i   = df[i,name.column],
+        speaker         = speaker,
+        title           = title,
+        date            = date
+      )
+    )
 
-    personal_cert <- template_cert %>%
-      stringr::str_replace_all("<<Asistente>>", df[i, name.column])
-
-
-    #generate an output file name based on student name
-    out_filename = df[i,name.column]
-    out_file_pdf = paste0("output/attendance_",out_filename, '.pdf')
-
-    #save customized Rmd to a temporary file
-    readr::write_file(personal_cert, "tmp.Rmd")
-
-    #create the certificates using R markdown.
-    #it will detect the ending of the output file and use the right format
-    rmarkdown::render("tmp.Rmd", output_file = out_file_pdf)
-
-    #temporary Rmd file can be deleted.
-    file.remove("tmp.Rmd")
-
+    if(!dir.exists("output")){dir.create("output")}
+    file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite=T)#create files to call them lpic@rpic to make it homogeneous
   }
 
-  file.remove("temp/lpic.png")
-  file.remove("temp/rpic.png")
-  file.remove("temp/spic.png")
-  if(erase.lpic){file.remove("temp/blank.png")}
-  if(erase.rpic & file.exists("temp/blank.png")){file.remove("temp/blank.png")}
-  if(erase.spic & file.exists("temp/blank.png")){file.remove("temp/blank.png")}
+  unlink("tmp", recursive = T, force = T)
 
-  if(rm.templ){unlink("temp", recursive = T, force = T)}
 }
-
-
-
