@@ -7,34 +7,47 @@ output:
   html_document:
     df_print: paged
 classoption: landscape
+params:
+  type.i: ""
+  organiser.i: ""
+  hours.i: ""
+  signer.i: ""
+  signer.position.i: ""
+  name.column.i: ""
+  affiliation.column.i: ""
+  date.column.i: ""
+  title.column.i: ""
+  comm.type.column.i: ""
 ---
-\pagenumbering{gobble}
-\begin{center}
-\includegraphics[height=4cm]{temp/rpic.png}
-\hfill
-\includegraphics[height=4cm]{temp/lpic.png} \\
-\bigskip
-{\Huge\bf Certificado de participación } \\
-\bigskip
-{\Huge <<Ponente>> } \\
-{\Large\bf <<Afiliacion>>} \\
-\bigskip
-\bigskip
-{\Large ha participado en:}
-{\Large <<ACTO>> - <<GRUPO>>} \\
-{\Large con la comunicación <<Tipo>> titulada:} \\
-\bigskip
-\bigskip
-{\Huge\bf <<Titulo>> } \\
-\bigskip
-\bigskip
-{\Large con fecha de <<Fecha>> y una duración de <<HORAS>> hora(s).} \\
-\bigskip
-\bigskip
-{\Large Firmado por:}\\
-\bigskip
-\includegraphics[height=2cm]{temp/spic.png}\\
-{\Large <<FIRMANTE>>}\\
-{\Large <<PUESTO>>}\\
-
-\end{center}
+```{r echo=FALSE, results='asis'}
+  cat(stringr::str_interp("
+\\begin{center}
+\\pagenumbering{gobble}
+\\includegraphics[height=4cm]{lpic.png} 
+\\hfill
+\\includegraphics[height=4cm]{rpic.png}
+\\linebreak
+\\bigskip
+{\\Huge\\bf Certificado de participación} 
+\\vfill
+{\\Huge ${params$name.column.i} } \\\\
+{\\Large\\bf ${params$affiliation.column.i}} \\\\
+\\vfill
+{\\Large ha participado en:}
+{\\Large ${params$type.i} - ${params$organiser.i}} \\\\
+\\vfill
+{\\Large con la comunicación ${params$comm.type.column.i} titulada:} \\\\
+\\vfill
+{\\Huge\\bf ${params$title.column.i }} \\\\
+\\vfill
+{\\Large en la fecha ${params$date.column.i} y con una duración de ${params$hours.i} hora(s).} \\\\
+\\vfill
+{\\Large Firmado por:}\\\\
+\\vfill
+\\includegraphics[height=2cm]{spic.png}\\\\
+{\\Large ${params$signer.i}} \\\\
+{\\Large ${params$signer.position.i}} \\\\
+\\end{center}
+\\pagebreak
+"))
+```
