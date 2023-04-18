@@ -7,31 +7,43 @@ output:
   html_document:
     df_print: paged
 classoption: landscape
+params:
+  organiser: ""
+  hours: ""
+  signer: ""
+  signer.position: ""
+  name.column.i: ""
+  speaker:""
+  title:""
+  date: ""
+  title: ""
 ---
-\pagenumbering{gobble}
-\begin{center}
-\includegraphics[height=4cm]{temp/rpic.png}
-\hfill
-\includegraphics[height=4cm]{temp/lpic.png} \\
-\bigskip
-{\Huge\bf Certificate of attendance } \\
-\bigskip
-{\Huge <<Asistente>> } \\
-\bigskip
-\bigskip
-{\Large has attended to:}
-{\Large\bf <<ACTO>> - <<GRUPO>>} \\
-{\Large by: <<NOMBRE PONENTE>> with date <<Fecha>>} \\
-{\Large and a duration of <<HORAS>> hour(s).} \\
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-{\Large Signed by:}\\
-\bigskip
-\includegraphics[height=2cm]{temp/spic.png}\\
-{\Large <<FIRMANTE>>}\\
-{\Large <<PUESTO>>}\\
-
-\end{center}
+```{r echo=FALSE, results='asis'}
+  cat(stringr::str_interp("
+\\begin{center}
+\\pagenumbering{gobble}
+\\includegraphics[height=4cm]{lpic.png} 
+\\hfill
+\\includegraphics[height=4cm]{rpic.png}
+\\linebreak
+\\bigskip
+{\\Huge\\bf Certificate of attendance} 
+\\vfill
+{\\Huge ${params$name.column.i} } \\\\
+\\vfill
+{\\Large has attended to:}
+{\\Large ${params$title} - ${params$organiser}} \\\\
+\\vfill
+{\\Large by: ${params$speaker} with date: ${params$date} } \\\\
+\\vfill
+{\\Large and a duration of ${params$hours} hour(s).} \\\\
+\\vfill
+{\\Large Signed by:}\\\\
+\\vfill
+\\includegraphics[height=2cm]{spic.png}\\\\
+{\\Large ${params$signer}} \\\\
+{\\Large ${params$signer.position}} \\\\
+\\end{center}
+\\pagebreak
+"))
+```
