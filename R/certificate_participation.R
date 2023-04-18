@@ -104,7 +104,7 @@ create_certificate_participation <- function(
     png("tmp/blank.png", 150, 150, "px")
     plot.new()
     dev.off()
-    spic <- "tmp/blank.png"
+    signature.pic <- "tmp/blank.png"
     }
 
   file.copy(lpic, "tmp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
