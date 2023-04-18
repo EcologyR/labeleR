@@ -39,7 +39,7 @@
 #' lpic=NULL,
 #' signature.pic="templates/firma.png" ,
 #' name.column="List_assistants"
-)
+#' )
 
 create_certificate_attendance <- function(
     data=NULL,

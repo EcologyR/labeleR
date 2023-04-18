@@ -3,4 +3,5 @@
 export(create_accreditation)
 export(create_certificate_attendance)
 export(create_certificate_participation)
+export(create_herbarium_label)
 export(read_sheet)
