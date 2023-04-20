@@ -9,7 +9,7 @@
 #' @param signer.position Position of the \code{signer}
 #' @param lpic PNG object route. File route of the top-left image. Can be blank if set to NULL.
 #' @param rpic PNG object route. File route of the top-right image. Can be blank if set to NULL.
-#' @param signature.pic PNG object. File route of a signature image. Can be blank if set to NULL.
+#' @param signature.pic PNG object route. File route of a signature image. Can be blank if set to NULL.
 #' @param name.column Column name of the Google Sheet column which specifies the participant's name.
 #' @param affiliation.column Column name of the Google Sheet column which specifies the participant's affiliation
 #' @param date.column Column name of the Google Sheet column which specifies the date.
@@ -177,7 +177,9 @@ rmarkdown::render(
   )
 
 if(!dir.exists("output")){dir.create("output")}
-file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite=T)#create files to call them lpic@rpic to make it homogeneous
+
+file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+
 }
 
 unlink("tmp", recursive = T, force = T)
