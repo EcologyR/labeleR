@@ -35,6 +35,7 @@ params:
 \\vfill
 {\\Large has participated in:}
 {\\Large ${params$type.i} - ${params$organiser.i}} \\\\
+\\vfill
 {\\Large with the ${params$comm.type.column.i} communication entitled:} \\\\
 \\vfill
 {\\Huge\\bf ${params$title.column.i }} \\\\

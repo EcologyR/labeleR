@@ -177,7 +177,9 @@ rmarkdown::render(
   )
 
 if(!dir.exists("output")){dir.create("output")}
+
 file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+
 }
 
 unlink("tmp", recursive = T, force = T)
