@@ -1,11 +1,14 @@
 ---
 title: ''
-geometry: "left=-3cm,right=-3cm,top=3cm,bottom=3cm"
+geometry: "left=-6cm,right=-6cm,top=1cm,bottom=1cm"
 output:
   pdf_document: default
 linestretch: 2.5
 header-includes:
   - \usepackage{pgfpages}
+  - \usepackage{qrcode}
+  - \usepackage{pspicture}
+  - \usepackage{mdframed}
   - \pgfpagesuselayout{4 on 1}[landscape]
 params:
   title: ""
@@ -30,13 +33,18 @@ params:
 ---
 ```{r echo=FALSE, results='asis'}
 for (i in 1:length(params$collection.i)){
-  cat(stringr::str_interp("\\pagenumbering{gobble}
+  cat(stringr::str_interp("
+\\begin{mdframed}[linewidth=2pt,linecolor=black]\n
+\\pagenumbering{gobble}
 \\begin{center}
+\\bigskip
 {\\fontsize{30pt}{100pt}\\selectfont\\bf ${params$title}} \\\\
 \\end{center}
-\\bigskip
-\\bigskip
-\\bigskip
+\\begin{flushright}
+\\begin{minipage}[c][20ex][c]{15em}
+\\qrcode[height=2in]{https://twitter.com/home}
+\\end{minipage}
+\\end{flushright}
 \\begin{flushleft}
 {\\fontsize{35pt}{100pt}\\selectfont\\bf  ${params$family.i[i]} } \\\\
 \\vfill
@@ -68,6 +76,7 @@ for (i in 1:length(params$collection.i)){
 \\begin{center}
 {\\fontsize{25pt}{80pt}\\selectfont\\bf ${params$subtitle}} \\\\
 \\end{center}
+\\end{mdframed}\n
 \\pagebreak"))
 }
 ```
