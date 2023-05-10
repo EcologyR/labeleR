@@ -54,6 +54,7 @@
 create_herbarium_label <- function(data=data,
                                    title=NULL,
                                  subtitle=NULL,
+                                 qr=NULL,
                                  family.column=NULL,
                                  taxon.column=NULL,
                                  author.column=NULL,
@@ -85,6 +86,15 @@ create_herbarium_label <- function(data=data,
   if(is.null(subtitle)){
     message("No subtitle provided")
     subtitle <- ""}
+
+  if(!is.null(qr)){
+  if(!(qr %in% colnames(data))){
+    message("QR value is not a column. Using string to create QR codes")
+    data$qr <- qr
+    qr <- "qr"
+    data[,qr]<- as.character (data[,qr])
+    }
+    }
 
   if(is.null(family.column)){
     family.column<-""
@@ -268,6 +278,8 @@ create_herbarium_label <- function(data=data,
     output_file = output_file,
     params = list(
       title  = title,
+      subtitle= subtitle,
+      qr.i = data[,qr],
       family.i = data[,family.column],
       taxon.i = data[,taxon.column],
       author.i = data[,author.column],
@@ -284,8 +296,7 @@ create_herbarium_label <- function(data=data,
       collector.i =data[,collector.column],
       collection.i =data[,collection.column],
       assistants.i =data[,assistants.column],
-      date.i =data[,date.column],
-      subtitle= subtitle)
+      date.i =data[,date.column])
     )
 
 
