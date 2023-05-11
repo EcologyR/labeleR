@@ -84,6 +84,7 @@ create_collection_large_label <- function(data=data,
          "' is not a column of your data. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
+  data[,field1.column] <- toupper(data[,field1.column])
 
   if(is.null(field2.column)){
     field2.column<-""
@@ -117,14 +118,16 @@ create_collection_large_label <- function(data=data,
          paste0("-", colnames(data), sep="\n"))
   }
 
+
   if(!dir.exists("tmp")){
     dir.create("tmp")
   }
 
   if(!dir.exists("output")){dir.create("output")}
 
+  file.copy(lpic, "tmp/lpic.png", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
-  tmpl_file   <- system.file("rmarkdown/templates/collection_large/sketelon/skeleton.Rmd", package="labeleR")
+  tmpl_file   <- system.file("rmarkdown/templates/collection_large/skeleton/skeleton.Rmd", package="labeleR")
   file.copy(tmpl_file, "tmp/collection_large.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/collection_large.Rmd"

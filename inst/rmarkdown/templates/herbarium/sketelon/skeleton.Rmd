@@ -51,9 +51,9 @@ for (i in 1:length(params$collection.i)){
 \\end{minipage}
 \\end{flushright}
 \\begin{flushleft}
-{\\fontsize{35pt}{100pt}\\selectfont\\bf",params$family.i[i]," } \\\\
+{\\fontsize{50pt}{100pt}\\selectfont\\bf",params$family.i[i]," } \\\\
 \\vfill
-{\\fontsize{30pt}{100pt}\\selectfont\\emph{",params$taxon.i[i],"} ",params$author.i[i],"} \\\\
+{\\fontsize{40pt}{100pt}\\selectfont\\emph{",params$taxon.i[i],"} ",params$author.i[i],"} \\\\
 \\end{flushleft}
 \\begin{flushright}
 {\\fontsize{25pt}{100pt}\\selectfont Det.", params$det.i[i]," ", params$date.det.i[i],"} \\\\
