@@ -25,7 +25,9 @@
 #' @examples
 #' create_certificate_participation(
 #' language ="en",
-#' data= read_sheet("https://docs.google.com/spreadsheets/u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/edit?usp=drive_web&ouid=106603768357414088091"),
+#' data= read_sheet("https://docs.google.com/spreadsheets/
+#'         u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/
+#'         edit?usp=drive_web&ouid=106603768357414088091"),
 #' type="online seminar",
 #' organiser="Hogwarts School of Witchcraft and Wizardry",
 #' hours=2,
@@ -89,21 +91,21 @@ create_certificate_participation <- function(
 
 
   if(is.null(lpic))         {
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     lpic <- "tmp/blank.png"
     }
   if(is.null(rpic))         {
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     rpic <- "tmp/blank.png"
     }
   if(is.null(signature.pic)){
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     signature.pic <- "tmp/blank.png"
     }
 

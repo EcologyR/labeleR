@@ -62,7 +62,9 @@ Create certificate of participation
 \examples{
 create_certificate_participation(
 language ="en",
-data= read_sheet("https://docs.google.com/spreadsheets/u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/edit?usp=drive_web&ouid=106603768357414088091"),
+data= read_sheet("https://docs.google.com/spreadsheets/
+        u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/
+        edit?usp=drive_web&ouid=106603768357414088091"),
 type="online seminar",
 organiser="Hogwarts School of Witchcraft and Wizardry",
 hours=2,

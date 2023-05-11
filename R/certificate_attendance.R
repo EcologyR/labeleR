@@ -23,7 +23,8 @@
 #'
 #' @examples
 #' create_certificate_attendance(
-#' data= read_sheet('https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+#' data= read_sheet('https://docs.google.com/spreadsheets/
+#'         d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
 #' language="en",
 #' type="class",
 #' title="Potions Class",
@@ -90,21 +91,21 @@ create_certificate_attendance <- function(
 
 
   if(is.null(lpic))         {
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     lpic <- "tmp/blank.png"
   }
   if(is.null(rpic))         {
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     rpic <- "tmp/blank.png"
   }
   if(is.null(signature.pic)){
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     signature.pic <- "tmp/blank.png"
   }
 

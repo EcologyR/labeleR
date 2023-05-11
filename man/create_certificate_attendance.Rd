@@ -58,7 +58,8 @@ Create certificate of attendance
 }
 \examples{
 create_certificate_attendance(
-data= read_sheet('https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+data= read_sheet('https://docs.google.com/spreadsheets/
+        d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
 language="en",
 type="class",
 title="Potions Class",

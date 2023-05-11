@@ -14,7 +14,8 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
-#' data <- read_sheet(url='https://docs.google.com/spreadsheets/d/16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
+#' data <- read_sheet(url='https://docs.google.com/spreadsheets/d
+#'         /16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
 #' create_accreditation(data=data,
 #' event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 #' name.column = "List",
@@ -57,16 +58,16 @@ create_accreditation <- function(data=NULL,
   erase.lpic <- F
   erase.rpic <- F
   if(is.null(lpic)){
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     lpic <- "tmp/blank.png"
     erase.lpic<-T
     }
   if(is.null(rpic)){
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     rpic <- "tmp/blank.png"
     erase.rpic<-T
   }

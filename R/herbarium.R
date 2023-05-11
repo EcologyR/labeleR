@@ -31,7 +31,8 @@
 #'
 #' @examples
 #' #
-#' data=read_sheet("https://docs.google.com/spreadsheets/d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
+#' data=read_sheet("https://docs.google.com/spreadsheets/
+#'         d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
 #'create_herbarium_label(
 #'data=data,
 #' title="Magical flora of the British Isles",
@@ -104,7 +105,7 @@ create_herbarium_label <- function(data=data,
 
   if(!is.null(family.column)){
   if(!(family.column) %in% c("",colnames(data))) {
-    stop("Column '", name.column ,
+    stop("Column '", family.column ,
          "' is not a column of your Google Sheets document. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }

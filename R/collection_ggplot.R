@@ -17,14 +17,15 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
-#' data <- read_sheet(“https://docs.google.com/spreadsheets/d/1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing”)
+#' data <- read_sheet("https://docs.google.com/spreadsheets/d/
+#'         1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
 #' create_collection_large_label(
 #' data = data,
 #' qr = "QR_code",
-#' field1.column = "campo1"
-#' field2.column = "campo2"
-#' field3.column = "campo3"
-#' field4.column = "campo4"
+#' field1.column = "campo1",
+#' field2.column = "campo2",
+#' field3.column = "campo3",
+#' field4.column = "campo4",
 #' field5.column = "campo5"
 #' )
 #'
