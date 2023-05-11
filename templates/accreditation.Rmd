@@ -27,18 +27,12 @@ for (i in 1:length(params$names)) {
   \\linebreak
   \\linebreak
   \\linebreak
-  {\\fontsize{30pt}{80pt}\\selectfont\\bf\\vspace{.7cm}",
-  params$event,
-  "} \\\\
+  {\\fontsize{30pt}{80pt}\\selectfont\\bf\\vspace{.7cm}", params$event, "} \\\\
   \\bigskip
   \\vfill
-  {\\fontsize{60pt}{40pt}\\selectfont\\bf",
-  params$names[i],
-  "} \\\\
+  {\\fontsize{60pt}{40pt}\\selectfont\\bf", params$names[i], "} \\\\
   \\bigskip
-  {\\fontsize{40pt}{40pt}\\selectfont",
-  params$affiliations[i],
-  "} \\\\
+  {\\fontsize{40pt}{40pt}\\selectfont", params$affiliations[i], "} \\\\
   \\bigskip
   \\vfill
   \\fontsize{30pt}{20pt}\\selectfont\\hspace{2cm}\\dotfill\\hspace{2cm}
