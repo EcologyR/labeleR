@@ -1,0 +1,56 @@
+---
+title: ''
+geometry: "left=1cm,right=1cm,top=1cm,bottom=1cm"
+output:
+  pdf_document: default
+header-includes:
+    \usepackage{pgfpages}
+    \usepackage{qrcode}
+    \usepackage{pspicture}
+    \usepackage{mdframed}
+    \pgfpagesuselayout{16 on 1}[a4paper]
+params:
+  qr.i: ""
+  field1.i: ""
+  field2.i: ""
+  field3.i: ""
+  field4.i: ""
+  field5.i: ""
+
+---
+```{r echo=FALSE, results='asis'}
+
+for (i in 1:length(params$field1.i)) {
+  
+  
+  cat("
+  \\begin{mdframed}[linewidth=0pt, linecolor=black]\n
+  \\begin{minipage}[c][0ex][t]{0.6\\textwidth}
+  {\\fontsize{25pt}{100pt}\\selectfont", 
+  params$field1.i[i],
+  "} \\\\
+  {\\fontsize{25pt}{100pt}\\selectfont",
+  params$field2.i[i],
+  "} \\\\
+  {\\fontsize{25pt}{100pt}\\selectfont", 
+  params$field3.i[i],
+  "} \\\\
+  {\\fontsize{25pt}{100pt}\\selectfont",
+  params$field4.i[i],
+  "} \\\\
+  {\\fontsize{25pt}{100pt}\\selectfont",
+  params$field5.i[i],
+  "} \\\\
+  \\end{minipage}
+  \\hspace{0.1\\textwidth}
+  \\begin{minipage}[c][10ex][t]{0.4\\textwidth}",
+  if(!is.null(qr))
+  "\\qrcode[height=2.5in]{",
+  params$qr.i[i],
+  "}
+  \\end{minipage}
+  \\end{mdframed}
+  \\pagebreak
+  ")
+}
+```
