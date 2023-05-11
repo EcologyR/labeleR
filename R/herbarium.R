@@ -96,16 +96,14 @@ create_herbarium_label <- function(data=data,
     }
     }
 
-  if(is.null(family.column)){
-    family.column<-""
-  }
+  if(!is.null(family.column)){
   if(!(family.column) %in% c("",colnames(data))) {
     stop("Column '", name.column ,
          "' is not a column of your Google Sheets document. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
   data[,family.column] <- toupper(data[,family.column])
-
+  }
 
   if(is.null(taxon.column)){
     taxon.column<-""
@@ -269,34 +267,37 @@ create_herbarium_label <- function(data=data,
   if(file.exists(paste0("output/",output_file))){message("Herbarium_labels file already exists. Overwriting.")}
 
   for (i in 1:ncol(data)){
-    data[is.na(data[,i]),i]<-""
+    data[is.na(data[,i]),i]<-"~"
   }
+
+ bl.char <- rep("~", times=nrow(data))
 
   rmarkdown::render(
     tmpl_file,
     output_dir = "tmp",
     output_file = output_file,
     params = list(
-      title  = title,
-      subtitle= subtitle,
-      qr.i = data[,qr],
-      family.i = data[,family.column],
-      taxon.i = data[,taxon.column],
-      author.i = data[,author.column],
-      det.i = data[,det.column],
-      date.det.i = data[,date.det.column],
-      location.i = data[,location.column],
-      area.description.i = data[,area.description.column],
-      latitude.i =data[,latitude.column],
-      longitude.i =data[,longitude.column],
-      elevation.i =data[,elevation.column],
-      field1.i =data[,field1.column],
-      field2.i =data[,field2.column],
-      field3.i =data[,field3.column],
-      collector.i =data[,collector.column],
-      collection.i =data[,collection.column],
-      assistants.i =data[,assistants.column],
-      date.i =data[,date.column])
+      title              = if(is.null(title                  )){bl.char}else{title},
+      subtitle           = if(is.null(subtitle               )){bl.char}else{subtitle},
+      qr.i               = if(is.null(qr                     )){bl.char}else{data [,qr]},
+      family.i           = if(is.null(family.column          )){bl.char}else{data [,family.column]},
+      taxon.i            = if((taxon.column           ==""   )){bl.char}else{data [,taxon.column]},
+      author.i           = if((author.column          ==""   )){bl.char}else{data [,author.column]},
+      det.i              = if((det.column             ==""   )){bl.char}else{data [,det.column]},
+      date.det.i         = if((date.det.column        ==""   )){bl.char}else{data [,date.det.column]},
+      location.i         = if((location.column        ==""   )){bl.char}else{data [,location.column]},
+      area.description.i = if((area.description.column==""   )){bl.char}else{data [,area.description.column]},
+      latitude.i         = if((latitude.column        ==""   )){bl.char}else{data [,latitude.column]},
+      longitude.i        = if((longitude.column       ==""   )){bl.char}else{data [,longitude.column]},
+      elevation.i        = if((elevation.column       ==""   )){bl.char}else{data [,elevation.column]},
+      field1.i           = if((field1.column          ==""   )){bl.char}else{data [,field1.column]},
+      field2.i           = if((field2.column          ==""   )){bl.char}else{data [,field2.column]},
+      field3.i           = if((field3.column          ==""   )){bl.char}else{data [,field3.column]},
+      collector.i        = if((collector.column       ==""   )){bl.char}else{data [,collector.column]},
+      collection.i       = if((collection.column      ==""   )){bl.char}else{data [,collection.column]},
+      assistants.i       = if((assistants.column      ==""   )){bl.char}else{data [,assistants.column]},
+      date.i             = if((date.column            ==""   )){bl.char}else{data [,date.column]}
+    )
     )
 
 
