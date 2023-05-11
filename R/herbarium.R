@@ -1,15 +1,20 @@
-#' Function to create accreditation cards in DIN-A7 size
+#' Function to create herbaruim labels (4 per DIN-A4 page)
 #'
+#' @param data a data frame to create herbarium labels.
 #' @param title Main title at the top of the labels. Can be blank if set to NULL.
 #' @param subtitle Subtitle at the bottom of the labels. Can be blank if set to NULL.
+#' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
+#'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
+#'          specified \code{qr}.
 #' @param family.column Column name of the \code{data} data frame which specifies the labels' family name.
 #' @param taxon.column Column name of the \code{data} data frame which specifies the labels' taxon.
 #' @param author.column Column name of the \code{data} data frame which specifies the taxons' author.
 #' @param det.column Column name of the \code{data} data frame which specifies the determiner of the voucher.
 #' @param date.det.column Column name of the \code{data} data frame which specifies the date when the voucher was determined.
+#' @param location.column Column name of the \code{data} data frame which specifies where the voucher was collected.
 #' @param area.description.column Column name of the \code{data} data frame which specifies the decription of the area
 #' @param latitude.column Column name of the \code{data} data frame which specifies the latitude where the specimen was collected.
-#' @param longitude.columnColumn name of the \code{data} data frame which specifies the longitude where the specimen was collected.
+#' @param longitude.column Column name of the \code{data} data frame which specifies the longitude where the specimen was collected.
 #' @param elevation.column  Column name of the \code{data} data frame which specifies the elevation where the specimen was collected.
 #' @param field1.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
 #' @param field2.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
@@ -31,6 +36,7 @@
 #'data=data,
 #' title="Magical flora of the British Isles",
 #' subtitle="Project: Eliminating plant blindness in Hogwarts students",
+#' qr = "QR_code",
 #' family.column="Family",
 #' taxon.column="Taxon",
 #' author.column="Author",

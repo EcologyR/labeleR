@@ -2,12 +2,13 @@
 % Please edit documentation in R/herbarium.R
 \name{create_herbarium_label}
 \alias{create_herbarium_label}
-\title{Function to create accreditation cards in DIN-A7 size}
+\title{Function to create herbaruim labels (4 per DIN-A4 page)}
 \usage{
 create_herbarium_label(
   data = data,
   title = NULL,
   subtitle = NULL,
+  qr = NULL,
   family.column = NULL,
   taxon.column = NULL,
   author.column = NULL,
@@ -28,9 +29,15 @@ create_herbarium_label(
 )
 }
 \arguments{
+\item{data}{a data frame to create herbarium labels.}
+
 \item{title}{Main title at the top of the labels. Can be blank if set to NULL.}
 
 \item{subtitle}{Subtitle at the bottom of the labels. Can be blank if set to NULL.}
+
+\item{qr}{String. Free text or column of \code{data} that specifies the text to create the QR code.
+If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
+specified \code{qr}.}
 
 \item{family.column}{Column name of the \code{data} data frame which specifies the labels' family name.}
 
@@ -42,9 +49,13 @@ create_herbarium_label(
 
 \item{date.det.column}{Column name of the \code{data} data frame which specifies the date when the voucher was determined.}
 
+\item{location.column}{Column name of the \code{data} data frame which specifies where the voucher was collected.}
+
 \item{area.description.column}{Column name of the \code{data} data frame which specifies the decription of the area}
 
 \item{latitude.column}{Column name of the \code{data} data frame which specifies the latitude where the specimen was collected.}
+
+\item{longitude.column}{Column name of the \code{data} data frame which specifies the longitude where the specimen was collected.}
 
 \item{elevation.column}{Column name of the \code{data} data frame which specifies the elevation where the specimen was collected.}
 
@@ -59,14 +70,12 @@ create_herbarium_label(
 \item{assistants.column}{Column name of the \code{data} data frame which specifies the names of the collector's assistants.}
 
 \item{date.column}{Column name of the \code{data} data frame which specifies the date when the specimen was collected.}
-
-\item{longitude.columnColumn}{name of the \code{data} data frame which specifies the longitude where the specimen was collected.}
 }
 \value{
 A pdf file with four herbarium labels per page within an 'output' folder
 }
 \description{
-Function to create accreditation cards in DIN-A7 size
+Function to create herbaruim labels (4 per DIN-A4 page)
 }
 \examples{
 #
@@ -75,6 +84,7 @@ create_herbarium_label(
 data=data,
 title="Magical flora of the British Isles",
 subtitle="Project: Eliminating plant blindness in Hogwarts students",
+qr = "QR_code",
 family.column="Family",
 taxon.column="Taxon",
 author.column="Author",

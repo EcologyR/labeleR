@@ -19,8 +19,8 @@
 #' event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 #' name.column = "List",
 #' affiliation.column="Affiliation",
-#' lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
-#' rpic=NULL)
+#' lpic = NULL,
+#' rpic = NULL)
 create_accreditation <- function(data=NULL,
                                  event=NULL,
                                  name.column=NULL,

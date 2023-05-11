@@ -1,9 +1,7 @@
 #' Create certificate of attendance
 #'
+#' @param data a data frame  to create attendance certificates.
 #' @param language Select english or spanish
-#' @param url Specify a valid Google Sheets URL
-#' @param select.column Column of the Google Sheets that specifies which rows must be selected
-#' @param select.value Value of \code{select.column} that specifies which rows must be selected
 #' @param type Type of event (conference, workshop, seminar...)
 #' @param title Title of the event
 #' @param organiser Name of the organizing entity
@@ -35,9 +33,9 @@
 #' hours=200,
 #' date="01/01/2021",
 #' speaker="Severus Snape",
-#' rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+#' rpic=NULL,
 #' lpic=NULL,
-#' signature.pic=system.file("rmarkdown/pictures/firma.png", package = "labeleR"),
+#' signature.pic=NULL,
 #' name.column="List_assistants"
 #' )
 

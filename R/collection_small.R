@@ -1,31 +1,32 @@
-#' Function to create accreditation cards in DIN-A7 size
-#'
-#'
+#' Function to create small collection labels (16 per page)
 
-#' )
-#
-#
-#' Title
-#'
-#' @param data  data frame to create small labels including the specifed column names.
-#' @param qr String. Free text or column name to create QR codes. If the specified text IS NOT
-#'           a column name, the specified text will be used to create the QR codes in all the labels.
-#' @param field1.column column name of the first column to be used for the label.
-#' @param field2.column column name of the second column to be used for the label.
-#' @param field3.column column name of the third column to be used for the label.
-#' @param field4.column column name of the fourth column to be used for the label.
-#' @param field5.column column name of the fifth column to be used for the label.
-#'
-#' @return A pdf file with 16 small labels per page
+#' @param data Data frame including to create labels.
+#' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
+#'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
+#'          specified \code{qr}.
+#' @param field1.column Column of \code{data} that specifies the text to print in the first field.
+#' @param field2.column Column of \code{data} that specifies the text to print in the second field.
+#' @param field3.column Column of \code{data} that specifies the text to print in the third field.
+#' @param field4.column Column of \code{data} that specifies the text to print in the fourth field.
+#' @param field5.column Column of \code{data} that specifies the text to print in the fifth field.
 #'
 #' @export
 #'
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
-#' #
-#' data=read_sheet("https://docs.google.com/spreadsheets/d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
-#'create_herbarium_label()
+#' data <- read_sheet(“https://docs.google.com/spreadsheets/d/1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing”)
+#' create_collection_small_label(
+#' data = data,
+#' qr = "QR_code",
+#' field1.column = "campo1"
+#' field2.column = "campo2"
+#' field3.column = "campo3"
+#' field4.column = "campo4"
+#' field5.column = "campo5"
+#' )
+#'
+#'
 
 create_collection_small_label <- function(data=data,
                                    qr=NULL,

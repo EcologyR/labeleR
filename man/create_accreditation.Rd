@@ -14,7 +14,7 @@ create_accreditation(
 )
 }
 \arguments{
-\item{data}{a data frame including names and affiliations (optional if \code{affiliation.column} is NULL) to create certificates}
+\item{data}{a data frame including names and affiliations (optional if \code{affiliation.column} is NULL) to create accreditation cards.}
 
 \item{event}{Title of the event}
 
@@ -33,12 +33,13 @@ An 'output' folder with the PDF documents inside
 Function to create accreditation cards in DIN-A7 size
 }
 \examples{
-create_accreditation(data=read_sheet(url='https://docs.google.com/spreadsheets/d/16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0'),
+data <- read_sheet(url='https://docs.google.com/spreadsheets/d/16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
+create_accreditation(data=data,
 event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 name.column = "List",
 affiliation.column="Affiliation",
-lpic = "templates/MinMagic.png",
-rpic=NULL)
+lpic = NULL,
+rpic = NULL)
 }
 \author{
 Julia G. de Aledo, Ignacio Ramos-Gutierrez
