@@ -53,7 +53,6 @@
 #
 create_collection_small_label <- function(data=data,
                                    qr=NULL,
-                                   elevation.column=NULL,
                                    field1.column=NULL,
                                    field2.column=NULL,
                                    field3.column=NULL,
