@@ -12,6 +12,8 @@ header-includes:
   - \pgfpagesuselayout{4 on 1}[landscape]
 params:
   title: ""
+  subtitle: ""
+  qr.i: ""
   family.i: ""
   taxon.i: ""
   author.i: ""
@@ -29,55 +31,61 @@ params:
   collection.i: ""
   assistants.i: ""
   date.i: ""
-  subtitle: ""
 ---
+
 ```{r echo=FALSE, results='asis'}
 for (i in 1:length(params$collection.i)){
-  cat(stringr::str_interp("
+  cat("
 \\begin{mdframed}[linewidth=2pt,linecolor=black]\n
 \\pagenumbering{gobble}
 \\begin{center}
 \\bigskip
-{\\fontsize{30pt}{100pt}\\selectfont\\bf ${params$title}} \\\\
+{\\fontsize{30pt}{100pt}\\selectfont\\bf", params$title, "} \\\\
 \\end{center}
 \\begin{flushright}
-\\begin{minipage}[c][20ex][c]{15em}
-\\qrcode[height=2in]{https://twitter.com/home}
+\\begin{minipage}[c][10ex][t]{0.8\\textwidth}",
+if(!is.null(qr)){
+cat("
+\\qrcode[height=2in]{",
+  params$qr.i[i],
+  "}")
+},
+"
 \\end{minipage}
 \\end{flushright}
 \\begin{flushleft}
-{\\fontsize{35pt}{100pt}\\selectfont\\bf  ${params$family.i[i]} } \\\\
+{\\fontsize{35pt}{100pt}\\selectfont\\bf",params$family.i[i]," } ~\\\\
 \\vfill
-{\\fontsize{30pt}{100pt}\\selectfont\\emph{${params$taxon.i[i]}}  ${params$author.i[i]} } \\\\
+{\\fontsize{30pt}{100pt}\\selectfont\\emph{",params$taxon.i[i],"} ",params$author.i[i],"} \\\\
 \\end{flushleft}
 \\begin{flushright}
-{\\fontsize{25pt}{100pt}\\selectfont Det. ${params$det.i[i]} ${params$date.det.i[i]}  } \\\\
+{\\fontsize{25pt}{100pt}\\selectfont Det.", params$det.i[i]," ", params$date.det.i[i],"} \\\\
 \\end{flushright}
 \\vfill
 \\bigskip
 \\bigskip
 \\begin{flushleft}
-{\\fontsize{27.5pt}{100pt}\\selectfont ${params$location.i[i]}} \\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont ${params$area.description.i[i]}} \\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont ${params$elevation.i[i]}}\\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont ${params$latitude.i[i]}, ${params$longitude.i[i]}} \\\\
+{\\fontsize{27.5pt}{100pt}\\selectfont", params$location.i[i],"} \\\\
+{\\fontsize{27.5pt}{100pt}\\selectfont", params$area.description.i[i],"} \\\\
+{\\fontsize{27.5pt}{100pt}\\selectfont", params$elevation.i[i],"}\\\\
+{\\fontsize{27.5pt}{100pt}\\selectfont", params$latitude.i[i], " ", params$longitude.i[i],"} \\\\
 \\vfill
-{\\fontsize{27.5pt}{100pt}\\selectfont ${params$field1.i[i]}} \\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont ${params$field2.i[i]}} \\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont ${params$field3.i[i]}} \\\\
+{\\fontsize{27.5pt}{100pt}\\selectfont",params$field1.i[i],"} \\\\
+{\\fontsize{27.5pt}{100pt}\\selectfont",params$field2.i[i],"} \\\\
+{\\fontsize{27.5pt}{100pt}\\selectfont",params$field3.i[i],"} \\\\
 \\end{flushleft}
 \\vfill
 \\begin{flushright}
-{\\fontsize{20pt}{100pt}\\selectfont\\bf Collector: ${params$collector.i[i]} \\#${params$collection.i[i]}} \\\\
-{\\fontsize{20pt}{100pt}\\selectfont With: ${params$assistants.i[i]}} \\\\
-{\\fontsize{20pt}{100pt}\\selectfont ${params$date.i[i]}} \\\\
+{\\fontsize{20pt}{100pt}\\selectfont\\bf Collector: ",params$collector.i[i]," \\#",params$collection.i[i],"} \\\\
+{\\fontsize{20pt}{100pt}\\selectfont With: ",params$assistants.i[i],"} \\\\
+{\\fontsize{20pt}{100pt}\\selectfont ",params$date.i[i],"} \\\\
 \\end{flushright}
 \\vfill
 \\begin{center}
-{\\fontsize{25pt}{80pt}\\selectfont\\bf ${params$subtitle}} \\\\
+{\\fontsize{25pt}{80pt}\\selectfont\\bf ",params$subtitle,"} \\\\
 \\end{center}
 \\end{mdframed}\n
-\\pagebreak"))
+\\pagebreak")
 }
 ```
 
