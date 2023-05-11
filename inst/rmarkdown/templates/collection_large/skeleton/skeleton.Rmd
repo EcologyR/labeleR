@@ -49,6 +49,7 @@ for (i in 1:length(params$field1.i)) {
   params$qr.i[i],
   "}
   \\end{minipage}
+  \\includegraphics[height=4cm]{lpic.png}
   \\end{mdframed}
   \\pagebreak
   ")

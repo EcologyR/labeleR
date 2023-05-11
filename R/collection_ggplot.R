@@ -57,7 +57,8 @@ create_collection_large_label <- function(data=data,
                                           field2.column=NULL,
                                           field3.column=NULL,
                                           field4.column=NULL,
-                                          field5.column=NULL
+                                          field5.column=NULL,
+                                          lpic=NULL
 ){
 
   if(is.null(data)){
@@ -123,14 +124,14 @@ create_collection_large_label <- function(data=data,
   if(!dir.exists("output")){dir.create("output")}
 
 
-  tmpl_file   <- "templates/collection_large.Rmd"
+  tmpl_file   <- system.file("rmarkdown/templates/collection_large/sketelon/skeleton.Rmd", package="labeleR")
   file.copy(tmpl_file, "tmp/collection_large.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/collection_large.Rmd"
   out.name <- paste0("collection_labels_large")
   output_file <- paste0(out.name,'.pdf')
 
-  if(file.exists(paste0("output/",output_file))){message("Collection_small_large file already exists. Overwriting.")}
+  if(file.exists(paste0("output/",output_file))){message("Collection_labels_large file already exists. Overwriting.")}
 
   for (i in 1:ncol(data)){
     data[is.na(data[,i]),i]<-""
