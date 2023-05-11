@@ -1,6 +1,6 @@
 ---
 title: ''
-geometry: "left=1cm,right=1cm,top=-1cm,bottom=-1cm"
+geometry: "left=1cm,right=1cm,top=1cm,bottom=1cm"
 output:
   pdf_document: default
 header-includes:
@@ -8,7 +8,7 @@ header-includes:
     \usepackage{qrcode}
     \usepackage{pspicture}
     \usepackage{mdframed}
-    \pgfpagesuselayout{4 on 1}[a4paper,border shrink=0mm]
+    \pgfpagesuselayout{16 on 1}[a4paper]
 params:
   qr.i: ""
   field1.i: ""
@@ -18,12 +18,13 @@ params:
   field5.i: ""
 
 ---
-
 ```{r echo=FALSE, results='asis'}
+
 for (i in 1:length(params$field1.i)) {
   
+  
   cat("
-  \\begin{mdframed}[linewidth=0pt,linecolor=black]\n
+  \\begin{mdframed}[linewidth=0pt, linecolor=black]\n
   \\begin{minipage}[c][0ex][t]{0.6\\textwidth}
   {\\fontsize{25pt}{100pt}\\selectfont", 
   params$field1.i[i],
@@ -42,19 +43,14 @@ for (i in 1:length(params$field1.i)) {
   "} \\\\
   \\end{minipage}
   \\hspace{0.1\\textwidth}
-  \\begin{minipage}[c][10ex][t]{0.4\\textwidth}
-  \\bigskip",
-  if(!is.null(qr)) "\\qrcode[height=2in, version=5]{",
-  if(!is.null(qr)) params$qr.i[i],
-  if(!is.null(qr)) "}",
-  "
+  \\begin{minipage}[c][10ex][t]{0.4\\textwidth}",
+  if(!is.null(qr))
+  "\\qrcode[height=2.5in]{",
+  params$qr.i[i],
+  "}
   \\end{minipage}
-  \\end{mdframed}\n
-  \\vfill
-  ",
-  if (i %% 4 == 0){
-    "\\pagebreak"
-  }
-    )
+  \\end{mdframed}
+  \\pagebreak
+  ")
 }
 ```

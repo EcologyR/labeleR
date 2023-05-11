@@ -1,24 +1,22 @@
 #' Function to create accreditation cards in DIN-A7 size
 #'
-#' @param title Main title at the top of the labels. Can be blank if set to NULL.
-#' @param subtitle Subtitle at the bottom of the labels. Can be blank if set to NULL.
-#' @param family.column Column name of the \code{data} data frame which specifies the labels' family name.
-#' @param taxon.column Column name of the \code{data} data frame which specifies the labels' taxon.
-#' @param author.column Column name of the \code{data} data frame which specifies the taxons' author.
-#' @param det.column Column name of the \code{data} data frame which specifies the determiner of the voucher.
-#' @param date.det.column Column name of the \code{data} data frame which specifies the date when the voucher was determined.
-#' @param area.description.column Column name of the \code{data} data frame which specifies the decription of the area
-#' @param latitude.column Column name of the \code{data} data frame which specifies the latitude where the specimen was collected.
-#' @param longitude.columnColumn name of the \code{data} data frame which specifies the longitude where the specimen was collected.
-#' @param elevation.column  Column name of the \code{data} data frame which specifies the elevation where the specimen was collected.
-#' @param field1.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
-#' @param field2.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
-#' @param field3.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
-#' @param collector.column Column name of the \code{data} data frame which specifies the name of the collector of the voucher.
-#' @param assistants.column Column name of the \code{data} data frame which specifies the names of the collector's assistants.
-#' @param date.column Column name of the \code{data} data frame which specifies the date when the specimen was collected.
 #'
-#' @return A pdf file with four herbarium labels per page within an 'output' folder
+
+#' )
+#
+#
+#' Title
+#'
+#' @param data  data frame to create small labels including the specifed column names.
+#' @param qr String. Free text or column name to create QR codes. If the specified text IS NOT
+#'           a column name, the specified text will be used to create the QR codes in all the labels.
+#' @param field1.column column name of the first column to be used for the label.
+#' @param field2.column column name of the second column to be used for the label.
+#' @param field3.column column name of the third column to be used for the label.
+#' @param field4.column column name of the fourth column to be used for the label.
+#' @param field5.column column name of the fifth column to be used for the label.
+#'
+#' @return A pdf file with 16 small labels per page
 #'
 #' @export
 #'
@@ -27,30 +25,8 @@
 #' @examples
 #' #
 #' data=read_sheet("https://docs.google.com/spreadsheets/d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
-#'create_herbarium_label(
-#'data=data,
-#' title="Magical flora of the British Isles",
-#' subtitle="Project: Eliminating plant blindness in Hogwarts students",
-#' family.column="Family",
-#' taxon.column="Taxon",
-#' author.column="Author",
-#' det.column="det/conf",
-#' date.det.column="Det_date",
-#' location.column="Location",
-#' area.description.column="Area_description",
-#' latitude.column="Latitude",
-#' longitude.column="Longitude",
-#' elevation.column="Elevation",
-#' field1.column="life_form",
-#' field2.column="Observations",
-#' field3.column="Height",
-#' collector.column="Collector",
-#' collection.column="Collection_number",
-#' assistants.column="Assistants",
-#' date.column="Date"
-#' )
-#
-#
+#'create_herbarium_label()
+
 create_collection_small_label <- function(data=data,
                                    qr=NULL,
                                    field1.column=NULL,

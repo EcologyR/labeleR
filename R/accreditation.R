@@ -1,6 +1,6 @@
 #' Function to create accreditation cards in DIN-A7 size
 #'
-#' @param data a data frame including names and affiliations (optional if \code{affiliation.column} is NULL) to create certificates
+#' @param data a data frame including names and affiliations (optional if \code{affiliation.column} is NULL) to create accreditation cards.
 #' @param event Title of the event
 #' @param name.column Column name of the \code{data} data frame which specifies the participant's name.
 #' @param affiliation.column Column name of the \code{data} data frame which specifies the participant's affiliation.

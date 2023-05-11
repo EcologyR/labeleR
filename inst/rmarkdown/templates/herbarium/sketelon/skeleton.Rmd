@@ -44,7 +44,9 @@ for (i in 1:length(params$collection.i)){
 \\end{center}
 \\begin{flushright}
 \\begin{minipage}[c][20ex][c]{15em}",
-if(!is.null(qr)) cat("\\qrcode[height=2in]{",params$qr.i[i],"}"),
+  if(!is.null(qr)) "\\qrcode[height=2in, version=5]{",
+  if(!is.null(qr)) params$qr.i[i],
+  if(!is.null(qr)) "}",
 "
 \\end{minipage}
 \\end{flushright}
