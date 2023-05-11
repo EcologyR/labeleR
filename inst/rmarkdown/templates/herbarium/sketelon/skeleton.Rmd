@@ -43,18 +43,13 @@ for (i in 1:length(params$collection.i)){
 {\\fontsize{30pt}{100pt}\\selectfont\\bf", params$title, "} \\\\
 \\end{center}
 \\begin{flushright}
-\\begin{minipage}[c][10ex][t]{0.8\\textwidth}",
-if(!is.null(qr)){
-cat("
-\\qrcode[height=2in]{",
-  params$qr.i[i],
-  "}")
-},
+\\begin{minipage}[c][20ex][c]{15em}",
+if(!is.null(qr)) cat("\\qrcode[height=2in]{",params$qr.i[i],"}"),
 "
 \\end{minipage}
 \\end{flushright}
 \\begin{flushleft}
-{\\fontsize{35pt}{100pt}\\selectfont\\bf",params$family.i[i]," } ~\\\\
+{\\fontsize{35pt}{100pt}\\selectfont\\bf",params$family.i[i]," } \\\\
 \\vfill
 {\\fontsize{30pt}{100pt}\\selectfont\\emph{",params$taxon.i[i],"} ",params$author.i[i],"} \\\\
 \\end{flushleft}
