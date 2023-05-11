@@ -19,35 +19,34 @@ params:
   title.column.i: ""
   comm.type.column.i: ""
 ---
-```{r echo=FALSE, results='asis'}
-  cat(stringr::str_interp("
-\\begin{center}
-\\pagenumbering{gobble}
-\\includegraphics[height=4cm]{lpic.png} 
-\\hfill
-\\includegraphics[height=4cm]{rpic.png}
-\\linebreak
-\\bigskip
-{\\Huge\\bf Certificate of participation} 
-\\vfill
-{\\Huge ${params$name.column.i} } \\\\
-{\\Large\\bf ${params$affiliation.column.i}} \\\\
-\\vfill
-{\\Large has participated in:}
-{\\Large ${params$type.i} - ${params$organiser.i}} \\\\
-\\vfill
-{\\Large with the ${params$comm.type.column.i} communication entitled:} \\\\
-\\vfill
-{\\Huge\\bf ${params$title.column.i }} \\\\
-\\vfill
-{\\Large date ${params$date.column.i} and a duration of ${params$hours.i} hour(s).} \\\\
-\\vfill
-{\\Large Signed by:}\\\\
-\\vfill
-\\includegraphics[height=2cm]{spic.png}\\\\
-{\\Large ${params$signer.i}} \\\\
-{\\Large ${params$signer.position.i}} \\\\
-\\end{center}
-\\pagebreak
-"))
-```
+
+\begin{center}
+\pagenumbering{gobble}
+\includegraphics[height=4cm]{lpic.png} 
+\hfill
+\includegraphics[height=4cm]{rpic.png}
+\linebreak
+\bigskip
+{\Huge\bf Certificate of participation} 
+\vfill
+{\Huge `r params$name.column.i` } \\
+{\Large\bf `r params$affiliation.column.i` } \\
+\vfill
+{\Large has participated in:}
+{\Large `r params$type.i` - `r params$organiser.i` } \\
+\vfill
+{\Large with the `r params$comm.type.column.i` communication entitled:} \\
+\vfill
+{\Huge\bf `r params$title.column.i` } \\
+\vfill
+{\Large date `r params$date.column.i` and a duration of `r params$hours.i` hour(s).} \\
+\vfill
+{\Large Signed by:} \\
+\vfill
+\includegraphics[height=2cm]{spic.png} \\
+{\Large `r params$signer.i`} \\
+{\Large `r params$signer.position.i` } \\
+\end{center}
+\pagebreak
+
+
