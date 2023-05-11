@@ -257,7 +257,8 @@ create_herbarium_label <- function(data=data,
   if(!dir.exists("output")){dir.create("output")}
 
 
-  tmpl_file   <- "templates/herbarium.Rmd"
+  tmpl_file   <- system.file("rmarkdown/templates/herbarium/sketelon/skeleton.Rmd", package="labeleR")
+
   file.copy(tmpl_file, "tmp/herbarium.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/herbarium.Rmd"
@@ -279,7 +280,7 @@ create_herbarium_label <- function(data=data,
     params = list(
       title              = if(is.null(title                  )){bl.char}else{title},
       subtitle           = if(is.null(subtitle               )){bl.char}else{subtitle},
-      qr.i               = if(is.null(qr                     )){bl.char}else{data [,qr]},
+      qr.i               = if(is.null(qr                     )){NULL   }else{data [,qr]},
       family.i           = if(is.null(family.column          )){bl.char}else{data [,family.column]},
       taxon.i            = if((taxon.column           ==""   )){bl.char}else{data [,taxon.column]},
       author.i           = if((author.column          ==""   )){bl.char}else{data [,author.column]},

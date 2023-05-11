@@ -14,11 +14,12 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
-#' create_accreditation(data=read_sheet(url='https://docs.google.com/spreadsheets/d/16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0'),
+#' data <- read_sheet(url='https://docs.google.com/spreadsheets/d/16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
+#' create_accreditation(data=data,
 #' event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 #' name.column = "List",
 #' affiliation.column="Affiliation",
-#' lpic = "templates/MinMagic.png",
+#' lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
 #' rpic=NULL)
 create_accreditation <- function(data=NULL,
                                  event=NULL,
@@ -68,11 +69,13 @@ create_accreditation <- function(data=NULL,
     dev.off()
     rpic <- "tmp/blank.png"
     erase.rpic<-T
-    }
-  file.copy(lpic, "tmp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(rpic, "tmp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
-   tmpl_file   <- "templates/accreditation.Rmd"
-   file.copy(tmpl_file, "tmp/accreditation.Rmd")#create files to call them lpic@rpic to make it homogeneous
+  }
+
+
+  file.copy(lpic, "tmp/lpic.png", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+  file.copy(rpic, "tmp/rpic.png", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+   tmpl_file   <- system.file("rmarkdown/templates/accreditation/sketelon/skeleton.Rmd", package="labeleR")
+   file.copy(tmpl_file, "tmp/accreditation.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
 
 

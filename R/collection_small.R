@@ -124,7 +124,8 @@ create_collection_small_label <- function(data=data,
   if(!dir.exists("output")){dir.create("output")}
 
 
-  tmpl_file   <- "templates/collection_small.Rmd"
+  tmpl_file   <- system.file("rmarkdown/templates/collection_small/sketelon/skeleton.Rmd", package="labeleR")
+
   file.copy(tmpl_file, "tmp/collection_small.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/collection_small.Rmd"

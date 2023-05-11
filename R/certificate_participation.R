@@ -143,8 +143,12 @@ if(!(affiliation.column)%in%colnames(df)){
 
 
 # load either pdf or word certificate template
-if(language == "english"){template <- tmpl_file <- "templates/participation_EN.Rmd"}
-if(language == "spanish"){template <- tmpl_file <- "templates/participation_ES.Rmd"}
+if(language == "english"){
+  tmpl_file   <- system.file("rmarkdown/templates/participation_EN/sketelon/skeleton.Rmd", package="labeleR")
+  }
+if(language == "spanish"){
+  tmpl_file   <- system.file("rmarkdown/templates/participation_ES/sketelon/skeleton.Rmd", package="labeleR")
+}
 
 file.copy(tmpl_file, "tmp/participation.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 

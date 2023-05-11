@@ -28,16 +28,16 @@
 #' data= read_sheet('https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
 #' language="en",
 #' type="class",
-#' title="Potions Class"
+#' title="Potions Class",
 #' organiser="Hogwarts School year 1992-1993",
 #' signer="A.P.W.B. Dumbledore",
 #' signer.position="School Headmaster",
 #' hours=200,
 #' date="01/01/2021",
 #' speaker="Severus Snape",
-#' rpic="templates/Hogwarts_logo.png",
+#' rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
 #' lpic=NULL,
-#' signature.pic="templates/firma.png" ,
+#' signature.pic=system.file("rmarkdown/pictures/firma.png", package = "labeleR"),
 #' name.column="List_assistants"
 #' )
 
@@ -125,8 +125,12 @@ create_certificate_attendance <- function(
 
 
   # load either pdf or word certificate template
-  if(language == "english"){tmpl_file <- "templates/attendance_EN.Rmd"}
-  if(language == "spanish"){tmpl_file <- "templates/attendance_ES.Rmd"}
+  if(language == "english"){
+    tmpl_file   <- system.file("rmarkdown/templates/attendance_EN/sketelon/skeleton.Rmd", package="labeleR")
+    }
+  if(language == "spanish"){
+    tmpl_file   <- system.file("rmarkdown/templates/attendance_ES/sketelon/skeleton.Rmd", package="labeleR")
+    }
 
   file.copy(tmpl_file, "tmp/attendance.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
