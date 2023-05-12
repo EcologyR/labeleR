@@ -18,33 +18,31 @@ params:
   date: ""
   type: ""
 ---
-```{r echo=FALSE, results='asis'}
-  cat(stringr::str_interp("
-\\begin{center}
-\\pagenumbering{gobble}
-\\includegraphics[height=4cm]{lpic.png} 
-\\hfill
-\\includegraphics[height=4cm]{rpic.png}
-\\linebreak
-\\vfill
-{\\fontsize{40pt}{40pt}\\selectfont\\bf Certificado de asistencia} 
-\\vfill
-{\\fontsize{40pt}{40pt}\\selectfont ${params$name.column.i} } \\\\
-\\vfill
-{\\Large ha asistido a:}
-{\\Large\\bf ${params$type} - ${params$title} (${params$organiser})} \\\\
-\\vfill
-{\\Large por: ${params$speaker} con fecha de: ${params$date} } \\\\
-\\vfill
-{\\Large y una duración de ${params$hours} hora(s).} \\\\
-\\vfill
-{\\Large Firmado por:}\\\\
-\\vfill
-\\includegraphics[height=2cm]{spic.png}\\\\
-{\\Large ${params$signer}} \\\\
-{\\Large ${params$signer.position}} \\\\
-\\end{center}
-\\pagebreak
-"))
-```
+
+\begin{center}
+\pagenumbering{gobble}
+\includegraphics[height=4cm]{lpic.png} 
+\hfill
+\includegraphics[height=4cm]{rpic.png}
+\linebreak
+\vfill
+{\fontsize{40pt}{40pt}\selectfont\bf Certificado de asistencia} 
+\vfill
+{\fontsize{40pt}{40pt}\selectfont `r params$name.column.i` } \\
+\vfill
+{\Large ha asistido a:}
+{\Large\bf `r params$type` - `r params$title` (`r params$organiser`)} \\
+\vfill
+{\Large por: `r params$speaker` con fecha de: `r params$date` } \\
+\vfill
+{\Large y una duración de `r params$hours`} hora(s).} \\
+\vfill
+{\Large Firmado por:}\\
+\vfill
+\includegraphics[height=2cm]{spic.png}\\
+{\Large `r params$signer`} \\
+{\Large `r params$signer.position`} \\
+\end{center}
+\pagebreak
+
 

@@ -11,7 +11,8 @@
 #' @export
 #'
 #' @examples
-#' table <- read_sheet(url='https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0')
+#' table <- read_sheet(url='https://docs.google.com/spreadsheets/d/
+#'         1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0')
 read_sheet <- function (url, select.column=NULL, select.value=NULL) {
   dbase <- gsheet::gsheet2tbl(url)
   dbase <- as.data.frame (dbase)

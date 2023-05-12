@@ -5,7 +5,7 @@ citEntry(
   title    = "LabeleR",
   author   = c("Julia G. de Aledo", "Ignacio Ramos-Gutierrez),
   # journal  = ,
-  year     = "2023" 
+  year     = 2023
   # volume   = ,
   # number   = ,
   # pages    = ,

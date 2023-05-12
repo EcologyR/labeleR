@@ -1,15 +1,21 @@
-#' Function to create accreditation cards in DIN-A7 size
+#' Function to create herbaruim labels (4 per DIN-A4 page)
 #'
+#' @param data a data frame to create herbarium labels.
+#' @param path Folder path where the output will be printed
 #' @param title Main title at the top of the labels. Can be blank if set to NULL.
 #' @param subtitle Subtitle at the bottom of the labels. Can be blank if set to NULL.
+#' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
+#'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
+#'          specified \code{qr}.
 #' @param family.column Column name of the \code{data} data frame which specifies the labels' family name.
 #' @param taxon.column Column name of the \code{data} data frame which specifies the labels' taxon.
 #' @param author.column Column name of the \code{data} data frame which specifies the taxons' author.
 #' @param det.column Column name of the \code{data} data frame which specifies the determiner of the voucher.
 #' @param date.det.column Column name of the \code{data} data frame which specifies the date when the voucher was determined.
+#' @param location.column Column name of the \code{data} data frame which specifies where the voucher was collected.
 #' @param area.description.column Column name of the \code{data} data frame which specifies the decription of the area
 #' @param latitude.column Column name of the \code{data} data frame which specifies the latitude where the specimen was collected.
-#' @param longitude.columnColumn name of the \code{data} data frame which specifies the longitude where the specimen was collected.
+#' @param longitude.column Column name of the \code{data} data frame which specifies the longitude where the specimen was collected.
 #' @param elevation.column  Column name of the \code{data} data frame which specifies the elevation where the specimen was collected.
 #' @param field1.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
 #' @param field2.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
@@ -26,11 +32,14 @@
 #'
 #' @examples
 #' #
-#' data=read_sheet("https://docs.google.com/spreadsheets/d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
+#' data=read_sheet("https://docs.google.com/spreadsheets/
+#'         d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
 #'create_herbarium_label(
 #'data=data,
+#'path = "LabeleR_output",
 #' title="Magical flora of the British Isles",
 #' subtitle="Project: Eliminating plant blindness in Hogwarts students",
+#' qr = "QR_code",
 #' family.column="Family",
 #' taxon.column="Taxon",
 #' author.column="Author",
@@ -52,6 +61,7 @@
 #
 #
 create_herbarium_label <- function(data=data,
+                                   path=NULL,
                                    title=NULL,
                                  subtitle=NULL,
                                  qr=NULL,
@@ -79,6 +89,13 @@ create_herbarium_label <- function(data=data,
          To import from Google Sheets use function 'read_sheet()'")
   }
 
+  if(is.null(path)){stop("A folder path must be specified.")}
+  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
+    dir.create(path)}
+
+  if(any(apply(data, 1, nchar)>150)){message("Warning: cells containing too long texts may alter the result.
+Please consider shortening the content of your cells. ")}
+
   if(is.null(title)){
     message("No title provided")
     title <- ""}
@@ -98,7 +115,7 @@ create_herbarium_label <- function(data=data,
 
   if(!is.null(family.column)){
   if(!(family.column) %in% c("",colnames(data))) {
-    stop("Column '", name.column ,
+    stop("Column '", family.column ,
          "' is not a column of your Google Sheets document. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
@@ -275,7 +292,7 @@ create_herbarium_label <- function(data=data,
 
   rmarkdown::render(
     tmpl_file,
-    output_dir = "tmp",
+    output_dir = path,
     output_file = output_file,
     params = list(
       title              = if(is.null(title                  )){bl.char}else{title},
@@ -302,8 +319,8 @@ create_herbarium_label <- function(data=data,
     )
 
 
-  file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-  unlink("tmp", recursive = T, force = T)
+  # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+  # unlink("tmp", recursive = T, force = T)
 
 }
 

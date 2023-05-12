@@ -41,7 +41,7 @@ create_certificate_participation(
 
 \item{rpic}{PNG object route. File route of the top-right image. Can be blank if set to NULL.}
 
-\item{signature.pic}{PNG object. File route of a signature image. Can be blank if set to NULL.}
+\item{signature.pic}{PNG object route. File route of a signature image. Can be blank if set to NULL.}
 
 \item{name.column}{Column name of the Google Sheet column which specifies the participant's name.}
 
@@ -62,15 +62,17 @@ Create certificate of participation
 \examples{
 create_certificate_participation(
 language ="en",
-data= read_sheet("https://docs.google.com/spreadsheets/u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/edit?usp=drive_web&ouid=106603768357414088091"),
+data= read_sheet("https://docs.google.com/spreadsheets/
+        u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/
+        edit?usp=drive_web&ouid=106603768357414088091"),
 type="online seminar",
 organiser="Hogwarts School of Witchcraft and Wizardry",
 hours=2,
 signer="A.P.W.B. Dumbledore",
 signer.position="School Headmaster",
-lpic="templates/Hogwarts_logo.png",
+lpic="/.../Logo.png",
 rpic=NULL,
-signature.pic = "templates/firma.png",
+signature.pic = NULL,
 name.column="Name",
 affiliation.column="House",
 date.column="Date",

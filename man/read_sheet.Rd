@@ -20,5 +20,6 @@ a data frame
 Function to import data from Google Sheets and select which rows to use
 }
 \examples{
-table <- read_sheet(url='https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0')
+table <- read_sheet(url='https://docs.google.com/spreadsheets/d/
+        1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0')
 }

@@ -1,9 +1,8 @@
 #' Create certificate of attendance
 #'
+#' @param data a data frame  to create attendance certificates.
+#' @param path Folder path where the output will be printed
 #' @param language Select english or spanish
-#' @param url Specify a valid Google Sheets URL
-#' @param select.column Column of the Google Sheets that specifies which rows must be selected
-#' @param select.value Value of \code{select.column} that specifies which rows must be selected
 #' @param type Type of event (conference, workshop, seminar...)
 #' @param title Title of the event
 #' @param organiser Name of the organizing entity
@@ -25,7 +24,9 @@
 #'
 #' @examples
 #' create_certificate_attendance(
-#' data= read_sheet('https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+#' data= read_sheet('https://docs.google.com/spreadsheets/
+#'         d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+#' path = "LabeleR_output",
 #' language="en",
 #' type="class",
 #' title="Potions Class",
@@ -35,14 +36,15 @@
 #' hours=200,
 #' date="01/01/2021",
 #' speaker="Severus Snape",
-#' rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+#' rpic=NULL,
 #' lpic=NULL,
-#' signature.pic=system.file("rmarkdown/pictures/firma.png", package = "labeleR"),
+#' signature.pic=NULL,
 #' name.column="List_assistants"
 #' )
 
 create_certificate_attendance <- function(
     data=NULL,
+    path=NULL,
     language =c("spanish", "english"),
     type=NULL,
     title=NULL,
@@ -67,6 +69,11 @@ create_certificate_attendance <- function(
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+
+  if(is.null(path)){stop("A folder path must be specified.")}
+  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
+    dir.create(path)}
+
   if(is.null(type)){
     stop("A type of event (conference, workshop, seminar...) must be specfied")
   }
@@ -92,21 +99,21 @@ create_certificate_attendance <- function(
 
 
   if(is.null(lpic))         {
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     lpic <- "tmp/blank.png"
   }
   if(is.null(rpic))         {
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     rpic <- "tmp/blank.png"
   }
   if(is.null(signature.pic)){
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     signature.pic <- "tmp/blank.png"
   }
 
@@ -146,7 +153,7 @@ create_certificate_attendance <- function(
 
     rmarkdown::render(
       tmpl_file,
-      output_dir = "tmp",
+      output_dir = path,
       output_file = output_file,
       params = list(
         type            = type,
@@ -161,8 +168,8 @@ create_certificate_attendance <- function(
       )
     )
 
-    if(!dir.exists("output")){dir.create("output")}
-    file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite=T)#create files to call them lpic@rpic to make it homogeneous
+  #   if(!dir.exists("output")){dir.create("output")}
+  #   file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite=T)#create files to call them lpic@rpic to make it homogeneous
   }
 
   unlink("tmp", recursive = T, force = T)
