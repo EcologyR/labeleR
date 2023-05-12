@@ -1,5 +1,8 @@
 ---
 output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,49 +19,170 @@ knitr::opts_chunk$set(
 # labeleR
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/EcologyR/templateRpackage/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EcologyR/templateRpackage/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/EcologyR/templateRpackage/branch/master/graph/badge.svg)](https://app.codecov.io/gh/EcologyR/templateRpackage?branch=master)
-`r badger::badge_lifecycle("experimental")`
-`r badger::badge_repostatus("WIP")`
-<!-- `r badger::badge_codefactor("ecologyr/templaterpackage")` -->
-<!-- badges: end -->
 
-Package to create your own labels, certificates, and much more! :)
+This is a package to create your own labels, certificates, and much
+more! :)
 
-## Installation
+If you need to create your attendance or participation certificates,
+accreditation badges, herbarium or collection labels, labeleR is the
+package you need! Keep an eye on this easy tutorial on how to use it!
 
-``` r
+## Installing labeleR
+
+To install **labeleR** from GitHub, you might need to install the
+*devtools* package. Once you have it, you just have to specify the
+repository and install!
+
+```{r install labeleR, eval=FALSE}
 # install.packages("devtools")
-devtools::install_github("EcologyR/templateRpackage")
+devtools::install_github("EcologyR/labeleR")
+library(labeleR)
 ```
 
-The code to create this package is available [here](https://gist.github.com/Pakillo/999e34301c56011138ef164363502465).
+If you want to clone the repository, you can find the code
+[here](https://github.com/EcologyR/labeleR).
 
+## 1. Getting started
 
-## Example
+### 1.1 Loading the data
 
-This is a basic example which shows you how to solve a common problem:
+The very first thing you need to start using labeleR is a data frame
+where the information is included. This data frame can be imported to
+the R environment reading it from a file (e.g. a '.csv' file or '.xlsx2'
+excel sheet, using `read.table( )` and alike functions), but it can be
+also imported from a Google Sheets function.
 
-```{r example}
-# library(templateRpackage)
-## basic example code
+To do so, you just have to use labeleR's `read_sheet( )` function,
+specifying the Google Sheet URL. In fact, you don't need to use the
+whole URL, but just the specific part of it.\
+For instance, in this URL:
+[https://docs.google.com/spreadsheets/d/**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0](https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0){.uri}\
+you just need the string in bold. However, a key point to bear in mind
+is that the Google Sheet document must grant (at least as viewer) access
+to anyone with the link; otherwise R will not be able to open it.
+
+```{r read_sheet}
+
+people_list_long <- read_sheet("https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0")
+
+people_list <- read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
+                          
+# The result is the same, a R data frame tha can be used by labeleR
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+In case you just want to import some rows (let's say you have to create
+some of them, or to re-create some after correcting a mistake), you
+don´t have to import all the rows. Using the `select.column` parameter,
+you can import only the rows which match `select.value` .
 
-```{r cars}
-summary(cars)
+For example, if you just want to create certificate for Draco Malfoy as
+an attendee of a class, you can use the following code to import just
+his row:
+
+```{r import some rows}
+
+read_sheet(url="1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw", 
+           select.column = "List_assistants", select.value = "Draco Malfoy")
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+or if you have a column specifying which rows to include (as in the
+following example), you could import just the first an fourth rows
+setting `select.column = "Imports"` and `select.value = "yes"`
 
-You can also embed plots, for example:
-
-```{r pressure, echo = TRUE, eval = FALSE}
-plot(pressure)
+```{r create table, include=FALSE}
+people_list$Import <- c("yes", "no", "no", "yes")
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+```{r}
+View(people_list)
+```
+
+### 1.2 Some advice for the labeleR functions
+
+When using labeleR's functions, there are some widely used parameters
+and nomenclature that must be acknowledged.
+
+As parameters, there are 2 that are always the same. The first one is
+`data`, which is the data frame that has been previously loaded before.
+The second one is `path`, which is the folder where the outputted PDFs
+will be stored. In case the specified folder does not exist, it will be
+automatically created.
+
+In some of the labels, pictures (as logos or signatures) can be
+included. For these, parameter names are `lpic` (standing for left
+picture, in the top), `rpic` (right picture, also in the top) and `spic`
+(signature picture) in the certificates; and `logo` in the collection
+label. These pictures should be specified as the path where the picture
+is stored.
+
+As for the parameters nomenclature, there are two kinds. "Fixed
+parameters" are those that remain the same in all the certificates (e.g.
+the name of a conference in an accreditation, or the name of a speaker
+in an attendance certificate). These parameters are named using a unique
+word (e.g. `event` or `speaker`), and can be filled in using a free text
+that will be printed in all documents. On the other hand, "variable
+parameters" are those which vary among documents, and therefore differ
+among rows (e.g. attendees names to a conference, or species in
+herbarium labels). To specify the column of data in which this
+information is stored, two-word parameters are used (i.e. `name.column`
+or `species.column`). The only parameter that does not follow this
+philosophy is `qr` in the functions that allow to plot them (i.e.
+`create_herbarium_label`, `create_collection_label` and
+`create_tinylabel`). This parameter can be set as a column name, which
+will result in variable parameter, or as a free text (not column name),
+which will be used as a fixed one.
+
+# 2. labeleR functions
+
+Now let's start using labeleR!
+
+To help you see the structure of our templates in a more visual way, we
+will display some examples inspired in the Harry Potter universe.
+
+## 2.1 Attendance certificates
+
+Attendance certificates are one of the least variable certificates; the
+only variable parameter is the name of the attendees. Our template
+allows to include a signature as an image, so the signer does not have
+to go through them all.
+
+In the following example, we will create four different certificates for
+four students of Hogwarts School, in which the Headmaster will certify
+that they have attended 200 h of the Potions class.
+
+```{r create attendance certificates, eval=FALSE}
+data= read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
+
+create_certificate_attendance(
+data=data,
+  path = "H:/MIERDA BORRABLE/LabeleR_output",
+  language="en",
+  type="class",
+  title="Potions Class",
+  organiser="Hogwarts School year 1992-1993",
+  signer="A.P.W.B. Dumbledore",
+  signer.position="School Headmaster",
+  hours=200,
+  date="01/01/2021",
+  speaker="Severus Snape",
+  rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR"),
+  name.column="List_assistants"
+)
+```
+
+![Attendance certificates](man/figures/Attendance_certificate.png)
+
+## 2.2 Participation certificates
+
+## 2.3 Accreditations
+
+## 2.4 Herbarium labels
+
+## 2.5 Collection labels
+
+## 2.6 Collection tinylabels
 
 ## Citation
 
@@ -68,10 +192,11 @@ If using this package, please cite it:
 #citation("labeleR")
 ```
 
-
 ## Funding
 
-The development of this software has been funded by Fondo Europeo de Desarrollo Regional (FEDER) and Consejería de Transformación Económica, Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).
+The development of this software has been funded by Fondo Europeo de
+Desarrollo Regional (FEDER) and Consejería de Transformación Económica,
+Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto
+US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).
 
 ![](https://ecologyr.github.io/workshop/images/logos.png)
-

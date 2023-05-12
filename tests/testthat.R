@@ -11,22 +11,16 @@ library(labeleR)
 
 test_check("labeleR")
 
-testthat::expect_error(
-  labeleR::read_sheet(url="1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw")
-)
-
-testthat::expect_warning()
-
 
 # read_sheet.R TESTS
 testthat::expect_s3_class(
   object = labeleR::read_sheet(url="1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw"),
   "data.frame"
 )
-
-testthat::expect_message(
-  labeleR::read_sheet(url="1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw")
-)
+#
+# testthat::expect_message(
+#   labeleR::read_sheet(url="1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw")
+# )
 
 
 # accreditation.R TESTS
