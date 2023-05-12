@@ -1,14 +1,19 @@
 ---
 title: ''
-geometry: "left=1cm,right=1cm,top=1cm,bottom=1cm"
+geometry: "left=0cm,right=0cm,top=2cm,bottom=0cm"
 output:
   pdf_document: default
+classoption: 
+    landscape
 header-includes:
     \usepackage{pgfpages}
     \usepackage{qrcode}
     \usepackage{pspicture}
     \usepackage{mdframed}
-    \pgfpagesuselayout{16 on 1}[a4paper]
+    \usepackage{pagecolor}
+    \usepackage{xcolor}
+    \usepackage{changepage}
+    \pgfpagesuselayout{8 on 1}[a4paper]
 params:
   qr.i: ""
   field1.i: ""
@@ -16,40 +21,54 @@ params:
   field3.i: ""
   field4.i: ""
   field5.i: ""
+  bgcolor: ""
+  textcolor: ""
 
 ---
 ```{r echo=FALSE, results='asis'}
 
-for (i in 1:length(params$field1.i)) {
+for (i in 1:8) {
   
   
   cat("
-  \\begin{mdframed}[linewidth=0pt, linecolor=black]\n
-  \\begin{minipage}[c][0ex][t]{0.6\\textwidth}
-  {\\fontsize{25pt}{100pt}\\selectfont", 
+  \\definecolor{mycolor}{HTML}{",params$bgcolor,"}
+  \\definecolor{mycolortext}{HTML}{",params$textcolor,"}
+  \\begin{mdframed}[linecolor=mycolortext, linewidth=2pt, backgroundcolor=mycolor]\n
+  \\bigskip
+  \\begin{flushright}
+  \\begin{minipage}[t][-50ex][t]{16em}",
+  if(!is.null(qr)) "\\qrcode[height=2in, version=5]{",
+  if(!is.null(qr)) params$qr.i[i],
+  if(!is.null(qr)) "}",
+  "
+  \\end{minipage}
+  \\end{flushright}
+  \\bigskip
+  \\begin{adjustwidth}{1cm}{1cm}
+  {\\fontsize{50pt}{0pt}\\selectfont\\bf\\textcolor{mycolortext}{", 
   params$field1.i[i],
-  "} \\\\
-  {\\fontsize{25pt}{100pt}\\selectfont",
+  "}} \\\\
+  \\linebreak
+  \\linebreak
+  {\\fontsize{40pt}{100pt}\\selectfont\\textcolor{mycolortext}{\\emph{",
   params$field2.i[i],
-  "} \\\\
-  {\\fontsize{25pt}{100pt}\\selectfont", 
+  "}}} \\\\
+  \\vfill
+  {\\fontsize{30pt}{100pt}\\selectfont\\textcolor{mycolortext}{", 
   params$field3.i[i],
-  "} \\\\
-  {\\fontsize{25pt}{100pt}\\selectfont",
+  "}} \\\\
+  \\vfill
+  {\\fontsize{30pt}{100pt}\\selectfont\\textcolor{mycolortext}{",
   params$field4.i[i],
-  "} \\\\
-  {\\fontsize{25pt}{100pt}\\selectfont",
+  "}} \\\\
+  \\vfill
+  {\\fontsize{30pt}{50pt}\\selectfont\\textcolor{mycolortext}{",
   params$field5.i[i],
-  "} \\\\
-  \\end{minipage}
-  \\hspace{0.1\\textwidth}
-  \\begin{minipage}[c][10ex][t]{0.4\\textwidth}",
-  if(!is.null(qr))
-  "\\qrcode[height=2.5in]{",
-  params$qr.i[i],
-  "}
-  \\end{minipage}
-  \\includegraphics[height=4cm]{lpic.png}
+  "}} \\\\
+  \\end{adjustwidth}
+  \\begin{center}
+  \\includegraphics[height=1.5in]{lpic.png}
+  \\end{center}
   \\end{mdframed}
   \\pagebreak
   ")

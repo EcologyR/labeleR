@@ -58,7 +58,9 @@ create_collection_large_label <- function(data=data,
                                           field3.column=NULL,
                                           field4.column=NULL,
                                           field5.column=NULL,
-                                          lpic=NULL
+                                          lpic=NULL,
+                                          bgcolor=NULL,
+                                          textcolor=NULL
 ){
 
   if(is.null(data)){
@@ -119,6 +121,15 @@ create_collection_large_label <- function(data=data,
   }
 
 
+  if(is.null(bgcolor)){
+    bgcolor<-"D0ECC1"
+  }
+
+  if(is.null(textcolor)){
+    textcolor<-"1E3F20"
+  }
+
+
   if(!dir.exists("tmp")){
     dir.create("tmp")
   }
@@ -150,7 +161,9 @@ create_collection_large_label <- function(data=data,
       field2.i =data[,field2.column],
       field3.i =data[,field3.column],
       field4.i =data[,field4.column],
-      field5.i =data[,field5.column])
+      field5.i =data[,field5.column],
+      bgcolor = bgcolor,
+      textcolor = textcolor)
   )
 
 
