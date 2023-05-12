@@ -19,6 +19,7 @@ params:
   type: ""
 ---
 
+
 \begin{center}
 \pagenumbering{gobble}
 \includegraphics[height=4cm]{lpic.png} 
@@ -35,7 +36,7 @@ params:
 \vfill
 {\Large por: `r params$speaker` con fecha de: `r params$date` } \\
 \vfill
-{\Large y una duración de `r params$hours`} hora(s).} \\
+{\Large y una duración de `r params$hours` hora(s).} \\
 \vfill
 {\Large Firmado por:}\\
 \vfill

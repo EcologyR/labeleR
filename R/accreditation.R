@@ -37,6 +37,8 @@ create_accreditation <- function(data=NULL,
          To import from Google Sheets use function 'read_sheet()'")
   }
 
+  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
+
   if(is.null(path)){stop("A folder path must be specified.")}
   if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
     dir.create(path)}
@@ -46,7 +48,7 @@ create_accreditation <- function(data=NULL,
     event <- ""}
   if(!(name.column)%in%colnames(data)){
     stop("Column '", name.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
     }
   if(is.null(affiliation.column)){
@@ -54,7 +56,7 @@ create_accreditation <- function(data=NULL,
     }
   if(!(affiliation.column)%in%c(colnames(data),"")){
     stop("Column '", affiliation.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         "' is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
     }
 
@@ -107,7 +109,7 @@ create_accreditation <- function(data=NULL,
   ))
 
   # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-  # unlink("tmp", recursive = T, force = T)
+  unlink("tmp", recursive = T, force = T)
 
 }
 

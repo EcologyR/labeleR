@@ -45,7 +45,7 @@
 create_certificate_attendance <- function(
     data=NULL,
     path=NULL,
-    language =c("spanish", "english"),
+    language ="english",
     type=NULL,
     title=NULL,
     organiser=NULL,
@@ -69,6 +69,7 @@ create_certificate_attendance <- function(
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
 
   if(is.null(path)){stop("A folder path must be specified.")}
   if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
@@ -91,6 +92,12 @@ create_certificate_attendance <- function(
   }
   if(is.null(hours)){
     stop("A number of hours name must be specfied")
+  }
+  if(is.null(speaker)){
+    stop("A speaker name must be specfied")
+  }
+  if(is.null(date)){
+    stop("A date must be specfied")
   }
   if(!(is.character(hours))) {
     hours <- as.character(hours)
@@ -126,7 +133,7 @@ create_certificate_attendance <- function(
 
   if(!(name.column)%in%colnames(df)){
     stop("Column '", name.column ,
-         "' is not a column of your data frame. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(df), sep="\n"))
   }
 
@@ -151,20 +158,22 @@ create_certificate_attendance <- function(
     out.name <- paste0(out.name, "_", df[i,name.column])
     output_file <- paste0(out.name,'.pdf')
 
+    bl.char <- "~"
+
     rmarkdown::render(
       tmpl_file,
       output_dir = path,
       output_file = output_file,
       params = list(
-        type            = type,
-        organiser       = organiser,
-        hours           = hours,
-        signer          = signer,
-        signer.position = signer.position,
-        name.column.i   = df[i,name.column],
-        speaker         = speaker,
-        title           = title,
-        date            = date
+        type            = if(type            ==""){bl.char}else{type},
+        organiser       = if(organiser       ==""){bl.char}else{organiser},
+        hours           = if(hours           ==""){bl.char}else{hours},
+        signer          = if(signer          ==""){bl.char}else{signer},
+        signer.position = if(signer.position ==""){bl.char}else{signer.position},
+        name.column.i   = if(name.column     ==""){bl.char}else{df[i,name.column]},
+        speaker         = if(speaker         ==""){bl.char}else{speaker},
+        title           = if(title           ==""){bl.char}else{title},
+        date            = if(date            ==""){bl.char}else{date}
       )
     )
 

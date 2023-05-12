@@ -47,7 +47,7 @@
 create_certificate_participation <- function(
     data=NULL,
     path=NULL,
-    language =c("spanish", "english"),
+    language = "english",
     type=NULL,
     organiser=NULL,
     hours=NULL,
@@ -69,6 +69,7 @@ create_certificate_participation <- function(
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
 
   if(is.null(path)){stop("A folder path must be specified.")}
   if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
@@ -127,27 +128,27 @@ df <- data
 
 if(!(name.column)%in%colnames(df)){
   stop("Column '", name.column ,
-       "' is not a column of your data frame. Please select from \n",
+       " is not a column of your 'data' object. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 if(!(date.column)%in%colnames(df)){
   stop("Column '", date.column ,
-       "' is not a column of your data frame. Please select from \n",
+       " is not a column of your 'data' object. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 if(!(title.column)%in%colnames(df)){
   stop("Column '", title.column ,
-       "' is not a column of your data frame. Please select from \n",
+       " is not a column of your 'data' object. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 if(!(comm.type.column)%in%colnames(df)){
   stop("Column '", comm.type.column ,
-       "' is not a column of your data frame. Please select from \n",
+       " is not a column of your 'data' object. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 if(!(affiliation.column)%in%colnames(df)){
   stop("Column '", affiliation.column ,
-       "' is not a column of your data frame. Please select from \n",
+       " is not a column of your 'data' object. Please select from \n",
        paste0("-", colnames(df), sep="\n"))
   }
 
@@ -173,21 +174,23 @@ if(language == "spanish"){out.name <- "Participacion"}
 out.name <- paste0(out.name, "_", df[i,name.column], "_", gsub("/","-",df[i,date.column]))
 output_file <- paste0(out.name,'.pdf')
 
+bl.char <- "~"
+
 rmarkdown::render(
   tmpl_file,
   output_dir = path,
   output_file = output_file,
   params = list(
-    type.i               = type,
-    organiser.i          = organiser,
-    hours.i              = hours,
-    signer.i             = signer,
-    signer.position.i    = signer.position,
-    name.column.i        = df[i,name.column],
-    affiliation.column.i = df[i,affiliation.column],
-    date.column.i        = df[i,date.column],
-    title.column.i       = df[i,title.column],
-    comm.type.column.i   = df[i,comm.type.column]
+    type.i               =if(type               ==""){bl.char}else{ type},
+    organiser.i          =if(organiser          ==""){bl.char}else{ organiser},
+    hours.i              =if(hours              ==""){bl.char}else{ hours},
+    signer.i             =if(signer             ==""){bl.char}else{ signer},
+    signer.position.i    =if(signer.position    ==""){bl.char}else{ signer.position},
+    name.column.i        =if(name.column        ==""){bl.char}else{ df[i,name.column]},
+    affiliation.column.i =if(affiliation.column ==""){bl.char}else{ df[i,affiliation.column]},
+    date.column.i        =if(date.column        ==""){bl.char}else{ df[i,date.column]},
+    title.column.i       =if(title.column       ==""){bl.char}else{ df[i,title.column]},
+    comm.type.column.i   =if(comm.type.column   ==""){bl.char}else{ df[i,comm.type.column]}
   )
   )
 

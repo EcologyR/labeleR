@@ -6,6 +6,7 @@
 \usage{
 create_herbarium_label(
   data = data,
+  path = NULL,
   title = NULL,
   subtitle = NULL,
   qr = NULL,
@@ -30,6 +31,8 @@ create_herbarium_label(
 }
 \arguments{
 \item{data}{a data frame to create herbarium labels.}
+
+\item{path}{Folder path where the output will be printed}
 
 \item{title}{Main title at the top of the labels. Can be blank if set to NULL.}
 
@@ -67,6 +70,8 @@ specified \code{qr}.}
 
 \item{collector.column}{Column name of the \code{data} data frame which specifies the name of the collector of the voucher.}
 
+\item{collection.column}{Column name of the \code{data} data frame which specifies the voucher's collection number.}
+
 \item{assistants.column}{Column name of the \code{data} data frame which specifies the names of the collector's assistants.}
 
 \item{date.column}{Column name of the \code{data} data frame which specifies the date when the specimen was collected.}
@@ -83,6 +88,7 @@ data=read_sheet("https://docs.google.com/spreadsheets/
         d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
 create_herbarium_label(
 data=data,
+path = "LabeleR_output",
 title="Magical flora of the British Isles",
 subtitle="Project: Eliminating plant blindness in Hogwarts students",
 qr = "QR_code",

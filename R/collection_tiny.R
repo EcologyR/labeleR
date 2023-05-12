@@ -45,6 +45,7 @@ create_tinylabel <- function(data=data,
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
 
   if(any(apply(data, 1, nchar)>150)){message("Warning: cells containing too long texts may alter the result.
 Please consider shortening the content of your cells. ")}
@@ -67,7 +68,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(field1.column) %in% c("",colnames(data))) {
     stop("Column '", field1.column ,
-         "' is not a column of your data. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -76,7 +77,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(field2.column) %in% c("",colnames(data))) {
     stop("Column '", field2.column ,
-         "' is not a column of your data. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
   if(is.null(field3.column)){
@@ -84,13 +85,13 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(field3.column) %in% c("",colnames(data))) {
     stop("Column '", field3.column ,
-         "' is not a column of your data. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
   if(!(field4.column) %in% c("",colnames(data))) {
     stop("Column '", field4.column ,
-         "' is not a column of your data. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -99,7 +100,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(field5.column) %in% c("",colnames(data))) {
     stop("Column '", field5.column ,
-         "' is not a column of your data. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -123,6 +124,7 @@ Please consider shortening the content of your cells. ")}
   for (i in 1:ncol(data)){
     data[is.na(data[,i]),i]<-""
   }
+  bl.char <- rep("~", times=nrow(data))
 
   rmarkdown::render(
     tmpl_file,
@@ -130,16 +132,16 @@ Please consider shortening the content of your cells. ")}
     output_file = output_file,
     params = list(
       qr.i = data[,qr],
-      field1.i =data[,field1.column],
-      field2.i =data[,field2.column],
-      field3.i =data[,field3.column],
-      field4.i =data[,field4.column],
-      field5.i =data[,field5.column])
+      field1.i =if(field1.column==""){bl.char}else{data[,field1.column]},
+      field2.i =if(field2.column==""){bl.char}else{data[,field2.column]},
+      field3.i =if(field3.column==""){bl.char}else{data[,field3.column]},
+      field4.i =if(field4.column==""){bl.char}else{data[,field4.column]},
+      field5.i =if(field5.column==""){bl.char}else{data[,field5.column]})
   )
 
 
   # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-  # unlink("tmp", recursive = T, force = T)
+  unlink("tmp", recursive = T, force = T)
 
 }
 

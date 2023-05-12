@@ -6,6 +6,7 @@
 \usage{
 create_certificate_attendance(
   data = NULL,
+  path = NULL,
   language = c("spanish", "english"),
   type = NULL,
   title = NULL,
@@ -23,6 +24,8 @@ create_certificate_attendance(
 }
 \arguments{
 \item{data}{a data frame  to create attendance certificates.}
+
+\item{path}{Folder path where the output will be printed}
 
 \item{language}{Select english or spanish}
 
@@ -60,6 +63,7 @@ Create certificate of attendance
 create_certificate_attendance(
 data= read_sheet('https://docs.google.com/spreadsheets/
         d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+path = "LabeleR_output",
 language="en",
 type="class",
 title="Potions Class",

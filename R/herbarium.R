@@ -21,6 +21,7 @@
 #' @param field2.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
 #' @param field3.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
 #' @param collector.column Column name of the \code{data} data frame which specifies the name of the collector of the voucher.
+#' @param collection.column Column name of the \code{data} data frame which specifies the voucher's collection number.
 #' @param assistants.column Column name of the \code{data} data frame which specifies the names of the collector's assistants.
 #' @param date.column Column name of the \code{data} data frame which specifies the date when the specimen was collected.
 #'
@@ -88,6 +89,7 @@ create_herbarium_label <- function(data=data,
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
 
   if(is.null(path)){stop("A folder path must be specified.")}
   if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
@@ -116,7 +118,7 @@ Please consider shortening the content of your cells. ")}
   if(!is.null(family.column)){
   if(!(family.column) %in% c("",colnames(data))) {
     stop("Column '", family.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
   data[,family.column] <- toupper(data[,family.column])
@@ -127,7 +129,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(taxon.column) %in% c("",colnames(data))) {
     stop("Column '", taxon.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -136,7 +138,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(author.column) %in% c("",colnames(data))) {
     stop("Column '", author.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -145,7 +147,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(det.column) %in% c("",colnames(data))) {
     stop("Column '", det.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -154,7 +156,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(date.det.column) %in% c("",colnames(data))) {
     stop("Column '", date.det.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -163,7 +165,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(location.column) %in% c("",colnames(data))) {
     stop("Column '", location.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -172,7 +174,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(area.description.column) %in% c("",colnames(data))) {
     stop("Column '", area.description.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
   data[,area.description.column] <- as.character( data[,area.description.column])
@@ -183,7 +185,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(latitude.column) %in% c("",colnames(data))) {
     stop("Column '", latitude.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -193,7 +195,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(longitude.column) %in% c("",colnames(data))) {
     stop("Column '", longitude.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -203,7 +205,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(elevation.column) %in% c("",colnames(data))) {
     stop("Column '", elevation.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -212,7 +214,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(field1.column) %in% c("",colnames(data))) {
     stop("Column '", field1.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -221,7 +223,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(field2.column) %in% c("",colnames(data))) {
     stop("Column '", field2.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
   if(is.null(field3.column)){
@@ -229,7 +231,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(field3.column) %in% c("",colnames(data))) {
     stop("Column '", field3.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -238,7 +240,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(collector.column) %in% c("",colnames(data))) {
     stop("Column '", collector.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
   if(is.null(collection.column)){
@@ -246,7 +248,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(collection.column) %in% c("",colnames(data))) {
     stop("Column '", collection.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
   if(is.null(assistants.column)){
@@ -254,7 +256,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(assistants.column) %in% c("",colnames(data))) {
     stop("Column '", assistants.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
   if(is.null(date.column)){
@@ -262,7 +264,7 @@ Please consider shortening the content of your cells. ")}
   }
   if(!(date.column) %in% c("",colnames(data))) {
     stop("Column '", date.column ,
-         "' is not a column of your Google Sheets document. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
 
@@ -320,7 +322,7 @@ Please consider shortening the content of your cells. ")}
 
 
   # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-  # unlink("tmp", recursive = T, force = T)
+   unlink("tmp", recursive = T, force = T)
 
 }
 

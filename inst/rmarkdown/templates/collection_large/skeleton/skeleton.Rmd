@@ -67,7 +67,7 @@ for (i in 1:length(params$field1.i)) {
   "}} \\\\
   \\end{adjustwidth}
   \\begin{center}
-  \\includegraphics[height=1.5in]{lpic.png}
+  \\includegraphics[height=1.5in]{logo.png}
   \\end{center}
   \\end{mdframed}
   \\pagebreak

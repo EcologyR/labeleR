@@ -2,10 +2,11 @@
 % Please edit documentation in R/accreditation.R
 \name{create_accreditation}
 \alias{create_accreditation}
-\title{Function to create accreditation cards in DIN-A7 size}
+\title{Function to create accreditation cards (8 per DIN-A4 page)}
 \usage{
 create_accreditation(
   data = NULL,
+  path = NULL,
   event = NULL,
   name.column = NULL,
   affiliation.column = NULL,
@@ -15,6 +16,8 @@ create_accreditation(
 }
 \arguments{
 \item{data}{a data frame including names and affiliations (optional if \code{affiliation.column} is NULL) to create accreditation cards.}
+
+\item{path}{Folder path where the output will be printed}
 
 \item{event}{Title of the event}
 
@@ -30,12 +33,13 @@ create_accreditation(
 An 'output' folder with the PDF documents inside
 }
 \description{
-Function to create accreditation cards in DIN-A7 size
+Function to create accreditation cards (8 per DIN-A4 page)
 }
 \examples{
 data <- read_sheet(url='https://docs.google.com/spreadsheets/d
         /16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
 create_accreditation(data=data,
+path = "LabeleR_output",
 event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 name.column = "List",
 affiliation.column="Affiliation",

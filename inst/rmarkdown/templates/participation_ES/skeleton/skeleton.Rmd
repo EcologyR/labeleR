@@ -29,23 +29,23 @@ params:
 \bigskip
 {\Huge\bf Certificado de participación} 
 \vfill
-{\Huge `params$name.column.i` } \\
-{\Large\bf `params$affiliation.column.i}} \\
+{\Huge `r params$name.column.i` } \\
+{\Large\bf `r params$affiliation.column.i` } \\
 \vfill
 {\Large ha participado en:}
-{\Large `params$type.i` - `params$organiser.i`} \\
+{\Large `r params$type.i` - `r params$organiser.i` } \\
 \vfill
-{\Large con la comunicación `params$comm.type.column.i` titulada:} \\
+{\Large con la comunicación `r params$comm.type.column.i` titulada:} \\
 \vfill
-{\Huge\bf `params$title.column.i` } \\
+{\Huge\bf `r params$title.column.i` } \\
 \vfill
-{\Large en la fecha `params$date.column.i` y con una duración de `params$hours.i` hora(s).} \\
+{\Large en la fecha `r params$date.column.i` y con una duración de `r params$hours.i` hora(s).} \\
 \vfill
 {\Large Firmado por:}\\
 \vfill
 \includegraphics[height=2cm]{spic.png}\\
-{\Large `params$signer.i`} \\
-{\Large `params$signer.position.i`} \\
+{\Large `r params$signer.i`} \\
+{\Large `r params$signer.position.i`} \\
 \end{center}
 \pagebreak
 

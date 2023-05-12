@@ -5,8 +5,9 @@
 \title{Create certificate of participation}
 \usage{
 create_certificate_participation(
-  language = c("spanish", "english"),
   data = NULL,
+  path = NULL,
+  language = c("spanish", "english"),
   type = NULL,
   organiser = NULL,
   hours = NULL,
@@ -23,9 +24,11 @@ create_certificate_participation(
 )
 }
 \arguments{
-\item{language}{Select english or spanish}
-
 \item{data}{A data frame including information to create the certificate of participation}
+
+\item{path}{Folder path where the output will be printed}
+
+\item{language}{Select english or spanish}
 
 \item{type}{Type of event (conference, workshop, seminar...)}
 
@@ -65,6 +68,7 @@ language ="en",
 data= read_sheet("https://docs.google.com/spreadsheets/
         u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/
         edit?usp=drive_web&ouid=106603768357414088091"),
+path = "LabeleR_output",
 type="online seminar",
 organiser="Hogwarts School of Witchcraft and Wizardry",
 hours=2,
