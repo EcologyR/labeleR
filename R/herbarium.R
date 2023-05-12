@@ -1,6 +1,7 @@
 #' Function to create herbaruim labels (4 per DIN-A4 page)
 #'
 #' @param data a data frame to create herbarium labels.
+#' @param path Folder path where the output will be printed
 #' @param title Main title at the top of the labels. Can be blank if set to NULL.
 #' @param subtitle Subtitle at the bottom of the labels. Can be blank if set to NULL.
 #' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
@@ -35,6 +36,7 @@
 #'         d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
 #'create_herbarium_label(
 #'data=data,
+#'path = "LabeleR_output",
 #' title="Magical flora of the British Isles",
 #' subtitle="Project: Eliminating plant blindness in Hogwarts students",
 #' qr = "QR_code",
@@ -59,6 +61,7 @@
 #
 #
 create_herbarium_label <- function(data=data,
+                                   path=NULL,
                                    title=NULL,
                                  subtitle=NULL,
                                  qr=NULL,
@@ -85,6 +88,13 @@ create_herbarium_label <- function(data=data,
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+
+  if(is.null(path)){stop("A folder path must be specified.")}
+  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
+    dir.create(path)}
+
+  if(any(apply(data, 1, nchar)>150)){message("Warning: cells containing too long texts may alter the result.
+Please consider shortening the content of your cells. ")}
 
   if(is.null(title)){
     message("No title provided")
@@ -282,7 +292,7 @@ create_herbarium_label <- function(data=data,
 
   rmarkdown::render(
     tmpl_file,
-    output_dir = "tmp",
+    output_dir = path,
     output_file = output_file,
     params = list(
       title              = if(is.null(title                  )){bl.char}else{title},
@@ -309,8 +319,8 @@ create_herbarium_label <- function(data=data,
     )
 
 
-  file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-  unlink("tmp", recursive = T, force = T)
+  # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+  # unlink("tmp", recursive = T, force = T)
 
 }
 

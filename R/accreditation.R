@@ -1,6 +1,7 @@
-#' Function to create accreditation cards in DIN-A7 size
+#' Function to create accreditation cards (8 per DIN-A4 page)
 #'
 #' @param data a data frame including names and affiliations (optional if \code{affiliation.column} is NULL) to create accreditation cards.
+#' @param path Folder path where the output will be printed
 #' @param event Title of the event
 #' @param name.column Column name of the \code{data} data frame which specifies the participant's name.
 #' @param affiliation.column Column name of the \code{data} data frame which specifies the participant's affiliation.
@@ -17,12 +18,14 @@
 #' data <- read_sheet(url='https://docs.google.com/spreadsheets/d
 #'         /16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
 #' create_accreditation(data=data,
+#' path = "LabeleR_output",
 #' event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 #' name.column = "List",
 #' affiliation.column="Affiliation",
 #' lpic = NULL,
 #' rpic = NULL)
 create_accreditation <- function(data=NULL,
+                                 path=NULL,
                                  event=NULL,
                                  name.column=NULL,
                                  affiliation.column=NULL,
@@ -32,7 +35,12 @@ create_accreditation <- function(data=NULL,
   if(is.null(data)){
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
-    }
+  }
+
+  if(is.null(path)){stop("A folder path must be specified.")}
+  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
+    dir.create(path)}
+
   if(is.null(event)){
     message("No event provided")
     event <- ""}
@@ -90,7 +98,7 @@ create_accreditation <- function(data=NULL,
 
   rmarkdown::render(
                     tmpl_file,
-                    output_dir = "tmp",
+                    output_dir = path,
                     output_file = output_file,
   params = list(
     event        = event,
@@ -98,8 +106,8 @@ create_accreditation <- function(data=NULL,
     affiliations = data[,affiliation.column]
   ))
 
-  file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-  unlink("tmp", recursive = T, force = T)
+  # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+  # unlink("tmp", recursive = T, force = T)
 
 }
 

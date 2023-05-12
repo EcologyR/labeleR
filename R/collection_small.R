@@ -4,6 +4,7 @@
 #' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
 #'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
 #'          specified \code{qr}.
+#' @param path Folder path where the output will be printed
 #' @param field1.column Column of \code{data} that specifies the text to print in the first field.
 #' @param field2.column Column of \code{data} that specifies the text to print in the second field.
 #' @param field3.column Column of \code{data} that specifies the text to print in the third field.
@@ -17,9 +18,10 @@
 #' @examples
 #' data <- read_sheet("https://docs.google.com/spreadsheets/
 #'         d/1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
-#' create_collection_small_label(
+#' create_tinylabel(
 #' data = data,
 #' qr = "QR_code",
+#' path = "LabeleR_output",
 #' field1.column = "campo1",
 #' field2.column = "campo2",
 #' field3.column = "campo3",
@@ -29,8 +31,9 @@
 #'
 #'
 
-create_collection_small_label <- function(data=data,
+create_tinylabel <- function(data=data,
                                    qr=NULL,
+                                   path=NULL,
                                    field1.column=NULL,
                                    field2.column=NULL,
                                    field3.column=NULL,
@@ -52,6 +55,9 @@ create_collection_small_label <- function(data=data,
       data[,qr]<- as.character (data[,qr])
     }
   }
+  if(is.null(path)){stop("A folder path must be specified.")}
+  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
+    dir.create(path)}
 
   if(is.null(field1.column)){
     field1.column<-""
@@ -117,7 +123,7 @@ create_collection_small_label <- function(data=data,
 
   rmarkdown::render(
     tmpl_file,
-    output_dir = "tmp",
+    output_dir = path,
     output_file = output_file,
     params = list(
       qr.i = data[,qr],
@@ -129,8 +135,8 @@ create_collection_small_label <- function(data=data,
   )
 
 
-  file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-  unlink("tmp", recursive = T, force = T)
+  # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+  # unlink("tmp", recursive = T, force = T)
 
 }
 

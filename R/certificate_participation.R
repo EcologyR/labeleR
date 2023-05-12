@@ -1,7 +1,8 @@
 #' Create certificate of participation
 #'
-#' @param language Select english or spanish
 #' @param data A data frame including information to create the certificate of participation
+#' @param path Folder path where the output will be printed
+#' @param language Select english or spanish
 #' @param type Type of event (conference, workshop, seminar...)
 #' @param organiser Name of the organizing entity
 #' @param hours Number of hours the event has lasted
@@ -28,6 +29,7 @@
 #' data= read_sheet("https://docs.google.com/spreadsheets/
 #'         u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/
 #'         edit?usp=drive_web&ouid=106603768357414088091"),
+#' path = "LabeleR_output",
 #' type="online seminar",
 #' organiser="Hogwarts School of Witchcraft and Wizardry",
 #' hours=2,
@@ -43,8 +45,9 @@
 #' comm.type.column = "Comm.type")
 #'
 create_certificate_participation <- function(
-    language =c("spanish", "english"),
     data=NULL,
+    path=NULL,
+    language =c("spanish", "english"),
     type=NULL,
     organiser=NULL,
     hours=NULL,
@@ -61,14 +64,20 @@ create_certificate_participation <- function(
 
   if(!dir.exists("tmp")){dir.create("tmp")}
 
-  if (language%in%c("sp", "s")){language<- "spanish"}
-  if (language%in%c("en", "e")){language<- "english"}
-  match.arg(language, c("spanish", "english"),F)
 
   if(is.null(data)){
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+
+  if(is.null(path)){stop("A folder path must be specified.")}
+  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
+    dir.create(path)}
+
+  if (language%in%c("sp", "s")){language<- "spanish"}
+  if (language%in%c("en", "e")){language<- "english"}
+  match.arg(language, c("spanish", "english"),F)
+
   if(is.null(type)){
     stop("A type of event (conference, workshop, seminar...) must be specfied")
     }
@@ -166,7 +175,7 @@ output_file <- paste0(out.name,'.pdf')
 
 rmarkdown::render(
   tmpl_file,
-  output_dir = "tmp",
+  output_dir = path,
   output_file = output_file,
   params = list(
     type.i               = type,
@@ -182,9 +191,8 @@ rmarkdown::render(
   )
   )
 
-if(!dir.exists("output")){dir.create("output")}
-
-file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+# if(!dir.exists("output")){dir.create("output")}
+# file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
 }
 
