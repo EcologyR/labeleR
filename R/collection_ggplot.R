@@ -36,7 +36,10 @@ create_collection_large_label <- function(data=data,
                                           field2.column=NULL,
                                           field3.column=NULL,
                                           field4.column=NULL,
-                                          field5.column=NULL
+                                          field5.column=NULL,
+                                          lpic=NULL,
+                                          bgcolor=NULL,
+                                          textcolor=NULL
 ){
 
   if(is.null(data)){
@@ -62,6 +65,7 @@ create_collection_large_label <- function(data=data,
          "' is not a column of your data. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
+  data[,field1.column] <- toupper(data[,field1.column])
 
   if(is.null(field2.column)){
     field2.column<-""
@@ -95,21 +99,32 @@ create_collection_large_label <- function(data=data,
          paste0("-", colnames(data), sep="\n"))
   }
 
+
+  if(is.null(bgcolor)){
+    bgcolor<-"D0ECC1"
+  }
+
+  if(is.null(textcolor)){
+    textcolor<-"1E3F20"
+  }
+
+
   if(!dir.exists("tmp")){
     dir.create("tmp")
   }
 
   if(!dir.exists("output")){dir.create("output")}
 
+  file.copy(lpic, "tmp/lpic.png", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
-  tmpl_file   <- "templates/collection_large.Rmd"
+  tmpl_file   <- system.file("rmarkdown/templates/collection_large/skeleton/skeleton.Rmd", package="labeleR")
   file.copy(tmpl_file, "tmp/collection_large.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/collection_large.Rmd"
   out.name <- paste0("collection_labels_large")
   output_file <- paste0(out.name,'.pdf')
 
-  if(file.exists(paste0("output/",output_file))){message("Collection_small_large file already exists. Overwriting.")}
+  if(file.exists(paste0("output/",output_file))){message("Collection_labels_large file already exists. Overwriting.")}
 
   for (i in 1:ncol(data)){
     data[is.na(data[,i]),i]<-""
@@ -125,7 +140,9 @@ create_collection_large_label <- function(data=data,
       field2.i =data[,field2.column],
       field3.i =data[,field3.column],
       field4.i =data[,field4.column],
-      field5.i =data[,field5.column])
+      field5.i =data[,field5.column],
+      bgcolor = bgcolor,
+      textcolor = textcolor)
   )
 
 
