@@ -46,6 +46,9 @@ create_tinylabel <- function(data=data,
          To import from Google Sheets use function 'read_sheet()'")
   }
 
+  if(any(apply(data, 1, nchar)>150)){message("Warning: cells containing too long texts may alter the result.
+Please consider shortening the content of your cells. ")}
+
 
   if(!is.null(qr)){
     if(!(qr %in% colnames(data))){
@@ -107,7 +110,7 @@ create_tinylabel <- function(data=data,
   if(!dir.exists("output")){dir.create("output")}
 
 
-  tmpl_file   <- system.file("rmarkdown/templates/collection_small/sketelon/skeleton.Rmd", package="labeleR")
+  tmpl_file   <- system.file("rmarkdown/templates/collection_small/skeleton/skeleton.Rmd", package="labeleR")
 
   file.copy(tmpl_file, "tmp/collection_small.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 

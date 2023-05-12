@@ -1,8 +1,9 @@
-#' Function to create create collection labels (4 per DIN-A4 page)
+#' Function to create create collection labels (8 per DIN-A4 page)
 #'
 #'
 #'
 #' @param data Data frame including to create labels.
+#' @param path Folder path where the output will be printed
 #' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
 #'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
 #'          specified \code{qr}.
@@ -11,6 +12,9 @@
 #' @param field3.column Column of \code{data} that specifies the text to print in the third field.
 #' @param field4.column Column of \code{data} that specifies the text to print in the fourth field.
 #' @param field5.column Column of \code{data} that specifies the text to print in the fifth field.
+#' @param logo PNG object route. File route of the bottom image. Can be blank if set to NULL.
+#' @param bgcolor HTML color to use for the label background. Default is D0ECC1
+#' @param textcolor HTML color to use for the label text. Default is 1E3F20
 #'
 #' @export
 #'
@@ -19,25 +23,29 @@
 #' @examples
 #' data <- read_sheet("https://docs.google.com/spreadsheets/d/
 #'         1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
-#' create_collection_large_label(
+#'
+#' create_collection_label(
 #' data = data,
+#' path = "LabeleR_output",
 #' qr = "QR_code",
-#' field1.column = "campo1",
-#' field2.column = "campo2",
-#' field3.column = "campo3",
-#' field4.column = "campo4",
-#' field5.column = "campo5"
+#' field1.column = "field1",
+#' field2.column = "field2",
+#' field3.column = "field3",
+#' field4.column = "field6",
+#' field5.column = "field7"
+#'
 #' )
 #'
 #'
-create_collection_large_label <- function(data=data,
+create_collection_label <- function(data=data,
+                                          path=NULL,
                                           qr=NULL,
                                           field1.column=NULL,
                                           field2.column=NULL,
                                           field3.column=NULL,
                                           field4.column=NULL,
                                           field5.column=NULL,
-                                          lpic=NULL,
+                                          logo=NULL,
                                           bgcolor=NULL,
                                           textcolor=NULL
 ){
@@ -46,6 +54,13 @@ create_collection_large_label <- function(data=data,
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+
+  if(is.null(path)){stop("A folder path must be specified.")}
+  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
+    dir.create(path)}
+
+  if(any(apply(data, 1, nchar)>150)){message("Warning: cells containing too long texts may alter the result.
+Please consider shortening the content of your cells. ")}
 
 
   if(!is.null(qr)){
@@ -115,10 +130,10 @@ create_collection_large_label <- function(data=data,
 
   if(!dir.exists("output")){dir.create("output")}
 
-  file.copy(lpic, "tmp/lpic.png", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+  file.copy(logo, "tmp/logo.png", overwrite = T)#create files to call them logo@rpic to make it homogeneous
 
   tmpl_file   <- system.file("rmarkdown/templates/collection_large/skeleton/skeleton.Rmd", package="labeleR")
-  file.copy(tmpl_file, "tmp/collection_large.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+  file.copy(tmpl_file, "tmp/collection_large.Rmd", overwrite = T)#create files to call them logo@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/collection_large.Rmd"
   out.name <- paste0("collection_labels_large")
@@ -132,7 +147,7 @@ create_collection_large_label <- function(data=data,
 
   rmarkdown::render(
     tmpl_file,
-    output_dir = "tmp",
+    output_dir = path,
     output_file = output_file,
     params = list(
       qr.i = data[,qr],
@@ -146,8 +161,8 @@ create_collection_large_label <- function(data=data,
   )
 
 
-  file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-  unlink("tmp", recursive = T, force = T)
+  # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them logo@rpic to make it homogeneous
+  # unlink("tmp", recursive = T, force = T)
 
 }
 

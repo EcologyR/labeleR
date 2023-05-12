@@ -133,10 +133,10 @@ create_certificate_attendance <- function(
 
   # load either pdf or word certificate template
   if(language == "english"){
-    tmpl_file   <- system.file("rmarkdown/templates/attendance_EN/sketelon/skeleton.Rmd", package="labeleR")
+    tmpl_file   <- system.file("rmarkdown/templates/attendance_EN/skeleton/skeleton.Rmd", package="labeleR")
     }
   if(language == "spanish"){
-    tmpl_file   <- system.file("rmarkdown/templates/attendance_ES/sketelon/skeleton.Rmd", package="labeleR")
+    tmpl_file   <- system.file("rmarkdown/templates/attendance_ES/skeleton/skeleton.Rmd", package="labeleR")
     }
 
   file.copy(tmpl_file, "tmp/attendance.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous

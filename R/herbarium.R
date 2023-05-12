@@ -274,7 +274,7 @@ Please consider shortening the content of your cells. ")}
   if(!dir.exists("output")){dir.create("output")}
 
 
-  tmpl_file   <- system.file("rmarkdown/templates/herbarium/sketelon/skeleton.Rmd", package="labeleR")
+  tmpl_file   <- system.file("rmarkdown/templates/herbarium/skeleton/skeleton.Rmd", package="labeleR")
 
   file.copy(tmpl_file, "tmp/herbarium.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 

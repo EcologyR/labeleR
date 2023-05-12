@@ -83,7 +83,7 @@ create_accreditation <- function(data=NULL,
 
   file.copy(lpic, "tmp/lpic.png", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
   file.copy(rpic, "tmp/rpic.png", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-   tmpl_file   <- system.file("rmarkdown/templates/accreditation/sketelon/skeleton.Rmd", package="labeleR")
+   tmpl_file   <- system.file("rmarkdown/templates/accreditation/skeleton/skeleton.Rmd", package="labeleR")
    file.copy(tmpl_file, "tmp/accreditation.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
 
