@@ -182,10 +182,10 @@ specified <code>qr</code>.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">data</span><span class="op">=</span><span class="fu"><a href="read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/</span></span></span>
 <span class="r-in"><span><span class="st">        d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in open.connection(structure(8L, class = c("curl", "connection"), conn_id = &lt;pointer: 0x00000000000004d8&gt;),     "rb"):</span> Timeout was reached: [doc-0s-4o-sheets.googleusercontent.com] Operation timed out after 10004 milliseconds with 0 out of 0 bytes received</span>
 <span class="r-in"><span><span class="fu">create_herbarium_label</span><span class="op">(</span></span></span>
 <span class="r-in"><span>data<span class="op">=</span><span class="va">data</span>,</span></span>
 <span class="r-in"><span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span></span>
@@ -210,7 +210,8 @@ specified <code>qr</code>.</p></dd>
 <span class="r-in"><span>assistants.column<span class="op">=</span><span class="st">"Assistants"</span>,</span></span>
 <span class="r-in"><span>date.column<span class="op">=</span><span class="st">"Date"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in create_herbarium_label(data = data, path = "LabeleR_output",     title = "Magical flora of the British Isles", subtitle = "Project: Eliminating plant blindness in Hogwarts students",     qr = "QR_code", family.column = "Family", taxon.column = "Taxon",     author.column = "Author", det.column = "det/conf", date.det.column = "Det_date",     location.column = "Location", area.description.column = "Area_description",     latitude.column = "Latitude", longitude.column = "Longitude",     elevation.column = "Elevation", field1.column = "life_form",     field2.column = "Observations", field3.column = "Height",     collector.column = "Collector", collection.column = "Collection_number",     assistants.column = "Assistants", date.column = "Date"):</span> The 'data' object must be a data frame.</span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

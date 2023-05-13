@@ -16,6 +16,7 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
+#' \dontrun{
 #' data <- read_sheet("https://docs.google.com/spreadsheets/
 #'         d/1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
 #' create_tinylabel(
@@ -28,7 +29,7 @@
 #' field4.column = "campo4",
 #' field5.column = "campo5"
 #' )
-#'
+#'}
 #'
 
 create_tinylabel <- function(data=data,

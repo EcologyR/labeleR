@@ -7,7 +7,7 @@
 create_certificate_attendance(
   data = NULL,
   path = NULL,
-  language = c("spanish", "english"),
+  language = "english",
   type = NULL,
   title = NULL,
   organiser = NULL,
@@ -60,6 +60,7 @@ An 'output' folder with the PDF documents inside
 Create certificate of attendance
 }
 \examples{
+\dontrun{
 create_certificate_attendance(
 data= read_sheet('https://docs.google.com/spreadsheets/
         d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
@@ -78,6 +79,7 @@ lpic=NULL,
 signature.pic=NULL,
 name.column="List_assistants"
 )
+}
 }
 \author{
 Julia G. de Aledo, Ignacio Ramos-Gutierrez

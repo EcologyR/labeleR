@@ -32,7 +32,8 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
-#' #
+#'
+#' \dontrun{
 #' data=read_sheet("https://docs.google.com/spreadsheets/
 #'         d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
 #'create_herbarium_label(
@@ -59,8 +60,8 @@
 #' assistants.column="Assistants",
 #' date.column="Date"
 #' )
-#
-#
+#' }
+#'
 create_herbarium_label <- function(data=data,
                                    path=NULL,
                                    title=NULL,

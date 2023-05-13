@@ -50,6 +50,7 @@ Function to create create collection labels (8 per DIN-A4 page)
 data <- read_sheet("https://docs.google.com/spreadsheets/d/
         1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
 
+\dontrun{
 create_collection_label(
 data = data,
 path = "LabeleR_output",
@@ -59,8 +60,8 @@ field2.column = "field2",
 field3.column = "field3",
 field4.column = "field6",
 field5.column = "field7"
-
 )
+}
 
 
 }

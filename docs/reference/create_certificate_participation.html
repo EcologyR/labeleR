@@ -54,7 +54,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_certificate_participation</span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  language <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"spanish"</span>, <span class="st">"english"</span><span class="op">)</span>,</span>
+<span>  language <span class="op">=</span> <span class="st">"english"</span>,</span>
 <span>  type <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  organiser <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  hours <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -150,7 +150,8 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">create_certificate_participation</span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">create_certificate_participation</span><span class="op">(</span></span></span>
 <span class="r-in"><span>language <span class="op">=</span><span class="st">"en"</span>,</span></span>
 <span class="r-in"><span>data<span class="op">=</span> <span class="fu"><a href="read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/</span></span></span>
 <span class="r-in"><span><span class="st">        u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/</span></span></span>
@@ -169,7 +170,7 @@
 <span class="r-in"><span>date.column<span class="op">=</span><span class="st">"Date"</span>,</span></span>
 <span class="r-in"><span>title.column<span class="op">=</span><span class="st">"Title"</span>,</span></span>
 <span class="r-in"><span>comm.type.column <span class="op">=</span> <span class="st">"Comm.type"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in open.connection(structure(6L, class = c("curl", "connection"), conn_id = &lt;pointer: 0x000000000000048b&gt;),     "rb"):</span> Timeout was reached: [docs.google.com] Resolving timed out after 10000 milliseconds</span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

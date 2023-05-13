@@ -123,8 +123,8 @@ specified <code>qr</code>.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/</span></span></span>
 <span class="r-in"><span><span class="st">        1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in open.connection(structure(7L, class = c("curl", "connection"), conn_id = &lt;pointer: 0x00000000000004ac&gt;),     "rb"):</span> Timeout was reached: [docs.google.com] Operation timed out after 10010 milliseconds with 0 out of 0 bytes received</span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="fu">create_collection_label</span><span class="op">(</span></span></span>
 <span class="r-in"><span>data <span class="op">=</span> <span class="va">data</span>,</span></span>
 <span class="r-in"><span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span></span>
@@ -134,9 +134,8 @@ specified <code>qr</code>.</p></dd>
 <span class="r-in"><span>field3.column <span class="op">=</span> <span class="st">"field3"</span>,</span></span>
 <span class="r-in"><span>field4.column <span class="op">=</span> <span class="st">"field6"</span>,</span></span>
 <span class="r-in"><span>field5.column <span class="op">=</span> <span class="st">"field7"</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in create_collection_label(data = data, path = "LabeleR_output",     qr = "QR_code", field1.column = "field1", field2.column = "field2",     field3.column = "field3", field4.column = "field6", field5.column = "field7"):</span> The 'data' object must be a data frame.</span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

@@ -23,6 +23,7 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
+#' \dontrun{
 #' create_certificate_attendance(
 #' data= read_sheet('https://docs.google.com/spreadsheets/
 #'         d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
@@ -41,6 +42,7 @@
 #' signature.pic=NULL,
 #' name.column="List_assistants"
 #' )
+#' }
 
 create_certificate_attendance <- function(
     data=NULL,
