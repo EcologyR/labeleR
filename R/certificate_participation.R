@@ -183,7 +183,7 @@ rmarkdown::render(
   params = list(
     type.i               =if(type               ==""){bl.char}else{ type},
     organiser.i          =if(organiser          ==""){bl.char}else{ organiser},
-    hours.i              =if(hours              ==""){bl.char}else{ hours},
+    hours.i              =if(hours              ==""){bl.char}else{ hours.i},
     signer.i             =if(signer             ==""){bl.char}else{ signer},
     signer.position.i    =if(signer.position    ==""){bl.char}else{ signer.position},
     name.column.i        =if(name.column        ==""){bl.char}else{ df[i,name.column]},
