@@ -83,7 +83,8 @@ A pdf file with four herbarium labels per page within an 'output' folder
 Function to create herbaruim labels (4 per DIN-A4 page)
 }
 \examples{
-#
+
+\dontrun{
 data=read_sheet("https://docs.google.com/spreadsheets/
         d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
 create_herbarium_label(
@@ -110,6 +111,8 @@ collection.column="Collection_number",
 assistants.column="Assistants",
 date.column="Date"
 )
+}
+
 }
 \author{
 Julia G. de Aledo, Ignacio Ramos-Gutierrez

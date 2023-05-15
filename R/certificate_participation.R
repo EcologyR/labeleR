@@ -24,6 +24,7 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
+#' \dontrun{
 #' create_certificate_participation(
 #' language ="en",
 #' data= read_sheet("https://docs.google.com/spreadsheets/
@@ -43,6 +44,7 @@
 #' date.column="Date",
 #' title.column="Title",
 #' comm.type.column = "Comm.type")
+#'}
 #'
 create_certificate_participation <- function(
     data=NULL,

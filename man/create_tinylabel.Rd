@@ -38,6 +38,7 @@ specified \code{qr}.}
 Function to create small collection labels (16 per page)
 }
 \examples{
+\dontrun{
 data <- read_sheet("https://docs.google.com/spreadsheets/
         d/1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
 create_tinylabel(
@@ -50,7 +51,7 @@ field3.column = "campo3",
 field4.column = "campo4",
 field5.column = "campo5"
 )
-
+}
 
 }
 \author{

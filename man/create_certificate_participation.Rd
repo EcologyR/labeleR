@@ -7,7 +7,7 @@
 create_certificate_participation(
   data = NULL,
   path = NULL,
-  language = c("spanish", "english"),
+  language = "english",
   type = NULL,
   organiser = NULL,
   hours = NULL,
@@ -63,6 +63,7 @@ An 'output' folder with the PDF documents inside
 Create certificate of participation
 }
 \examples{
+\dontrun{
 create_certificate_participation(
 language ="en",
 data= read_sheet("https://docs.google.com/spreadsheets/
@@ -82,6 +83,7 @@ affiliation.column="House",
 date.column="Date",
 title.column="Title",
 comm.type.column = "Comm.type")
+}
 
 }
 \author{

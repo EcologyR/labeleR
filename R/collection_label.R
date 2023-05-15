@@ -24,6 +24,7 @@
 #' data <- read_sheet("https://docs.google.com/spreadsheets/d/
 #'         1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
 #'
+#' \dontrun{
 #' create_collection_label(
 #' data = data,
 #' path = "LabeleR_output",
@@ -33,8 +34,8 @@
 #' field3.column = "field3",
 #' field4.column = "field6",
 #' field5.column = "field7"
-#'
 #' )
+#' }
 #'
 #'
 create_collection_label <- function(data=data,
