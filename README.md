@@ -85,10 +85,6 @@ or if you have a column specifying which rows to include (as in the
 following example), you could import just the first an fourth rows
 setting `select.column = "Imports"` and `select.value = "yes"`
 
-``` r
-View(people_list)
-```
-
 ### 1.2 Some advice for the labeleR functions
 
 When using labeleR’s functions, there are some widely used parameters
@@ -124,7 +120,7 @@ philosophy is `qr` in the functions that allow to plot them (i.e.
 will result in variable parameter, or as a free text (not column name),
 which will be used as a fixed one.
 
-# 2. labeleR functions
+## 2. labeleR functions
 
 Now let’s start using labeleR!
 
@@ -137,7 +133,17 @@ Attendance certificates are one of the least variable certificates; the
 only variable parameter is the name of the attendees. Our template
 allows to include a signature as an image, so the signer does not have
 to go through them all. This certificate is available both in english
-and spanish.
+and spanish. In case pictures look too big or small, we recommend to
+modify their size, as they are set to have a given height.
+
+The structure of the certificate looks as follows. \|![Attendance
+certificate (blank)](man/figures/Attendance_blank.png)\| \|-\|
+
+### Attendance certificate example:
+
+In this example, we create four different certificates for four students
+of Hogwarts School, in which the Headmaster certifies they have attended
+200 h of the Potions class.
 
 ``` r
 data= read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
@@ -161,18 +167,24 @@ data=data,
 )
 ```
 
-In this example, we create four different certificates for four students
-of Hogwarts School, in which the Headmaster certifies they have attended
-200 h of the Potions class.
-
-![Attendance certificates](man/figures/Attendance_certificate.png)
+| ![Attendance certificates](man/figures/Attendance_certificate.png) |
+|--------------------------------------------------------------------|
 
 ## 2.2 Participation certificates
 
 Participation certificates are similar to the previous, but with more
 variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
-renderized in english as well as spanish.
+renderized in english and in spanish.
+
+| ![Participation certificate (blank)](man/figures/Participation_blank.png) |
+|---------------------------------------------------------------------------|
+
+### Participation certificate example:
+
+Here, Albus Dumbledore certifies that four of the school teachers have
+participated in some seminars with different titles, different
+affiliations, dates and communication types.
 
 ``` r
   data= read_sheet("11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM")
@@ -196,15 +208,91 @@ create_certificate_participation(
   comm.type.column = "Comm.type")
 ```
 
-![Paticipation certificate](man/figures/Participation_certificate.png)
-
-Here, Albus Dumbledore certifies that four of the school teachers have
-participated in some seminars with different titles, different
-affiliations, dates and communication types.
+| ![Participation certificate](man/figures/Participation_certificate.png) |
+|-------------------------------------------------------------------------|
 
 ## 2.3 Accreditations
 
+Accreditations are rendered in a single document, with eight
+accreditation cards per DIN-A4 page. They have only two variable fields
+(name and affiliation), and can include two top images, although are not
+signed. Accreditation cards include a dot line in the bottom for
+individual hand-edition.
+
+| ![Accreditations (blank)](man/figures/Accreditations_blank.png) |
+|-----------------------------------------------------------------|
+
+### Accreditations example:
+
+As an example, we present the accreditation cards that might have been
+used in he International Conference of Muggleology, where the only
+changing fields are names and affiliations of attendees.
+
+``` r
+data <- read_sheet(url='16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M')
+create_accreditation(
+data=data,
+path = "LabeleR_output",
+event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
+name.column = "List",
+affiliation.column="Affiliation",
+rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+lpic=system.file("rmarkdown/pictures/minMagic.png", package = "labeleR")
+)
+```
+
+| ![Accreditations](man/figures/Accreditations.png) |
+|---------------------------------------------------|
+
 ## 2.4 Herbarium labels
+
+Herbarium labels are one of the documents with more variable parameters,
+as there is a lot of information to be included. Here, we have used a
+template we believe is the most useful, but we have included three free
+fields for the user to include the information they prefer. As said
+before, the QR can stand for a free text (and therefore remain identical
+in all labels), or be a column name, and therefore the codes will be
+rendered to specify the individual information in each row.
+
+Including too long texts may cause the alteration of the structure of
+the labels, so we recommend to be concise. \|![Herbarium label
+(blank)](man/figures/Herbarium_blank.png)\| \|-\| \### Herbarium labels
+example:
+
+In this example, we show the labels some students have created for their
+herbarium assignment of the Herbology class.
+
+| ![Herbarium labels](man/figures/Herbarium_labels.png) |
+|-------------------------------------------------------|
+
+``` r
+data <- read_sheet(url='1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw')
+
+create_herbarium_label(
+data=data,
+path = "LabeleR_output",
+ title="Magical flora of the British Isles",
+ subtitle="Project: Eliminating plant blindness in Hogwarts students",
+ qr = "QR_code",
+ family.column="Family",
+ taxon.column="Taxon",
+ author.column="Author",
+ det.column="det/conf",
+ date.det.column="Det_date",
+ location.column="Location",
+ area.description.column="Area_description",
+ latitude.column="Latitude",
+ longitude.column="Longitude",
+ elevation.column="Elevation",
+ field1.column="life_form",
+ field2.column="Observations",
+ field3.column="Height",
+ collector.column="Collector",
+ collection.column="Collection_number",
+ assistants.column="Assistants",
+ date.column="Date"
+ )
+```
 
 ## 2.5 Collection labels
 

@@ -105,8 +105,6 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span><span class="co">#&gt;   List_assistants</span></span>
 <span><span class="co">#&gt; 2    Draco Malfoy</span></span></code></pre></div>
 <p>or if you have a column specifying which rows to include (as in the following example), you could import just the first an fourth rows setting <code>select.column = "Imports"</code> and <code>select.value = "yes"</code></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html" class="external-link">View</a></span><span class="op">(</span><span class="va">people_list</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="id_12-some-advice-for-the-labeler-functions">1.2 Some advice for the labeleR functions<a class="anchor" aria-label="anchor" href="#id_12-some-advice-for-the-labeler-functions"></a>
@@ -117,17 +115,22 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <p>As for the parameters nomenclature, there are two kinds. “Fixed parameters” are those that remain the same in all the certificates (e.g. the name of a conference in an accreditation, or the name of a speaker in an attendance certificate). These parameters are named using a unique word (e.g. <code>event</code> or <code>speaker</code>), and can be filled in using a free text that will be printed in all documents. On the other hand, “variable parameters” are those which vary among documents, and therefore differ among rows (e.g. attendees names to a conference, or species in herbarium labels). To specify the column of data in which this information is stored, two-word parameters are used (i.e. <code>name.column</code> or <code>species.column</code>). The only parameter that does not follow this philosophy is <code>qr</code> in the functions that allow to plot them (i.e. <code>create_herbarium_label</code>, <code>create_collection_label</code> and <code>create_tinylabel</code>). This parameter can be set as a column name, which will result in variable parameter, or as a free text (not column name), which will be used as a fixed one.</p>
 </div>
 </div>
-</div>
-<div class="section level1">
-<h1 id="id_2-labeler-functions">2. labeleR functions<a class="anchor" aria-label="anchor" href="#id_2-labeler-functions"></a>
-</h1>
+<div class="section level2">
+<h2 id="id_2-labeler-functions">2. labeleR functions<a class="anchor" aria-label="anchor" href="#id_2-labeler-functions"></a>
+</h2>
 <p>Now let’s start using labeleR!</p>
 <p>To help you see the structure of our templates in a more visual way, we will display some examples inspired in the Harry Potter universe.</p>
+</div>
 <div class="section level2">
 <h2 id="id_21-attendance-certificates">2.1 Attendance certificates<a class="anchor" aria-label="anchor" href="#id_21-attendance-certificates"></a>
 </h2>
-<p>Attendance certificates are one of the least variable certificates; the only variable parameter is the name of the attendees. Our template allows to include a signature as an image, so the signer does not have to go through them all. This certificate is available both in english and spanish.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>Attendance certificates are one of the least variable certificates; the only variable parameter is the name of the attendees. Our template allows to include a signature as an image, so the signer does not have to go through them all. This certificate is available both in english and spanish. In case pictures look too big or small, we recommend to modify their size, as they are set to have a given height.</p>
+<p>The structure of the certificate looks as follows. |<img src="reference/figures/Attendance_blank.png" alt="Attendance certificate (blank)">| |-|</p>
+<div class="section level3">
+<h3 id="attendance-certificate-example">Attendance certificate example:<a class="anchor" aria-label="anchor" href="#attendance-certificate-example"></a>
+</h3>
+<p>In this example, we create four different certificates for four students of Hogwarts School, in which the Headmaster certifies they have attended 200 h of the Potions class.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span><span class="op">=</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/create_certificate_attendance.html">create_certificate_attendance</a></span><span class="op">(</span></span>
@@ -147,16 +150,30 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  name.column<span class="op">=</span><span class="st">"List_assistants"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>In this example, we create four different certificates for four students of Hogwarts School, in which the Headmaster certifies they have attended 200 h of the Potions class.</p>
-<div class="figure">
-<img src="reference/figures/Attendance_certificate.png" alt=""><p class="caption">Attendance certificates</p>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/Attendance_certificate.png" alt="Attendance certificates"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
 </div>
 </div>
 <div class="section level2">
 <h2 id="id_22-participation-certificates">2.2 Participation certificates<a class="anchor" aria-label="anchor" href="#id_22-participation-certificates"></a>
 </h2>
-<p>Participation certificates are similar to the previous, but with more variable parameters (such as speaker, title and type of communication, etc.). As well as the attendance certificate, these documents can be renderized in english as well as spanish.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p>Participation certificates are similar to the previous, but with more variable parameters (such as speaker, title and type of communication, etc.). As well as the attendance certificate, these documents can be renderized in english and in spanish.</p>
+<table class="table">
+<colgroup><col width="100%"></colgroup>
+<thead><tr class="header">
+<th><img src="reference/figures/Participation_blank.png" alt="Participation certificate (blank)"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+<div class="section level3">
+<h3 id="participation-certificate-example">Participation certificate example:<a class="anchor" aria-label="anchor" href="#participation-certificate-example"></a>
+</h3>
+<p>Here, Albus Dumbledore certifies that four of the school teachers have participated in some seminars with different titles, different affiliations, dates and communication types.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="va">data</span><span class="op">=</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/create_certificate_participation.html">create_certificate_participation</a></span><span class="op">(</span></span>
@@ -176,18 +193,87 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span>  date.column<span class="op">=</span><span class="st">"Date"</span>,</span>
 <span>  title.column<span class="op">=</span><span class="st">"Title"</span>,</span>
 <span>  comm.type.column <span class="op">=</span> <span class="st">"Comm.type"</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="reference/figures/Participation_certificate.png" alt=""><p class="caption">Paticipation certificate</p>
+<table class="table">
+<colgroup><col width="100%"></colgroup>
+<thead><tr class="header">
+<th><img src="reference/figures/Participation_certificate.png" alt="Participation certificate"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
 </div>
-<p>Here, Albus Dumbledore certifies that four of the school teachers have participated in some seminars with different titles, different affiliations, dates and communication types.</p>
 </div>
 <div class="section level2">
 <h2 id="id_23-accreditations">2.3 Accreditations<a class="anchor" aria-label="anchor" href="#id_23-accreditations"></a>
 </h2>
+<p>Accreditations are rendered in a single document, with eight accreditation cards per DIN-A4 page. They have only two variable fields (name and affiliation), and can include two top images, although are not signed. Accreditation cards include a dot line in the bottom for individual hand-edition.</p>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/Accreditations_blank.png" alt="Accreditations (blank)"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+<div class="section level3">
+<h3 id="accreditations-example">Accreditations example:<a class="anchor" aria-label="anchor" href="#accreditations-example"></a>
+</h3>
+<p>As an example, we present the accreditation cards that might have been used in he International Conference of Muggleology, where the only changing fields are names and affiliations of attendees.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/create_accreditation.html">create_accreditation</a></span><span class="op">(</span></span>
+<span>data<span class="op">=</span><span class="va">data</span>,</span>
+<span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
+<span>event<span class="op">=</span><span class="st">"INTERNATIONAL CONFERENCE OF MUGGLEOLOGY"</span>,</span>
+<span>name.column <span class="op">=</span> <span class="st">"List"</span>,</span>
+<span>affiliation.column<span class="op">=</span><span class="st">"Affiliation"</span>,</span>
+<span>rpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>lpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/minMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/Accreditations.png" alt="Accreditations"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+</div>
 </div>
 <div class="section level2">
 <h2 id="id_24-herbarium-labels">2.4 Herbarium labels<a class="anchor" aria-label="anchor" href="#id_24-herbarium-labels"></a>
 </h2>
+<p>Herbarium labels are one of the documents with more variable parameters, as there is a lot of information to be included. Here, we have used a template we believe is the most useful, but we have included three free fields for the user to include the information they prefer. As said before, the QR can stand for a free text (and therefore remain identical in all labels), or be a column name, and therefore the codes will be rendered to specify the individual information in each row.</p>
+<p>Including too long texts may cause the alteration of the structure of the labels, so we recommend to be concise. |<img src="reference/figures/Herbarium_blank.png" alt="Herbarium label (blank)">| |-| ### Herbarium labels example:</p>
+<p>In this example, we show the labels some students have created for their herbarium assignment of the Herbology class.</p>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/Herbarium_labels.png" alt="Herbarium labels"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/create_herbarium_label.html">create_herbarium_label</a></span><span class="op">(</span></span>
+<span>data<span class="op">=</span><span class="va">data</span>,</span>
+<span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
+<span> title<span class="op">=</span><span class="st">"Magical flora of the British Isles"</span>,</span>
+<span> subtitle<span class="op">=</span><span class="st">"Project: Eliminating plant blindness in Hogwarts students"</span>,</span>
+<span> qr <span class="op">=</span> <span class="st">"QR_code"</span>,</span>
+<span> family.column<span class="op">=</span><span class="st">"Family"</span>,</span>
+<span> taxon.column<span class="op">=</span><span class="st">"Taxon"</span>,</span>
+<span> author.column<span class="op">=</span><span class="st">"Author"</span>,</span>
+<span> det.column<span class="op">=</span><span class="st">"det/conf"</span>,</span>
+<span> date.det.column<span class="op">=</span><span class="st">"Det_date"</span>,</span>
+<span> location.column<span class="op">=</span><span class="st">"Location"</span>,</span>
+<span> area.description.column<span class="op">=</span><span class="st">"Area_description"</span>,</span>
+<span> latitude.column<span class="op">=</span><span class="st">"Latitude"</span>,</span>
+<span> longitude.column<span class="op">=</span><span class="st">"Longitude"</span>,</span>
+<span> elevation.column<span class="op">=</span><span class="st">"Elevation"</span>,</span>
+<span> field1.column<span class="op">=</span><span class="st">"life_form"</span>,</span>
+<span> field2.column<span class="op">=</span><span class="st">"Observations"</span>,</span>
+<span> field3.column<span class="op">=</span><span class="st">"Height"</span>,</span>
+<span> collector.column<span class="op">=</span><span class="st">"Collector"</span>,</span>
+<span> collection.column<span class="op">=</span><span class="st">"Collection_number"</span>,</span>
+<span> assistants.column<span class="op">=</span><span class="st">"Assistants"</span>,</span>
+<span> date.column<span class="op">=</span><span class="st">"Date"</span></span>
+<span> <span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="id_25-collection-labels">2.5 Collection labels<a class="anchor" aria-label="anchor" href="#id_25-collection-labels"></a>
@@ -201,7 +287,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>If using this package, please cite it:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#citation("labeleR")</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -211,7 +297,6 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <p><img src="https://ecologyr.github.io/workshop/images/logos.png"></p>
 </div>
 </div>
-
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
