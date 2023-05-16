@@ -182,28 +182,7 @@ data=data,
 )
 
 ```
-```{r attendance_fields, include=FALSE}
-data= data.frame("Names"="name.column")
 
-create_certificate_attendance(
-data=data,
-  path = "H:/MIERDA BORRABLE/LabeleR_output",
-  language="language",
-  type="type",
-  title="title",
-  organiser="organiser",
-  signer="signer",
-  signer.position="signer.position",
-  hours="hours",
-  date="date",
-  speaker="speaker",
-  rpic="",
-  lpic="",
-  signature.pic=,
-  name.column="Names"
-)
-
-```
 
 In this example, we create four different certificates for four students
 of Hogwarts School, in which the Headmaster certifies they have attended
@@ -218,7 +197,7 @@ variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
 renderized in english as well as spanish.
 
-```{r create attendance certificates, eval=FALSE}
+```{r create participation certificates, eval=FALSE}
   data= read_sheet("11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM")
 
 create_certificate_participation(

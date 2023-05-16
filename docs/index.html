@@ -72,37 +72,40 @@
 <p>To install <strong>labeleR</strong> from GitHub, you might need to install the <em>devtools</em> package. Once you have it, you just have to specify the repository and install!</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="co"># devtools::install_github("EcologyR/labeleR")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"EcologyR/labeleR"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EcologyR/labeleR" class="external-link">labeleR</a></span><span class="op">)</span></span></code></pre></div>
 <p>If you want to clone the repository, you can find the code <a href="https://github.com/EcologyR/labeleR" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="id_1-getting-started">1. Getting started<a class="anchor" aria-label="anchor" href="#id_1-getting-started"></a>
 </h2>
+<p>On the first place, we must warn the renderization of the documents with labeleR depends on LaTeX, so you must have it installed on the first place. Don’t worry, its very easy!</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("tinytex")</span></span>
+<span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html" class="external-link">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="id_11-loading-the-data">1.1 Loading the data<a class="anchor" aria-label="anchor" href="#id_11-loading-the-data"></a>
 </h3>
 <p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx2’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table( )</a></code> and alike functions), but it can be also imported from a Google Sheets function.</p>
 <p>To do so, you just have to use labeleR’s <code><a href="reference/read_sheet.html">read_sheet( )</a></code> function, specifying the Google Sheet URL. In fact, you don’t need to use the whole URL, but just the specific part of it.<br>
-For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0" class="external-link uri"></a><a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a><strong>1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw</strong>/edit#gid=0<br>
-you just need the string in bold. However, a key point to bear in mind is that the Google Sheet document must grant (at least as viewer) access to anyone with the link; otherwise R will not be able to open it.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a><strong>1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw</strong>/edit#gid=0 you just need the text in bold. However, a key point to bear in mind is that the Google Sheet document must grant (at least as viewer) access to anyone with the link; otherwise R will not be able to open it.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">people_list_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">people_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
 <span>                          </span>
-<span><span class="co"># The result is the same, a R data frame tha can be used by labeleR</span></span></code></pre></div>
+<span><span class="co"># The result is the same, a R data frame that can be used by labeleR</span></span></code></pre></div>
 <p>In case you just want to import some rows (let’s say you have to create some of them, or to re-create some after correcting a mistake), you don´t have to import all the rows. Using the <code>select.column</code> parameter, you can import only the rows which match <code>select.value</code> .</p>
 <p>For example, if you just want to create certificate for Draco Malfoy as an attendee of a class, you can use the following code to import just his row:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span>, </span>
 <span>           select.column <span class="op">=</span> <span class="st">"List_assistants"</span>, select.value <span class="op">=</span> <span class="st">"Draco Malfoy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   List_assistants</span></span>
 <span><span class="co">#&gt; 2    Draco Malfoy</span></span></code></pre></div>
 <p>or if you have a column specifying which rows to include (as in the following example), you could import just the first an fourth rows setting <code>select.column = "Imports"</code> and <code>select.value = "yes"</code></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html" class="external-link">View</a></span><span class="op">(</span><span class="va">people_list</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -110,7 +113,7 @@ you just need the string in bold. However, a key point to bear in mind is that t
 </h3>
 <p>When using labeleR’s functions, there are some widely used parameters and nomenclature that must be acknowledged.</p>
 <p>As parameters, there are 2 that are always the same. The first one is <code>data</code>, which is the data frame that has been previously loaded before. The second one is <code>path</code>, which is the folder where the outputted PDFs will be stored. In case the specified folder does not exist, it will be automatically created.</p>
-<p>In some of the labels, pictures (as logos or signatures) can be included. For these, parameter names are <code>lpic</code> (standing for left picture, in the top), <code>rpic</code> (right picture, also in the top) and <code>spic</code> (signature picture) in the certificates; and <code>logo</code> in the collection label. These pictures should be specified as the path where the picture is stored.</p>
+<p>In some of the labels, pictures (as logos or signatures) can be included. For these, parameter names are <code>lpic</code> (standing for left picture, in the top), <code>rpic</code> (right picture, also in the top) and <code>signature.pic</code> (signature picture) in the certificates; and <code>logo</code> in the collection label. These pictures should be specified as the path where the picture is stored.</p>
 <p>As for the parameters nomenclature, there are two kinds. “Fixed parameters” are those that remain the same in all the certificates (e.g. the name of a conference in an accreditation, or the name of a speaker in an attendance certificate). These parameters are named using a unique word (e.g. <code>event</code> or <code>speaker</code>), and can be filled in using a free text that will be printed in all documents. On the other hand, “variable parameters” are those which vary among documents, and therefore differ among rows (e.g. attendees names to a conference, or species in herbarium labels). To specify the column of data in which this information is stored, two-word parameters are used (i.e. <code>name.column</code> or <code>species.column</code>). The only parameter that does not follow this philosophy is <code>qr</code> in the functions that allow to plot them (i.e. <code>create_herbarium_label</code>, <code>create_collection_label</code> and <code>create_tinylabel</code>). This parameter can be set as a column name, which will result in variable parameter, or as a free text (not column name), which will be used as a fixed one.</p>
 </div>
 </div>
@@ -123,9 +126,8 @@ you just need the string in bold. However, a key point to bear in mind is that t
 <div class="section level2">
 <h2 id="id_21-attendance-certificates">2.1 Attendance certificates<a class="anchor" aria-label="anchor" href="#id_21-attendance-certificates"></a>
 </h2>
-<p>Attendance certificates are one of the least variable certificates; the only variable parameter is the name of the attendees. Our template allows to include a signature as an image, so the signer does not have to go through them all.</p>
-<p>In the following example, we will create four different certificates for four students of Hogwarts School, in which the Headmaster will certify that they have attended 200 h of the Potions class.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<p>Attendance certificates are one of the least variable certificates; the only variable parameter is the name of the attendees. Our template allows to include a signature as an image, so the signer does not have to go through them all. This certificate is available both in english and spanish.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span><span class="op">=</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/create_certificate_attendance.html">create_certificate_attendance</a></span><span class="op">(</span></span>
@@ -145,6 +147,7 @@ you just need the string in bold. However, a key point to bear in mind is that t
 <span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  name.column<span class="op">=</span><span class="st">"List_assistants"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p>In this example, we create four different certificates for four students of Hogwarts School, in which the Headmaster certifies they have attended 200 h of the Potions class.</p>
 <div class="figure">
 <img src="reference/figures/Attendance_certificate.png" alt=""><p class="caption">Attendance certificates</p>
 </div>
@@ -152,6 +155,31 @@ you just need the string in bold. However, a key point to bear in mind is that t
 <div class="section level2">
 <h2 id="id_22-participation-certificates">2.2 Participation certificates<a class="anchor" aria-label="anchor" href="#id_22-participation-certificates"></a>
 </h2>
+<p>Participation certificates are similar to the previous, but with more variable parameters (such as speaker, title and type of communication, etc.). As well as the attendance certificate, these documents can be renderized in english as well as spanish.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>  <span class="va">data</span><span class="op">=</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/create_certificate_participation.html">create_certificate_participation</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">data</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
+<span>  language <span class="op">=</span><span class="st">"en"</span>,</span>
+<span>  type<span class="op">=</span><span class="st">"online seminar"</span>,</span>
+<span>  organiser<span class="op">=</span><span class="st">"Hogwarts School of Witchcraft and Wizardry"</span>,</span>
+<span>  hours<span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  signer<span class="op">=</span><span class="st">"A.P.W.B. Dumbledore"</span>,</span>
+<span>  signer.position<span class="op">=</span><span class="st">"School Headmaster"</span>,</span>
+<span>  rpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  lpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/MinMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  name.column<span class="op">=</span><span class="st">"Name"</span>,</span>
+<span>  affiliation.column<span class="op">=</span><span class="st">"House"</span>,</span>
+<span>  date.column<span class="op">=</span><span class="st">"Date"</span>,</span>
+<span>  title.column<span class="op">=</span><span class="st">"Title"</span>,</span>
+<span>  comm.type.column <span class="op">=</span> <span class="st">"Comm.type"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="reference/figures/Participation_certificate.png" alt=""><p class="caption">Paticipation certificate</p>
+</div>
+<p>Here, Albus Dumbledore certifies that four of the school teachers have participated in some seminars with different titles, different affiliations, dates and communication types.</p>
 </div>
 <div class="section level2">
 <h2 id="id_23-accreditations">2.3 Accreditations<a class="anchor" aria-label="anchor" href="#id_23-accreditations"></a>
@@ -173,7 +201,7 @@ you just need the string in bold. However, a key point to bear in mind is that t
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>If using this package, please cite it:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#citation("labeleR")</span></span></code></pre></div>
 </div>
 <div class="section level2">
