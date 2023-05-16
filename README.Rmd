@@ -39,10 +39,23 @@ devtools::install_github("EcologyR/labeleR")
 library(labeleR)
 ```
 
+```{r install labeleR local, include=FALSE}
+devtools::load_all()
+```
+
 If you want to clone the repository, you can find the code
 [here](https://github.com/EcologyR/labeleR).
 
 ## 1. Getting started
+
+On the first place, we must warn the renderization of the documents with
+labeleR depends on LaTeX, so you must have it installed on the first
+place. Don't worry, its very easy!
+
+```{r install LaTeX, eval=F}
+# install.packages("tinytex")
+tinytex::install_tinytex()
+```
 
 ### 1.1 Loading the data
 
@@ -56,10 +69,10 @@ To do so, you just have to use labeleR's `read_sheet( )` function,
 specifying the Google Sheet URL. In fact, you don't need to use the
 whole URL, but just the specific part of it.\
 For instance, in this URL:
-[https://docs.google.com/spreadsheets/d/**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0](https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0){.uri}\
-you just need the string in bold. However, a key point to bear in mind
-is that the Google Sheet document must grant (at least as viewer) access
-to anyone with the link; otherwise R will not be able to open it.
+<https://docs.google.com/spreadsheets/d/>**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0
+you just need the text in bold. However, a key point to bear in mind is
+that the Google Sheet document must grant (at least as viewer) access to
+anyone with the link; otherwise R will not be able to open it.
 
 ```{r read_sheet}
 
@@ -67,7 +80,7 @@ people_list_long <- read_sheet("https://docs.google.com/spreadsheets/d/1inkk3_oN
 
 people_list <- read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
                           
-# The result is the same, a R data frame tha can be used by labeleR
+# The result is the same, a R data frame that can be used by labeleR
 ```
 
 In case you just want to import some rows (let's say you have to create
@@ -110,10 +123,10 @@ automatically created.
 
 In some of the labels, pictures (as logos or signatures) can be
 included. For these, parameter names are `lpic` (standing for left
-picture, in the top), `rpic` (right picture, also in the top) and `spic`
-(signature picture) in the certificates; and `logo` in the collection
-label. These pictures should be specified as the path where the picture
-is stored.
+picture, in the top), `rpic` (right picture, also in the top) and
+`signature.pic` (signature picture) in the certificates; and `logo` in
+the collection label. These pictures should be specified as the path
+where the picture is stored.
 
 As for the parameters nomenclature, there are two kinds. "Fixed
 parameters" are those that remain the same in all the certificates (e.g.
@@ -144,11 +157,8 @@ will display some examples inspired in the Harry Potter universe.
 Attendance certificates are one of the least variable certificates; the
 only variable parameter is the name of the attendees. Our template
 allows to include a signature as an image, so the signer does not have
-to go through them all.
-
-In the following example, we will create four different certificates for
-four students of Hogwarts School, in which the Headmaster will certify
-that they have attended 200 h of the Potions class.
+to go through them all. This certificate is available both in english
+and spanish.
 
 ```{r create attendance certificates, eval=FALSE}
 data= read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
@@ -170,11 +180,71 @@ data=data,
   signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR"),
   name.column="List_assistants"
 )
+
 ```
+```{r attendance_fields, include=FALSE}
+data= data.frame("Names"="name.column")
+
+create_certificate_attendance(
+data=data,
+  path = "H:/MIERDA BORRABLE/LabeleR_output",
+  language="language",
+  type="type",
+  title="title",
+  organiser="organiser",
+  signer="signer",
+  signer.position="signer.position",
+  hours="hours",
+  date="date",
+  speaker="speaker",
+  rpic="",
+  lpic="",
+  signature.pic=,
+  name.column="Names"
+)
+
+```
+
+In this example, we create four different certificates for four students
+of Hogwarts School, in which the Headmaster certifies they have attended
+200 h of the Potions class.
 
 ![Attendance certificates](man/figures/Attendance_certificate.png)
 
 ## 2.2 Participation certificates
+
+Participation certificates are similar to the previous, but with more
+variable parameters (such as speaker, title and type of communication,
+etc.). As well as the attendance certificate, these documents can be
+renderized in english as well as spanish.
+
+```{r create attendance certificates, eval=FALSE}
+  data= read_sheet("11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM")
+
+create_certificate_participation(
+  data = data,
+  path = "LabeleR_output",
+  language ="en",
+  type="online seminar",
+  organiser="Hogwarts School of Witchcraft and Wizardry",
+  hours= 2,
+  signer="A.P.W.B. Dumbledore",
+  signer.position="School Headmaster",
+  rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic=system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
+  signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR"),
+  name.column="Name",
+  affiliation.column="House",
+  date.column="Date",
+  title.column="Title",
+  comm.type.column = "Comm.type")
+```
+
+![Paticipation certificate](man/figures/Participation_certificate.png)
+
+Here, Albus Dumbledore certifies that four of the school teachers have
+participated in some seminars with different titles, different
+affiliations, dates and communication types.
 
 ## 2.3 Accreditations
 

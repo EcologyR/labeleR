@@ -64,44 +64,116 @@
 <div class="page-header"><h1 id="labeler">labeleR<a class="anchor" aria-label="anchor" href="#labeler"></a>
 </h1></div>
 <!-- badges: start -->
-
-<p>Package to create your own labels, certificates, and much more! :)</p>
+<p>This is a package to create your own labels, certificates, and much more! :)</p>
+<p>If you need to create your attendance or participation certificates, accreditation badges, herbarium or collection labels, labeleR is the package you need! Keep an eye on this easy tutorial on how to use it!</p>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="installing-labeler">Installing labeleR<a class="anchor" aria-label="anchor" href="#installing-labeler"></a>
 </h2>
+<p>To install <strong>labeleR</strong> from GitHub, you might need to install the <em>devtools</em> package. Once you have it, you just have to specify the repository and install!</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"EcologyR/templateRpackage"</span><span class="op">)</span></span></code></pre></div>
-<p>The code to create this package is available <a href="https://gist.github.com/Pakillo/999e34301c56011138ef164363502465" class="external-link">here</a>.</p>
+<span><span class="co"># devtools::install_github("EcologyR/labeleR")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EcologyR/labeleR" class="external-link">labeleR</a></span><span class="op">)</span></span></code></pre></div>
+<p>If you want to clone the repository, you can find the code <a href="https://github.com/EcologyR/labeleR" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="id_1-getting-started">1. Getting started<a class="anchor" aria-label="anchor" href="#id_1-getting-started"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<div class="section level3">
+<h3 id="id_11-loading-the-data">1.1 Loading the data<a class="anchor" aria-label="anchor" href="#id_11-loading-the-data"></a>
+</h3>
+<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx2’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table( )</a></code> and alike functions), but it can be also imported from a Google Sheets function.</p>
+<p>To do so, you just have to use labeleR’s <code><a href="reference/read_sheet.html">read_sheet( )</a></code> function, specifying the Google Sheet URL. In fact, you don’t need to use the whole URL, but just the specific part of it.<br>
+For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0" class="external-link uri"></a><a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a><strong>1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw</strong>/edit#gid=0<br>
+you just need the string in bold. However, a key point to bear in mind is that the Google Sheet document must grant (at least as viewer) access to anyone with the link; otherwise R will not be able to open it.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># library(templateRpackage)</span></span>
-<span><span class="co">## basic example code</span></span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
+<code class="sourceCode R"><span></span>
+<span><span class="va">people_list_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">people_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
+<span>                          </span>
+<span><span class="co"># The result is the same, a R data frame tha can be used by labeleR</span></span></code></pre></div>
+<p>In case you just want to import some rows (let’s say you have to create some of them, or to re-create some after correcting a mistake), you don´t have to import all the rows. Using the <code>select.column</code> parameter, you can import only the rows which match <code>select.value</code> .</p>
+<p>For example, if you just want to create certificate for Draco Malfoy as an attendee of a class, you can use the following code to import just his row:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      speed           dist       </span></span>
-<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code><a href="https://devtools.r-lib.org/reference/build_rmd.html" class="external-link">devtools::build_readme()</a></code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/v1/examples" class="external-link uri">https://github.com/r-lib/actions/tree/v1/examples</a>.</p>
-<p>You can also embed plots, for example:</p>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span>, </span>
+<span>           select.column <span class="op">=</span> <span class="st">"List_assistants"</span>, select.value <span class="op">=</span> <span class="st">"Draco Malfoy"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   List_assistants</span></span>
+<span><span class="co">#&gt; 2    Draco Malfoy</span></span></code></pre></div>
+<p>or if you have a column specifying which rows to include (as in the following example), you could import just the first an fourth rows setting <code>select.column = "Imports"</code> and <code>select.value = "yes"</code></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pressure</span><span class="op">)</span></span></code></pre></div>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html" class="external-link">View</a></span><span class="op">(</span><span class="va">people_list</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_12-some-advice-for-the-labeler-functions">1.2 Some advice for the labeleR functions<a class="anchor" aria-label="anchor" href="#id_12-some-advice-for-the-labeler-functions"></a>
+</h3>
+<p>When using labeleR’s functions, there are some widely used parameters and nomenclature that must be acknowledged.</p>
+<p>As parameters, there are 2 that are always the same. The first one is <code>data</code>, which is the data frame that has been previously loaded before. The second one is <code>path</code>, which is the folder where the outputted PDFs will be stored. In case the specified folder does not exist, it will be automatically created.</p>
+<p>In some of the labels, pictures (as logos or signatures) can be included. For these, parameter names are <code>lpic</code> (standing for left picture, in the top), <code>rpic</code> (right picture, also in the top) and <code>spic</code> (signature picture) in the certificates; and <code>logo</code> in the collection label. These pictures should be specified as the path where the picture is stored.</p>
+<p>As for the parameters nomenclature, there are two kinds. “Fixed parameters” are those that remain the same in all the certificates (e.g. the name of a conference in an accreditation, or the name of a speaker in an attendance certificate). These parameters are named using a unique word (e.g. <code>event</code> or <code>speaker</code>), and can be filled in using a free text that will be printed in all documents. On the other hand, “variable parameters” are those which vary among documents, and therefore differ among rows (e.g. attendees names to a conference, or species in herbarium labels). To specify the column of data in which this information is stored, two-word parameters are used (i.e. <code>name.column</code> or <code>species.column</code>). The only parameter that does not follow this philosophy is <code>qr</code> in the functions that allow to plot them (i.e. <code>create_herbarium_label</code>, <code>create_collection_label</code> and <code>create_tinylabel</code>). This parameter can be set as a column name, which will result in variable parameter, or as a free text (not column name), which will be used as a fixed one.</p>
+</div>
+</div>
+</div>
+<div class="section level1">
+<h1 id="id_2-labeler-functions">2. labeleR functions<a class="anchor" aria-label="anchor" href="#id_2-labeler-functions"></a>
+</h1>
+<p>Now let’s start using labeleR!</p>
+<p>To help you see the structure of our templates in a more visual way, we will display some examples inspired in the Harry Potter universe.</p>
+<div class="section level2">
+<h2 id="id_21-attendance-certificates">2.1 Attendance certificates<a class="anchor" aria-label="anchor" href="#id_21-attendance-certificates"></a>
+</h2>
+<p>Attendance certificates are one of the least variable certificates; the only variable parameter is the name of the attendees. Our template allows to include a signature as an image, so the signer does not have to go through them all.</p>
+<p>In the following example, we will create four different certificates for four students of Hogwarts School, in which the Headmaster will certify that they have attended 200 h of the Potions class.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span><span class="op">=</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/create_certificate_attendance.html">create_certificate_attendance</a></span><span class="op">(</span></span>
+<span>data<span class="op">=</span><span class="va">data</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"H:/MIERDA BORRABLE/LabeleR_output"</span>,</span>
+<span>  language<span class="op">=</span><span class="st">"en"</span>,</span>
+<span>  type<span class="op">=</span><span class="st">"class"</span>,</span>
+<span>  title<span class="op">=</span><span class="st">"Potions Class"</span>,</span>
+<span>  organiser<span class="op">=</span><span class="st">"Hogwarts School year 1992-1993"</span>,</span>
+<span>  signer<span class="op">=</span><span class="st">"A.P.W.B. Dumbledore"</span>,</span>
+<span>  signer.position<span class="op">=</span><span class="st">"School Headmaster"</span>,</span>
+<span>  hours<span class="op">=</span><span class="fl">200</span>,</span>
+<span>  date<span class="op">=</span><span class="st">"01/01/2021"</span>,</span>
+<span>  speaker<span class="op">=</span><span class="st">"Severus Snape"</span>,</span>
+<span>  rpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  lpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  name.column<span class="op">=</span><span class="st">"List_assistants"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="reference/figures/Attendance_certificate.png" alt=""><p class="caption">Attendance certificates</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="id_22-participation-certificates">2.2 Participation certificates<a class="anchor" aria-label="anchor" href="#id_22-participation-certificates"></a>
+</h2>
+</div>
+<div class="section level2">
+<h2 id="id_23-accreditations">2.3 Accreditations<a class="anchor" aria-label="anchor" href="#id_23-accreditations"></a>
+</h2>
+</div>
+<div class="section level2">
+<h2 id="id_24-herbarium-labels">2.4 Herbarium labels<a class="anchor" aria-label="anchor" href="#id_24-herbarium-labels"></a>
+</h2>
+</div>
+<div class="section level2">
+<h2 id="id_25-collection-labels">2.5 Collection labels<a class="anchor" aria-label="anchor" href="#id_25-collection-labels"></a>
+</h2>
+</div>
+<div class="section level2">
+<h2 id="id_26-collection-tinylabels">2.6 Collection tinylabels<a class="anchor" aria-label="anchor" href="#id_26-collection-tinylabels"></a>
+</h2>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>If using this package, please cite it:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#citation("labeleR")</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -111,6 +183,7 @@
 <p><img src="https://ecologyr.github.io/workshop/images/logos.png"></p>
 </div>
 </div>
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -143,15 +216,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/EcologyR/templateRpackage/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/EcologyR/templateRpackage/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://app.codecov.io/gh/EcologyR/templateRpackage?branch=master" class="external-link"><img src="https://codecov.io/gh/EcologyR/templateRpackage/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"></a></li>
-<li><a href="https://www.repostatus.org/#wip" class="external-link"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>

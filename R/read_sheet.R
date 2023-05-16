@@ -19,7 +19,7 @@ read_sheet <- function (url, select.column=NULL, select.value=NULL) {
   dbase <- as.data.frame (dbase)
   dbase[is.na(dbase[,select.column]),select.column] <- "-NA-"
   # if(is.null(select.column)){message("Parameter 'select.column' is NULL, importing all rows!")}
-  if(!is.null(select.column)){dbase <- dbase[dbase[,select.column]==select.value,]}
+  if(!is.null(select.column)){dbase <- subset(dbase, subset = dbase[,select.column]==select.value)}
 
   if(nrow(dbase)==0){stop("No rows selected using '", select.value, "' as select.value and '", select.column, "' as select.column")}
   return(dbase)
