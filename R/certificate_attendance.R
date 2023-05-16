@@ -1,9 +1,8 @@
 #' Create certificate of attendance
 #'
+#' @param data a data frame  to create attendance certificates.
+#' @param path Folder path where the output will be printed
 #' @param language Select english or spanish
-#' @param url Specify a valid Google Sheets URL
-#' @param select.column Column of the Google Sheets that specifies which rows must be selected
-#' @param select.value Value of \code{select.column} that specifies which rows must be selected
 #' @param type Type of event (conference, workshop, seminar...)
 #' @param title Title of the event
 #' @param organiser Name of the organizing entity
@@ -24,26 +23,31 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
 #'
 #' @examples
+#' \dontrun{
 #' create_certificate_attendance(
-#' data= read_sheet('https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+#' data= read_sheet('https://docs.google.com/spreadsheets/
+#'         d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+#' path = "LabeleR_output",
 #' language="en",
 #' type="class",
-#' title="Potions Class"
+#' title="Potions Class",
 #' organiser="Hogwarts School year 1992-1993",
 #' signer="A.P.W.B. Dumbledore",
 #' signer.position="School Headmaster",
 #' hours=200,
 #' date="01/01/2021",
 #' speaker="Severus Snape",
-#' rpic="templates/Hogwarts_logo.png",
+#' rpic=NULL,
 #' lpic=NULL,
-#' signature.pic="templates/firma.png" ,
+#' signature.pic=NULL,
 #' name.column="List_assistants"
 #' )
+#' }
 
 create_certificate_attendance <- function(
     data=NULL,
-    language =c("spanish", "english"),
+    path=NULL,
+    language ="english",
     type=NULL,
     title=NULL,
     organiser=NULL,
@@ -67,6 +71,12 @@ create_certificate_attendance <- function(
     stop(" a 'data' data.frame must be provided.
          To import from Google Sheets use function 'read_sheet()'")
   }
+  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
+
+  if(is.null(path)){stop("A folder path must be specified.")}
+  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
+    dir.create(path)}
+
   if(is.null(type)){
     stop("A type of event (conference, workshop, seminar...) must be specfied")
   }
@@ -85,6 +95,12 @@ create_certificate_attendance <- function(
   if(is.null(hours)){
     stop("A number of hours name must be specfied")
   }
+  if(is.null(speaker)){
+    stop("A speaker name must be specfied")
+  }
+  if(is.null(date)){
+    stop("A date must be specfied")
+  }
   if(!(is.character(hours))) {
     hours <- as.character(hours)
   }
@@ -92,21 +108,21 @@ create_certificate_attendance <- function(
 
 
   if(is.null(lpic))         {
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     lpic <- "tmp/blank.png"
   }
   if(is.null(rpic))         {
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     rpic <- "tmp/blank.png"
   }
   if(is.null(signature.pic)){
-    png("tmp/blank.png", 150, 150, "px")
-    plot.new()
-    dev.off()
+    grDevices::png("tmp/blank.png", 150, 150, "px")
+    graphics::plot.new()
+    grDevices::dev.off()
     signature.pic <- "tmp/blank.png"
   }
 
@@ -119,14 +135,18 @@ create_certificate_attendance <- function(
 
   if(!(name.column)%in%colnames(df)){
     stop("Column '", name.column ,
-         "' is not a column of your data frame. Please select from \n",
+         " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(df), sep="\n"))
   }
 
 
   # load either pdf or word certificate template
-  if(language == "english"){tmpl_file <- "templates/attendance_EN.Rmd"}
-  if(language == "spanish"){tmpl_file <- "templates/attendance_ES.Rmd"}
+  if(language == "english"){
+    tmpl_file   <- system.file("rmarkdown/templates/attendance_EN/skeleton/skeleton.Rmd", package="labeleR")
+    }
+  if(language == "spanish"){
+    tmpl_file   <- system.file("rmarkdown/templates/attendance_ES/skeleton/skeleton.Rmd", package="labeleR")
+    }
 
   file.copy(tmpl_file, "tmp/attendance.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
@@ -140,25 +160,27 @@ create_certificate_attendance <- function(
     out.name <- paste0(out.name, "_", df[i,name.column])
     output_file <- paste0(out.name,'.pdf')
 
+    bl.char <- "~"
+
     rmarkdown::render(
       tmpl_file,
-      output_dir = "tmp",
+      output_dir = path,
       output_file = output_file,
       params = list(
-        type            = type,
-        organiser       = organiser,
-        hours           = hours,
-        signer          = signer,
-        signer.position = signer.position,
-        name.column.i   = df[i,name.column],
-        speaker         = speaker,
-        title           = title,
-        date            = date
+        type            = if(type            ==""){bl.char}else{type},
+        organiser       = if(organiser       ==""){bl.char}else{organiser},
+        hours           = if(hours           ==""){bl.char}else{hours},
+        signer          = if(signer          ==""){bl.char}else{signer},
+        signer.position = if(signer.position ==""){bl.char}else{signer.position},
+        name.column.i   = if(name.column     ==""){bl.char}else{df[i,name.column]},
+        speaker         = if(speaker         ==""){bl.char}else{speaker},
+        title           = if(title           ==""){bl.char}else{title},
+        date            = if(date            ==""){bl.char}else{date}
       )
     )
 
-    if(!dir.exists("output")){dir.create("output")}
-    file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite=T)#create files to call them lpic@rpic to make it homogeneous
+  #   if(!dir.exists("output")){dir.create("output")}
+  #   file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite=T)#create files to call them lpic@rpic to make it homogeneous
   }
 
   unlink("tmp", recursive = T, force = T)

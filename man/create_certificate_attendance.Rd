@@ -6,7 +6,8 @@
 \usage{
 create_certificate_attendance(
   data = NULL,
-  language = c("spanish", "english"),
+  path = NULL,
+  language = "english",
   type = NULL,
   title = NULL,
   organiser = NULL,
@@ -22,6 +23,10 @@ create_certificate_attendance(
 )
 }
 \arguments{
+\item{data}{a data frame  to create attendance certificates.}
+
+\item{path}{Folder path where the output will be printed}
+
 \item{language}{Select english or spanish}
 
 \item{type}{Type of event (conference, workshop, seminar...)}
@@ -47,12 +52,6 @@ create_certificate_attendance(
 \item{signature.pic}{PNG object. File route of a signature image. Can be blank if set to NULL.}
 
 \item{name.column}{Column name of the Google Sheet column which specifies the attendee's name.}
-
-\item{url}{Specify a valid Google Sheets URL}
-
-\item{select.column}{Column of the Google Sheets that specifies which rows must be selected}
-
-\item{select.value}{Value of \code{select.column} that specifies which rows must be selected}
 }
 \value{
 An 'output' folder with the PDF documents inside
@@ -61,22 +60,26 @@ An 'output' folder with the PDF documents inside
 Create certificate of attendance
 }
 \examples{
+\dontrun{
 create_certificate_attendance(
-data= read_sheet('https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+data= read_sheet('https://docs.google.com/spreadsheets/
+        d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
+path = "LabeleR_output",
 language="en",
 type="class",
-title="Potions Class"
+title="Potions Class",
 organiser="Hogwarts School year 1992-1993",
 signer="A.P.W.B. Dumbledore",
 signer.position="School Headmaster",
 hours=200,
 date="01/01/2021",
 speaker="Severus Snape",
-rpic="templates/Hogwarts_logo.png",
+rpic=NULL,
 lpic=NULL,
-signature.pic="templates/firma.png" ,
+signature.pic=NULL,
 name.column="List_assistants"
 )
+}
 }
 \author{
 Julia G. de Aledo, Ignacio Ramos-Gutierrez

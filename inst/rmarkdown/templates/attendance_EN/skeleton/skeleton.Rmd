@@ -1,0 +1,49 @@
+---
+title: ''
+geometry: "left=2cm,right=2cm,top=1cm,bottom=1cm"
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+classoption: landscape
+params:
+  organiser: ""
+  hours: ""
+  signer: ""
+  signer.position: ""
+  name.column.i: ""
+  speaker: ""
+  title: ""
+  date: ""
+  type: ""
+---
+
+
+\begin{center}
+\pagenumbering{gobble}
+\includegraphics[height=4cm]{lpic.png} 
+\hfill
+\includegraphics[height=4cm]{rpic.png}
+\linebreak
+\vfill
+{\fontsize{40pt}{40pt}\selectfont\bf Certificate of attendance} 
+\vfill
+{\fontsize{40pt}{40pt}\selectfont `r params$name.column.i` } \\
+\vfill
+{\Large has attended to:}
+{\Large\bf `r params$type` - `r params$title` (`r params$organiser`)} \\
+\vfill
+{\Large by: `r params$speaker` with date: `r params$date` } \\
+\vfill
+{\Large and a duration of `r params$hours` hour(s).} \\
+\vfill
+{\Large Signed by:}\\
+\vfill
+\includegraphics[height=2cm]{spic.png}\\
+{\Large `r params$signer`} \\
+{\Large `r params$signer.position`} \\
+\end{center}
+\pagebreak
+
+

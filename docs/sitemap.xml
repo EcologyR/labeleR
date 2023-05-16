@@ -4,19 +4,40 @@
     <loc>/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>/LICENSE.html</loc>
+  </url>
+  <url>
     <loc>/news/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/attendance.table.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_accreditation.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_certificate_attendance.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_certificate_participation.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_collection_label.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_herbarium_label.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_tinylabel.html</loc>
   </url>
   <url>
     <loc>/reference/exampledata.html</loc>
@@ -26,6 +47,12 @@
   </url>
   <url>
     <loc>/reference/make_scatterplot.html</loc>
+  </url>
+  <url>
+    <loc>/reference/participation.table.html</loc>
+  </url>
+  <url>
+    <loc>/reference/read_sheet.html</loc>
   </url>
   <url>
     <loc>/reference/resta.html</loc>
