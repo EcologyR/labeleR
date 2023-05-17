@@ -117,7 +117,7 @@ Please consider shortening the content of your cells. ")}
   file.copy(tmpl_file, "tmp/collection_small.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/collection_small.Rmd"
-  out.name <- paste0("collection_labels_small")
+  out.name <- paste0("Collection_tinylabels")
   output_file <- paste0(out.name,'.pdf')
 
   if(file.exists(paste0("output/",output_file))){message("Collection_small_labels file already exists. Overwriting.")}

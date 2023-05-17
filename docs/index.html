@@ -125,17 +125,23 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <h2 id="id_21-attendance-certificates">2.1 Attendance certificates<a class="anchor" aria-label="anchor" href="#id_21-attendance-certificates"></a>
 </h2>
 <p>Attendance certificates are one of the least variable certificates; the only variable parameter is the name of the attendees. Our template allows to include a signature as an image, so the signer does not have to go through them all. This certificate is available both in english and spanish. In case pictures look too big or small, we recommend to modify their size, as they are set to have a given height.</p>
-<p>The structure of the certificate looks as follows. |<img src="reference/figures/Attendance_blank.png" alt="Attendance certificate (blank)">| |-|</p>
+<p>The structure of the certificate looks as follows.</p>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/Attendance_blank.png" alt="Attendance certificate (blank)"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
 <div class="section level3">
 <h3 id="attendance-certificate-example">Attendance certificate example:<a class="anchor" aria-label="anchor" href="#attendance-certificate-example"></a>
 </h3>
 <p>In this example, we create four different certificates for four students of Hogwarts School, in which the Headmaster certifies they have attended 200 h of the Potions class.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span><span class="op">=</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/create_certificate_attendance.html">create_certificate_attendance</a></span><span class="op">(</span></span>
 <span>data<span class="op">=</span><span class="va">data</span>,</span>
-<span>  path <span class="op">=</span> <span class="st">"H:/MIERDA BORRABLE/LabeleR_output"</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
 <span>  language<span class="op">=</span><span class="st">"en"</span>,</span>
 <span>  type<span class="op">=</span><span class="st">"class"</span>,</span>
 <span>  title<span class="op">=</span><span class="st">"Potions Class"</span>,</span>
@@ -196,7 +202,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <table class="table">
 <colgroup><col width="100%"></colgroup>
 <thead><tr class="header">
-<th><img src="reference/figures/Participation_certificate.png" alt="Participation certificate"></th>
+<th><img src="reference/figures/Participation_certificate.png" alt="Participation certificate example"></th>
 </tr></thead>
 <tbody></tbody>
 </table>
@@ -229,7 +235,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
-<th><img src="reference/figures/Accreditations.png" alt="Accreditations"></th>
+<th><img src="reference/figures/Accreditations.png" alt="Accreditations example"></th>
 </tr></thead>
 <tbody></tbody>
 </table>
@@ -238,12 +244,22 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <div class="section level2">
 <h2 id="id_24-herbarium-labels">2.4 Herbarium labels<a class="anchor" aria-label="anchor" href="#id_24-herbarium-labels"></a>
 </h2>
-<p>Herbarium labels are one of the documents with more variable parameters, as there is a lot of information to be included. Here, we have used a template we believe is the most useful, but we have included three free fields for the user to include the information they prefer. As said before, the QR can stand for a free text (and therefore remain identical in all labels), or be a column name, and therefore the codes will be rendered to specify the individual information in each row.</p>
-<p>Including too long texts may cause the alteration of the structure of the labels, so we recommend to be concise. |<img src="reference/figures/Herbarium_blank.png" alt="Herbarium label (blank)">| |-| ### Herbarium labels example:</p>
+<p>Herbarium labels are one of the documents with more variable parameters, as there is a lot of information to be included. Here, we have used a template we believe is the most useful, but we have included three free fields for the user to include the information they prefer. Of course, a field’s name does not force the user to use it for that category (location can be set in the elevation column, on top; and vice versa), but the <code>family.column</code> content will always be capitalized, and the <code>taxon.column</code> one in italics, so we recommend to use them as stated.</p>
+<p>As said before, the QR can stand for a free text (and therefore remain identical in all labels), or be a column name, and therefore the codes will be rendered to specify the individual information in each row.</p>
+<p>Including too long texts may cause the alteration of the structure of the labels, so we recommend to be concise.</p>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/Herbarium_blank.png" alt="Herbarium label (blank)"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+<div class="section level3">
+<h3 id="herbarium-labels-example">Herbarium labels example:<a class="anchor" aria-label="anchor" href="#herbarium-labels-example"></a>
+</h3>
 <p>In this example, we show the labels some students have created for their herbarium assignment of the Herbology class.</p>
 <table class="table">
 <thead><tr class="header">
-<th><img src="reference/figures/Herbarium_labels.png" alt="Herbarium labels"></th>
+<th><img src="reference/figures/Herbarium_labels.png" alt="Herbarium labels example"></th>
 </tr></thead>
 <tbody></tbody>
 </table>
@@ -275,26 +291,97 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span> date.column<span class="op">=</span><span class="st">"Date"</span></span>
 <span> <span class="op">)</span></span></code></pre></div>
 </div>
+</div>
 <div class="section level2">
 <h2 id="id_25-collection-labels">2.5 Collection labels<a class="anchor" aria-label="anchor" href="#id_25-collection-labels"></a>
 </h2>
+<p>Collection labels are one of the most aesthetic labels. They have five variable parameters (which are not recommended to be too long, as explained in the herbarium labels), along with the possibility of including a QR code (fixed or variable), a logo image. Field 1 will be capitalized (as in <code>family.column</code> in the herbarium label, and Field 2 italicized). Any of the fields can be left blank.</p>
+<p>As a novelty, the user may manually fix the backgroud and text colours to their preference, using HTML colour codes (same code as HEX, but without the ‘#’). By default, background colours are two hues of green.</p>
+<table class="table">
+<colgroup><col width="100%"></colgroup>
+<thead><tr class="header">
+<th><img src="reference/figures/collection_labels_blank.png" alt="Collection labels (blank)"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+<div class="section level3">
+<h3 id="herbarium-labels-example-1">Herbarium labels example:<a class="anchor" aria-label="anchor" href="#herbarium-labels-example-1"></a>
+</h3>
+<p>In this example we can see six labels created for the school’s displayed collection of stuffed animals.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs'</span>,</span>
+<span>                   select.column <span class="op">=</span> <span class="st">"field5"</span>,select.value <span class="op">=</span> <span class="st">"Item 1"</span><span class="op">)</span></span>
+<span><span class="co">#We only include 1 Item of each species using the selection option in read_sheet()</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/create_collection_label.html">create_collection_label</a></span><span class="op">(</span></span>
+<span>data <span class="op">=</span> <span class="va">data</span>,</span>
+<span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
+<span>qr <span class="op">=</span> <span class="st">"QR_code"</span>,</span>
+<span>field1.column <span class="op">=</span> <span class="st">"field1"</span>,</span>
+<span>field2.column <span class="op">=</span> <span class="st">"field2"</span>,</span>
+<span>field3.column <span class="op">=</span> <span class="st">"field3"</span>,</span>
+<span>field4.column <span class="op">=</span> <span class="st">"field6"</span>,</span>
+<span>field5.column <span class="op">=</span> <span class="st">"field7"</span>,</span>
+<span>logo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_BnW.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>, </span>
+<span>bgcolor <span class="op">=</span> <span class="st">"D0ECC1"</span>,  <span class="co">#White is "FFFFFF"</span></span>
+<span>textcolor <span class="op">=</span> <span class="st">"1E3F20"</span> <span class="co">#Black is "000000"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/collection_labels.png" alt="Collection labels example"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+</div>
 </div>
 <div class="section level2">
 <h2 id="id_26-collection-tinylabels">2.6 Collection tinylabels<a class="anchor" aria-label="anchor" href="#id_26-collection-tinylabels"></a>
 </h2>
+<p>This type of labels is a simplified version of the previous, and includes just five variable fields and the possibility of including a QR code.</p>
+<p>We recommend as in the previous cases not to include too long texts neither in the variable parameters nor in the QR, as they can become difficult to read.</p>
+<p>Tinylabels are printed in arrays of 8x2 labels per page. In case this size is too big for the pretended use (as can happen for small insect collections, for example), we recommend to use the “print several pages per sheet” in the printer’s options.</p>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/tinylabels_blank.png" alt="Tinylabels (blank)"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+<div class="section level3">
+<h3 id="tinylabels-example">Tinylabels example:<a class="anchor" aria-label="anchor" href="#tinylabels-example"></a>
+</h3>
+<p>Here, tinylabels are created for typical collections stored in boxes, so a normal collection label would be to big.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/create_tinylabel.html">create_tinylabel</a></span><span class="op">(</span></span>
+<span>data <span class="op">=</span> <span class="va">data</span>,</span>
+<span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
+<span>qr <span class="op">=</span> <span class="st">"QR_code"</span>,</span>
+<span>field1.column <span class="op">=</span> <span class="st">"field1"</span>,</span>
+<span>field2.column <span class="op">=</span> <span class="st">"field2"</span>,</span>
+<span>field3.column <span class="op">=</span> <span class="st">"field3"</span>,</span>
+<span>field4.column <span class="op">=</span> <span class="st">"field4"</span>,</span>
+<span>field5.column <span class="op">=</span> <span class="st">"field5"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/tinylabels.png" alt="Tinylabels example"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
+</div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>If using this package, please cite it:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#citation("labeleR")</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="funding">Funding<a class="anchor" aria-label="anchor" href="#funding"></a>
 </h2>
 <p>The development of this software has been funded by Fondo Europeo de Desarrollo Regional (FEDER) and Consejería de Transformación Económica, Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).</p>
-<p><img src="https://ecologyr.github.io/workshop/images/logos.png"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

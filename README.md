@@ -136,8 +136,10 @@ to go through them all. This certificate is available both in english
 and spanish. In case pictures look too big or small, we recommend to
 modify their size, as they are set to have a given height.
 
-The structure of the certificate looks as follows. \|![Attendance
-certificate (blank)](man/figures/Attendance_blank.png)\| \|-\|
+The structure of the certificate looks as follows.
+
+| ![Attendance certificate (blank)](man/figures/Attendance_blank.png) |
+|---------------------------------------------------------------------|
 
 ### Attendance certificate example:
 
@@ -146,11 +148,11 @@ of Hogwarts School, in which the Headmaster certifies they have attended
 200 h of the Potions class.
 
 ``` r
-data= read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
+data <- read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
 
 create_certificate_attendance(
 data=data,
-  path = "H:/MIERDA BORRABLE/LabeleR_output",
+  path = "LabeleR_output",
   language="en",
   type="class",
   title="Potions Class",
@@ -208,8 +210,8 @@ create_certificate_participation(
   comm.type.column = "Comm.type")
 ```
 
-| ![Participation certificate](man/figures/Participation_certificate.png) |
-|-------------------------------------------------------------------------|
+| ![Participation certificate example](man/figures/Participation_certificate.png) |
+|---------------------------------------------------------------------------------|
 
 ## 2.3 Accreditations
 
@@ -241,29 +243,37 @@ lpic=system.file("rmarkdown/pictures/minMagic.png", package = "labeleR")
 )
 ```
 
-| ![Accreditations](man/figures/Accreditations.png) |
-|---------------------------------------------------|
+| ![Accreditations example](man/figures/Accreditations.png) |
+|-----------------------------------------------------------|
 
 ## 2.4 Herbarium labels
 
 Herbarium labels are one of the documents with more variable parameters,
 as there is a lot of information to be included. Here, we have used a
 template we believe is the most useful, but we have included three free
-fields for the user to include the information they prefer. As said
-before, the QR can stand for a free text (and therefore remain identical
-in all labels), or be a column name, and therefore the codes will be
-rendered to specify the individual information in each row.
+fields for the user to include the information they prefer. Of course, a
+field’s name does not force the user to use it for that category
+(location can be set in the elevation column, on top; and vice versa),
+but the `family.column` content will always be capitalized, and the
+`taxon.column` one in italics, so we recommend to use them as stated.
+
+As said before, the QR can stand for a free text (and therefore remain
+identical in all labels), or be a column name, and therefore the codes
+will be rendered to specify the individual information in each row.
 
 Including too long texts may cause the alteration of the structure of
-the labels, so we recommend to be concise. \|![Herbarium label
-(blank)](man/figures/Herbarium_blank.png)\| \|-\| \### Herbarium labels
-example:
+the labels, so we recommend to be concise.
+
+| ![Herbarium label (blank)](man/figures/Herbarium_blank.png) |
+|-------------------------------------------------------------|
+
+### Herbarium labels example:
 
 In this example, we show the labels some students have created for their
 herbarium assignment of the Herbology class.
 
-| ![Herbarium labels](man/figures/Herbarium_labels.png) |
-|-------------------------------------------------------|
+| ![Herbarium labels example](man/figures/Herbarium_labels.png) |
+|---------------------------------------------------------------|
 
 ``` r
 data <- read_sheet(url='1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw')
@@ -296,7 +306,88 @@ path = "LabeleR_output",
 
 ## 2.5 Collection labels
 
+Collection labels are one of the most aesthetic labels. They have five
+variable parameters (which are not recommended to be too long, as
+explained in the herbarium labels), along with the possibility of
+including a QR code (fixed or variable), a logo image. Field 1 will be
+capitalized (as in `family.column` in the herbarium label, and Field 2
+italicized). Any of the fields can be left blank.
+
+As a novelty, the user may manually fix the backgroud and text colours
+to their preference, using HTML colour codes (same code as HEX, but
+without the ‘\#’). By default, background colours are two hues of green.
+
+| ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
+|-----------------------------------------------------------------------|
+
+### Herbarium labels example:
+
+In this example we can see six labels created for the school’s displayed
+collection of stuffed animals.
+
+``` r
+data <- read_sheet(url='1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs',
+                   select.column = "field5",select.value = "Item 1")
+#We only include 1 Item of each species using the selection option in read_sheet()
+
+create_collection_label(
+data = data,
+path = "LabeleR_output",
+qr = "QR_code",
+field1.column = "field1",
+field2.column = "field2",
+field3.column = "field3",
+field4.column = "field6",
+field5.column = "field7",
+logo = system.file("rmarkdown/pictures/Hogwarts_BnW.png", package = "labeleR"), 
+bgcolor = "D0ECC1",  #White is "FFFFFF"
+textcolor = "1E3F20" #Black is "000000"
+)
+```
+
+| ![Collection labels example](man/figures/collection_labels.png) |
+|-----------------------------------------------------------------|
+
 ## 2.6 Collection tinylabels
+
+This type of labels is a simplified version of the previous, and
+includes just five variable fields and the possibility of including a QR
+code.
+
+We recommend as in the previous cases not to include too long texts
+neither in the variable parameters nor in the QR, as they can become
+difficult to read.
+
+Tinylabels are printed in arrays of 8x2 labels per page. In case this
+size is too big for the pretended use (as can happen for small insect
+collections, for example), we recommend to use the “print several pages
+per sheet” in the printer’s options.
+
+| ![Tinylabels (blank)](man/figures/tinylabels_blank.png) |
+|---------------------------------------------------------|
+
+### Tinylabels example:
+
+Here, tinylabels are created for typical collections stored in boxes, so
+a normal collection label would be to big.
+
+``` r
+data <- read_sheet(url='1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs')
+
+create_tinylabel(
+data = data,
+path = "LabeleR_output",
+qr = "QR_code",
+field1.column = "field1",
+field2.column = "field2",
+field3.column = "field3",
+field4.column = "field4",
+field5.column = "field5"
+)
+```
+
+| ![Tinylabels example](man/figures/tinylabels.png) |
+|---------------------------------------------------|
 
 ## Citation
 
@@ -312,5 +403,3 @@ The development of this software has been funded by Fondo Europeo de
 Desarrollo Regional (FEDER) and Consejería de Transformación Económica,
 Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto
 US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).
-
-![](https://ecologyr.github.io/workshop/images/logos.png)

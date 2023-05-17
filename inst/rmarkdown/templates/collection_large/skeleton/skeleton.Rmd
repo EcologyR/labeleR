@@ -31,6 +31,7 @@ for (i in 1:length(params$field1.i)) {
   
   
   cat("
+  \\pagenumbering{gobble}
   \\definecolor{mycolor}{HTML}{",params$bgcolor,"}
   \\definecolor{mycolortext}{HTML}{",params$textcolor,"}
   \\begin{mdframed}[linecolor=mycolortext, linewidth=2pt, backgroundcolor=mycolor]\n
@@ -45,7 +46,7 @@ for (i in 1:length(params$field1.i)) {
   \\end{flushright}
   \\bigskip
   \\begin{adjustwidth}{1cm}{1cm}
-  {\\fontsize{50pt}{0pt}\\selectfont\\bf\\textcolor{mycolortext}{", 
+  {\\fontsize{45pt}{0pt}\\selectfont\\bf\\textcolor{mycolortext}{", 
   params$field1.i[i],
   "}} \\\\
   \\linebreak

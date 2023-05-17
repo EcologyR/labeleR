@@ -133,6 +133,14 @@ Please consider shortening the content of your cells. ")}
     dir.create("tmp")
   }
 
+  if(is.null(logo)){
+      grDevices::png("tmp/logo.png", 150, 150, "px")
+      graphics::par(bg="transparent")
+      graphics::plot.new()
+      grDevices::dev.off()
+    }
+
+
   if(!dir.exists("output")){dir.create("output")}
 
   file.copy(logo, "tmp/logo.png", overwrite = T)#create files to call them logo@rpic to make it homogeneous
@@ -141,7 +149,7 @@ Please consider shortening the content of your cells. ")}
   file.copy(tmpl_file, "tmp/collection_large.Rmd", overwrite = T)#create files to call them logo@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/collection_large.Rmd"
-  out.name <- paste0("collection_labels_large")
+  out.name <- paste0("Collection_labels")
   output_file <- paste0(out.name,'.pdf')
 
   if(file.exists(paste0("output/",output_file))){message("Collection_labels_large file already exists. Overwriting.")}
