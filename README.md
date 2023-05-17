@@ -3,7 +3,10 @@
 
 # labeleR
 
-<!-- badges: start -->
+<!-- | ![labeleR](man/figures/labeleR.png) | -->
+<!-- |---------------------------------------------------------------------|  -->
+
+<img src="man/figures/labeleR.png" width = "140px" align="right"/>
 
 This is a package to create your own labels, certificates, and much
 more! :)
@@ -162,6 +165,9 @@ data=data,
 )
 ```
 
+In this example, each certificate will be rendered in an individual PDF
+document.
+
 | ![Attendance certificates](man/figures/Attendance_certificate.png) |
 |--------------------------------------------------------------------|
 
@@ -170,7 +176,7 @@ data=data,
 Participation certificates are similar to the previous, but with more
 variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
-renderized in english and in spanish.
+rendered in english and in spanish.
 
 | ![Participation certificate (blank)](man/figures/Participation_blank.png) |
 |---------------------------------------------------------------------------|
@@ -203,16 +209,19 @@ create_certificate_participation(
   comm.type.column = "Comm.type")
 ```
 
+In this example, each certificate will be rendered in an individual PDF
+document.
+
 | ![Participation certificate example](man/figures/Participation_certificate.png) |
 |---------------------------------------------------------------------------------|
 
 ## 2.3 Accreditations
 
-Accreditations are rendered in a single document, with eight
-accreditation cards per DIN-A4 page. They have only two variable fields
-(name and affiliation), and can include two top images, although are not
-signed. Accreditation cards include a dot line in the bottom for
-individual hand-edition.
+Accreditations (and all documents from now onwards) are rendered in a
+single document, with eight accreditation cards per DIN-A4 page. They
+have only two variable fields (name and affiliation), and can include
+two top images, although are not signed. Accreditation cards include a
+dot line in the bottom for individual hand-edition.
 
 | ![Accreditations (blank)](man/figures/Accreditations_blank.png) |
 |-----------------------------------------------------------------|
