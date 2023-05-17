@@ -99,12 +99,8 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <p>In case you just want to import some rows (let’s say you have to create some of them, or to re-create some after correcting a mistake), you don´t have to import all the rows. Using the <code>select.column</code> parameter, you can import only the rows which match <code>select.value</code> .</p>
 <p>For example, if you just want to create certificate for Draco Malfoy as an attendee of a class, you can use the following code to import just his row:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span>, </span>
-<span>           select.column <span class="op">=</span> <span class="st">"List_assistants"</span>, select.value <span class="op">=</span> <span class="st">"Draco Malfoy"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   List_assistants</span></span>
-<span><span class="co">#&gt; 2    Draco Malfoy</span></span></code></pre></div>
-<p>or if you have a column specifying which rows to include (as in the following example), you could import just the first an fourth rows setting <code>select.column = "Imports"</code> and <code>select.value = "yes"</code></p>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span>, </span>
+<span>           select.column <span class="op">=</span> <span class="st">"List_assistants"</span>, select.value <span class="op">=</span> <span class="st">"Draco Malfoy"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="id_12-some-advice-for-the-labeler-functions">1.2 Some advice for the labeleR functions<a class="anchor" aria-label="anchor" href="#id_12-some-advice-for-the-labeler-functions"></a>
@@ -376,7 +372,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 </h2>
 <p>If using this package, please cite it:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#citation("labeleR")</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"labeleR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="funding">Funding<a class="anchor" aria-label="anchor" href="#funding"></a>

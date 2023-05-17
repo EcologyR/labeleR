@@ -74,16 +74,9 @@ an attendee of a class, you can use the following code to import just
 his row:
 
 ``` r
-
 read_sheet(url="1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw", 
            select.column = "List_assistants", select.value = "Draco Malfoy")
-#>   List_assistants
-#> 2    Draco Malfoy
 ```
-
-or if you have a column specifying which rows to include (as in the
-following example), you could import just the first an fourth rows
-setting `select.column = "Imports"` and `select.value = "yes"`
 
 ### 1.2 Some advice for the labeleR functions
 
@@ -394,7 +387,7 @@ field5.column = "field5"
 If using this package, please cite it:
 
 ``` r
-#citation("labeleR")
+citation("labeleR")
 ```
 
 ## Funding
