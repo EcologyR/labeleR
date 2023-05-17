@@ -18,8 +18,6 @@ knitr::opts_chunk$set(
 
 # labeleR
 
-<!-- | ![labeleR](man/figures/labeleR.png) | -->
-<!-- |---------------------------------------------------------------------|  -->
 
 <img src="man/figures/labeleR.png" width = "140px" align="right"/>
 
