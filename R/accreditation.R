@@ -66,9 +66,9 @@ create_accreditation <- function(data=NULL,
   if(!dir.exists("tmp")){
     dir.create("tmp")
   }
-  if(!dir.exists("output")){dir.create("output")}
-  erase.lpic <- F
-  erase.rpic <- F
+  # if(!dir.exists("output")){dir.create("output")}
+  # erase.lpic <- F
+  # erase.rpic <- F
   if(is.null(lpic)){
     grDevices::png("tmp/blank.png", 150, 150, "px")
     graphics::plot.new()
@@ -97,7 +97,7 @@ create_accreditation <- function(data=NULL,
   out.name <- paste0("Accreditations")
   output_file <- paste0(out.name,'.pdf')
 
-  if(file.exists(paste0("output/",output_file))){message("Accreditation file already exists. Overwriting.")}
+  # if(file.exists(paste0("output/",output_file))){message("Accreditation file already exists. Overwriting.")}
 
 
   rmarkdown::render(

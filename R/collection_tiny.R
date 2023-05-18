@@ -109,7 +109,7 @@ Please consider shortening the content of your cells. ")}
     dir.create("tmp")
   }
 
-  if(!dir.exists("output")){dir.create("output")}
+  # if(!dir.exists("output")){dir.create("output")}
 
 
   tmpl_file   <- system.file("rmarkdown/templates/collection_small/skeleton/skeleton.Rmd", package="labeleR")
@@ -120,7 +120,7 @@ Please consider shortening the content of your cells. ")}
   out.name <- paste0("Collection_tinylabels")
   output_file <- paste0(out.name,'.pdf')
 
-  if(file.exists(paste0("output/",output_file))){message("Collection_small_labels file already exists. Overwriting.")}
+  # if(file.exists(paste0("output/",output_file))){message("Collection_small_labels file already exists. Overwriting.")}
 
   for (i in 1:ncol(data)){
     data[is.na(data[,i]),i]<-""
