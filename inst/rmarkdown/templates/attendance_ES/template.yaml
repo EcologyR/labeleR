@@ -1,4 +1,4 @@
 name: attendance_ES
 description: >
-   A description of the template
-create_dir: FALSE
+  Attendance certificate in spanish
+create_dir: true

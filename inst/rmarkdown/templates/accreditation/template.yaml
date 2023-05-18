@@ -1,4 +1,4 @@
 name: accreditation
 description: >
-   A description of the template
-create_dir: FALSE
+  Accreditation ID
+create_dir: true

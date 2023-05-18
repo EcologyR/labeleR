@@ -1,4 +1,4 @@
 name: collection_large
 description: >
-   A description of the template
-create_dir: FALSE
+  Large collection label (8 per page) 
+create_dir: true

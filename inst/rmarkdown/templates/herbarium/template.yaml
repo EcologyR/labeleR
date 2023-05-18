@@ -1,4 +1,4 @@
 name: herbarium
 description: >
-   A description of the template
-create_dir: FALSE
+  Herbarium label template
+create_dir: true
