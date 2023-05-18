@@ -1,6 +1,5 @@
 ^labeleR\.Rproj$
 ^\.Rproj\.user$
-
 ^README\.Rmd$
 ^data-raw$
 ^\.github$
@@ -11,5 +10,5 @@
 ^pkgdown$
 .Rprofile
 output/
-prueba2.pdf
-templates/
+
+
