@@ -45,7 +45,7 @@
 #' family.column="Family",
 #' taxon.column="Taxon",
 #' author.column="Author",
-#' det.column="det-conf",
+#' det.column="det",
 #' date.det.column="Det_date",
 #' location.column="Location",
 #' area.description.column="Area_description",
