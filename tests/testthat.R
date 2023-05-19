@@ -126,7 +126,7 @@ create_certificate_participation(data=data, path="output", "s", type = "Adventur
   create_collection_label(data = data, path = path, qr = "QR_code",
                           field1.column = "f1", field3.column = "f2",
                           field5.column = "f3",
-                          logo = system.file("rmarkdown/pictures/herbology.png", package = "labeleR"))
+                          logo = system.file("rmarkdown/pictures/Hogwarts_BnW.png", package = "labeleR"))
 
   testthat::expect_equal(length(list.files(path=path, pattern = ".pdf")),1)
 
