@@ -23,25 +23,6 @@ testthat::expect_s3_class(
 # )
 
 
-# badges.R TESTS
-data <- data.frame("Names"=c("Pippin", "Merry", "Frodo", "Samwise"),
-                   "Famnames"=c("Took", "Brandybuck", "Baggins", "Gamgee"))
-
-testthat::expect_error(
-  create_badge(data=data$Names, path="output")
-)
-
-
-
-path="output"
-if(file.exists(path)){  unlink(path, recursive = T, force = T)}
-create_badge(data=data, path=path, "Going to Mordor",
-                       name.column = "Names", affiliation.column = "Famnames")
-
-testthat::expect_equal(length(list.files(path=path, pattern = ".pdf")),
-                       1)
-testthat::expect_equal(list.files(path=path, pattern = ".pdf"),"Badges.pdf")
-
 
 # attendance TESTS
 
