@@ -1,4 +1,4 @@
-#' Create accreditation cards (8 per DIN-A4 page)
+#' Create badges (8 per DIN-A4 page)
 #'
 #' @param data a data frame including names and (optionally) affiliations.
 #' @param path Character. Path to folder where the PDF file will be saved.
@@ -9,7 +9,7 @@
 #' @param lpic Character (optional) Path to a PNG image to be located in the badge top-left.
 #' @param rpic Character (optional) Path to a PNG image to be located in the badge top-right.
 #'
-#' @return A PDF file is saved on disk.
+#' @return A PDF file named "Badges.pdf" is saved on disk.
 #'
 #' @export
 #'
@@ -18,7 +18,7 @@
 #' @examplesIf interactive()
 #' data <- read_sheet(url = 'https://docs.google.com/spreadsheets/d
 #'         /16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
-#' create_accreditation(
+#' create_badge(
 #' data = data,
 #' path = "labeleR_output",
 #' event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
@@ -27,7 +27,7 @@
 #' lpic = NULL,
 #' rpic = NULL)
 
-create_accreditation <- function(data = NULL,
+create_badge <- function(data = NULL,
                                  path = NULL,
                                  event = NULL,
                                  name.column = NULL,
@@ -102,10 +102,10 @@ create_accreditation <- function(data = NULL,
   }
 
 
-  tmpl_file <- system.file("rmarkdown/templates/accreditation/skeleton/skeleton.Rmd", package = "labeleR")
-  file.copy(tmpl_file, file.path(tmp, "accreditation.Rmd"), overwrite = TRUE)
-  tmpl_file   <- file.path(tmp, "accreditation.Rmd")
-  output_file <- 'Accreditations.pdf'  # allow user to choose name of the pdf file?
+  tmpl_file <- system.file("rmarkdown/templates/badge/skeleton/skeleton.Rmd", package = "labeleR")
+  file.copy(tmpl_file, file.path(tmp, "badge.Rmd"), overwrite = TRUE)
+  tmpl_file   <- file.path(tmp, "badge.Rmd")
+  output_file <- 'Badges.pdf'  # allow user to choose name of the pdf file?
 
 
   rmarkdown::render(
