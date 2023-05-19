@@ -148,9 +148,9 @@ create_certificate_attendance <- function(
 
     if (language == "English") {
       file.copy(
-      from = system.file("rmarkdown/templates/attendance_EN/skeleton/skeleton.Rmd", package = "labeleR"),
-      to = file.path(folder, "attendance.Rmd"),
-      overwrite = TRUE
+        from = system.file("rmarkdown/templates/attendance_EN/skeleton/skeleton.Rmd", package = "labeleR"),
+        to = file.path(folder, "attendance.Rmd"),
+        overwrite = TRUE
       )
     }
 
@@ -165,11 +165,13 @@ create_certificate_attendance <- function(
 
   if (!is.null(template)) {
     stopifnot(file.exists(template))
-    file.copy(
-      from = template,
-      to = file.path(folder, "attendance.Rmd"),
-      overwrite = TRUE
-    )
+    if (template != file.path(folder, "attendance.Rmd")) {
+      file.copy(
+        from = template,
+        to = file.path(folder, "attendance.Rmd"),
+        overwrite = TRUE
+      )
+    }
   }
 
 
