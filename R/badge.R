@@ -1,3 +1,5 @@
+#' Create badges
+#'
 #' Create badges (8 per DIN-A4 page)
 #'
 #' @param data a data frame including names and (optionally) affiliations.
@@ -8,12 +10,18 @@
 #' storing participants' affiliation.
 #' @param lpic Character (optional) Path to a PNG image to be located in the badge top-left.
 #' @param rpic Character (optional) Path to a PNG image to be located in the badge top-right.
+#' @param keep.files Logical. Keep the Rmarkdown template and associated files
+#' in the output folder? Default is FALSE.
+#' @param template Character (optional) Rmarkdown template to use. If not provided,
+#' using the default template included in `labeleR`.
 #'
-#' @return A PDF file named "Badges.pdf" is saved on disk.
+#' @return A PDF file named "Badges.pdf" is saved on disk, in the folder defined
+#' by `path`. If `keep.files = TRUE`, an Rmarkdown and PNG logo files will also
+#' appear in the same folder.
 #'
 #' @export
 #'
-#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
+#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
 #'
 #' @examplesIf interactive()
 #' data <- read_sheet(url = 'https://docs.google.com/spreadsheets/d
@@ -28,13 +36,16 @@
 #' rpic = NULL)
 
 create_badge <- function(data = NULL,
-                                 path = NULL,
-                                 event = NULL,
-                                 name.column = NULL,
-                                 affiliation.column = NULL,
-                                 lpic = NULL,
-                                 rpic = NULL
-) {
+                         path = NULL,
+                         event = NULL,
+                         name.column = NULL,
+                         affiliation.column = NULL,
+                         lpic = NULL,
+                         rpic = NULL,
+                         keep.files = FALSE,
+                         template = NULL) {
+
+  ## Check arguments
 
   if (is.null(data)) {
     stop("A data.frame must be provided. To import from Google Sheets use function 'read_sheet()'")
@@ -69,15 +80,39 @@ create_badge <- function(data = NULL,
          paste0("-", colnames(data), sep = "\n"))
   }
 
-  # Create tempdir to store all intermediate files
-  tmp <- tempdir()
+
+  ## Keep intermediate files? If no, using tempdir for intermediate files
+  if (!isTRUE(keep.files)) {
+    folder <- tempdir()
+  } else {
+    folder <- path  # all files will remain there
+  }
 
 
+  ## Defining Rmd template to use
+  if (is.null(template)) {
+    # use pkg default
+    file.copy(
+      from = system.file("rmarkdown/templates/badge/skeleton/skeleton.Rmd", package = "labeleR"),
+      to = file.path(folder, "badge.Rmd"),
+      overwrite = TRUE
+    )
+  } else {
+    stopifnot(file.exists(template))
+    file.copy(
+      from = template,
+      to = file.path(folder, "badge.Rmd"),
+      overwrite = TRUE
+    )
+  }
+
+
+  ## Logos
   if (!is.null(lpic)) {
     if (!file.exists(lpic)) {
       stop(lpic, " file not found")
     } else {
-      file.copy(from = lpic, to = file.path(tmp, "lpic.png"), overwrite = TRUE)
+      file.copy(from = lpic, to = file.path(folder, "lpic.png"), overwrite = TRUE)
     }
   }
 
@@ -85,33 +120,28 @@ create_badge <- function(data = NULL,
     if (!file.exists(rpic)) {
       stop(rpic, " file not found")
     } else {
-      file.copy(from = rpic, to = file.path(tmp, "rpic.png"), overwrite = TRUE)
+      file.copy(from = rpic, to = file.path(folder, "rpic.png"), overwrite = TRUE)
     }
   }
 
   if (is.null(lpic)) {
-    grDevices::png(file.path(tmp, "lpic.png"), 150, 150, "px")
+    grDevices::png(file.path(folder, "lpic.png"), 150, 150, "px")
     graphics::plot.new()
     grDevices::dev.off()
   }
 
   if (is.null(rpic)) {
-    grDevices::png(file.path(tmp, "rpic.png"), 150, 150, "px")
+    grDevices::png(file.path(folder, "rpic.png"), 150, 150, "px")
     graphics::plot.new()
     grDevices::dev.off()
   }
 
 
-  tmpl_file <- system.file("rmarkdown/templates/badge/skeleton/skeleton.Rmd", package = "labeleR")
-  file.copy(tmpl_file, file.path(tmp, "badge.Rmd"), overwrite = TRUE)
-  tmpl_file   <- file.path(tmp, "badge.Rmd")
-  output_file <- 'Badges.pdf'  # allow user to choose name of the pdf file?
-
-
+  ## Render
   rmarkdown::render(
-    tmpl_file,
+    input = file.path(folder, "badge.Rmd"),
     output_dir = path,
-    output_file = output_file,
+    output_file = "Badges.pdf",
     params = list(
       event        = event,
       names        = data[, name.column],
