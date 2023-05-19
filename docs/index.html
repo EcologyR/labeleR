@@ -63,7 +63,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="labeler">labeleR<a class="anchor" aria-label="anchor" href="#labeler"></a>
 </h1></div>
-<!-- badges: start -->
+<p><img src="reference/figures/labeleR.png" width="140px" align="right"></p>
 <p>This is a package to create your own labels, certificates, and much more! :)</p>
 <p>If you need to create your attendance or participation certificates, accreditation badges, herbarium or collection labels, labeleR is the package you need! Keep an eye on this easy tutorial on how to use it!</p>
 <div class="section level2">
@@ -83,10 +83,11 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("tinytex")</span></span>
 <span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html" class="external-link">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>If you don’t have tinytex installed, or it’s the first time you use labeleR it may take a while until all packages are correctly installed. Don’t worry, it will be much quicker next time!</p>
 <div class="section level3">
 <h3 id="id_11-loading-the-data">1.1 Loading the data<a class="anchor" aria-label="anchor" href="#id_11-loading-the-data"></a>
 </h3>
-<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx2’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table( )</a></code> and alike functions), but it can be also imported from a Google Sheets function.</p>
+<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table( )</a></code> and alike functions), but it can be also imported from a Google Sheets function.</p>
 <p>To do so, you just have to use labeleR’s <code><a href="reference/read_sheet.html">read_sheet( )</a></code> function, specifying the Google Sheet URL. In fact, you don’t need to use the whole URL, but just the specific part of it.<br>
 For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a><strong>1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw</strong>/edit#gid=0 you just need the text in bold. However, a key point to bear in mind is that the Google Sheet document must grant (at least as viewer) access to anyone with the link; otherwise R will not be able to open it.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -152,6 +153,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  name.column<span class="op">=</span><span class="st">"List_assistants"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p>In this example, each certificate will be rendered in an individual PDF document.</p>
 <table class="table">
 <thead><tr class="header">
 <th><img src="reference/figures/Attendance_certificate.png" alt="Attendance certificates"></th>
@@ -163,7 +165,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <div class="section level2">
 <h2 id="id_22-participation-certificates">2.2 Participation certificates<a class="anchor" aria-label="anchor" href="#id_22-participation-certificates"></a>
 </h2>
-<p>Participation certificates are similar to the previous, but with more variable parameters (such as speaker, title and type of communication, etc.). As well as the attendance certificate, these documents can be renderized in english and in spanish.</p>
+<p>Participation certificates are similar to the previous, but with more variable parameters (such as speaker, title and type of communication, etc.). As well as the attendance certificate, these documents can be rendered in english and in spanish.</p>
 <table class="table">
 <colgroup><col width="100%"></colgroup>
 <thead><tr class="header">
@@ -195,6 +197,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span>  date.column<span class="op">=</span><span class="st">"Date"</span>,</span>
 <span>  title.column<span class="op">=</span><span class="st">"Title"</span>,</span>
 <span>  comm.type.column <span class="op">=</span> <span class="st">"Comm.type"</span><span class="op">)</span></span></code></pre></div>
+<p>In this example, each certificate will be rendered in an individual PDF document.</p>
 <table class="table">
 <colgroup><col width="100%"></colgroup>
 <thead><tr class="header">
@@ -207,7 +210,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <div class="section level2">
 <h2 id="id_23-accreditations">2.3 Accreditations<a class="anchor" aria-label="anchor" href="#id_23-accreditations"></a>
 </h2>
-<p>Accreditations are rendered in a single document, with eight accreditation cards per DIN-A4 page. They have only two variable fields (name and affiliation), and can include two top images, although are not signed. Accreditation cards include a dot line in the bottom for individual hand-edition.</p>
+<p>Accreditations (and all documents from now onwards) are rendered in a single document, with eight accreditation cards per DIN-A4 page. They have only two variable fields (name and affiliation), and can include two top images, although are not signed. Accreditation cards include a dot line in the bottom for individual hand-edition.</p>
 <table class="table">
 <thead><tr class="header">
 <th><img src="reference/figures/Accreditations_blank.png" alt="Accreditations (blank)"></th>
@@ -253,12 +256,6 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <h3 id="herbarium-labels-example">Herbarium labels example:<a class="anchor" aria-label="anchor" href="#herbarium-labels-example"></a>
 </h3>
 <p>In this example, we show the labels some students have created for their herbarium assignment of the Herbology class.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Herbarium_labels.png" alt="Herbarium labels example"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw'</span><span class="op">)</span></span>
 <span></span>
@@ -271,7 +268,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span> family.column<span class="op">=</span><span class="st">"Family"</span>,</span>
 <span> taxon.column<span class="op">=</span><span class="st">"Taxon"</span>,</span>
 <span> author.column<span class="op">=</span><span class="st">"Author"</span>,</span>
-<span> det.column<span class="op">=</span><span class="st">"det/conf"</span>,</span>
+<span> det.column<span class="op">=</span><span class="st">"det"</span>,</span>
 <span> date.det.column<span class="op">=</span><span class="st">"Det_date"</span>,</span>
 <span> location.column<span class="op">=</span><span class="st">"Location"</span>,</span>
 <span> area.description.column<span class="op">=</span><span class="st">"Area_description"</span>,</span>
@@ -286,6 +283,12 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <span> assistants.column<span class="op">=</span><span class="st">"Assistants"</span>,</span>
 <span> date.column<span class="op">=</span><span class="st">"Date"</span></span>
 <span> <span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th><img src="reference/figures/Herbarium_labels.png" alt="Herbarium labels example"></th>
+</tr></thead>
+<tbody></tbody>
+</table>
 </div>
 </div>
 <div class="section level2">
@@ -301,7 +304,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <tbody></tbody>
 </table>
 <div class="section level3">
-<h3 id="herbarium-labels-example-1">Herbarium labels example:<a class="anchor" aria-label="anchor" href="#herbarium-labels-example-1"></a>
+<h3 id="collection-labels-example">Collection labels example:<a class="anchor" aria-label="anchor" href="#collection-labels-example"></a>
 </h3>
 <p>In this example we can see six labels created for the school’s displayed collection of stuffed animals.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">

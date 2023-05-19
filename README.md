@@ -3,9 +3,6 @@
 
 # labeleR
 
-<!-- | ![labeleR](man/figures/labeleR.png) | -->
-<!-- |---------------------------------------------------------------------|  -->
-
 <img src="man/figures/labeleR.png" width = "140px" align="right"/>
 
 This is a package to create your own labels, certificates, and much
@@ -41,11 +38,15 @@ place. Don’t worry, its very easy!
 tinytex::install_tinytex()
 ```
 
+If you don’t have tinytex installed, or it’s the first time you use
+labeleR it may take a while until all packages are correctly installed.
+Don’t worry, it will be much quicker next time!
+
 ### 1.1 Loading the data
 
 The very first thing you need to start using labeleR is a data frame
 where the information is included. This data frame can be imported to
-the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx2’
+the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’
 excel sheet, using `read.table( )` and alike functions), but it can be
 also imported from a Google Sheets function.
 
@@ -274,9 +275,6 @@ the labels, so we recommend to be concise.
 In this example, we show the labels some students have created for their
 herbarium assignment of the Herbology class.
 
-| ![Herbarium labels example](man/figures/Herbarium_labels.png) |
-|---------------------------------------------------------------|
-
 ``` r
 data <- read_sheet(url='1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw')
 
@@ -289,7 +287,7 @@ path = "LabeleR_output",
  family.column="Family",
  taxon.column="Taxon",
  author.column="Author",
- det.column="det/conf",
+ det.column="det",
  date.det.column="Det_date",
  location.column="Location",
  area.description.column="Area_description",
@@ -305,6 +303,9 @@ path = "LabeleR_output",
  date.column="Date"
  )
 ```
+
+| ![Herbarium labels example](man/figures/Herbarium_labels.png) |
+|---------------------------------------------------------------|
 
 ## 2.5 Collection labels
 
@@ -322,7 +323,7 @@ without the ‘\#’). By default, background colours are two hues of green.
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
 |-----------------------------------------------------------------------|
 
-### Herbarium labels example:
+### Collection labels example:
 
 In this example we can see six labels created for the school’s displayed
 collection of stuffed animals.
