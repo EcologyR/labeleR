@@ -3,15 +3,12 @@ title: ''
 geometry: "left=2cm,right=2cm,top=1cm,bottom=1cm"
 output:
   pdf_document: default
-  word_document: default
-  html_document:
-    df_print: paged
 classoption: landscape
 params:
   organiser: ""
   hours: ""
   signer: ""
-  signer.position: ""
+  signer.role: ""
   name.column.i: ""
   speaker: ""
   title: ""
@@ -42,7 +39,7 @@ params:
 \vfill
 \includegraphics[height=2cm]{spic.png}\\
 {\Large `r params$signer`} \\
-{\Large `r params$signer.position`} \\
+{\Large `r params$signer.role`} \\
 \end{center}
 \pagebreak
 
