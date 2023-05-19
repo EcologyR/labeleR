@@ -175,6 +175,7 @@ create_certificate_attendance <- function(
 
   #### Logos ####
 
+  ## If logos provided
   if (!is.null(lpic)) {
     if (!file.exists(lpic)) {
       stop(lpic, " file not found")
@@ -191,6 +192,16 @@ create_certificate_attendance <- function(
     }
   }
 
+  if (!is.null(signature.pic)) {
+    if (!file.exists(signature.pic)) {
+      stop(signature.pic, " file not found")
+    } else {
+      file.copy(from = signature.pic, to = file.path(folder, "spic.png"), overwrite = TRUE)
+    }
+  }
+
+
+  ## If logos not provided
   if (is.null(lpic)) {
     grDevices::png(file.path(folder, "lpic.png"), 150, 150, "px")
     graphics::plot.new()
