@@ -83,12 +83,7 @@ create_certificate_attendance <- function(
     dir.create(path)
   }
 
-  stopifnot(is.character(name.column))
-  if (!(name.column) %in% colnames(data)) {
-    stop("Column '", name.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(df), sep = "\n"))
-  }
+  check_column_in_df(data, name.column)
 
   stopifnot(is.character(type))
   stopifnot(is.character(title))
@@ -151,50 +146,9 @@ create_certificate_attendance <- function(
 
   #### Logos ####
 
-  ## If logos provided
-  if (!is.null(lpic)) {
-    if (!file.exists(lpic)) {
-      stop(lpic, " file not found")
-    } else {
-      file.copy(from = lpic, to = file.path(folder, "lpic.png"), overwrite = TRUE)
-    }
-  }
-
-  if (!is.null(rpic)) {
-    if (!file.exists(rpic)) {
-      stop(rpic, " file not found")
-    } else {
-      file.copy(from = rpic, to = file.path(folder, "rpic.png"), overwrite = TRUE)
-    }
-  }
-
-  if (!is.null(signature.pic)) {
-    if (!file.exists(signature.pic)) {
-      stop(signature.pic, " file not found")
-    } else {
-      file.copy(from = signature.pic, to = file.path(folder, "spic.png"), overwrite = TRUE)
-    }
-  }
-
-
-  ## If logos not provided
-  if (is.null(lpic)) {
-    grDevices::png(file.path(folder, "lpic.png"), 150, 150, "px")
-    graphics::plot.new()
-    grDevices::dev.off()
-  }
-
-  if (is.null(rpic)) {
-    grDevices::png(file.path(folder, "rpic.png"), 150, 150, "px")
-    graphics::plot.new()
-    grDevices::dev.off()
-  }
-
-  if (is.null(signature.pic)) {
-    grDevices::png(file.path(folder, "spic.png"), 150, 150, "px")
-    graphics::plot.new()
-    grDevices::dev.off()
-  }
+  use_image(lpic, name = "lpic", folder = folder)
+  use_image(rpic, name = "rpic", folder = folder)
+  use_image(signature.pic, name = "spic", folder = folder)
 
 
 
