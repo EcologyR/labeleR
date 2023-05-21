@@ -3,49 +3,63 @@ title: ''
 geometry: "left=2cm,right=2cm,top=1cm,bottom=1cm"
 output:
   pdf_document: default
-  word_document: default
-  html_document:
-    df_print: paged
 classoption: landscape
 params:
+  name.i: ""
+  affiliation.i: ""
   type.i: ""
-  organiser.i: ""
-  hours.i: ""
+  event.i: ""
+  comm.type.i: ""
+  title.i: ""
+  date.i: ""
   signer.i: ""
-  signer.position.i: ""
-  name.column.i: ""
-  affiliation.column.i: ""
-  date.column.i: ""
-  title.column.i: ""
-  comm.type.column.i: ""
+  signer.role.i: ""
+  freetext.i: ""
 ---
 
 \begin{center}
 \pagenumbering{gobble}
-\includegraphics[height=4cm]{lpic.png} 
+
+% logos %
+\includegraphics[height=3cm]{lpic.png} 
 \hfill
-\includegraphics[height=4cm]{rpic.png}
+\includegraphics[height=3cm]{rpic.png}
 \linebreak
 \bigskip
+
 {\Huge\bf Certificado de participación} 
 \vfill
-{\Huge `r params$name.column.i` } \\
-{\Large\bf `r params$affiliation.column.i` } \\
+
+{\Huge `r params$name.i` } \\
+
+\Large
+
+`r params$affiliation.i` \\
 \vfill
-{\Large ha participado en:}
-{\Large `r params$type.i` - `r params$organiser.i` } \\
+
+ha participado en: `r params$type.i` `r params$event.i` \\
 \vfill
-{\Large con la comunicación `r params$comm.type.column.i` titulada:} \\
+
+con el/la `r params$comm.type.i`: \\
 \vfill
-{\Huge\bf `r params$title.column.i` } \\
+
+{\Huge\bf `r params$title.i` } \\
 \vfill
-{\Large en la fecha `r params$date.column.i` y con una duración de `r params$hours.i` hora(s).} \\
+
+`r params$freetext.i` \\
 \vfill
-{\Large Firmado por:}\\
+
+con fecha `r params$date.i`. \\
 \vfill
-\includegraphics[height=2cm]{spic.png}\\
-{\Large `r params$signer.i`} \\
-{\Large `r params$signer.position.i`} \\
+
+
+% signature %
+Firmado por:\\
+\vfill
+\includegraphics[height=2cm]{spic.png} \\
+`r params$signer.i` \\
+`r params$signer.role.i` \\
+
 \end{center}
 \pagebreak
 
