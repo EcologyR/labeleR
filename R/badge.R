@@ -64,21 +64,13 @@ create_badge <- function(data = NULL,
     event <- ""
   }
 
-  if (!(name.column) %in% colnames(data)) {
-    stop("Column '", name.column,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep = "\n"))
-  }
+  check_column_in_df(data, name.column)
+  if (!is.null(affiliation.column)) check_column_in_df(data, affiliation.column)
 
   if (is.null(affiliation.column)) {
     affiliation.column <- ""
   }
 
-  if (!(affiliation.column) %in% c(colnames(data),"")) {
-    stop("Column '", affiliation.column ,
-         "' is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep = "\n"))
-  }
 
 
   ## Keep intermediate files? If no, using tempdir for intermediate files
@@ -108,33 +100,10 @@ create_badge <- function(data = NULL,
 
 
   ## Logos
-  if (!is.null(lpic)) {
-    if (!file.exists(lpic)) {
-      stop(lpic, " file not found")
-    } else {
-      file.copy(from = lpic, to = file.path(folder, "lpic.png"), overwrite = TRUE)
-    }
-  }
 
-  if (!is.null(rpic)) {
-    if (!file.exists(rpic)) {
-      stop(rpic, " file not found")
-    } else {
-      file.copy(from = rpic, to = file.path(folder, "rpic.png"), overwrite = TRUE)
-    }
-  }
+  use_image(lpic, name = "lpic", folder = folder)
+  use_image(rpic, name = "rpic", folder = folder)
 
-  if (is.null(lpic)) {
-    grDevices::png(file.path(folder, "lpic.png"), 150, 150, "px")
-    graphics::plot.new()
-    grDevices::dev.off()
-  }
-
-  if (is.null(rpic)) {
-    grDevices::png(file.path(folder, "rpic.png"), 150, 150, "px")
-    graphics::plot.new()
-    grDevices::dev.off()
-  }
 
 
   ## Render
@@ -145,7 +114,7 @@ create_badge <- function(data = NULL,
     params = list(
       event        = event,
       names        = data[, name.column],
-      affiliations = data[, affiliation.column]
+      affiliations = if (affiliation.column == "") {"~"} else {data[, affiliation.column]}
     )
   )
 
