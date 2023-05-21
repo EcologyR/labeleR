@@ -4,14 +4,14 @@
 #' @param path Character. Path to folder where the PDF certificates will be saved.
 #' @param language Character. Select 'English' or 'Spanish'.
 #' @param name.column Character. Name of the column in `data` storing attendees' name.
-#' @param type Character. Type of event (conference, workshop, seminar...)
+#' @param type Character (optional). Type of event (conference, workshop, seminar...)
 #' @param title Character. Title of the event
-#' @param organiser Character. Name of the organizing entity
-#' @param speaker Name of the speaker of the event
 #' @param date Date of the event
 #' @param hours Number of hours the event has lasted
-#' @param signer Character. Person who credits the certificate
-#' @param signer.role Signer's role or position
+#' @param freetext Character (optional). Free text to insert between the
+#' event title and date. Can include LaTeX commands (see examples).
+#' @param signer Character. Person who signs the certificate
+#' @param signer.role Character. Signer's role or position
 #' @param signature.pic Character (optional) Path to a PNG image to appear in
 #' the bottom, above signer's name.
 #' @param lpic Character (optional) Path to a PNG image to appear in the top-left.
@@ -30,21 +30,21 @@
 #' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
 #'
 #' @examplesIf interactive()
-#' data <- data.frame(Names = "Joe", "Mary")
+#' data <- data.frame(Names = c("Joe", "Mary"))
+#'
 #' create_certificate_attendance(data,
 #' path = "labeleR_output",
 #' language = "English",
 #' name.column = "Names",
 #' type = "class",
 #' title = "Potions Class",
-#' organiser = "Hogwarts School year 1992-1993",
+#' date = "01/01/2021",
+#' hours = 200,
+#' freetext = "organised by {\\bf Hogwarts School year 1992-1993}",
 #' signer = "A.P.W.B. Dumbledore",
 #' signer.role = "School Headmaster",
-#' hours = 200,
-#' date = "01/01/2021",
-#' speaker = "Severus Snape",
-#' rpic = NULL,
 #' lpic = NULL,
+#' rpic = NULL,
 #' signature.pic = NULL,
 #' )
 
@@ -54,14 +54,13 @@ create_certificate_attendance <- function(
     path = NULL,
     language = c("English", "Spanish"),
     name.column = NULL,
-    type = NULL,
-    title = NULL,
-    organiser = NULL,
-    speaker = NULL,
-    date = NULL,
-    hours = NULL,
-    signer = NULL,
-    signer.role = NULL,
+    type = "",
+    title = "",
+    date = "",
+    hours = "",
+    freetext = "",
+    signer = "",
+    signer.role = "",
     signature.pic = NULL,
     lpic = NULL,
     rpic = NULL,
@@ -91,45 +90,20 @@ create_certificate_attendance <- function(
          paste0("-", colnames(df), sep = "\n"))
   }
 
-  if (is.null(type)) {
-    stop("The type of event (conference, workshop, seminar...) must be specified")
-  }
   stopifnot(is.character(type))
-
-  if (is.null(title)) {
-    stop("A title must be specified")
-  }
   stopifnot(is.character(title))
+  stopifnot(is.character(freetext))
+  stopifnot(is.character(signer))
+  stopifnot(is.character(signer.role))
 
-  if (is.null(organiser)) {
-    stop("The organiser of the event must be specified")
-  }
-  stopifnot(is.character(organiser))
-
-  if (is.null(speaker)) {
-    stop("Please provide the speaker name")
-  }
-  stopifnot(is.character(speaker))
-
-  if (is.null(date)) {
-    stop("Date must be specfied")
+  if (!(is.character(date))) {
+    date <- as.character(date)
   }
 
-  if (is.null(hours)) {
-    stop("Please specify the number of hours")
-  }
   if (!(is.character(hours))) {
     hours <- as.character(hours)
   }
 
-  if (is.null(signer)) {
-    stop("Signer name must be specified")
-  }
-  stopifnot(is.character(signer))
-
-  if (is.null(signer.role)) {
-    signer.role <- ""
-  }
 
   #### End of argument checks ####
 
@@ -241,15 +215,14 @@ create_certificate_attendance <- function(
       output_dir = path,
       output_file = output_file,
       params = list(
+        name.column.i   = if (name.column     == "") {bl.char} else {data[i, name.column]},
         type            = if (type            == "") {bl.char} else {type},
-        organiser       = if (organiser       == "") {bl.char} else {organiser},
+        title           = if (title           == "") {bl.char} else {title},
+        freetext        = if (freetext        == "") {bl.char} else {freetext},
+        date            = if (date            == "") {bl.char} else {date},
         hours           = if (hours           == "") {bl.char} else {hours},
         signer          = if (signer          == "") {bl.char} else {signer},
-        signer.role     = if (signer.role     == "") {bl.char} else {signer.role},
-        name.column.i   = if (name.column     == "") {bl.char} else {data[i, name.column]},
-        speaker         = if (speaker         == "") {bl.char} else {speaker},
-        title           = if (title           == "") {bl.char} else {title},
-        date            = if (date            == "") {bl.char} else {date}
+        signer.role     = if (signer.role     == "") {bl.char} else {signer.role}
       )
     )
 

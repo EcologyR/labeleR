@@ -5,41 +5,54 @@ output:
   pdf_document: default
 classoption: landscape
 params:
-  organiser: ""
-  hours: ""
-  signer: ""
-  signer.role: ""
   name.column.i: ""
-  speaker: ""
+  type: ""
   title: ""
   date: ""
-  type: ""
+  hours: ""
+  freetext: ""
+  signer: ""
+  signer.role: ""
 ---
-
 
 \begin{center}
 \pagenumbering{gobble}
-\includegraphics[height=4cm]{lpic.png} 
+
+% logos %
+\includegraphics[height=3cm]{lpic.png} 
 \hfill
-\includegraphics[height=4cm]{rpic.png}
+\includegraphics[height=3cm]{rpic.png}
 \linebreak
 \vfill
+
 {\fontsize{40pt}{40pt}\selectfont\bf Certificado de asistencia} 
 \vfill
+
 {\fontsize{40pt}{40pt}\selectfont `r params$name.column.i` } \\
 \vfill
-{\Large ha asistido a:}
-{\Large\bf `r params$type` - `r params$title` (`r params$organiser`)} \\
+
+\Large
+
+ha asistido al `r params$type` {\bf `r params$title`} \\
 \vfill
-{\Large por: `r params$speaker` con fecha de: `r params$date` } \\
+
+`r params$freetext` \\
 \vfill
-{\Large y una duración de `r params$hours` hora(s).} \\
+
+con fecha `r params$date` \\
 \vfill
-{\Large Firmado por:}\\
+
+y una duración de `r params$hours` hora(s). \\
+\vfill
+
+
+% firma %
+Firmado por: \\
 \vfill
 \includegraphics[height=2cm]{spic.png}\\
-{\Large `r params$signer`} \\
-{\Large `r params$signer.role`} \\
+`r params$signer` \\
+`r params$signer.role` \\
+
 \end{center}
 \pagebreak
 
