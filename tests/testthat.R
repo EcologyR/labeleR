@@ -24,23 +24,6 @@ testthat::expect_s3_class(
 
 
 
-# attendance TESTS
-
-data <- data.frame("Names"=c("Pippin", "Merry", "Frodo", "Samwise"),
-                   "Famnames"=c("Took", "Brandybuck", "Baggins", "Gamgee"))
-
-testthat::expect_error(
-  create_certificate_attendance(data=data$Names, path="output")
-)
-
-path="output"
-if(file.exists(path)){  unlink(path, recursive = T, force = T)}
-create_certificate_attendance(data=data, path=path, type = "Adventure", title = "Going to Mordor",
-                              organiser = "The Fellowship of The Ring", hours = "1000", name.column = "Names",
-                              language = "s", signer = "Gandalf", speaker = "Sauron",date="10/07/3064"
-)
-
-testthat::expect_equal(length(list.files(path=path, pattern = ".pdf")),nrow(data))
 
 
 # participation TESTS

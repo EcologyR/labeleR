@@ -1,188 +1,185 @@
 #' Create certificate of attendance
 #'
-#' @param data a data frame  to create attendance certificates.
-#' @param path Folder path where the output will be printed
-#' @param language Select english or spanish
-#' @param type Type of event (conference, workshop, seminar...)
-#' @param title Title of the event
-#' @param organiser Name of the organizing entity
-#' @param hours Number of hours the event has lasted
-#' @param signer Person who credits the certificate
-#' @param signer.position Position of the \code{signer}
+#' @param data a data frame containing attendees' names (in `name.column`)
+#' @param path Character. Path to folder where the PDF certificates will be saved.
+#' @param language Character. Select 'English' or 'Spanish'.
+#' @param name.column Character. Name of the column in `data` storing attendees' name.
+#' @param type Character (optional). Type of event (conference, workshop, seminar...)
+#' @param title Character. Title of the event
 #' @param date Date of the event
-#' @param speaker Name of the speaker of the event
-#' @param lpic PNG object. File route of the top-left image. Can be blank if set to NULL.
-#' @param rpic PNG object. File route of the top-right image. Can be blank if set to NULL.
-#' @param signature.pic PNG object. File route of a signature image. Can be blank if set to NULL.
-#' @param name.column Column name of the Google Sheet column which specifies the attendee's name.
+#' @param hours Number of hours the event has lasted
+#' @param freetext Character (optional). Free text to insert between the
+#' event title and date. Can include LaTeX commands (see examples).
+#' @param signer Character. Person who signs the certificate
+#' @param signer.role Character. Signer's role or position
+#' @param signature.pic Character (optional) Path to a PNG image to appear in
+#' the bottom, above signer's name.
+#' @param lpic Character (optional) Path to a PNG image to appear in the top-left.
+#' @param rpic Character (optional) Path to a PNG image to appear in the top-right.
+#' @param keep.files Logical. Keep the Rmarkdown template and associated files
+#' in the output folder? Default is FALSE.
+#' @param template Character (optional) Rmarkdown template to use. If not provided,
+#' using the default template included in `labeleR`.
 #'
-#' @return An 'output' folder with the PDF documents inside
+#' @return PDF certificates are saved on disk, in the folder defined
+#' by `path`. If `keep.files = TRUE`, the Rmarkdown template and PNG logo files
+#' will also appear in the same folder.
 #'
 #' @export
 #'
-#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
+#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
 #'
-#' @examples
-#' \dontrun{
-#' create_certificate_attendance(
-#' data= read_sheet('https://docs.google.com/spreadsheets/
-#'         d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
-#' path = "LabeleR_output",
-#' language="en",
-#' type="class",
-#' title="Potions Class",
-#' organiser="Hogwarts School year 1992-1993",
-#' signer="A.P.W.B. Dumbledore",
-#' signer.position="School Headmaster",
-#' hours=200,
-#' date="01/01/2021",
-#' speaker="Severus Snape",
-#' rpic=NULL,
-#' lpic=NULL,
-#' signature.pic=NULL,
-#' name.column="List_assistants"
+#' @examplesIf interactive()
+#' data <- data.frame(Names = c("Joe", "Mary"))
+#'
+#' create_certificate_attendance(data,
+#' path = "labeleR_output",
+#' language = "English",
+#' name.column = "Names",
+#' type = "class",
+#' title = "Potions Class",
+#' date = "01/01/2021",
+#' hours = 200,
+#' freetext = "organised by {\\bf Hogwarts School year 1992-1993}",
+#' signer = "A.P.W.B. Dumbledore",
+#' signer.role = "School Headmaster",
+#' lpic = NULL,
+#' rpic = NULL,
+#' signature.pic = NULL,
 #' )
-#' }
+
 
 create_certificate_attendance <- function(
-    data=NULL,
-    path=NULL,
-    language ="english",
-    type=NULL,
-    title=NULL,
-    organiser=NULL,
-    hours=NULL,
-    signer=NULL,
-    signer.position=NULL,
-    date=NULL,
-    speaker=NULL,
-    lpic=NULL,
-    rpic=NULL,
+    data = NULL,
+    path = NULL,
+    language = c("English", "Spanish"),
+    name.column = NULL,
+    type = "",
+    title = "",
+    date = "",
+    hours = "",
+    freetext = "",
+    signer = "",
+    signer.role = "",
     signature.pic = NULL,
-    name.column=NULL){
+    lpic = NULL,
+    rpic = NULL,
+    keep.files = FALSE,
+    template = NULL) {
 
-  if(!dir.exists("tmp")){dir.create("tmp")}
+  language <- match.arg(language)
 
-  if (language%in%c("sp", "s")){language<- "spanish"}
-  if (language%in%c("en", "e")){language<- "english"}
-  match.arg(language, c("spanish", "english"),F)
+  ## Check arguments
 
-  if(is.null(data)){
-    stop(" a 'data' data.frame must be provided.
-         To import from Google Sheets use function 'read_sheet()'")
+  if (is.null(data)) {
+    stop("A data.frame must be provided. To import from Google Sheets use function 'read_sheet()'")
   }
-  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
 
-  if(is.null(path)){stop("A folder path must be specified.")}
-  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
-    dir.create(path)}
+  if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
-  if(is.null(type)){
-    stop("A type of event (conference, workshop, seminar...) must be specfied")
+  if (is.null(path)) {stop("A folder path must be specified.")}
+  if (!file.exists(path)) {
+    message("The specified folder does not exist. Creating folder")
+    dir.create(path)
   }
-  if(is.null(organiser)){
-    stop("An organiser must be specfied")
+
+  check_column_in_df(data, name.column)
+
+  stopifnot(is.character(type))
+  stopifnot(is.character(title))
+  stopifnot(is.character(freetext))
+  stopifnot(is.character(signer))
+  stopifnot(is.character(signer.role))
+
+  if (!(is.character(date))) {
+    date <- as.character(date)
   }
-  if(is.null(title)){
-    stop("A title must be specfied")
-  }
-  if(is.null(signer)){
-    stop("An signer name must be specfied")
-  }
-  if(is.null(signer.position)){
-    signer.position <- ""
-  }
-  if(is.null(hours)){
-    stop("A number of hours name must be specfied")
-  }
-  if(is.null(speaker)){
-    stop("A speaker name must be specfied")
-  }
-  if(is.null(date)){
-    stop("A date must be specfied")
-  }
-  if(!(is.character(hours))) {
+
+  if (!(is.character(hours))) {
     hours <- as.character(hours)
   }
 
 
-
-  if(is.null(lpic))         {
-    grDevices::png("tmp/blank.png", 150, 150, "px")
-    graphics::plot.new()
-    grDevices::dev.off()
-    lpic <- "tmp/blank.png"
-  }
-  if(is.null(rpic))         {
-    grDevices::png("tmp/blank.png", 150, 150, "px")
-    graphics::plot.new()
-    grDevices::dev.off()
-    rpic <- "tmp/blank.png"
-  }
-  if(is.null(signature.pic)){
-    grDevices::png("tmp/blank.png", 150, 150, "px")
-    graphics::plot.new()
-    grDevices::dev.off()
-    signature.pic <- "tmp/blank.png"
-  }
-
-  file.copy(lpic, "tmp/lpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(rpic, "tmp/rpic.png")#create files to call them lpic@rpic to make it homogeneous
-  file.copy(signature.pic, "tmp/spic.png")#create files to call them lpic@rpic to make it homogeneous
+  #### End of argument checks ####
 
 
-  df <- data
-
-  if(!(name.column)%in%colnames(df)){
-    stop("Column '", name.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(df), sep="\n"))
+  ## Keep intermediate files? If no, using tempdir for intermediate files
+  if (!isTRUE(keep.files)) {
+    folder <- tempdir()
+  } else {
+    folder <- path  # all files will remain there
   }
 
 
-  # load either pdf or word certificate template
-  if(language == "english"){
-    tmpl_file   <- system.file("rmarkdown/templates/attendance_EN/skeleton/skeleton.Rmd", package="labeleR")
-    }
-  if(language == "spanish"){
-    tmpl_file   <- system.file("rmarkdown/templates/attendance_ES/skeleton/skeleton.Rmd", package="labeleR")
+  #### Defining Rmd template to use ####
+
+  if (is.null(template)) { # use pkg default
+
+    if (language == "English") {
+      file.copy(
+        from = system.file("rmarkdown/templates/attendance_EN/skeleton/skeleton.Rmd", package = "labeleR"),
+        to = file.path(folder, "attendance.Rmd"),
+        overwrite = TRUE
+      )
     }
 
-  file.copy(tmpl_file, "tmp/attendance.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
+    if (language == "Spanish") {
+      file.copy(
+        from = system.file("rmarkdown/templates/attendance_ES/skeleton/skeleton.Rmd", package = "labeleR"),
+        to = file.path(folder, "attendance.Rmd"),
+        overwrite = TRUE
+      )
+    }
+  }
 
-  tmpl_file   <- "tmp/attendance.Rmd"
+  if (!is.null(template)) {
+    stopifnot(file.exists(template))
+    if (template != file.path(folder, "attendance.Rmd")) {
+      file.copy(
+        from = template,
+        to = file.path(folder, "attendance.Rmd"),
+        overwrite = TRUE
+      )
+    }
+  }
 
-  for(i in 1:nrow(df)){
 
-    if(language == "english"){out.name <- "Attendance"}
-    if(language == "spanish"){out.name <- "Asistencia"}
+  #### Logos ####
 
-    out.name <- paste0(out.name, "_", df[i,name.column])
-    output_file <- paste0(out.name,'.pdf')
+  use_image(lpic, name = "lpic", folder = folder)
+  use_image(rpic, name = "rpic", folder = folder)
+  use_image(signature.pic, name = "spic", folder = folder)
+
+
+
+  #### Render #####
+
+  for (i in 1:nrow(data)) {
+
+    if (language == "English") {out.name <- "Attendance"}
+    if (language == "Spanish") {out.name <- "Asistencia"}
+
+    out.name <- paste0(out.name, "_", data[i, name.column])
+    output_file <- paste0(out.name, '.pdf')
 
     bl.char <- "~"
 
     rmarkdown::render(
-      tmpl_file,
+      input = file.path(folder, "attendance.Rmd"),
       output_dir = path,
       output_file = output_file,
       params = list(
-        type            = if(type            ==""){bl.char}else{type},
-        organiser       = if(organiser       ==""){bl.char}else{organiser},
-        hours           = if(hours           ==""){bl.char}else{hours},
-        signer          = if(signer          ==""){bl.char}else{signer},
-        signer.position = if(signer.position ==""){bl.char}else{signer.position},
-        name.column.i   = if(name.column     ==""){bl.char}else{df[i,name.column]},
-        speaker         = if(speaker         ==""){bl.char}else{speaker},
-        title           = if(title           ==""){bl.char}else{title},
-        date            = if(date            ==""){bl.char}else{date}
+        name.column.i   = if (name.column     == "") {bl.char} else {data[i, name.column]},
+        type            = if (type            == "") {bl.char} else {type},
+        title           = if (title           == "") {bl.char} else {title},
+        freetext        = if (freetext        == "") {bl.char} else {freetext},
+        date            = if (date            == "") {bl.char} else {date},
+        hours           = if (hours           == "") {bl.char} else {hours},
+        signer          = if (signer          == "") {bl.char} else {signer},
+        signer.role     = if (signer.role     == "") {bl.char} else {signer.role}
       )
     )
 
-  #   if(!dir.exists("output")){dir.create("output")}
-  #   file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite=T)#create files to call them lpic@rpic to make it homogeneous
   }
-
-  unlink("tmp", recursive = T, force = T)
 
 }
