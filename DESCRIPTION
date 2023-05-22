@@ -19,8 +19,8 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Suggests: 
+    gsheet,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
     rmarkdown
-
