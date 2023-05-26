@@ -36,22 +36,22 @@ for (i in 1:length(params$field1.i)) {
   \\definecolor{mycolortext}{HTML}{",params$textcolor,"}
   \\begin{mdframed}[linecolor=mycolortext, linewidth=2pt, backgroundcolor=mycolor]\n
   \\bigskip
+  \\bigskip
   \\begin{flushright}
-  \\begin{minipage}[t][-50ex][t]{16em}",
+  \\begin{minipage}[b][0ex][t]{16em}",
   if(!is.null(qr)) "\\qrcode[height=2in, version=5]{",
   if(!is.null(qr)) params$qr.i[i],
   if(!is.null(qr)) "}",
   "
   \\end{minipage}
   \\end{flushright}
-  \\bigskip
   \\begin{adjustwidth}{1cm}{1cm}
-  {\\fontsize{45pt}{0pt}\\selectfont\\bf\\textcolor{mycolortext}{", 
+  {\\fontsize{40pt}{100pt}\\emph{\\selectfont\\textcolor{mycolortext}{",
   params$field1.i[i],
   "}} \\\\
   \\linebreak
   \\linebreak
-  {\\fontsize{40pt}{100pt}\\selectfont\\textcolor{mycolortext}{\\emph{",
+  {\\fontsize{40pt}{0pt}\\selectfont\\bf\\textcolor{mycolortext}{", 
   params$field2.i[i],
   "}}} \\\\
   \\vfill

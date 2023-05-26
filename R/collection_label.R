@@ -18,7 +18,7 @@
 #'
 #' @export
 #'
-#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
+#' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo
 #'
 #' @examples
 #' data <- read_sheet("https://docs.google.com/spreadsheets/d/
@@ -82,7 +82,15 @@ Please consider shortening the content of your cells. ")}
          " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
-  data[,field1.column] <- toupper(data[,field1.column])
+  if(field1.column!=""){
+    pos <- which(nchar(data[,field1.column])>30)
+    esp <- sapply(gregexpr(" ", data[pos,field1.column]),'[',)
+    esp <- apply(X = esp, 2, FUN = function(x){return(max(esp[x<30]))})
+    data[pos,field1.column] <- paste0(substr(data[pos,field1.column],1,esp), "\\hfill \\linebreak",
+                                      substr(data[pos,field1.column],esp, nchar(data[pos,field1.column])))
+    }
+
+
 
   if(is.null(field2.column)){
     field2.column<-""
@@ -92,6 +100,9 @@ Please consider shortening the content of your cells. ")}
          " is not a column of your 'data' object. Please select from \n",
          paste0("-", colnames(data), sep="\n"))
   }
+
+  data[,field2.column] <- toupper(data[,field2.column])
+
   if(is.null(field3.column)){
     field3.column<-""
   }
