@@ -2,12 +2,11 @@
 .onAttach <- function(lib, pkg)
 {
   packageStartupMessage(
-    cat("Welcome to the labeleR package! Let's create some labels!\n",
-           "Amazing! This is just like magic!","\n\n",
-           "Package developed by Julia G. de Aledo & Ignacio Ramos-Gutiérrez\n",
-
+    cat(" \033[90mWelcome to the\033[39m \033[4m\033[1mlabeleR\033[22m\033[24m \033[90mpackage.\033[39m\n\n",
+           "\033[3mPackage developed by Ignacio Ramos-Gutiérrez, Julia G. de Aledo & Francisco Rodríguez-Sánchez\033[23m\n\n",
+           "\U1F426", " TW: " , "@iramosgutierrez","\n",
            "\U1F426", " TW: " , "@juliagdealedo", "\n",
-           "\U1F426", " TW: " , "@iramosgutierrez","\n")
+           "\U1F426", " TW: " , "@frod_san","\n")
     )
 }
 
