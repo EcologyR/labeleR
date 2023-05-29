@@ -2,7 +2,7 @@
 % Please edit documentation in R/badge.R
 \name{create_badge}
 \alias{create_badge}
-\title{Create badges (8 per DIN-A4 page)}
+\title{Create badges}
 \usage{
 create_badge(
   data = NULL,
@@ -11,7 +11,9 @@ create_badge(
   name.column = NULL,
   affiliation.column = NULL,
   lpic = NULL,
-  rpic = NULL
+  rpic = NULL,
+  keep.files = FALSE,
+  template = NULL
 )
 }
 \arguments{
@@ -29,9 +31,17 @@ storing participants' affiliation.}
 \item{lpic}{Character (optional) Path to a PNG image to be located in the badge top-left.}
 
 \item{rpic}{Character (optional) Path to a PNG image to be located in the badge top-right.}
+
+\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+in the output folder? Default is FALSE.}
+
+\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+using the default template included in \code{labeleR}.}
 }
 \value{
-A PDF file named "Badges.pdf" is saved on disk.
+A PDF file named "Badges.pdf" is saved on disk, in the folder defined
+by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown and PNG logo files will also
+appear in the same folder.
 }
 \description{
 Create badges (8 per DIN-A4 page)
@@ -51,5 +61,5 @@ rpic = NULL)
 \dontshow{\}) # examplesIf}
 }
 \author{
-Julia G. de Aledo, Ignacio Ramos-Gutierrez
+Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
 }

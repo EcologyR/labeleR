@@ -66,5 +66,5 @@ field5.column = "field7"
 
 }
 \author{
-Julia G. de Aledo, Ignacio Ramos-Gutierrez
+Ignacio Ramos-Gutierrez, Julia G. de Aledo
 }

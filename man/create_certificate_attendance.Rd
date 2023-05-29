@@ -7,80 +7,88 @@
 create_certificate_attendance(
   data = NULL,
   path = NULL,
-  language = "english",
-  type = NULL,
-  title = NULL,
-  organiser = NULL,
-  hours = NULL,
-  signer = NULL,
-  signer.position = NULL,
-  date = NULL,
-  speaker = NULL,
+  language = c("English", "Spanish"),
+  name.column = NULL,
+  type = "",
+  title = "",
+  date = "",
+  hours = "",
+  freetext = "",
+  signer = "",
+  signer.role = "",
+  signature.pic = NULL,
   lpic = NULL,
   rpic = NULL,
-  signature.pic = NULL,
-  name.column = NULL
+  keep.files = FALSE,
+  template = NULL
 )
 }
 \arguments{
-\item{data}{a data frame  to create attendance certificates.}
+\item{data}{a data frame containing attendees' names (in \code{name.column})}
 
-\item{path}{Folder path where the output will be printed}
+\item{path}{Character. Path to folder where the PDF certificates will be saved.}
 
-\item{language}{Select english or spanish}
+\item{language}{Character. Select 'English' or 'Spanish'.}
 
-\item{type}{Type of event (conference, workshop, seminar...)}
+\item{name.column}{Character. Name of the column in \code{data} storing attendees' name.}
 
-\item{title}{Title of the event}
+\item{type}{Character (optional). Type of event (conference, workshop, seminar...)}
 
-\item{organiser}{Name of the organizing entity}
-
-\item{hours}{Number of hours the event has lasted}
-
-\item{signer}{Person who credits the certificate}
-
-\item{signer.position}{Position of the \code{signer}}
+\item{title}{Character. Title of the event}
 
 \item{date}{Date of the event}
 
-\item{speaker}{Name of the speaker of the event}
+\item{hours}{Number of hours the event has lasted}
 
-\item{lpic}{PNG object. File route of the top-left image. Can be blank if set to NULL.}
+\item{freetext}{Character (optional). Free text to insert between the
+event title and date. Can include LaTeX commands (see examples).}
 
-\item{rpic}{PNG object. File route of the top-right image. Can be blank if set to NULL.}
+\item{signer}{Character. Person who signs the certificate}
 
-\item{signature.pic}{PNG object. File route of a signature image. Can be blank if set to NULL.}
+\item{signer.role}{Character. Signer's role or position}
 
-\item{name.column}{Column name of the Google Sheet column which specifies the attendee's name.}
+\item{signature.pic}{Character (optional) Path to a PNG image to appear in
+the bottom, above signer's name.}
+
+\item{lpic}{Character (optional) Path to a PNG image to appear in the top-left.}
+
+\item{rpic}{Character (optional) Path to a PNG image to appear in the top-right.}
+
+\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+in the output folder? Default is FALSE.}
+
+\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+using the default template included in \code{labeleR}.}
 }
 \value{
-An 'output' folder with the PDF documents inside
+PDF certificates are saved on disk, in the folder defined
+by \code{path}. If \code{keep.files = TRUE}, the Rmarkdown template and PNG logo files
+will also appear in the same folder.
 }
 \description{
 Create certificate of attendance
 }
 \examples{
-\dontrun{
-create_certificate_attendance(
-data= read_sheet('https://docs.google.com/spreadsheets/
-        d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0'),
-path = "LabeleR_output",
-language="en",
-type="class",
-title="Potions Class",
-organiser="Hogwarts School year 1992-1993",
-signer="A.P.W.B. Dumbledore",
-signer.position="School Headmaster",
-hours=200,
-date="01/01/2021",
-speaker="Severus Snape",
-rpic=NULL,
-lpic=NULL,
-signature.pic=NULL,
-name.column="List_assistants"
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+data <- data.frame(Names = c("Joe", "Mary"))
+
+create_certificate_attendance(data,
+path = "labeleR_output",
+language = "English",
+name.column = "Names",
+type = "class",
+title = "Potions Class",
+date = "01/01/2021",
+hours = 200,
+freetext = "organised by {\\\\bf Hogwarts School year 1992-1993}",
+signer = "A.P.W.B. Dumbledore",
+signer.role = "School Headmaster",
+lpic = NULL,
+rpic = NULL,
+signature.pic = NULL,
 )
-}
+\dontshow{\}) # examplesIf}
 }
 \author{
-Julia G. de Aledo, Ignacio Ramos-Gutierrez
+Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
 }

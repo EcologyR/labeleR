@@ -7,85 +7,110 @@
 create_certificate_participation(
   data = NULL,
   path = NULL,
-  language = "english",
-  type = NULL,
-  organiser = NULL,
-  hours = NULL,
-  signer = NULL,
-  signer.position = NULL,
-  lpic = NULL,
-  rpic = NULL,
-  signature.pic = NULL,
+  language = c("English", "Spanish"),
   name.column = NULL,
   affiliation.column = NULL,
-  date.column = NULL,
+  comm.type.column = NULL,
   title.column = NULL,
-  comm.type.column = NULL
+  date.column = NULL,
+  type = "",
+  event = "",
+  freetext = "",
+  signer = "",
+  signer.role = "",
+  signature.pic = NULL,
+  lpic = NULL,
+  rpic = NULL,
+  keep.files = FALSE,
+  template = NULL
 )
 }
 \arguments{
-\item{data}{A data frame including information to create the certificate of participation}
+\item{data}{A data frame containing participants' names and contributions}
 
-\item{path}{Folder path where the output will be printed}
+\item{path}{path Character. Path to folder where the PDF certificates will be saved.}
 
-\item{language}{Select english or spanish}
+\item{language}{Character. Select 'English' or 'Spanish'.}
 
-\item{type}{Type of event (conference, workshop, seminar...)}
+\item{name.column}{Character. Name of the column in \code{data} storing participants' name.}
 
-\item{organiser}{Name of the organizing entity}
+\item{affiliation.column}{Character (optional). Name of the column in \code{data}
+storing participants' affiliation}
 
-\item{hours}{Number of hours the event has lasted}
+\item{comm.type.column}{Character. Name of the column in \code{data} reporting
+participation type (e.g. poster, oral communication, etc)}
 
-\item{signer}{Person who credits the certificate}
+\item{title.column}{Character. Name of the column in \code{data} storing
+contribution titles.}
 
-\item{signer.position}{Position of the \code{signer}}
+\item{date.column}{Character. Name of the column in \code{data} storing dates of
+participation.}
 
-\item{lpic}{PNG object route. File route of the top-left image. Can be blank if set to NULL.}
+\item{type}{Character (optional). Type of event (conference, workshop, seminar...)}
 
-\item{rpic}{PNG object route. File route of the top-right image. Can be blank if set to NULL.}
+\item{event}{Character. Title of the event}
 
-\item{signature.pic}{PNG object route. File route of a signature image. Can be blank if set to NULL.}
+\item{freetext}{Character (optional). Free text to insert before the date.
+Can include LaTeX commands (see examples).}
 
-\item{name.column}{Column name of the Google Sheet column which specifies the participant's name.}
+\item{signer}{Character. Person who signs the certificate}
 
-\item{affiliation.column}{Column name of the Google Sheet column which specifies the participant's affiliation}
+\item{signer.role}{Character. Signer's role or position}
 
-\item{date.column}{Column name of the Google Sheet column which specifies the date.}
+\item{signature.pic}{Character (optional) Path to a PNG image to appear in
+the bottom, above signer's name.}
 
-\item{title.column}{Column name of the Google Sheet column which specifies the communication title.}
+\item{lpic}{Character (optional) Path to a PNG image to appear in the top-left.}
 
-\item{comm.type.column}{Column name of the Google Sheet column which specifies the communication type (oral, poster, online...)}
+\item{rpic}{Character (optional) Path to a PNG image to appear in the top-right.}
+
+\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+in the output folder? Default is FALSE.}
+
+\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+using the default template included in \code{labeleR}.}
 }
 \value{
-An 'output' folder with the PDF documents inside
+PDF certificates are saved on disk, in the folder defined
+by \code{path}. If \code{keep.files = TRUE}, the Rmarkdown template and PNG logo files
+will also appear in the same folder.
 }
 \description{
 Create certificate of participation
 }
 \examples{
-\dontrun{
-create_certificate_participation(
-language ="en",
-data= read_sheet("https://docs.google.com/spreadsheets/
-        u/1/d/11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM/
-        edit?usp=drive_web&ouid=106603768357414088091"),
-path = "LabeleR_output",
-type="online seminar",
-organiser="Hogwarts School of Witchcraft and Wizardry",
-hours=2,
-signer="A.P.W.B. Dumbledore",
-signer.position="School Headmaster",
-lpic="/.../Logo.png",
-rpic=NULL,
-signature.pic = NULL,
-name.column="Name",
-affiliation.column="House",
-date.column="Date",
-title.column="Title",
-comm.type.column = "Comm.type")
-}
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
+data <- data.frame(
+Name = c("Severus Snape", "Minerva McGonagall"),
+Date = c("1/1/93", "1/1/94"),
+Title = c("Advanced potions with more than six plants",
+          "From cat to ape: transformations in the XX century"),
+Comm.type = c("oral communication", "poster"),
+House = c("Slytherin", "Gryffindor")
+)
+
+
+create_certificate_participation(
+data = data,
+path = "labeleR_output",
+language = "Spanish",
+name.column = "Name",
+affiliation.column = "House",
+comm.type.column = "Comm.type",
+title.column = "Title",
+date.column = "Date",
+type = "online seminar",
+event = "Hogwarts School of Witchcraft and Wizardry",
+freetext = "which lasted 2 hours",
+signer = "A.P.W.B. Dumbledore",
+signer.role = "School Headmaster",
+lpic = NULL,
+rpic = NULL,
+signature.pic = NULL
+)
+\dontshow{\}) # examplesIf}
 }
 \author{
-Julia G. de Aledo, Ignacio Ramos-Gutierrez
+Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodriguez-Sanchez
 }
