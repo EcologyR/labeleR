@@ -11,10 +11,9 @@ test_that("PDF certificates are created", {
   ## Spanish
   create_certificate_attendance(data = data, path = path, type = "Adventure",
                                 title = "Going to Mordor",
-                                organiser = "The Fellowship of The Ring",
                                 hours = "1000", name.column = "Names",
                                 language = "Spanish", signer = "Gandalf",
-                                speaker = "Sauron", date = "10/07/3064"
+                                date = "10/07/3064"
   )
 
   expect_true(file.exists(file.path(path, "Asistencia_Pippin.pdf")))
@@ -24,10 +23,9 @@ test_that("PDF certificates are created", {
   ## English
   create_certificate_attendance(data = data, path = path, type = "Adventure",
                                 title = "Going to Mordor",
-                                organiser = "The Fellowship of The Ring",
                                 hours = "1000", name.column = "Names",
                                 language = "English", signer = "Gandalf",
-                                speaker = "Sauron", date = "10/07/3064"
+                                date = "10/07/3064"
   )
 
   expect_true(file.exists(file.path(path, "Attendance_Pippin.pdf")))
