@@ -92,7 +92,7 @@ create_certificate_participation <- function(
   ## Check arguments
 
   if (is.null(data)) {
-    stop("A data.frame must be provided. To import from Google Sheets use function 'read_sheet()'")
+    stop("A data.frame must be provided.")
   }
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
@@ -167,6 +167,8 @@ create_certificate_participation <- function(
 
 
   #### Render #####
+
+  data <- as.data.frame(data) ## to exploit drop = TRUE when selecting cols below
 
   for (i in 1:nrow(data)) {
 

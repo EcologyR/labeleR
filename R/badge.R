@@ -48,7 +48,7 @@ create_badge <- function(data = NULL,
   ## Check arguments
 
   if (is.null(data)) {
-    stop("A data.frame must be provided. To import from Google Sheets use function 'read_sheet()'")
+    stop("Please provide a data.frame or tibble.")
   }
 
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
@@ -107,6 +107,7 @@ create_badge <- function(data = NULL,
 
 
   ## Render
+  data <- as.data.frame(data)  ## to exploit drop = TRUE when selecting cols below
   rmarkdown::render(
     input = file.path(folder, "badge.Rmd"),
     output_dir = path,
