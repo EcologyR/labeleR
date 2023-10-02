@@ -83,21 +83,26 @@ create_herbarium_label <- function(data=data,
                                  collector.column=NULL,
                                  collection.column=NULL,
                                  assistants.column=NULL,
-                                 date.column=NULL
+                                 date.column=NULL,
+                                 keep.files = FALSE,
+                                 template = NULL
                                  ){
 
   if(is.null(data)){
-    stop(" a 'data' data.frame must be provided.
-         To import from Google Sheets use function 'read_sheet()'")
+    stop(" a 'data' data.frame must be provided.")
   }
-  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
+  if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
-  if(is.null(path)){stop("A folder path must be specified.")}
-  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
-    dir.create(path)}
+  if (is.null(path)) {stop("A folder path must be specified.")}
+  if (!file.exists(path)) {
+    message("The specified folder does not exist. Creating folder")
+    dir.create(path)
+  }
 
-  if(any(apply(data, 1, nchar)>150)){message("Warning: cells containing too long texts may alter the result.
-Please consider shortening the content of your cells. ")}
+  if(any(apply(data, 1, nchar)>150)){
+  message("Warning: cells containing too long texts may alter the result.
+           Please consider shortening the content of your cells.")
+    }
 
   if(is.null(title)){
     message("No title provided")
@@ -116,182 +121,144 @@ Please consider shortening the content of your cells. ")}
     }
     }
 
-  if(!is.null(family.column)){
-  if(!(family.column) %in% c("",colnames(data))) {
-    stop("Column '", family.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
+
+    if (!is.null(family.column)) {
+      check_column_in_df(data, family.column)
+      data[,family.column] <- toupper(data[,family.column])
   }
-  data[,family.column] <- toupper(data[,family.column])
-  }
+
 
   if(is.null(taxon.column)){
     taxon.column<-""
   }
-  if(!(taxon.column) %in% c("",colnames(data))) {
-    stop("Column '", taxon.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+    check_column_in_df(data, taxon.column)
 
   if(is.null(author.column)){
     author.column<-""
   }
-  if(!(author.column) %in% c("",colnames(data))) {
-    stop("Column '", author.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+    check_column_in_df(data, author.column)
 
   if(is.null(det.column)){
     det.column<-""
   }
-  if(!(det.column) %in% c("",colnames(data))) {
-    stop("Column '", det.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+    check_column_in_df(data, det.column)
 
   if(is.null(date.det.column)){
     det.column<-""
   }
-  if(!(date.det.column) %in% c("",colnames(data))) {
-    stop("Column '", date.det.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+    check_column_in_df(data, date.det.column)
 
   if(is.null(location.column)){
     location.column<-""
   }
-  if(!(location.column) %in% c("",colnames(data))) {
-    stop("Column '", location.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+    check_column_in_df(data, location.column)
 
   if(is.null(area.description.column)){
     area.description.column<-""
   }
-  if(!(area.description.column) %in% c("",colnames(data))) {
-    stop("Column '", area.description.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+    check_column_in_df(data, area.description.column)
+
   data[,area.description.column] <- as.character( data[,area.description.column])
 
 
   if(is.null(latitude.column)){
     latitude.column<-""
   }
-  if(!(latitude.column) %in% c("",colnames(data))) {
-    stop("Column '", latitude.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, latitude.column)
 
 
   if(is.null(longitude.column)){
     longitude.column<-""
   }
-  if(!(longitude.column) %in% c("",colnames(data))) {
-    stop("Column '", longitude.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, longitude.column)
 
 
   if(is.null(elevation.column)){
     elevation.column<-""
   }
-  if(!(elevation.column) %in% c("",colnames(data))) {
-    stop("Column '", elevation.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, elevation.column)
 
   if(is.null(field1.column)){
     field1.column<-""
   }
-  if(!(field1.column) %in% c("",colnames(data))) {
-    stop("Column '", field1.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, field1.column)
 
   if(is.null(field2.column)){
     field2.column<-""
   }
-  if(!(field2.column) %in% c("",colnames(data))) {
-    stop("Column '", field2.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, field2.column)
+
   if(is.null(field3.column)){
     field3.column<-""
   }
-  if(!(field3.column) %in% c("",colnames(data))) {
-    stop("Column '", field3.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, field3.column)
 
   if(is.null(collector.column)){
     collector.column<-""
   }
-  if(!(collector.column) %in% c("",colnames(data))) {
-    stop("Column '", collector.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, collector.column)
+
   if(is.null(collection.column)){
     collection.column<-""
   }
-  if(!(collection.column) %in% c("",colnames(data))) {
-    stop("Column '", collection.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, collection.column)
+
   if(is.null(assistants.column)){
     assistants.column<-""
   }
-  if(!(assistants.column) %in% c("",colnames(data))) {
-    stop("Column '", assistants.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, assistants.column)
+
   if(is.null(date.column)){
     date.column<-""
   }
-  if(!(date.column) %in% c("",colnames(data))) {
-    stop("Column '", date.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
+  check_column_in_df(data, date.column)
+
+
+  ## Keep intermediate files? If no, using tempdir for intermediate files
+  if (!isTRUE(keep.files)) {
+    folder <- tempdir()
+  } else {
+    folder <- path  # all files will remain there
+  }
+
+  #### Defining Rmd template to use ####
+
+  if (is.null(template)) { # use pkg default
+
+      file.copy(
+        from = system.file("rmarkdown/templates/herbarium/skeleton/skeleton.Rmd", package = "labeleR"),
+        to = file.path(folder, "herbarium.Rmd"),
+        overwrite = TRUE
+      )
+
+
+  }
+
+  if (!is.null(template)) {
+    stopifnot(file.exists(template))
+    if (template != file.path(folder, "herbarium.Rmd")) {
+      file.copy(
+        from = template,
+        to = file.path(folder, "herbarium.Rmd"),
+        overwrite = TRUE
+      )
+    }
   }
 
 
-  if(!dir.exists("tmp")){
-    dir.create("tmp")
-  }
-
-  tmpl_file   <- system.file("rmarkdown/templates/herbarium/skeleton/skeleton.Rmd", package="labeleR")
-
-  file.copy(tmpl_file, "tmp/herbarium.Rmd", overwrite = T)#create files to call them lpic@rpic to make it homogeneous
 
   tmpl_file   <- "tmp/herbarium.Rmd"
   out.name <- paste0("Herbarium_labels")
   output_file <- paste0(out.name,'.pdf')
 
-  # if(file.exists(paste0("output/",output_file))){message("Herbarium_labels file already exists. Overwriting.")}
-
-  for (i in 1:ncol(data)){
+   for (i in 1:ncol(data)){
     data[is.na(data[,i]),i]<-"~"
   }
 
  bl.char <- rep("~", times=nrow(data))
 
   rmarkdown::render(
-    tmpl_file,
+    input = file.path(folder, "herbarium.Rmd"),
     output_dir = path,
     output_file = output_file,
     params = list(
@@ -317,10 +284,6 @@ Please consider shortening the content of your cells. ")}
       date.i             = if((date.column            ==""   )){bl.char}else{data [,date.column]}
     )
     )
-
-
-  # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them lpic@rpic to make it homogeneous
-   unlink("tmp", recursive = T, force = T)
 
 }
 
