@@ -16,12 +16,12 @@
 #' using the default template included in `labeleR`.
 #'
 #' @return A PDF file named "Badges.pdf" is saved on disk, in the folder defined
-#' by `path`. If `keep.files = TRUE`, an Rmarkdown and PNG logo files will also
+#' by `path`. If `keep.files = TRUE`, an Rmarkdown and PNG lpic and rpic files will also
 #' appear in the same folder.
 #'
 #' @export
 #'
-#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
+#' @author Julia G. de Aledo, Ignacio Ramos-Gutiérrez, Francisco Rodríguez-Sánchez
 #'
 #' @examplesIf interactive()
 #' data <- read_sheet(url = 'https://docs.google.com/spreadsheets/d
