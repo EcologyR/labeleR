@@ -45,7 +45,7 @@ for (i in 1:length(params$field1.i)) {
   \\end{minipage}
   \\end{flushright}
   \\begin{adjustwidth}{1cm}{1cm}
-  {\\fontsize{40pt}{100pt}\\emph{\\selectfont\\textcolor{mycolortext}{",
+  {\\fontsize{35pt}{100pt}\\emph{\\selectfont\\textcolor{mycolortext}{",
   params$field1.i[i],
   "}} \\\\
   \\linebreak
