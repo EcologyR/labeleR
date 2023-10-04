@@ -29,6 +29,8 @@ If you want to clone the repository, you can find the code
 
 ## 1. Getting started
 
+### 1.1 TinyTeX
+
 On the first place, we must warn the renderization of the documents with
 labeleR depends on LaTeX, so you must have it installed on the first
 place. Don’t worry, its very easy!
@@ -42,7 +44,7 @@ If you don’t have tinytex installed, or it’s the first time you use
 labeleR it may take a while until all packages are correctly installed.
 Don’t worry, it will be much quicker next time!
 
-### 1.1 Loading the data
+### 1.2 Loading the data
 
 The very first thing you need to start using labeleR is a data frame
 where the information is included. This data frame can be imported to
@@ -71,19 +73,7 @@ people_list_long <- gsheet2tbl("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
 people_list_long <- as.data.frame(people_list_long)
 ```
 
-<!-- In case you just want to import some rows (let's say you have to create -->
-<!-- some of them, or to re-create some after correcting a mistake), you -->
-<!-- don´t have to import all the rows. Using the `select.column` parameter, -->
-<!-- you can import only the rows which match `select.value` . -->
-<!-- For example, if you just want to create certificate for Draco Malfoy as -->
-<!-- an attendee of a class, you can use the following code to import just -->
-<!-- his row: -->
-<!-- ```{r import some rows, eval = FALSE} -->
-<!-- read_sheet(url="1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw",  -->
-<!--            select.column = "List_assistants", select.value = "Draco Malfoy") -->
-<!-- ``` -->
-
-### 1.2 Some advice for the labeleR functions
+### 1.3 Some advice for the labeleR functions
 
 When using labeleR’s functions, there are some widely used parameters
 and nomenclature that must be acknowledged.
@@ -146,32 +136,30 @@ of Hogwarts School, in which the Headmaster certifies they have attended
 200 h of the Potions class.
 
 ``` r
-data <- as.data.frame(gsheet::gsheet2tbl("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"))
 
 create_certificate_attendance(
-data=data,
-  path = "LabeleR_output",
-  language="en",
-  type="class",
-  title="Potions Class",
-  organiser="Hogwarts School year 1992-1993",
-  signer="A.P.W.B. Dumbledore",
-  signer.position="School Headmaster",
-  hours=200,
-  date="01/01/2021",
-  speaker="Severus Snape",
+  data = attendance.table,
+  path = "attendance_certificates",
+  language = "English" ,
+  name.column = "Names",
+  type = "class",
+  title = "Potions (year 1992-1993)",
+  date = "23/06/1993",
+  hours = "200",
+  freetext = "taught by Professor S. Snape",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
   rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
   lpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR"),
-  name.column="List_assistants"
+  signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
 ```
 
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![Attendance certificates](man/figures/Attendance_certificate.png) |
-|--------------------------------------------------------------------|
+| ![Attendance certificates](man/figures/Attendance_certificates.png) |
+|---------------------------------------------------------------------|
 
 ## 2.2 Participation certificates
 
@@ -191,25 +179,24 @@ participated in some seminars with different titles, different
 affiliations, dates and communication types.
 
 ``` r
-  data <- as.data.frame(gsheet::gsheet2tbl("11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM"))
-
-create_certificate_participation(
-  data = data,
-  path = "LabeleR_output",
-  language ="en",
-  type="online seminar",
-  organiser="Hogwarts School of Witchcraft and Wizardry",
-  hours= 2,
-  signer="A.P.W.B. Dumbledore",
-  signer.position="School Headmaster",
+   create_certificate_participation(
+  data = participation.table,
+  path = "participation_certificates",
+  language = "English",
+  name.column = "Name",
+  affiliation.column = "House",
+  comm.type.column = "Comm.type",
+  title.column = "Title",
+  date.column = "Date",
+  type = "online",
+  event = "seminar",
+  freetext = "organized by Hogwarts School of Magic and Wizardry",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
   rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
   lpic=system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
-  signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR"),
-  name.column="Name",
-  affiliation.column="House",
-  date.column="Date",
-  title.column="Title",
-  comm.type.column = "Comm.type")
+  signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
+)
 ```
 
 In this example, each certificate will be rendered in an individual PDF
@@ -219,38 +206,38 @@ document.
 |---------------------------------------------------------------------------------|
 |                                                                                 |
 
-## 2.3 Accreditations
+## 2.3 Badges
 
-Accreditations (and all documents from now onwards) are rendered in a
-single document, with eight accreditation cards per DIN-A4 page. They
-have only two variable fields (name and affiliation), and can include
-two top images, although are not signed. Accreditation cards include a
-dot line in the bottom for individual hand-edition.
+Badges (and all documents from now onwards) are rendered in a single
+document, with eight accreditation cards per DIN-A4 page in this case.
+They have only two variable fields (name and affiliation), and can
+include two top images, although are not signed. Accreditation cards
+include a dot line in the bottom for individual hand-edition.
 
-| ![Accreditations (blank)](man/figures/Accreditations_blank.png) |
-|-----------------------------------------------------------------|
+| ![Badges (blank)](man/figures/Accreditations_blank.png) |
+|---------------------------------------------------------|
 
-### Accreditations example:
+### Badges example:
 
 As an example, we present the accreditation cards that might have been
 used in he International Conference of Muggleology, where the only
 changing fields are names and affiliations of attendees.
 
 ``` r
-data <- as.data.frame(gsheet::gsheet2tbl(url='16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M'))
-create_accreditation(
-data=data,
-path = "LabeleR_output",
-event="INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
-name.column = "List",
-affiliation.column="Affiliation",
-rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-lpic=system.file("rmarkdown/pictures/minMagic.png", package = "labeleR")
+
+create_badge(
+  data = badges.table,
+  path = "badges",
+  event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
+  name.column = "List",
+  affiliation.column = "Affiliation",
+  rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic=system.file("rmarkdown/pictures/minMagic.png", package = "labeleR")
 )
 ```
 
-| ![Accreditations example](man/figures/Accreditations.png) |
-|-----------------------------------------------------------|
+| ![Badges example](man/figures/Accreditations.png) |
+|---------------------------------------------------|
 
 ## 2.4 Herbarium labels
 
@@ -279,32 +266,30 @@ In this example, we show the labels some students have created for their
 herbarium assignment of the Herbology class.
 
 ``` r
-data <- as.data.frame(gsheet::gsheet2tbl(url='1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw'))
-
 create_herbarium_label(
-data=data,
-path = "LabeleR_output",
- title="Magical flora of the British Isles",
- subtitle="Project: Eliminating plant blindness in Hogwarts students",
- qr = "QR_code",
- family.column="Family",
- taxon.column="Taxon",
- author.column="Author",
- det.column="det",
- date.det.column="Det_date",
- location.column="Location",
- area.description.column="Area_description",
- latitude.column="Latitude",
- longitude.column="Longitude",
- elevation.column="Elevation",
- field1.column="life_form",
- field2.column="Observations",
- field3.column="Height",
- collector.column="Collector",
- collection.column="Collection_number",
- assistants.column="Assistants",
- date.column="Date"
- )
+  data = herbarium.table,
+path = "herbarium_labels",
+qr="QR_code",
+title ="Magical flora of the British Isles" ,
+subtitle = "Project: Eliminating plant blindness in Hogwarts students",
+family.column = "Family",
+taxon.column = "Taxon",
+author.column = "Author",
+det.column = "det",
+date.det.column = "Det_date",
+location.column = "Location",
+area.description.column = "Area_description",
+latitude.column = "Latitude",
+longitude.column = "Longitude",
+elevation.column = "Elevation",
+field1.column = "life_form",
+field2.column = "Observations",
+field3.column = "Height",
+collector.column = "Collector",
+collection.column = "Collection_number",
+assistants.column = "Assistants",
+date.column = "Date"
+)
 ```
 
 | ![Herbarium labels example](man/figures/Herbarium_labels.png) |
@@ -333,19 +318,16 @@ In this example we can see six labels created for the school’s displayed
 collection of stuffed animals.
 
 ``` r
-data <- as.data.frame(gsheet::gsheet2tbl(url='1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs'))
-data <- data[data[,"field5"]=="Item 1",] #Subset of the complete table
-
-create_collection_label(
-data = data,
-path = "LabeleR_output",
-qr = "QR_code",
+ create_collection_label(
+data = label.table,
+path = "labels",
+qr="QR_code",
 field1.column = "field1",
 field2.column = "field2",
 field3.column = "field3",
 field4.column = "field6",
 field5.column = "field7",
-logo = system.file("rmarkdown/pictures/Hogwarts_BnW.png", package = "labeleR"), 
+system.file("rmarkdown/pictures/Hogwarts_BnW.png", package = "labeleR"),
 bgcolor = "D0ECC1",  #White is "FFFFFF"
 textcolor = "1E3F20" #Black is "000000"
 )
@@ -378,18 +360,15 @@ Here, tinylabels are created for typical collections stored in boxes, so
 a normal collection label would be to big.
 
 ``` r
-data <- as.data.frame(gsheet::gsheet2tbl(url='1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs'))
-
-create_tinylabel(
-data = data,
-path = "LabeleR_output",
-qr = "QR_code",
-field1.column = "field1",
-field2.column = "field2",
-field3.column = "field3",
-field4.column = "field4",
-field5.column = "field5"
-)
+ create_tinylabel(
+  data = tiny.table,
+  qr="QR_code",
+  path = "man/figures",
+  field1.column ="field2",
+  field2.column ="field1",
+  field3.column ="field3",
+  field4.column ="field4",
+  field5.column ="field5" )
 ```
 
 | ![Tinylabels example](man/figures/tinylabels.png) |
