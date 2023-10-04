@@ -16,10 +16,10 @@ params:
   field3.i: ""
   field4.i: ""
   field5.i: ""
-
 ---
 
 ```{r echo=FALSE, results='asis'}
+
 for (i in 1:length(params$field1.i)) {
   
   cat("
@@ -57,3 +57,7 @@ for (i in 1:length(params$field1.i)) {
     )
 }
 ```
+
+
+
+

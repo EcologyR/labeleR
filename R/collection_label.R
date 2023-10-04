@@ -1,30 +1,32 @@
-#' Function to create create collection labels (8 per DIN-A4 page)
+#' Create collection labels
 #'
+#' Create collection labels (8 per DIN-A4 page)
 #'
-#'
-#' @param data Data frame including to create labels.
-#' @param path Folder path where the output will be printed
-#' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
+#' @param data a data frame including information of a species
+#' @param path Character. Path to folder where the PDF file will be saved.
+#' @param qr String. Free text or column of \code{data} that specifies the link where to create the QR code.
 #'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
 #'          specified \code{qr}.
-#' @param field1.column Column of \code{data} that specifies the text to print in the first field.
-#' @param field2.column Column of \code{data} that specifies the text to print in the second field.
-#' @param field3.column Column of \code{data} that specifies the text to print in the third field.
-#' @param field4.column Column of \code{data} that specifies the text to print in the fourth field.
-#' @param field5.column Column of \code{data} that specifies the text to print in the fifth field.
-#' @param logo PNG object route. File route of the bottom image. Can be blank if set to NULL.
-#' @param bgcolor HTML color to use for the label background. Default is D0ECC1
-#' @param textcolor HTML color to use for the label text. Default is 1E3F20
+#' @param field1.column Character (optional). Name of the column in `data` storing the first field to be displayed.
+#' @param field2.column Character (optional). Name of the column in `data` storing the second field to be displayed.
+#' @param field3.column Character (optional). Name of the column in `data` storing the third field to be displayed.
+#' @param field4.column Character (optional). Name of the column in `data` storing the fourth field to be displayed.
+#' @param field5.column Character (optional). Name of the column in `data` storing the fifth field to be displayed.
+#' @param logo Character (optional) Path to a PNG image to be located in the label bottom.
+#' @param bgcolor HTML color for label background. Default is D0ECC1
+#' @param textcolor HTML color for label text. Default is 1E3F20
+#'
+#'#' @return A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
+#' by `path`. If `keep.files = TRUE`, an Rmarkdown and PNG logo files will also
+#' appear in the same folder.
 #'
 #' @export
 #'
-#' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo
+#' @author  Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 #'
-#' @examples
+#' @examplesIf interactive()
 #' data <- read_sheet("https://docs.google.com/spreadsheets/d/
 #'         1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
-#'
-#' \dontrun{
 #' create_collection_label(
 #' data = data,
 #' path = "LabeleR_output",
@@ -35,143 +37,104 @@
 #' field4.column = "field6",
 #' field5.column = "field7"
 #' )
-#' }
-#'
-#'
-create_collection_label <- function(data=data,
-                                          path=NULL,
-                                          qr=NULL,
-                                          field1.column=NULL,
-                                          field2.column=NULL,
-                                          field3.column=NULL,
-                                          field4.column=NULL,
-                                          field5.column=NULL,
-                                          logo=NULL,
-                                          bgcolor=NULL,
-                                          textcolor=NULL
-){
 
-  if(is.null(data)){
-    stop(" a 'data' data.frame must be provided.
-         To import from Google Sheets use function 'read_sheet()'")
-  }
-  if(class(data)!="data.frame"){stop("The 'data' object must be a data frame.")}
-
-  if(is.null(path)){stop("A folder path must be specified.")}
-  if(!file.exists(path)){message("The specified folder does not exist. Creating folder")
-    dir.create(path)}
-
-  if(any(apply(data, 1, nchar)>150)){message("Warning: cells containing too long texts may alter the result.
-Please consider shortening the content of your cells. ")}
+create_collection_label <- function(data = NULL,
+                                    path = NULL,
+                                    qr = NULL,
+                                    field1.column = NULL,
+                                    field2.column = NULL,
+                                    field3.column = NULL,
+                                    field4.column = NULL,
+                                    field5.column = NULL,
+                                    logo = NULL,
+                                    bgcolor = "D0ECC1",
+                                    textcolor = "1E3F20",
+                                    keep.files = FALSE,
+                                    template = NULL) {
 
 
-  if(!is.null(qr)){
-    if(!(qr %in% colnames(data))){
-      message("QR value is not a column. Using string to create QR codes")
-      data$qr <- qr
-      qr <- "qr"
-      data[,qr]<- as.character (data[,qr])
-    }
+  ## Check arguments
+
+  if (is.null(data)) {
+    stop("Please provide a data.frame or tibble.")
   }
 
-  if(is.null(field1.column)){
-    field1.column<-""
-  }
-  if(!(field1.column) %in% c("",colnames(data))) {
-    stop("Column '", field1.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
-  if(field1.column!=""){
-    pos <- which(nchar(data[,field1.column])>30)
-    esp <- sapply(gregexpr(" ", data[pos,field1.column]),'[',)
-    esp <- apply(X = esp, 2, FUN = function(x){return(max(esp[x<30]))})
-    data[pos,field1.column] <- paste0(substr(data[pos,field1.column],1,esp), "\\hfill \\linebreak",
-                                      substr(data[pos,field1.column],esp, nchar(data[pos,field1.column])))
-    }
+  if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
-
-
-  if(is.null(field2.column)){
-    field2.column<-""
-  }
-  if(!(field2.column) %in% c("",colnames(data))) {
-    stop("Column '", field2.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
+  if (is.null(path)) {stop("A folder path must be specified.")}
+  if (!file.exists(path)) {
+    message("The specified folder does not exist. Creating folder")
+    dir.create(path)
   }
 
-  data[,field2.column] <- toupper(data[,field2.column])
-
-  if(is.null(field3.column)){
-    field3.column<-""
-  }
-  if(!(field3.column) %in% c("",colnames(data))) {
-    stop("Column '", field3.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
+  if (is.null(qr)) {
+    message("No qr provided")
+    qr <- ""
   }
 
-  if(is.null(field4.column)){
-    field4.column<-""
+  if (is.null(field1.column)) {
+    field1.column <- ""
   }
-  if(!(field4.column) %in% c("",colnames(data))) {
-    stop("Column '", field4.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
-  }
+  check_column_in_df(data, field1.column)
 
-  if(is.null(field5.column)){
-    field5.column<-""
+  if (is.null(field2.column)) {
+    field2.column <- ""
   }
-  if(!(field5.column) %in% c("",colnames(data))) {
-    stop("Column '", field5.column ,
-         " is not a column of your 'data' object. Please select from \n",
-         paste0("-", colnames(data), sep="\n"))
+  check_column_in_df(data, field2.column)
+
+  if (is.null(field3.column)) {
+    field3.column <- ""
+  }
+  check_column_in_df(data, field3.column)
+
+  if (is.null(field4.column)) {
+    field4.column <- ""
+  }
+  check_column_in_df(data, field4.column)
+
+  if (is.null(field5.column)) {
+    field5.column <- ""
+  }
+  check_column_in_df(data, field5.column)
+
+
+  ## Keep intermediate files? If no, using tempdir for intermediate files
+  if (!isTRUE(keep.files)) {
+    folder <- tempdir()
+  } else {
+    folder <- path  # all files will remain there
   }
 
 
-  if(is.null(bgcolor)){
-    bgcolor<-"D0ECC1"
+  ## Defining Rmd template to use
+  if (is.null(template)) {
+    # use pkg default
+    file.copy(
+      from = system.file("rmarkdown/templates/collection_label/skeleton/skeleton.Rmd", package = "labeleR"),
+      to = file.path(folder, "collection_label.Rmd"),
+      overwrite = TRUE
+    )
+  } else {
+    stopifnot(file.exists(template))
+    file.copy(
+      from = template,
+      to = file.path(folder, "collection_label.Rmd"),
+      overwrite = TRUE
+    )
   }
 
-  if(is.null(textcolor)){
-    textcolor<-"1E3F20"
-  }
+  ## Logos
+
+  use_image(logo, name = "logo", folder = folder)
 
 
-  if(!dir.exists("tmp")){
-    dir.create("tmp")
-  }
-
-  if(is.null(logo)){
-      grDevices::png("tmp/logo.png", 150, 150, "px")
-      graphics::par(bg="transparent")
-      graphics::plot.new()
-      grDevices::dev.off()
-    }
-
-
-  file.copy(logo, "tmp/logo.png", overwrite = T)#create files to call them logo@rpic to make it homogeneous
-
-  tmpl_file   <- system.file("rmarkdown/templates/collection_large/skeleton/skeleton.Rmd", package="labeleR")
-  file.copy(tmpl_file, "tmp/collection_large.Rmd", overwrite = T)#create files to call them logo@rpic to make it homogeneous
-
-  tmpl_file   <- "tmp/collection_large.Rmd"
-  out.name <- paste0("Collection_labels")
-  output_file <- paste0(out.name,'.pdf')
-
-  # if(file.exists(paste0("output/",output_file))){message("Collection_labels_large file already exists. Overwriting.")}
-
-  for (i in 1:ncol(data)){
-    data[is.na(data[,i]),i]<-""
-  }
-
+  ## Render
+  data <- as.data.frame(data)  ## to exploit drop = TRUE when selecting cols below
   bl.char <- rep("~", times=nrow(data))
   rmarkdown::render(
-    tmpl_file,
+    input = file.path(folder, "collection_label.Rmd"),
     output_dir = path,
-    output_file = output_file,
+    output_file = "Collection_label.pdf",
     params = list(
       qr.i = data[,qr],
       field1.i =if(field1.column==""){bl.char}else{data[,field1.column]},
@@ -180,12 +143,8 @@ Please consider shortening the content of your cells. ")}
       field4.i =if(field4.column==""){bl.char}else{data[,field4.column]},
       field5.i =if(field5.column==""){bl.char}else{data[,field5.column]},
       bgcolor = bgcolor,
-      textcolor = textcolor)
+      textcolor = textcolor
+    )
   )
 
-
-  # file.copy(paste0("tmp/",output_file), paste0("output/",output_file), overwrite = T)#create files to call them logo@rpic to make it homogeneous
-   unlink("tmp", recursive = T, force = T)
-
 }
-
