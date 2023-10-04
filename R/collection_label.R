@@ -76,6 +76,10 @@ create_collection_label <- function(data = NULL,
     qr <- ""
   }
 
+  if (!(qr %in% colnames(data))) {
+    data$qr <- qr
+  }
+
   if (is.null(field1.column)) {
     field1.column <- ""
   }
@@ -140,7 +144,7 @@ create_collection_label <- function(data = NULL,
     output_dir = path,
     output_file = "Collection_label.pdf",
     params = list(
-      qr.i = data[,qr],
+      qr.i = data[,"qr"],
       field1.i =if(field1.column==""){bl.char}else{data[,field1.column]},
       field2.i =if(field2.column==""){bl.char}else{data[,field2.column]},
       field3.i =if(field3.column==""){bl.char}else{data[,field3.column]},
