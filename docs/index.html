@@ -79,32 +79,32 @@
 <div class="section level2">
 <h2 id="id_1-getting-started">1. Getting started<a class="anchor" aria-label="anchor" href="#id_1-getting-started"></a>
 </h2>
+<div class="section level3">
+<h3 id="id_11-tinytex">1.1 TinyTeX<a class="anchor" aria-label="anchor" href="#id_11-tinytex"></a>
+</h3>
 <p>On the first place, we must warn the renderization of the documents with labeleR depends on LaTeX, so you must have it installed on the first place. Don’t worry, its very easy!</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("tinytex")</span></span>
 <span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html" class="external-link">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>If you don’t have tinytex installed, or it’s the first time you use labeleR it may take a while until all packages are correctly installed. Don’t worry, it will be much quicker next time!</p>
-<div class="section level3">
-<h3 id="id_11-loading-the-data">1.1 Loading the data<a class="anchor" aria-label="anchor" href="#id_11-loading-the-data"></a>
-</h3>
-<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table( )</a></code> and alike functions), but it can be also imported from a Google Sheets function.</p>
-<p>To do so, you just have to use labeleR’s <code><a href="reference/read_sheet.html">read_sheet( )</a></code> function, specifying the Google Sheet URL. In fact, you don’t need to use the whole URL, but just the specific part of it.<br>
-For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a><strong>1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw</strong>/edit#gid=0 you just need the text in bold. However, a key point to bear in mind is that the Google Sheet document must grant (at least as viewer) access to anyone with the link; otherwise R will not be able to open it.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">people_list_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">people_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
-<span>                          </span>
-<span><span class="co"># The result is the same, a R data frame that can be used by labeleR</span></span></code></pre></div>
-<p>In case you just want to import some rows (let’s say you have to create some of them, or to re-create some after correcting a mistake), you don´t have to import all the rows. Using the <code>select.column</code> parameter, you can import only the rows which match <code>select.value</code> .</p>
-<p>For example, if you just want to create certificate for Draco Malfoy as an attendee of a class, you can use the following code to import just his row:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span>, </span>
-<span>           select.column <span class="op">=</span> <span class="st">"List_assistants"</span>, select.value <span class="op">=</span> <span class="st">"Draco Malfoy"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="id_12-some-advice-for-the-labeler-functions">1.2 Some advice for the labeleR functions<a class="anchor" aria-label="anchor" href="#id_12-some-advice-for-the-labeler-functions"></a>
+<h3 id="id_12-loading-the-data">1.2 Loading the data<a class="anchor" aria-label="anchor" href="#id_12-loading-the-data"></a>
+</h3>
+<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table( )</a></code> and alike functions), but it can be also imported from a Google Sheets function.</p>
+<p>To do so, you just have to use <code>gsheet</code>’s <code>gsheet2tbl</code> function, specifying the Google Sheet URL. In fact, you don’t need to use the whole URL, but just the specific part of it.<br>
+For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a><strong>1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw</strong>/edit#gid=0 you just need the text in bold.<br>
+However, a key point to bear in mind is that the Google Sheet document must grant (at least as viewer) access to anyone with the link; otherwise R will not be able to open it.</p>
+<p>Finally, in order for labeleR to work correctly, the imported table should be converted to a data frame.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maxconway/gsheet" class="external-link">gsheet</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#URL: https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0</span></span>
+<span><span class="va">people_list_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gsheet/man/gsheet2tbl.html" class="external-link">gsheet2tbl</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
+<span><span class="va">people_list_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">people_list_long</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_13-some-advice-for-the-labeler-functions">1.3 Some advice for the labeleR functions<a class="anchor" aria-label="anchor" href="#id_13-some-advice-for-the-labeler-functions"></a>
 </h3>
 <p>When using labeleR’s functions, there are some widely used parameters and nomenclature that must be acknowledged.</p>
 <p>As parameters, there are 2 that are always the same. The first one is <code>data</code>, which is the data frame that has been previously loaded before. The second one is <code>path</code>, which is the folder where the outputted PDFs will be stored. In case the specified folder does not exist, it will be automatically created.</p>
@@ -133,30 +133,28 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <h3 id="attendance-certificate-example">Attendance certificate example:<a class="anchor" aria-label="anchor" href="#attendance-certificate-example"></a>
 </h3>
 <p>In this example, we create four different certificates for four students of Hogwarts School, in which the Headmaster certifies they have attended 200 h of the Potions class.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"</span><span class="op">)</span></span>
-<span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="reference/create_certificate_attendance.html">create_certificate_attendance</a></span><span class="op">(</span></span>
-<span>data<span class="op">=</span><span class="va">data</span>,</span>
-<span>  path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
-<span>  language<span class="op">=</span><span class="st">"en"</span>,</span>
-<span>  type<span class="op">=</span><span class="st">"class"</span>,</span>
-<span>  title<span class="op">=</span><span class="st">"Potions Class"</span>,</span>
-<span>  organiser<span class="op">=</span><span class="st">"Hogwarts School year 1992-1993"</span>,</span>
-<span>  signer<span class="op">=</span><span class="st">"A.P.W.B. Dumbledore"</span>,</span>
-<span>  signer.position<span class="op">=</span><span class="st">"School Headmaster"</span>,</span>
-<span>  hours<span class="op">=</span><span class="fl">200</span>,</span>
-<span>  date<span class="op">=</span><span class="st">"01/01/2021"</span>,</span>
-<span>  speaker<span class="op">=</span><span class="st">"Severus Snape"</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">attendance.table</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"attendance_certificates"</span>,</span>
+<span>  language <span class="op">=</span> <span class="st">"English"</span> ,</span>
+<span>  name.column <span class="op">=</span> <span class="st">"Names"</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"class"</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">"Potions (year 1992-1993)"</span>,</span>
+<span>  date <span class="op">=</span> <span class="st">"23/06/1993"</span>,</span>
+<span>  hours <span class="op">=</span> <span class="st">"200"</span>,</span>
+<span>  freetext <span class="op">=</span> <span class="st">"taught by Professor S. Snape"</span>,</span>
+<span>  signer <span class="op">=</span> <span class="st">"A.P.W.B. Dumbledore"</span>,</span>
+<span>  signer.role <span class="op">=</span> <span class="st">"School Headmaster"</span>,</span>
 <span>  rpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  lpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
-<span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
-<span>  name.column<span class="op">=</span><span class="st">"List_assistants"</span></span>
+<span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>In this example, each certificate will be rendered in an individual PDF document.</p>
 <table class="table">
 <thead><tr class="header">
-<th><img src="reference/figures/Attendance_certificate.png" alt="Attendance certificates"></th>
+<th><img src="reference/figures/Attendance_certificates.png" alt="Attendance certificates"></th>
 </tr></thead>
 <tbody></tbody>
 </table>
@@ -171,70 +169,73 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <thead><tr class="header">
 <th><img src="reference/figures/Participation_blank.png" alt="Participation certificate (blank)"></th>
 </tr></thead>
-<tbody></tbody>
+<tbody><tr class="odd">
+<td></td>
+</tr></tbody>
 </table>
 <div class="section level3">
 <h3 id="participation-certificate-example">Participation certificate example:<a class="anchor" aria-label="anchor" href="#participation-certificate-example"></a>
 </h3>
 <p>Here, Albus Dumbledore certifies that four of the school teachers have participated in some seminars with different titles, different affiliations, dates and communication types.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span>  <span class="va">data</span><span class="op">=</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span><span class="st">"11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/create_certificate_participation.html">create_certificate_participation</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">data</span>,</span>
-<span>  path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
-<span>  language <span class="op">=</span><span class="st">"en"</span>,</span>
-<span>  type<span class="op">=</span><span class="st">"online seminar"</span>,</span>
-<span>  organiser<span class="op">=</span><span class="st">"Hogwarts School of Witchcraft and Wizardry"</span>,</span>
-<span>  hours<span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  signer<span class="op">=</span><span class="st">"A.P.W.B. Dumbledore"</span>,</span>
-<span>  signer.position<span class="op">=</span><span class="st">"School Headmaster"</span>,</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>   <span class="fu"><a href="reference/create_certificate_participation.html">create_certificate_participation</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">participation.table</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"participation_certificates"</span>,</span>
+<span>  language <span class="op">=</span> <span class="st">"English"</span>,</span>
+<span>  name.column <span class="op">=</span> <span class="st">"Name"</span>,</span>
+<span>  affiliation.column <span class="op">=</span> <span class="st">"House"</span>,</span>
+<span>  comm.type.column <span class="op">=</span> <span class="st">"Comm.type"</span>,</span>
+<span>  title.column <span class="op">=</span> <span class="st">"Title"</span>,</span>
+<span>  date.column <span class="op">=</span> <span class="st">"Date"</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"online"</span>,</span>
+<span>  event <span class="op">=</span> <span class="st">"seminar"</span>,</span>
+<span>  freetext <span class="op">=</span> <span class="st">"organized by Hogwarts School of Magic and Wizardry"</span>,</span>
+<span>  signer <span class="op">=</span> <span class="st">"A.P.W.B. Dumbledore"</span>,</span>
+<span>  signer.role <span class="op">=</span> <span class="st">"School Headmaster"</span>,</span>
 <span>  rpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  lpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/MinMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
-<span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
-<span>  name.column<span class="op">=</span><span class="st">"Name"</span>,</span>
-<span>  affiliation.column<span class="op">=</span><span class="st">"House"</span>,</span>
-<span>  date.column<span class="op">=</span><span class="st">"Date"</span>,</span>
-<span>  title.column<span class="op">=</span><span class="st">"Title"</span>,</span>
-<span>  comm.type.column <span class="op">=</span> <span class="st">"Comm.type"</span><span class="op">)</span></span></code></pre></div>
+<span>  signature.pic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>In this example, each certificate will be rendered in an individual PDF document.</p>
 <table class="table">
 <colgroup><col width="100%"></colgroup>
 <thead><tr class="header">
 <th><img src="reference/figures/Participation_certificate.png" alt="Participation certificate example"></th>
 </tr></thead>
-<tbody></tbody>
+<tbody><tr class="odd">
+<td></td>
+</tr></tbody>
 </table>
 </div>
 </div>
 <div class="section level2">
-<h2 id="id_23-accreditations">2.3 Accreditations<a class="anchor" aria-label="anchor" href="#id_23-accreditations"></a>
+<h2 id="id_23-badges">2.3 Badges<a class="anchor" aria-label="anchor" href="#id_23-badges"></a>
 </h2>
-<p>Accreditations (and all documents from now onwards) are rendered in a single document, with eight accreditation cards per DIN-A4 page. They have only two variable fields (name and affiliation), and can include two top images, although are not signed. Accreditation cards include a dot line in the bottom for individual hand-edition.</p>
+<p>Badges (and all documents from now onwards) are rendered in a single document, with eight accreditation cards per DIN-A4 page in this case. They have only two variable fields (name and affiliation), and can include two top images, although are not signed. Accreditation cards include a dot line in the bottom for individual hand-edition.</p>
 <table class="table">
 <thead><tr class="header">
-<th><img src="reference/figures/Accreditations_blank.png" alt="Accreditations (blank)"></th>
+<th><img src="reference/figures/Accreditations_blank.png" alt="Badges (blank)"></th>
 </tr></thead>
 <tbody></tbody>
 </table>
 <div class="section level3">
-<h3 id="accreditations-example">Accreditations example:<a class="anchor" aria-label="anchor" href="#accreditations-example"></a>
+<h3 id="badges-example">Badges example:<a class="anchor" aria-label="anchor" href="#badges-example"></a>
 </h3>
 <p>As an example, we present the accreditation cards that might have been used in he International Conference of Muggleology, where the only changing fields are names and affiliations of attendees.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M'</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/create_accreditation.html">create_accreditation</a></span><span class="op">(</span></span>
-<span>data<span class="op">=</span><span class="va">data</span>,</span>
-<span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
-<span>event<span class="op">=</span><span class="st">"INTERNATIONAL CONFERENCE OF MUGGLEOLOGY"</span>,</span>
-<span>name.column <span class="op">=</span> <span class="st">"List"</span>,</span>
-<span>affiliation.column<span class="op">=</span><span class="st">"Affiliation"</span>,</span>
-<span>rpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
-<span>lpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/minMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="reference/create_badge.html">create_badge</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">badges.table</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"badges"</span>,</span>
+<span>  event <span class="op">=</span> <span class="st">"INTERNATIONAL CONFERENCE OF MUGGLEOLOGY"</span>,</span>
+<span>  name.column <span class="op">=</span> <span class="st">"List"</span>,</span>
+<span>  affiliation.column <span class="op">=</span> <span class="st">"Affiliation"</span>,</span>
+<span>  rpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  lpic<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/minMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
-<th><img src="reference/figures/Accreditations.png" alt="Accreditations example"></th>
+<th><img src="reference/figures/Accreditations.png" alt="Badges example"></th>
 </tr></thead>
 <tbody></tbody>
 </table>
@@ -256,33 +257,31 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <h3 id="herbarium-labels-example">Herbarium labels example:<a class="anchor" aria-label="anchor" href="#herbarium-labels-example"></a>
 </h3>
 <p>In this example, we show the labels some students have created for their herbarium assignment of the Herbology class.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/create_herbarium_label.html">create_herbarium_label</a></span><span class="op">(</span></span>
-<span>data<span class="op">=</span><span class="va">data</span>,</span>
-<span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
-<span> title<span class="op">=</span><span class="st">"Magical flora of the British Isles"</span>,</span>
-<span> subtitle<span class="op">=</span><span class="st">"Project: Eliminating plant blindness in Hogwarts students"</span>,</span>
-<span> qr <span class="op">=</span> <span class="st">"QR_code"</span>,</span>
-<span> family.column<span class="op">=</span><span class="st">"Family"</span>,</span>
-<span> taxon.column<span class="op">=</span><span class="st">"Taxon"</span>,</span>
-<span> author.column<span class="op">=</span><span class="st">"Author"</span>,</span>
-<span> det.column<span class="op">=</span><span class="st">"det"</span>,</span>
-<span> date.det.column<span class="op">=</span><span class="st">"Det_date"</span>,</span>
-<span> location.column<span class="op">=</span><span class="st">"Location"</span>,</span>
-<span> area.description.column<span class="op">=</span><span class="st">"Area_description"</span>,</span>
-<span> latitude.column<span class="op">=</span><span class="st">"Latitude"</span>,</span>
-<span> longitude.column<span class="op">=</span><span class="st">"Longitude"</span>,</span>
-<span> elevation.column<span class="op">=</span><span class="st">"Elevation"</span>,</span>
-<span> field1.column<span class="op">=</span><span class="st">"life_form"</span>,</span>
-<span> field2.column<span class="op">=</span><span class="st">"Observations"</span>,</span>
-<span> field3.column<span class="op">=</span><span class="st">"Height"</span>,</span>
-<span> collector.column<span class="op">=</span><span class="st">"Collector"</span>,</span>
-<span> collection.column<span class="op">=</span><span class="st">"Collection_number"</span>,</span>
-<span> assistants.column<span class="op">=</span><span class="st">"Assistants"</span>,</span>
-<span> date.column<span class="op">=</span><span class="st">"Date"</span></span>
-<span> <span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/create_herbarium_label.html">create_herbarium_label</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">herbarium.table</span>,</span>
+<span>path <span class="op">=</span> <span class="st">"herbarium_labels"</span>,</span>
+<span>qr<span class="op">=</span><span class="st">"QR_code"</span>,</span>
+<span>title <span class="op">=</span><span class="st">"Magical flora of the British Isles"</span> ,</span>
+<span>subtitle <span class="op">=</span> <span class="st">"Project: Eliminating plant blindness in Hogwarts students"</span>,</span>
+<span>family.column <span class="op">=</span> <span class="st">"Family"</span>,</span>
+<span>taxon.column <span class="op">=</span> <span class="st">"Taxon"</span>,</span>
+<span>author.column <span class="op">=</span> <span class="st">"Author"</span>,</span>
+<span>det.column <span class="op">=</span> <span class="st">"det"</span>,</span>
+<span>date.det.column <span class="op">=</span> <span class="st">"Det_date"</span>,</span>
+<span>location.column <span class="op">=</span> <span class="st">"Location"</span>,</span>
+<span>area.description.column <span class="op">=</span> <span class="st">"Area_description"</span>,</span>
+<span>latitude.column <span class="op">=</span> <span class="st">"Latitude"</span>,</span>
+<span>longitude.column <span class="op">=</span> <span class="st">"Longitude"</span>,</span>
+<span>elevation.column <span class="op">=</span> <span class="st">"Elevation"</span>,</span>
+<span>field1.column <span class="op">=</span> <span class="st">"life_form"</span>,</span>
+<span>field2.column <span class="op">=</span> <span class="st">"Observations"</span>,</span>
+<span>field3.column <span class="op">=</span> <span class="st">"Height"</span>,</span>
+<span>collector.column <span class="op">=</span> <span class="st">"Collector"</span>,</span>
+<span>collection.column <span class="op">=</span> <span class="st">"Collection_number"</span>,</span>
+<span>assistants.column <span class="op">=</span> <span class="st">"Assistants"</span>,</span>
+<span>date.column <span class="op">=</span> <span class="st">"Date"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th><img src="reference/figures/Herbarium_labels.png" alt="Herbarium labels example"></th>
@@ -301,27 +300,25 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <thead><tr class="header">
 <th><img src="reference/figures/collection_labels_blank.png" alt="Collection labels (blank)"></th>
 </tr></thead>
-<tbody></tbody>
+<tbody><tr class="odd">
+<td></td>
+</tr></tbody>
 </table>
 <div class="section level3">
 <h3 id="collection-labels-example">Collection labels example:<a class="anchor" aria-label="anchor" href="#collection-labels-example"></a>
 </h3>
 <p>In this example we can see six labels created for the school’s displayed collection of stuffed animals.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs'</span>,</span>
-<span>                   select.column <span class="op">=</span> <span class="st">"field5"</span>,select.value <span class="op">=</span> <span class="st">"Item 1"</span><span class="op">)</span></span>
-<span><span class="co">#We only include 1 Item of each species using the selection option in read_sheet()</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/create_collection_label.html">create_collection_label</a></span><span class="op">(</span></span>
-<span>data <span class="op">=</span> <span class="va">data</span>,</span>
-<span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
-<span>qr <span class="op">=</span> <span class="st">"QR_code"</span>,</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> <span class="fu"><a href="reference/create_collection_label.html">create_collection_label</a></span><span class="op">(</span></span>
+<span>data <span class="op">=</span> <span class="va">label.table</span>,</span>
+<span>path <span class="op">=</span> <span class="st">"labels"</span>,</span>
+<span>qr<span class="op">=</span><span class="st">"QR_code"</span>,</span>
 <span>field1.column <span class="op">=</span> <span class="st">"field1"</span>,</span>
 <span>field2.column <span class="op">=</span> <span class="st">"field2"</span>,</span>
 <span>field3.column <span class="op">=</span> <span class="st">"field3"</span>,</span>
 <span>field4.column <span class="op">=</span> <span class="st">"field6"</span>,</span>
 <span>field5.column <span class="op">=</span> <span class="st">"field7"</span>,</span>
-<span>logo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_BnW.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_BnW.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>bgcolor <span class="op">=</span> <span class="st">"D0ECC1"</span>,  <span class="co">#White is "FFFFFF"</span></span>
 <span>textcolor <span class="op">=</span> <span class="st">"1E3F20"</span> <span class="co">#Black is "000000"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -349,19 +346,16 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <h3 id="tinylabels-example">Tinylabels example:<a class="anchor" aria-label="anchor" href="#tinylabels-example"></a>
 </h3>
 <p>Here, tinylabels are created for typical collections stored in boxes, so a normal collection label would be to big.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_sheet.html">read_sheet</a></span><span class="op">(</span>url<span class="op">=</span><span class="st">'1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/create_tinylabel.html">create_tinylabel</a></span><span class="op">(</span></span>
-<span>data <span class="op">=</span> <span class="va">data</span>,</span>
-<span>path <span class="op">=</span> <span class="st">"LabeleR_output"</span>,</span>
-<span>qr <span class="op">=</span> <span class="st">"QR_code"</span>,</span>
-<span>field1.column <span class="op">=</span> <span class="st">"field1"</span>,</span>
-<span>field2.column <span class="op">=</span> <span class="st">"field2"</span>,</span>
-<span>field3.column <span class="op">=</span> <span class="st">"field3"</span>,</span>
-<span>field4.column <span class="op">=</span> <span class="st">"field4"</span>,</span>
-<span>field5.column <span class="op">=</span> <span class="st">"field5"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> <span class="fu"><a href="reference/create_tinylabel.html">create_tinylabel</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">tiny.table</span>,</span>
+<span>  qr<span class="op">=</span><span class="st">"QR_code"</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"man/figures"</span>,</span>
+<span>  field1.column <span class="op">=</span><span class="st">"field2"</span>,</span>
+<span>  field2.column <span class="op">=</span><span class="st">"field1"</span>,</span>
+<span>  field3.column <span class="op">=</span><span class="st">"field3"</span>,</span>
+<span>  field4.column <span class="op">=</span><span class="st">"field4"</span>,</span>
+<span>  field5.column <span class="op">=</span><span class="st">"field5"</span> <span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th><img src="reference/figures/tinylabels.png" alt="Tinylabels example"></th>
@@ -374,7 +368,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>If using this package, please cite it:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"labeleR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -410,8 +404,9 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Julia G. de Aledo <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9065-9316" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Ignacio Ramos-Gutiérrez <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-8675-0114" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Julia G. de Aledo <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9065-9316" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Francisco Rodríguez-Sánchez <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-7981-1599" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -423,7 +418,7 @@ For instance, in this URL: <a href="https://docs.google.com/spreadsheets/d/" cla
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Julia G. de Aledo, Ignacio Ramos-Gutiérrez.</p>
+<p>Developed by Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez.</p>
 </div>
 
 <div class="pkgdown-footer-right">
