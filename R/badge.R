@@ -21,13 +21,11 @@
 #'
 #' @export
 #'
-#' @author Julia G. de Aledo, Ignacio Ramos-Gutiérrez, Francisco Rodríguez-Sánchez
+#' @author Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 #'
 #' @examplesIf interactive()
-#' data <- read_sheet(url = 'https://docs.google.com/spreadsheets/d
-#'         /16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
 #' create_badge(
-#' data = data,
+#' data = badge.table,
 #' path = "labeleR_output",
 #' event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 #' name.column = "List",

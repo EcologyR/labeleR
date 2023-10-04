@@ -1,5 +1,7 @@
 #' Create certificate of attendance
 #'
+#' Create certificate of attendance (1 per DIN-A4 page)
+#'
 #' @param data a data frame containing attendees' names (in `name.column`)
 #' @param path Character. Path to folder where the PDF certificates will be saved.
 #' @param language Character. Select 'English' or 'Spanish'.
@@ -12,10 +14,10 @@
 #' event title and date. Can include LaTeX commands (see examples).
 #' @param signer Character. Person who signs the certificate
 #' @param signer.role Character. Signer's role or position
-#' @param signature.pic Character (optional) Path to a PNG image to appear in
+#' @param signature.pic Character (optional). Path to a PNG image to appear in
 #' the bottom, above signer's name.
-#' @param lpic Character (optional) Path to a PNG image to appear in the top-left.
-#' @param rpic Character (optional) Path to a PNG image to appear in the top-right.
+#' @param lpic Character (optional). Path to a PNG image to appear in the top-left.
+#' @param rpic Character (optional). Path to a PNG image to appear in the top-right.
 #' @param keep.files Logical. Keep the Rmarkdown template and associated files
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) Rmarkdown template to use. If not provided,
@@ -27,12 +29,12 @@
 #'
 #' @export
 #'
-#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
+#' @author Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 #'
 #' @examplesIf interactive()
-#' data <- data.frame(Names = c("Joe", "Mary"))
 #'
-#' create_certificate_attendance(data,
+#' create_certificate_attendance(
+#' data = attendance.table,
 #' path = "labeleR_output",
 #' language = "English",
 #' name.column = "Names",
