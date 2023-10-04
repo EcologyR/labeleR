@@ -49,6 +49,8 @@ If you want to clone the repository, you can find the code
 
 ## 1. Getting started
 
+### 1.1 TinyTeX
+
 On the first place, we must warn the renderization of the documents with
 labeleR depends on LaTeX, so you must have it installed on the first
 place. Don't worry, its very easy!
@@ -62,7 +64,7 @@ If you don't have tinytex installed, or it's the first time you use
 labeleR it may take a while until all packages are correctly installed.
 Don't worry, it will be much quicker next time!
 
-### 1.1 Loading the data
+### 1.2 Loading the data
 
 The very first thing you need to start using labeleR is a data frame
 where the information is included. This data frame can be imported to
@@ -93,29 +95,7 @@ people_list_long <- as.data.frame(people_list_long)
 
 ```
 
-<!-- In case you just want to import some rows (let's say you have to create -->
-
-<!-- some of them, or to re-create some after correcting a mistake), you -->
-
-<!-- don´t have to import all the rows. Using the `select.column` parameter, -->
-
-<!-- you can import only the rows which match `select.value` . -->
-
-<!-- For example, if you just want to create certificate for Draco Malfoy as -->
-
-<!-- an attendee of a class, you can use the following code to import just -->
-
-<!-- his row: -->
-
-<!-- ```{r import some rows, eval = FALSE} -->
-
-<!-- read_sheet(url="1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw",  -->
-
-<!--            select.column = "List_assistants", select.value = "Draco Malfoy") -->
-
-<!-- ``` -->
-
-### 1.2 Some advice for the labeleR functions
+### 1.3 Some advice for the labeleR functions
 
 When using labeleR's functions, there are some widely used parameters
 and nomenclature that must be acknowledged.
