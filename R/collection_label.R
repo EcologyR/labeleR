@@ -2,16 +2,21 @@
 #'
 #' Create collection labels (8 per DIN-A4 page)
 #'
-#' @param data a data frame including information of a species
+#' @param data a data frame. Each row contains the information by species that will appear in the label.
 #' @param path Character. Path to folder where the PDF file will be saved.
 #' @param qr String. Free text or column of \code{data} that specifies the link where to create the QR code.
-#'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
-#'          specified \code{qr}.
-#' @param field1.column Character (optional). Name of the column in `data` storing the first field to be displayed.
-#' @param field2.column Character (optional). Name of the column in `data` storing the second field to be displayed.
-#' @param field3.column Character (optional). Name of the column in `data` storing the third field to be displayed.
-#' @param field4.column Character (optional). Name of the column in `data` storing the fourth field to be displayed.
-#' @param field5.column Character (optional). Name of the column in `data` storing the fifth field to be displayed.
+#'          If the specified value is not a column name of \code{data}, all the QRs will be equal,
+#'          and will output the specified \code{qr}.
+#' @param field1.column Character (optional). Name of the column in `data` storing the first free text to
+#' appear at the top of the label.
+#' @param field2.column Character (optional). Name of the column in `data` storing the second free text to
+#' appear below field1.
+#' @param field3.column Character (optional). Name of the column in `data` storing the third free text to
+#' appear below field2.
+#' @param field4.column Character (optional). Name of the column in `data` storing the fourth free text to
+#' appear below field3.
+#' @param field5.column Character (optional). Name of the column in `data` storing the fifth free text to
+#' appear below field4.
 #' @param logo Character (optional) Path to a PNG image to be located in the label bottom.
 #' @param bgcolor HTML color for label background. Default is D0ECC1
 #' @param textcolor HTML color for label text. Default is 1E3F20
@@ -22,13 +27,12 @@
 #'
 #' @export
 #'
-#' @author  Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
+#' @author Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 #'
 #' @examplesIf interactive()
-#' data <- read_sheet("https://docs.google.com/spreadsheets/d/
-#'         1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
+#'
 #' create_collection_label(
-#' data = data,
+#' data = collection.table,
 #' path = "LabeleR_output",
 #' qr = "QR_code",
 #' field1.column = "field1",

@@ -1,6 +1,8 @@
 #' Create certificate of participation
 #'
-#' @param data A data frame containing participants' names and contributions
+#' Create certificate of participation  (1 per DIN-A4 page)
+#'
+#' @param data A data frame containing participants' names and contributions.
 #' @param path path Character. Path to folder where the PDF certificates will be saved.
 #' @param language Character. Select 'English' or 'Spanish'.
 #' @param name.column Character. Name of the column in `data` storing participants' name.
@@ -8,8 +10,8 @@
 #' storing participants' affiliation
 #' @param comm.type.column Character. Name of the column in `data` reporting
 #' participation type (e.g. poster, oral communication, etc)
-#' @param title.column Character. Name of the column in `data` storing
-#' contribution titles.
+#' @param title.column Character. Name of the column in `data` storing the title of the
+#' contribution.
 #' @param date.column Character. Name of the column in `data` storing dates of
 #' participation.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
@@ -33,22 +35,12 @@
 #'
 #' @export
 #'
-#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodriguez-Sanchez
+#' @author Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 #'
 #' @examplesIf interactive()
-#'
-#' data <- data.frame(
-#' Name = c("Severus Snape", "Minerva McGonagall"),
-#' Date = c("1/1/93", "1/1/94"),
-#' Title = c("Advanced potions with more than six plants",
-#'           "From cat to ape: transformations in the XX century"),
-#' Comm.type = c("oral communication", "poster"),
-#' House = c("Slytherin", "Gryffindor")
-#' )
-#'
-#'
+#
 #' create_certificate_participation(
-#' data = data,
+#' data = participation.table,
 #' path = "labeleR_output",
 #' language = "Spanish",
 #' name.column = "Name",
