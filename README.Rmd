@@ -296,28 +296,28 @@ herbarium assignment of the Herbology class.
 
 ```{r herbarium labels, eval=FALSE}
 create_herbarium_label(
-  data = herbarium.table,
-path = "herbarium_labels",
-qr="QR_code",
-title ="Magical flora of the British Isles" ,
-subtitle = "Project: Eliminating plant blindness in Hogwarts students",
-family.column = "Family",
-taxon.column = "Taxon",
-author.column = "Author",
-det.column = "det",
-date.det.column = "Det_date",
-location.column = "Location",
-area.description.column = "Area_description",
-latitude.column = "Latitude",
-longitude.column = "Longitude",
-elevation.column = "Elevation",
-field1.column = "life_form",
-field2.column = "Observations",
-field3.column = "Height",
-collector.column = "Collector",
-collection.column = "Collection_number",
-assistants.column = "Assistants",
-date.column = "Date"
+ data = herbarium.table,
+ path = "herbarium_labels",
+ qr="QR_code",
+ title ="Magical flora of the British Isles" ,
+ subtitle = "Project: Eliminating plant blindness in Hogwarts students",
+ family.column = "Family",
+ taxon.column = "Taxon",
+ author.column = "Author",
+ det.column = "det",
+ date.det.column = "Det_date",
+ location.column = "Location",
+ area.description.column = "Area_description",
+ latitude.column = "Latitude",
+ longitude.column = "Longitude",
+ elevation.column = "Elevation",
+ field1.column = "life_form",
+ field2.column = "Observations",
+ field3.column = "Height",
+ collector.column = "Collector",
+ collection.column = "Collection_number",
+ assistants.column = "Assistants",
+ date.column = "Date"
 )
 
 ```
@@ -360,7 +360,7 @@ field3.column = "field3",
 field4.column = "field6",
 field5.column = "field7",
 system.file("rmarkdown/pictures/Hogwarts_BnW.png", package = "labeleR"),
-bgcolor = "D0ECC1",  #White is "FFFFFF"
+bgcolor = "D0ECC1",  #White is "FFFFFF",
 textcolor = "1E3F20" #Black is "000000"
 )
 ```
@@ -400,7 +400,8 @@ a normal collection label would be to big.
   field2.column ="field1",
   field3.column ="field3",
   field4.column ="field4",
-  field5.column ="field5" )
+  field5.column ="field5" 
+)
 
 ```
 
