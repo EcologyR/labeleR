@@ -79,6 +79,7 @@ create_collection_label <- function(data = NULL,
   if (!(qr %in% colnames(data))) {
     data$qr <- qr
     qr <- "qr"
+    data[,qr]<- as.character (data[,qr])
   }
 
   if (is.null(field1.column)) {

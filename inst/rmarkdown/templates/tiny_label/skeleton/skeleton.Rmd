@@ -25,19 +25,19 @@ for (i in 1:length(params$field1.i)) {
   cat("
   \\begin{mdframed}[linewidth=1pt,linecolor=black]\n
   \\begin{minipage}[c]{0.7\\textwidth}
-  {\\fontsize{25pt}{100pt}\\selectfont", 
+  {\\fontsize{20pt}{100pt}\\selectfont", 
   params$field1.i[i],
   "} \\\\
-  {\\fontsize{25pt}{100pt}\\selectfont",
+  {\\fontsize{20pt}{100pt}\\selectfont",
   params$field2.i[i],
   "} \\\\
-  {\\fontsize{25pt}{100pt}\\selectfont", 
+  {\\fontsize{20pt}{100pt}\\selectfont", 
   params$field3.i[i],
   "} \\\\
-  {\\fontsize{25pt}{100pt}\\selectfont",
+  {\\fontsize{20pt}{100pt}\\selectfont",
   params$field4.i[i],
   "} \\\\
-  {\\fontsize{25pt}{100pt}\\selectfont",
+  {\\fontsize{20pt}{100pt}\\selectfont",
   params$field5.i[i],
   "} \\\\
   \\end{minipage}

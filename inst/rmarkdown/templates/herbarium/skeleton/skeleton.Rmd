@@ -51,25 +51,25 @@ for (i in 1:length(params$collection.i)){
 \\end{minipage}
 \\end{flushright}
 \\begin{flushleft}
-{\\fontsize{50pt}{100pt}\\selectfont\\bf",params$family.i[i]," } \\\\
+{\\fontsize{35pt}{100pt}\\selectfont\\bf",params$family.i[i]," } \\\\
 \\vfill
-{\\fontsize{40pt}{100pt}\\selectfont\\emph{",params$taxon.i[i],"} ",params$author.i[i],"} \\\\
+{\\fontsize{35pt}{100pt}\\selectfont\\emph{",params$taxon.i[i],"} ",params$author.i[i],"} \\\\
 \\end{flushleft}
 \\begin{flushright}
-{\\fontsize{25pt}{100pt}\\selectfont Det.", params$det.i[i]," ", params$date.det.i[i],"} \\\\
+{\\fontsize{22.55pt}{100pt}\\selectfont Det.", params$det.i[i]," ", params$date.det.i[i],"} \\\\
 \\end{flushright}
 \\vfill
 \\bigskip
 \\bigskip
 \\begin{flushleft}
-{\\fontsize{27.5pt}{100pt}\\selectfont", params$location.i[i],"} \\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont", params$area.description.i[i],"} \\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont", params$elevation.i[i],"}\\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont", params$latitude.i[i], " ", params$longitude.i[i],"} \\\\
+{\\fontsize{25pt}{100pt}\\selectfont", params$location.i[i],"} \\\\
+{\\fontsize{25pt}{100pt}\\selectfont", params$area.description.i[i],"} \\\\
+{\\fontsize{25pt}{100pt}\\selectfont", params$elevation.i[i],"}\\\\
+{\\fontsize{25pt}{100pt}\\selectfont", params$latitude.i[i], " ", params$longitude.i[i],"} \\\\
 \\vfill
-{\\fontsize{27.5pt}{100pt}\\selectfont",params$field1.i[i],"} \\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont",params$field2.i[i],"} \\\\
-{\\fontsize{27.5pt}{100pt}\\selectfont",params$field3.i[i],"} \\\\
+{\\fontsize{25pt}{100pt}\\selectfont",params$field1.i[i],"} \\\\
+{\\fontsize{25pt}{100pt}\\selectfont",params$field2.i[i],"} \\\\
+{\\fontsize{25pt}{100pt}\\selectfont",params$field3.i[i],"} \\\\
 \\end{flushleft}
 \\vfill
 \\begin{flushright}

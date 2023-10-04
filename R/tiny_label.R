@@ -70,6 +70,12 @@ message("No qr provided")
 qr <- ""
 }
 
+if (!(qr %in% colnames(data))) {
+  data$qr <- qr
+  qr <- "qr"
+  data[,qr]<- as.character (data[,qr])
+}
+
 
   if (is.null(field1.column)) {
     field1.column <- ""
