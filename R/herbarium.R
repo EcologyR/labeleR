@@ -1,91 +1,101 @@
-#' Function to create herbaruim labels (4 per DIN-A4 page)
+#' Create herbarium labels
 #'
-#' @param data a data frame to create herbarium labels.
-#' @param path Folder path where the output will be printed
+#' Create herbarium labels (4 per DIN-A4 page)
+#'
+#' @param data a data frame. Each row contains the information by species that will appear in the label.
+#' @param path Character. Path to folder where the PDF file will be saved.
 #' @param title Main title at the top of the labels. Can be blank if set to NULL.
 #' @param subtitle Subtitle at the bottom of the labels. Can be blank if set to NULL.
 #' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
-#'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
-#'          specified \code{qr}.
-#' @param family.column Column name of the \code{data} data frame which specifies the labels' family name.
-#' @param taxon.column Column name of the \code{data} data frame which specifies the labels' taxon.
-#' @param author.column Column name of the \code{data} data frame which specifies the taxons' author.
-#' @param det.column Column name of the \code{data} data frame which specifies the determiner of the voucher.
-#' @param date.det.column Column name of the \code{data} data frame which specifies the date when the voucher was determined.
-#' @param location.column Column name of the \code{data} data frame which specifies where the voucher was collected.
-#' @param area.description.column Column name of the \code{data} data frame which specifies the decription of the area
-#' @param latitude.column Column name of the \code{data} data frame which specifies the latitude where the specimen was collected.
-#' @param longitude.column Column name of the \code{data} data frame which specifies the longitude where the specimen was collected.
-#' @param elevation.column  Column name of the \code{data} data frame which specifies the elevation where the specimen was collected.
-#' @param field1.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
-#' @param field2.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
-#' @param field3.column Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.
-#' @param collector.column Column name of the \code{data} data frame which specifies the name of the collector of the voucher.
-#' @param collection.column Column name of the \code{data} data frame which specifies the voucher's collection number.
-#' @param assistants.column Column name of the \code{data} data frame which specifies the names of the collector's assistants.
-#' @param date.column Column name of the \code{data} data frame which specifies the date when the specimen was collected.
+#'          If the specified value is not a column name of \code{data}, all the QRs will be equal,
+#'          and will output the specified \code{qr}.
+#' @param family.column Character (optional). Name of the column in `data` storing the family of the taxon.
+#' @param taxon.column Character (optional). Name of the column in `data` storing the taxons' name.
+#' @param author.column Character (optional). Name of the column in `data` storing the taxons' author.
+#' @param det.column Character (optional). Name of the column in `data` storing the determiner of the voucher.
+#' @param date.det.column Character (optional). Name of the column in `data` storing the date when the voucher
+#' was determined.
+#' @param location.column Character (optional). Name of the column in `data` storing where the voucher
+#' was collected.
+#' @param area.description.column Character (optional). Name of the column in `data` storing the decription
+#' of the area.
+#' @param latitude.column Character (optional). Name of the column in `data` storing the latitude
+#' where the specimen was collected.
+#' @param longitude.column Character (optional). Name of the column in `data` storing the longitude
+#' where the specimen was collected.
+#' @param elevation.column Character (optional). Name of the column in `data` storing the elevation
+#' where the specimen was collected.
+#' @param field1.column Character (optional). Name of the column in `data` storing the first free text to
+#' appear at the top of the label.
+#' @param field2.column Character (optional). Name of the column in `data` storing the second free text to
+#' appear below field1.
+#' @param field3.column Character (optional). Name of the column in `data` storing the second free text to
+#' appear below field2.
+#' @param collector.column Character (optional). Name of the column in `data` storing the name of the collector.
+#' @param collection.column Character (optional). Name of the column in `data` storing the voucher's collection
+#' number.
+#' @param assistants.column Character (optional). Name of the column in `data` storing the names of the
+#' collector's assistants.
+#' @param date.column Character (optional). Name of the column in `data` storing the date when the specimen
+#' was collected.
 #'
-#' @return A pdf file with four herbarium labels per page within an 'output' folder
+#' @return A pdf file with four herbarium labels per page within an 'output' folder.
 #'
 #' @export
 #'
-#' @author Julia G. de Aledo, Ignacio Ramos-Gutierrez
+#' @author Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 #'
-#' @examples
+#' @examplesIf interactive()
 #'
-#' \dontrun{
-#' data=read_sheet("https://docs.google.com/spreadsheets/
-#'         d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
-#'create_herbarium_label(
-#'data=data,
-#'path = "LabeleR_output",
-#' title="Magical flora of the British Isles",
-#' subtitle="Project: Eliminating plant blindness in Hogwarts students",
+#' create_herbarium_label (
+#' data = herbarium.table,
+#' path = "LabeleR_output",
+#' title = "Magical flora of the British Isles",
+#' subtitle = "Project: Eliminating plant blindness in Hogwarts students",
 #' qr = "QR_code",
-#' family.column="Family",
-#' taxon.column="Taxon",
-#' author.column="Author",
-#' det.column="det",
-#' date.det.column="Det_date",
-#' location.column="Location",
-#' area.description.column="Area_description",
-#' latitude.column="Latitude",
-#' longitude.column="Longitude",
-#' elevation.column="Elevation",
-#' field1.column="life_form",
-#' field2.column="Observations",
-#' field3.column="Height",
-#' collector.column="Collector",
-#' collection.column="Collection_number",
-#' assistants.column="Assistants",
-#' date.column="Date"
+#' family.column ="Family",
+#' taxon.column = "Taxon",
+#' author.column = "Author",
+#' det.column = "det",
+#' date.det.column = "Det_date",
+#' location.column = "Location",
+#' area.description.column = "Area_description",
+#' latitude.column = "Latitude",
+#' longitude.column = "Longitude",
+#' elevation.column = "Elevation",
+#' field1.column = "life_form",
+#' field2.column = "Observations",
+#' field3.column = "Height",
+#' collector.column = "Collector",
+#' collection.column = "Collection_number",
+#' assistants.column = "Assistants",
+#' date.column = "Date"
 #' )
-#' }
-#'
+
 create_herbarium_label <- function(data=data,
                                    path=NULL,
                                    title=NULL,
-                                 subtitle=NULL,
-                                 qr=NULL,
-                                 family.column=NULL,
-                                 taxon.column=NULL,
-                                 author.column=NULL,
-                                 det.column=NULL,
-                                 date.det.column=NULL,
-                                 location.column=NULL,
-                                 area.description.column=NULL,
-                                 latitude.column=NULL,
-                                 longitude.column=NULL,
-                                 elevation.column=NULL,
-                                 field1.column=NULL,
-                                 field2.column=NULL,
-                                 field3.column=NULL,
-                                 collector.column=NULL,
-                                 collection.column=NULL,
-                                 assistants.column=NULL,
-                                 date.column=NULL,
-                                 keep.files = FALSE,
-                                 template = NULL
+                                   subtitle=NULL,
+                                   qr=NULL,
+                                   family.column=NULL,
+                                   taxon.column=NULL,
+                                   author.column=NULL,
+                                   det.column=NULL,
+                                   date.det.column=NULL,
+                                   location.column=NULL,
+                                   area.description.column=NULL,
+                                   latitude.column=NULL,
+                                   longitude.column=NULL,
+                                   elevation.column=NULL,
+                                   field1.column=NULL,
+                                   field2.column=NULL,
+                                   field3.column=NULL,
+                                   collector.column=NULL,
+                                   collection.column=NULL,
+                                   assistants.column=NULL,
+                                   date.column=NULL,
+                                   keep.files = FALSE,
+                                   template = NULL
                                  ){
 
   if(is.null(data)){

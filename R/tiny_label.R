@@ -5,13 +5,18 @@
 #' @param data a data frame including information of a species
 #' @param path Character. Path to folder where the PDF file will be saved.
 #' @param qr String. Free text or column of \code{data} that specifies the link where to create the QR code.
-#'          If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
-#'          specified \code{qr}.
-#' @param field1.column Character (optional). Name of the column in `data` storing the first field to be displayed.
-#' @param field2.column Character (optional). Name of the column in `data` storing the second field to be displayed.
-#' @param field3.column Character (optional). Name of the column in `data` storing the third field to be displayed.
-#' @param field4.column Character (optional). Name of the column in `data` storing the fourth field to be displayed.
-#' @param field5.column Character (optional). Name of the column in `data` storing the fifth field to be displayed.
+#'          If the specified value is not a column name of \code{data}, all the QRs will be equal,
+#'          and will output the specified \code{qr}.
+#' @param field1.column Character (optional). Name of the column in `data` storing the first free text to
+#' appear at the top of the label.
+#' @param field2.column Character (optional). Name of the column in `data` storing the second free text to
+#' appear below field1.
+#' @param field3.column Character (optional). Name of the column in `data` storing the third free text to
+#' appear below field2.
+#' @param field4.column Character (optional). Name of the column in `data` storing the fourth free text to
+#' appear below field3.
+#' @param field5.column Character (optional). Name of the column in `data` storing the fifth free text to
+#' appear below field4.
 #'
 #' @return A PDF file named "Tiny_label.pdf" is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an Rmarkdown file will also appear in the same folder.
@@ -24,7 +29,7 @@
 #' data <- read_sheet("https://docs.google.com/spreadsheets/
 #'         d/1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
 #' create_tinylabel(
-#' data = data,
+#' data = tiny.table,
 #' qr = "QR_code",
 #' path = "LabeleR_output",
 #' field1.column = "campo1",
