@@ -2,11 +2,13 @@ Package: labeleR
 Title: Package to create your own labels, certificates, and much more! :)
 Version: 0.0.0.9000
 Authors@R: 
-  c(    
+  c(
+  person("Ignacio", "Ramos-Gutiérrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-8675-0114")),
   person("Julia G.", "de Aledo", , "juliagdealedo@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9065-9316")),
-  person("Ignacio", "Ramos-Gutiérrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre"),
-    comment = c(ORCID = "0000-0002-8675-0114"))
+  person("Francisco", "Rodríguez-Sánchez", , "frodriguez@us.es", role = "aut",
+           comment = c(ORCID = "0000-0002-7981-1599"))
     )
 Description: With this packages you can create labels, herbarium labels, ID cards, custom certificates
 License: MIT + file LICENSE

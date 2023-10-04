@@ -2,10 +2,10 @@
 % Please edit documentation in R/collection_label.R
 \name{create_collection_label}
 \alias{create_collection_label}
-\title{Function to create create collection labels (8 per DIN-A4 page)}
+\title{Create collection labels}
 \usage{
 create_collection_label(
-  data = data,
+  data = NULL,
   path = NULL,
   qr = NULL,
   field1.column = NULL,
@@ -14,45 +14,54 @@ create_collection_label(
   field4.column = NULL,
   field5.column = NULL,
   logo = NULL,
-  bgcolor = NULL,
-  textcolor = NULL
+  bgcolor = "D0ECC1",
+  textcolor = "1E3F20",
+  keep.files = FALSE,
+  template = NULL
 )
 }
 \arguments{
-\item{data}{Data frame including to create labels.}
+\item{data}{a data frame. Each row contains the information by species that will appear in the label.}
 
-\item{path}{Folder path where the output will be printed}
+\item{path}{Character. Path to folder where the PDF file will be saved.}
 
-\item{qr}{String. Free text or column of \code{data} that specifies the text to create the QR code.
-If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
-specified \code{qr}.}
+\item{qr}{String. Free text or column of \code{data} that specifies the link where to create the QR code.
+If the specified value is not a column name of \code{data}, all the QRs will be equal,
+and will output the specified \code{qr}.}
 
-\item{field1.column}{Column of \code{data} that specifies the text to print in the first field.}
+\item{field1.column}{Character (optional). Name of the column in \code{data} storing the first free text to
+appear at the top of the label.}
 
-\item{field2.column}{Column of \code{data} that specifies the text to print in the second field.}
+\item{field2.column}{Character (optional). Name of the column in \code{data} storing the second free text to
+appear below field1.}
 
-\item{field3.column}{Column of \code{data} that specifies the text to print in the third field.}
+\item{field3.column}{Character (optional). Name of the column in \code{data} storing the third free text to
+appear below field2.}
 
-\item{field4.column}{Column of \code{data} that specifies the text to print in the fourth field.}
+\item{field4.column}{Character (optional). Name of the column in \code{data} storing the fourth free text to
+appear below field3.}
 
-\item{field5.column}{Column of \code{data} that specifies the text to print in the fifth field.}
+\item{field5.column}{Character (optional). Name of the column in \code{data} storing the fifth free text to
+appear below field4.}
 
-\item{logo}{PNG object route. File route of the bottom image. Can be blank if set to NULL.}
+\item{logo}{Character (optional) Path to a PNG image to be located in the label bottom.}
 
-\item{bgcolor}{HTML color to use for the label background. Default is D0ECC1}
+\item{bgcolor}{HTML color for label background. Default is D0ECC1}
 
-\item{textcolor}{HTML color to use for the label text. Default is 1E3F20}
+\item{textcolor}{HTML color for label text. Default is 1E3F20
+
+#' @return A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
+by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown and PNG logo files will also
+appear in the same folder.}
 }
 \description{
-Function to create create collection labels (8 per DIN-A4 page)
+Create collection labels (8 per DIN-A4 page)
 }
 \examples{
-data <- read_sheet("https://docs.google.com/spreadsheets/d/
-        1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
-\dontrun{
 create_collection_label(
-data = data,
+data = collection.table,
 path = "LabeleR_output",
 qr = "QR_code",
 field1.column = "field1",
@@ -61,10 +70,8 @@ field3.column = "field3",
 field4.column = "field6",
 field5.column = "field7"
 )
-}
-
-
+\dontshow{\}) # examplesIf}
 }
 \author{
-Ignacio Ramos-Gutierrez, Julia G. de Aledo
+Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 }

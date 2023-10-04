@@ -40,7 +40,7 @@ using the default template included in \code{labeleR}.}
 }
 \value{
 A PDF file named "Badges.pdf" is saved on disk, in the folder defined
-by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown and PNG logo files will also
+by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown and PNG lpic and rpic files will also
 appear in the same folder.
 }
 \description{
@@ -48,10 +48,8 @@ Create badges (8 per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-data <- read_sheet(url = 'https://docs.google.com/spreadsheets/d
-        /16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M/edit#gid=0')
 create_badge(
-data = data,
+data = badge.table,
 path = "labeleR_output",
 event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 name.column = "List",
@@ -61,5 +59,5 @@ rpic = NULL)
 \dontshow{\}) # examplesIf}
 }
 \author{
-Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
+Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 }

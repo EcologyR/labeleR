@@ -8,7 +8,7 @@
 A data frame
 
 \describe{
-A data frame with 4 rows and 5 columns
+A data frame with 2 rows and 5 columns
 }
 }
 \usage{

@@ -26,7 +26,7 @@ create_certificate_participation(
 )
 }
 \arguments{
-\item{data}{A data frame containing participants' names and contributions}
+\item{data}{A data frame containing participants' names and contributions.}
 
 \item{path}{path Character. Path to folder where the PDF certificates will be saved.}
 
@@ -40,8 +40,8 @@ storing participants' affiliation}
 \item{comm.type.column}{Character. Name of the column in \code{data} reporting
 participation type (e.g. poster, oral communication, etc)}
 
-\item{title.column}{Character. Name of the column in \code{data} storing
-contribution titles.}
+\item{title.column}{Character. Name of the column in \code{data} storing the title of the
+contribution.}
 
 \item{date.column}{Character. Name of the column in \code{data} storing dates of
 participation.}
@@ -76,23 +76,12 @@ by \code{path}. If \code{keep.files = TRUE}, the Rmarkdown template and PNG logo
 will also appear in the same folder.
 }
 \description{
-Create certificate of participation
+Create certificate of participation  (1 per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-
-data <- data.frame(
-Name = c("Severus Snape", "Minerva McGonagall"),
-Date = c("1/1/93", "1/1/94"),
-Title = c("Advanced potions with more than six plants",
-          "From cat to ape: transformations in the XX century"),
-Comm.type = c("oral communication", "poster"),
-House = c("Slytherin", "Gryffindor")
-)
-
-
 create_certificate_participation(
-data = data,
+data = participation.table,
 path = "labeleR_output",
 language = "Spanish",
 name.column = "Name",
@@ -112,5 +101,5 @@ signature.pic = NULL
 \dontshow{\}) # examplesIf}
 }
 \author{
-Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodriguez-Sanchez
+Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 }

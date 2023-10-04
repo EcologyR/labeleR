@@ -2,7 +2,7 @@
 % Please edit documentation in R/herbarium.R
 \name{create_herbarium_label}
 \alias{create_herbarium_label}
-\title{Function to create herbaruim labels (4 per DIN-A4 page)}
+\title{Create herbarium labels}
 \usage{
 create_herbarium_label(
   data = data,
@@ -26,94 +26,105 @@ create_herbarium_label(
   collector.column = NULL,
   collection.column = NULL,
   assistants.column = NULL,
-  date.column = NULL
+  date.column = NULL,
+  keep.files = FALSE,
+  template = NULL
 )
 }
 \arguments{
-\item{data}{a data frame to create herbarium labels.}
+\item{data}{a data frame. Each row contains the information by species that will appear in the label.}
 
-\item{path}{Folder path where the output will be printed}
+\item{path}{Character. Path to folder where the PDF file will be saved.}
 
 \item{title}{Main title at the top of the labels. Can be blank if set to NULL.}
 
 \item{subtitle}{Subtitle at the bottom of the labels. Can be blank if set to NULL.}
 
 \item{qr}{String. Free text or column of \code{data} that specifies the text to create the QR code.
-If the specified value is not a column name of \code{data}, all the QRs will be equal, and will output the
-specified \code{qr}.}
+If the specified value is not a column name of \code{data}, all the QRs will be equal,
+and will output the specified \code{qr}.}
 
-\item{family.column}{Column name of the \code{data} data frame which specifies the labels' family name.}
+\item{family.column}{Character (optional). Name of the column in \code{data} storing the family of the taxon.}
 
-\item{taxon.column}{Column name of the \code{data} data frame which specifies the labels' taxon.}
+\item{taxon.column}{Character (optional). Name of the column in \code{data} storing the taxons' name.}
 
-\item{author.column}{Column name of the \code{data} data frame which specifies the taxons' author.}
+\item{author.column}{Character (optional). Name of the column in \code{data} storing the taxons' author.}
 
-\item{det.column}{Column name of the \code{data} data frame which specifies the determiner of the voucher.}
+\item{det.column}{Character (optional). Name of the column in \code{data} storing the determiner of the voucher.}
 
-\item{date.det.column}{Column name of the \code{data} data frame which specifies the date when the voucher was determined.}
+\item{date.det.column}{Character (optional). Name of the column in \code{data} storing the date when the voucher
+was determined.}
 
-\item{location.column}{Column name of the \code{data} data frame which specifies where the voucher was collected.}
+\item{location.column}{Character (optional). Name of the column in \code{data} storing where the voucher
+was collected.}
 
-\item{area.description.column}{Column name of the \code{data} data frame which specifies the decription of the area}
+\item{area.description.column}{Character (optional). Name of the column in \code{data} storing the decription
+of the area.}
 
-\item{latitude.column}{Column name of the \code{data} data frame which specifies the latitude where the specimen was collected.}
+\item{latitude.column}{Character (optional). Name of the column in \code{data} storing the latitude
+where the specimen was collected.}
 
-\item{longitude.column}{Column name of the \code{data} data frame which specifies the longitude where the specimen was collected.}
+\item{longitude.column}{Character (optional). Name of the column in \code{data} storing the longitude
+where the specimen was collected.}
 
-\item{elevation.column}{Column name of the \code{data} data frame which specifies the elevation where the specimen was collected.}
+\item{elevation.column}{Character (optional). Name of the column in \code{data} storing the elevation
+where the specimen was collected.}
 
-\item{field1.column}{Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.}
+\item{field1.column}{Character (optional). Name of the column in \code{data} storing the first free text to
+appear at the top of the label.}
 
-\item{field2.column}{Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.}
+\item{field2.column}{Character (optional). Name of the column in \code{data} storing the second free text to
+appear below field1.}
 
-\item{field3.column}{Column name of the \code{data} data frame which specifying a variable of the user's choice. Can be blank if set to NULL.}
+\item{field3.column}{Character (optional). Name of the column in \code{data} storing the second free text to
+appear below field2.}
 
-\item{collector.column}{Column name of the \code{data} data frame which specifies the name of the collector of the voucher.}
+\item{collector.column}{Character (optional). Name of the column in \code{data} storing the name of the collector.}
 
-\item{collection.column}{Column name of the \code{data} data frame which specifies the voucher's collection number.}
+\item{collection.column}{Character (optional). Name of the column in \code{data} storing the voucher's collection
+number.}
 
-\item{assistants.column}{Column name of the \code{data} data frame which specifies the names of the collector's assistants.}
+\item{assistants.column}{Character (optional). Name of the column in \code{data} storing the names of the
+collector's assistants.}
 
-\item{date.column}{Column name of the \code{data} data frame which specifies the date when the specimen was collected.}
+\item{date.column}{Character (optional). Name of the column in \code{data} storing the date when the specimen
+was collected.}
 }
 \value{
-A pdf file with four herbarium labels per page within an 'output' folder
+A pdf file with four herbarium labels per page within an 'output' folder.
 }
 \description{
-Function to create herbaruim labels (4 per DIN-A4 page)
+Create herbarium labels (4 per DIN-A4 page)
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
-\dontrun{
-data=read_sheet("https://docs.google.com/spreadsheets/
-        d/1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw/edit?usp=sharing")
-create_herbarium_label(
-data=data,
+create_herbarium_label (
+data = herbarium.table,
 path = "LabeleR_output",
-title="Magical flora of the British Isles",
-subtitle="Project: Eliminating plant blindness in Hogwarts students",
+title = "Magical flora of the British Isles",
+subtitle = "Project: Eliminating plant blindness in Hogwarts students",
 qr = "QR_code",
-family.column="Family",
-taxon.column="Taxon",
-author.column="Author",
-det.column="det",
-date.det.column="Det_date",
-location.column="Location",
-area.description.column="Area_description",
-latitude.column="Latitude",
-longitude.column="Longitude",
-elevation.column="Elevation",
-field1.column="life_form",
-field2.column="Observations",
-field3.column="Height",
-collector.column="Collector",
-collection.column="Collection_number",
-assistants.column="Assistants",
-date.column="Date"
+family.column ="Family",
+taxon.column = "Taxon",
+author.column = "Author",
+det.column = "det",
+date.det.column = "Det_date",
+location.column = "Location",
+area.description.column = "Area_description",
+latitude.column = "Latitude",
+longitude.column = "Longitude",
+elevation.column = "Elevation",
+field1.column = "life_form",
+field2.column = "Observations",
+field3.column = "Height",
+collector.column = "Collector",
+collection.column = "Collection_number",
+assistants.column = "Assistants",
+date.column = "Date"
 )
-}
-
+\dontshow{\}) # examplesIf}
 }
 \author{
-Julia G. de Aledo, Ignacio Ramos-Gutierrez
+Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 }

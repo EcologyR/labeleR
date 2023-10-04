@@ -3,7 +3,7 @@ citHeader("To cite labeleR in publications use:")
 citEntry(
   entry    = "Manual",
   title    = "LabeleR",
-  author   = c("Julia G. de Aledo", "Ignacio Ramos-Gutierrez"),
+  author   = c("Ignacio Ramos-Gutierrez", "Julia G. de Aledo", "Francisco Rodríguez-Sánchez),
   year     = "2023",
-  textVersion = "G. de Aledo, J., Ramos-Gutiérrez, I. 2023. labeleR."
+  textVersion = "Ramos-Gutiérrez, I. G. de Aledo, J., Rodríguez-Sánchez, F. 2023. labeleR."
 )

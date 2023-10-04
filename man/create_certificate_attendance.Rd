@@ -47,12 +47,12 @@ event title and date. Can include LaTeX commands (see examples).}
 
 \item{signer.role}{Character. Signer's role or position}
 
-\item{signature.pic}{Character (optional) Path to a PNG image to appear in
+\item{signature.pic}{Character (optional). Path to a PNG image to appear in
 the bottom, above signer's name.}
 
-\item{lpic}{Character (optional) Path to a PNG image to appear in the top-left.}
+\item{lpic}{Character (optional). Path to a PNG image to appear in the top-left.}
 
-\item{rpic}{Character (optional) Path to a PNG image to appear in the top-right.}
+\item{rpic}{Character (optional). Path to a PNG image to appear in the top-right.}
 
 \item{keep.files}{Logical. Keep the Rmarkdown template and associated files
 in the output folder? Default is FALSE.}
@@ -66,13 +66,13 @@ by \code{path}. If \code{keep.files = TRUE}, the Rmarkdown template and PNG logo
 will also appear in the same folder.
 }
 \description{
-Create certificate of attendance
+Create certificate of attendance (1 per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-data <- data.frame(Names = c("Joe", "Mary"))
 
-create_certificate_attendance(data,
+create_certificate_attendance(
+data = attendance.table,
 path = "labeleR_output",
 language = "English",
 name.column = "Names",
@@ -90,5 +90,5 @@ signature.pic = NULL,
 \dontshow{\}) # examplesIf}
 }
 \author{
-Julia G. de Aledo, Ignacio Ramos-Gutierrez, Francisco Rodríguez-Sánchez
+Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 }
