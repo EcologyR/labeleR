@@ -191,11 +191,8 @@ variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
 rendered in english and in spanish.
 
-+-----------------------------------------------------------------------+
-| ![Participation certificate                                           |
-| (blank)](man/figures/Participation_blank.png)                         |
-+=======================================================================+
-+-----------------------------------------------------------------------+
+| ![Participation certificate (blank)](man/figures/Participation_blank.png)|
+|-----------------------------------------------------------------------|
 
 ### Participation certificate example:
 
@@ -227,11 +224,9 @@ create_certificate_participation(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-+-----------------------------------------------------------------------+
-| ![Participation                                                       |
-| certificate](man/figures/Participation_certificates.png)              |
-+=======================================================================+
-+-----------------------------------------------------------------------+
+| ![Participation certificate](man/figures/Participation_certificates.png)              |
+|---------------------------------------------------------------------|
+
 
 ## 2.3 Badges
 
@@ -336,10 +331,9 @@ As a novelty, the user may manually fix the backgroud and text colours
 to their preference, using HTML colour codes (same code as HEX, but
 without the '\#'). By default, background colours are two hues of green.
 
-+-----------------------------------------------------------------------+
+
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
-+=======================================================================+
-+-----------------------------------------------------------------------+
+|-----------------------------------------------------------------------|
 
 ### Collection labels example:
 

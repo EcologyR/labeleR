@@ -56,7 +56,7 @@ To do so, you just have to use `gsheet`’s `gsheet2tbl` function,
 specifying the Google Sheet URL. In fact, you don’t need to use the
 whole URL, but just the specific part of it.  
 For instance, in this URL:
-<https://docs.google.com/spreadsheets/d/>**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0
+<https://docs.google.com/spreadsheets/d/>**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0”
 you just need the text in bold.  
 However, a key point to bear in mind is that the Google Sheet document
 must grant (at least as viewer) access to anyone with the link;
@@ -170,7 +170,6 @@ rendered in english and in spanish.
 
 | ![Participation certificate (blank)](man/figures/Participation_blank.png) |
 |---------------------------------------------------------------------------|
-|                                                                           |
 
 ### Participation certificate example:
 
@@ -179,7 +178,7 @@ participated in some seminars with different titles, different
 affiliations, dates and communication types.
 
 ``` r
-   create_certificate_participation(
+create_certificate_participation(
   data = participation.table,
   path = "participation_certificates",
   language = "English",
@@ -202,9 +201,8 @@ affiliations, dates and communication types.
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![Participation certificate example](man/figures/Participation_certificate.png) |
-|---------------------------------------------------------------------------------|
-|                                                                                 |
+| ![Participation certificate](man/figures/Participation_certificates.png) |
+|--------------------------------------------------------------------------|
 
 ## 2.3 Badges
 
@@ -214,13 +212,13 @@ They have only two variable fields (name and affiliation), and can
 include two top images, although are not signed. Accreditation cards
 include a dot line in the bottom for individual hand-edition.
 
-| ![Badges (blank)](man/figures/Accreditations_blank.png) |
-|---------------------------------------------------------|
+| ![Badges (blank)](man/figures/Badges_blank.png) |
+|-------------------------------------------------|
 
 ### Badges example:
 
 As an example, we present the accreditation cards that might have been
-used in he International Conference of Muggleology, where the only
+used in the International Conference of Muggleology, where the only
 changing fields are names and affiliations of attendees.
 
 ``` r
@@ -236,8 +234,8 @@ create_badge(
 )
 ```
 
-| ![Badges example](man/figures/Accreditations.png) |
-|---------------------------------------------------|
+| ![Badges example](man/figures/Badges.png) |
+|-------------------------------------------|
 
 ## 2.4 Herbarium labels
 
@@ -268,27 +266,27 @@ herbarium assignment of the Herbology class.
 ``` r
 create_herbarium_label(
   data = herbarium.table,
-path = "herbarium_labels",
-qr="QR_code",
-title ="Magical flora of the British Isles" ,
-subtitle = "Project: Eliminating plant blindness in Hogwarts students",
-family.column = "Family",
-taxon.column = "Taxon",
-author.column = "Author",
-det.column = "det",
-date.det.column = "Det_date",
-location.column = "Location",
-area.description.column = "Area_description",
-latitude.column = "Latitude",
-longitude.column = "Longitude",
-elevation.column = "Elevation",
-field1.column = "life_form",
-field2.column = "Observations",
-field3.column = "Height",
-collector.column = "Collector",
-collection.column = "Collection_number",
-assistants.column = "Assistants",
-date.column = "Date"
+  path = "herbarium_labels",
+  qr="QR_code",
+  title ="Magical flora of the British Isles" ,
+  subtitle = "Project: Eliminating plant blindness in Hogwarts students",
+  family.column = "Family",
+  taxon.column = "Taxon",
+  author.column = "Author",
+  det.column = "det",
+  date.det.column = "Det_date",
+  location.column = "Location",
+  area.description.column = "Area_description",
+  latitude.column = "Latitude",
+  longitude.column = "Longitude",
+  elevation.column = "Elevation",
+  field1.column = "life_form",
+  field2.column = "Observations",
+  field3.column = "Height",
+  collector.column = "Collector",
+  collection.column = "Collection_number",
+  assistants.column = "Assistants",
+  date.column = "Date"
 )
 ```
 
@@ -310,7 +308,6 @@ without the ‘\#’). By default, background colours are two hues of green.
 
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
 |-----------------------------------------------------------------------|
-|                                                                       |
 
 ### Collection labels example:
 
@@ -318,18 +315,18 @@ In this example we can see six labels created for the school’s displayed
 collection of stuffed animals.
 
 ``` r
- create_collection_label(
-data = label.table,
-path = "labels",
-qr="QR_code",
-field1.column = "field1",
-field2.column = "field2",
-field3.column = "field3",
-field4.column = "field6",
-field5.column = "field7",
-system.file("rmarkdown/pictures/Hogwarts_BnW.png", package = "labeleR"),
-bgcolor = "D0ECC1",  #White is "FFFFFF"
-textcolor = "1E3F20" #Black is "000000"
+create_collection_label(
+  data = label.table,
+  path = "labels",
+  qr="QR_code",
+  field1.column = "field1",
+  field2.column = "field2",
+  field3.column = "field3",
+  field4.column = "field6",
+  field5.column = "field7",
+  system.file("rmarkdown/pictures/Hogwarts_BnW.png", package = "labeleR"),
+  bgcolor = "D0ECC1",  #White is "FFFFFF",
+  textcolor = "1E3F20" #Black is "000000"
 )
 ```
 
@@ -360,7 +357,7 @@ Here, tinylabels are created for typical collections stored in boxes, so
 a normal collection label would be to big.
 
 ``` r
- create_tinylabel(
+create_tinylabel(
   data = tiny.table,
   qr="QR_code",
   path = "man/figures",
@@ -368,7 +365,8 @@ a normal collection label would be to big.
   field2.column ="field1",
   field3.column ="field3",
   field4.column ="field4",
-  field5.column ="field5" )
+  field5.column ="field5" 
+)
 ```
 
 | ![Tinylabels example](man/figures/tinylabels.png) |
