@@ -40,13 +40,13 @@ params:
 ha participado en: `r params$type.i` `r params$event.i` \\
 \vfill
 
+`r params$freetext.i` \\
+\vfill
+
 con el/la `r params$comm.type.i`: \\
 \vfill
 
 {\Huge\bf `r params$title.i` } \\
-\vfill
-
-`r params$freetext.i` \\
 \vfill
 
 con fecha `r params$date.i`. \\
