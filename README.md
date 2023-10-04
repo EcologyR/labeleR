@@ -3,7 +3,7 @@
 
 # labeleR
 
-<img src="man/figures/labeleR.png" width = "140px" align="right"/>
+<img src="man/figures/labeleR.png" width="140px" align="right"/>
 
 This is a package to create your own labels, certificates, and much
 more! :)
@@ -50,37 +50,38 @@ the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’
 excel sheet, using `read.table( )` and alike functions), but it can be
 also imported from a Google Sheets function.
 
-To do so, you just have to use labeleR’s `read_sheet( )` function,
+To do so, you just have to use `gsheet`’s `gsheet2tbl` function,
 specifying the Google Sheet URL. In fact, you don’t need to use the
 whole URL, but just the specific part of it.  
 For instance, in this URL:
 <https://docs.google.com/spreadsheets/d/>**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0
-you just need the text in bold. However, a key point to bear in mind is
-that the Google Sheet document must grant (at least as viewer) access to
-anyone with the link; otherwise R will not be able to open it.
+you just need the text in bold.  
+However, a key point to bear in mind is that the Google Sheet document
+must grant (at least as viewer) access to anyone with the link;
+otherwise R will not be able to open it.
+
+Finally, in order for labeleR to work correctly, the imported table
+should be converted to a data frame.
 
 ``` r
+library(gsheet)
 
-people_list_long <- read_sheet("https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0")
-
-people_list <- read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
-                          
-# The result is the same, a R data frame that can be used by labeleR
+#URL: https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0
+people_list_long <- gsheet2tbl("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
+people_list_long <- as.data.frame(people_list_long)
 ```
 
-In case you just want to import some rows (let’s say you have to create
-some of them, or to re-create some after correcting a mistake), you
-don´t have to import all the rows. Using the `select.column` parameter,
-you can import only the rows which match `select.value` .
-
-For example, if you just want to create certificate for Draco Malfoy as
-an attendee of a class, you can use the following code to import just
-his row:
-
-``` r
-read_sheet(url="1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw", 
-           select.column = "List_assistants", select.value = "Draco Malfoy")
-```
+<!-- In case you just want to import some rows (let's say you have to create -->
+<!-- some of them, or to re-create some after correcting a mistake), you -->
+<!-- don´t have to import all the rows. Using the `select.column` parameter, -->
+<!-- you can import only the rows which match `select.value` . -->
+<!-- For example, if you just want to create certificate for Draco Malfoy as -->
+<!-- an attendee of a class, you can use the following code to import just -->
+<!-- his row: -->
+<!-- ```{r import some rows, eval = FALSE} -->
+<!-- read_sheet(url="1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw",  -->
+<!--            select.column = "List_assistants", select.value = "Draco Malfoy") -->
+<!-- ``` -->
 
 ### 1.2 Some advice for the labeleR functions
 
@@ -145,7 +146,7 @@ of Hogwarts School, in which the Headmaster certifies they have attended
 200 h of the Potions class.
 
 ``` r
-data <- read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
+data <- as.data.frame(gsheet::gsheet2tbl("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw"))
 
 create_certificate_attendance(
 data=data,
@@ -181,6 +182,7 @@ rendered in english and in spanish.
 
 | ![Participation certificate (blank)](man/figures/Participation_blank.png) |
 |---------------------------------------------------------------------------|
+|                                                                           |
 
 ### Participation certificate example:
 
@@ -189,7 +191,7 @@ participated in some seminars with different titles, different
 affiliations, dates and communication types.
 
 ``` r
-  data= read_sheet("11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM")
+  data <- as.data.frame(gsheet::gsheet2tbl("11No4aLvta2qxGhkxD7W6HfNfGmO1wpCIDvyRKFF-_gM"))
 
 create_certificate_participation(
   data = data,
@@ -215,6 +217,7 @@ document.
 
 | ![Participation certificate example](man/figures/Participation_certificate.png) |
 |---------------------------------------------------------------------------------|
+|                                                                                 |
 
 ## 2.3 Accreditations
 
@@ -234,7 +237,7 @@ used in he International Conference of Muggleology, where the only
 changing fields are names and affiliations of attendees.
 
 ``` r
-data <- read_sheet(url='16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M')
+data <- as.data.frame(gsheet::gsheet2tbl(url='16smXdP-Ehwu1cEmJTbJI1DerIpUrOcD7H5Ni6z9B07M'))
 create_accreditation(
 data=data,
 path = "LabeleR_output",
@@ -276,7 +279,7 @@ In this example, we show the labels some students have created for their
 herbarium assignment of the Herbology class.
 
 ``` r
-data <- read_sheet(url='1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw')
+data <- as.data.frame(gsheet::gsheet2tbl(url='1Q005BDM0XyUNq5XzGWuvdzgZVMc4KhbYadVzi77h3Xw'))
 
 create_herbarium_label(
 data=data,
@@ -322,6 +325,7 @@ without the ‘\#’). By default, background colours are two hues of green.
 
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
 |-----------------------------------------------------------------------|
+|                                                                       |
 
 ### Collection labels example:
 
@@ -329,9 +333,8 @@ In this example we can see six labels created for the school’s displayed
 collection of stuffed animals.
 
 ``` r
-data <- read_sheet(url='1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs',
-                   select.column = "field5",select.value = "Item 1")
-#We only include 1 Item of each species using the selection option in read_sheet()
+data <- as.data.frame(gsheet::gsheet2tbl(url='1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs'))
+data <- data[data[,"field5"]=="Item 1",] #Subset of the complete table
 
 create_collection_label(
 data = data,
@@ -375,7 +378,7 @@ Here, tinylabels are created for typical collections stored in boxes, so
 a normal collection label would be to big.
 
 ``` r
-data <- read_sheet(url='1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs')
+data <- as.data.frame(gsheet::gsheet2tbl(url='1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs'))
 
 create_tinylabel(
 data = data,

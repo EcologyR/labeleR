@@ -7,7 +7,7 @@
 #' @format A data frame
 #'
 #' \describe{
-#' A data frame with 2 rows and 1 column
+#' A data frame with 2 rows and 5 columns
 #' }
 "attendance.table"
 
@@ -21,7 +21,7 @@
 #' \describe{
 #' A data frame with 8 rows and 2 columns
 #' }
-"attendance.table"
+"badges.table"
 
 
 #' herbarium.table

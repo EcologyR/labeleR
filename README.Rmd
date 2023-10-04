@@ -74,8 +74,8 @@ To do so, you just have to use `gsheet`'s `gsheet2tbl` function,
 specifying the Google Sheet URL. In fact, you don't need to use the
 whole URL, but just the specific part of it.\
 For instance, in this URL:
-https://docs.google.com/spreadsheets/d/**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0
-you just need the text in bold. \
+<https://docs.google.com/spreadsheets/d/>**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0
+you just need the text in bold.\
 However, a key point to bear in mind is that the Google Sheet document
 must grant (at least as viewer) access to anyone with the link;
 otherwise R will not be able to open it.
@@ -83,29 +83,36 @@ otherwise R will not be able to open it.
 Finally, in order for labeleR to work correctly, the imported table
 should be converted to a data frame.
 
-```{r read_sheet}
+```{r loading_data}
 library(gsheet)
 
-people_list_long <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0", sheetid = ,)
+#URL: https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0
+people_list_long <- gsheet2tbl("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
 people_list_long <- as.data.frame(people_list_long)
 
-people_list <- read_sheet("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
-people_list <- as.data.frame(people_list)                       
-# The result is the same, a R data frame that can be used by labeleR
+
 ```
 
 <!-- In case you just want to import some rows (let's say you have to create -->
+
 <!-- some of them, or to re-create some after correcting a mistake), you -->
+
 <!-- don´t have to import all the rows. Using the `select.column` parameter, -->
+
 <!-- you can import only the rows which match `select.value` . -->
 
 <!-- For example, if you just want to create certificate for Draco Malfoy as -->
+
 <!-- an attendee of a class, you can use the following code to import just -->
+
 <!-- his row: -->
 
 <!-- ```{r import some rows, eval = FALSE} -->
+
 <!-- read_sheet(url="1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw",  -->
+
 <!--            select.column = "List_assistants", select.value = "Draco Malfoy") -->
+
 <!-- ``` -->
 
 ### 1.2 Some advice for the labeleR functions
@@ -210,6 +217,7 @@ rendered in english and in spanish.
 | ![Participation certificate                                           |
 | (blank)](man/figures/Participation_blank.png)                         |
 +=======================================================================+
+|                                                                       |
 +-----------------------------------------------------------------------+
 
 ### Participation certificate example:
@@ -247,6 +255,7 @@ document.
 | ![Participation certificate                                           |
 | example](man/figures/Participation_certificate.png)                   |
 +=======================================================================+
+|                                                                       |
 +-----------------------------------------------------------------------+
 
 ## 2.3 Accreditations
@@ -357,6 +366,7 @@ without the '\#'). By default, background colours are two hues of green.
 +-----------------------------------------------------------------------+
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
 +=======================================================================+
+|                                                                       |
 +-----------------------------------------------------------------------+
 
 ### Collection labels example:
