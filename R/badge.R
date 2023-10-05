@@ -4,6 +4,7 @@
 #'
 #' @param data a data frame including names and (optionally) affiliations.
 #' @param path Character. Path to folder where the PDF file will be saved.
+#' @param filename Character. Filename of the pdf. If NULL, default is "Badges".
 #' @param event Character. Title of the event.
 #' @param name.column Character. Name of the column in `data` storing participants' name.
 #' @param affiliation.column Character (optional). Name of the column in `data`
@@ -25,8 +26,9 @@
 #'
 #' @examplesIf interactive()
 #' create_badge(
-#' data = badge.table,
+#' data = badges.table,
 #' path = "labeleR_output",
+#' filename = NULL,
 #' event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 #' name.column = "List",
 #' affiliation.column = "Affiliation",
@@ -35,6 +37,7 @@
 
 create_badge <- function(data = NULL,
                          path = NULL,
+                         filename = NULL,
                          event = NULL,
                          name.column = NULL,
                          affiliation.column = NULL,
@@ -55,6 +58,11 @@ create_badge <- function(data = NULL,
   if (!file.exists(path)) {
     message("The specified folder does not exist. Creating folder")
     dir.create(path)
+  }
+
+  if (is.null(filename)) {
+    message("No file name provided")
+    filename <- "Badges"
   }
 
   if (is.null(event)) {
@@ -102,14 +110,13 @@ create_badge <- function(data = NULL,
   use_image(lpic, name = "lpic", folder = folder)
   use_image(rpic, name = "rpic", folder = folder)
 
-
-
   ## Render
+  output_file <- paste0(filename,'.pdf')
   data <- as.data.frame(data)  ## to exploit drop = TRUE when selecting cols below
   rmarkdown::render(
     input = file.path(folder, "badge.Rmd"),
     output_dir = path,
-    output_file = "Badges.pdf",
+    output_file = output_file,
     params = list(
       event        = event,
       names        = data[, name.column],

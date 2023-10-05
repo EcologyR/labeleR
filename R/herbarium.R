@@ -4,6 +4,7 @@
 #'
 #' @param data a data frame. Each row contains the information by species that will appear in the label.
 #' @param path Character. Path to folder where the PDF file will be saved.
+#' @param filename Character. Filename of the pdf. If NULL, default is "Herbarium".
 #' @param title Main title at the top of the labels. Can be blank if set to NULL.
 #' @param subtitle Subtitle at the bottom of the labels. Can be blank if set to NULL.
 #' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
@@ -72,28 +73,29 @@
 #' date.column = "Date"
 #' )
 
-create_herbarium_label <- function(data=data,
-                                   path=NULL,
-                                   title=NULL,
-                                   subtitle=NULL,
-                                   qr=NULL,
-                                   family.column=NULL,
-                                   taxon.column=NULL,
-                                   author.column=NULL,
-                                   det.column=NULL,
-                                   date.det.column=NULL,
-                                   location.column=NULL,
-                                   area.description.column=NULL,
-                                   latitude.column=NULL,
-                                   longitude.column=NULL,
-                                   elevation.column=NULL,
-                                   field1.column=NULL,
-                                   field2.column=NULL,
-                                   field3.column=NULL,
-                                   collector.column=NULL,
-                                   collection.column=NULL,
-                                   assistants.column=NULL,
-                                   date.column=NULL,
+create_herbarium_label <- function(data = data,
+                                   path = NULL,
+                                   filename = NULL,
+                                   title = NULL,
+                                   subtitle = NULL,
+                                   qr = NULL,
+                                   family.column = NULL,
+                                   taxon.column = NULL,
+                                   author.column = NULL,
+                                   det.column = NULL,
+                                   date.det.column = NULL,
+                                   location.column = NULL,
+                                   area.description.column = NULL,
+                                   latitude.column = NULL,
+                                   longitude.column = NULL,
+                                   elevation.column = NULL,
+                                   field1.column = NULL,
+                                   field2.column = NULL,
+                                   field3.column = NULL,
+                                   collector.column = NULL,
+                                   collection.column = NULL,
+                                   assistants.column = NULL,
+                                   date.column = NULL,
                                    keep.files = FALSE,
                                    template = NULL
                                  ){
@@ -108,6 +110,12 @@ create_herbarium_label <- function(data=data,
     message("The specified folder does not exist. Creating folder")
     dir.create(path)
   }
+
+  if (is.null(filename)) {
+    message("No file name provided")
+    filename <- "Herbarium.pdf"
+  }
+
 
   if(any(apply(data, 1, nchar)>150)){
   message("Warning: cells containing too long texts may alter the result.
@@ -258,7 +266,7 @@ create_herbarium_label <- function(data=data,
 
 
   tmpl_file   <- "tmp/herbarium.Rmd"
-  out.name <- paste0("Herbarium_labels")
+  out.name <- filename
   output_file <- paste0(out.name,'.pdf')
 
    for (i in 1:ncol(data)){

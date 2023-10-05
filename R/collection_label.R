@@ -4,6 +4,7 @@
 #'
 #' @param data a data frame. Each row contains the information by species that will appear in the label.
 #' @param path Character. Path to folder where the PDF file will be saved.
+#' @param filename Character. Filename of the pdf. If NULL, default is "Collection_label".
 #' @param qr String. Free text or column of \code{data} that specifies the link where to create the QR code.
 #'          If the specified value is not a column name of \code{data}, all the QRs will be equal,
 #'          and will output the specified \code{qr}.
@@ -44,6 +45,7 @@
 
 create_collection_label <- function(data = NULL,
                                     path = NULL,
+                                    filename = NULL,
                                     qr = NULL,
                                     field1.column = NULL,
                                     field2.column = NULL,
@@ -69,6 +71,11 @@ create_collection_label <- function(data = NULL,
   if (!file.exists(path)) {
     message("The specified folder does not exist. Creating folder")
     dir.create(path)
+  }
+
+  if (is.null(filename)) {
+    message("No file name provided")
+    filename <- "Collection_label"
   }
 
   if (is.null(qr)) {
@@ -137,14 +144,14 @@ create_collection_label <- function(data = NULL,
 
   use_image(logo, name = "logo", folder = folder)
 
-
   ## Render
+  output_file <- paste0(filename,'.pdf')
   data <- as.data.frame(data)  ## to exploit drop = TRUE when selecting cols below
   bl.char <- rep("~", times=nrow(data))
   rmarkdown::render(
     input = file.path(folder, "collection_label.Rmd"),
     output_dir = path,
-    output_file = "Collection_label.pdf",
+    output_file = output_file,
     params = list(
       qr.i = data[,qr],
       field1.i =if(field1.column==""){bl.char}else{data[,field1.column]},
