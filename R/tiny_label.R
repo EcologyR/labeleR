@@ -4,6 +4,7 @@
 #'
 #' @param data a data frame including information of a species
 #' @param path Character. Path to folder where the PDF file will be saved.
+#' @param filename Character. Filename of the pdf. If NULL, default is "Tiny_label".
 #' @param qr String. Free text or column of \code{data} that specifies the link where to create the QR code.
 #'          If the specified value is not a column name of \code{data}, all the QRs will be equal,
 #'          and will output the specified \code{qr}.
@@ -43,6 +44,7 @@
 create_tinylabel <- function(data = NULL,
                              qr = NULL,
                              path = NULL,
+                             filename = NULL,
                              field1.column = NULL,
                              field2.column = NULL,
                              field3.column = NULL,
@@ -64,6 +66,11 @@ if (!file.exists(path)) {
 message("The specified folder does not exist. Creating folder")
 dir.create(path)
 }
+
+  if (is.null(filename)) {
+    message("No file name provided")
+    filename <- "Tiny_label"
+  }
 
 if (is.null(qr)) {
 message("No qr provided")
@@ -133,15 +140,15 @@ if (is.null(template)) {
 }
 
 
-
 ## Render
+output_file <- paste0(filename,'.pdf')
 data <- as.data.frame(data)## to exploit drop = TRUE when selecting cols below
 bl.char <- rep("~", times=nrow(data))
 
 rmarkdown::render(
   input = file.path(folder, "tiny_label.Rmd"),
   output_dir = path,
-  output_file = "Tiny_label.pdf",
+  output_file = output_file,
   params = list(
     qr.i = data[,qr],
     field1.i = if(field1.column==""){bl.char}else{data[,field1.column]},
