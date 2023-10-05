@@ -4,6 +4,7 @@
 #'
 #' @param data a data frame containing attendees' names (in `name.column`)
 #' @param path Character. Path to folder where the PDF certificates will be saved.
+#' @param filename Character. Filename of the pdf. If NULL, default is "Attendance" for English, "Asistencia" for Spanish".
 #' @param language Character. Select 'English' or 'Spanish'.
 #' @param name.column Character. Name of the column in `data` storing attendees' name.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
@@ -54,6 +55,7 @@
 create_certificate_attendance <- function(
     data = NULL,
     path = NULL,
+    filename = NULL,
     language = c("English", "Spanish"),
     name.column = NULL,
     type = "",
@@ -83,6 +85,12 @@ create_certificate_attendance <- function(
   if (!file.exists(path)) {
     message("The specified folder does not exist. Creating folder")
     dir.create(path)
+  }
+
+  if (is.null(filename)) {
+    message("No file name provided")
+    if (language == "English") {filename <- "Attendance"}
+    if (language == "Spanish") {filename <- "Asistencia"}
   }
 
   check_column_in_df(data, name.column)
@@ -159,10 +167,7 @@ create_certificate_attendance <- function(
   data <- as.data.frame(data) ## to exploit drop = TRUE when selecting cols below
 
   for (i in 1:nrow(data)) {
-
-    if (language == "English") {out.name <- "Attendance"}
-    if (language == "Spanish") {out.name <- "Asistencia"}
-
+    out.name <- filename
     out.name <- paste0(out.name, "_", data[i, name.column])
     output_file <- paste0(out.name, '.pdf')
 
