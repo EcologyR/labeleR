@@ -100,23 +100,26 @@ people_list_long <- as.data.frame(people_list_long)
 When using labeleR's functions, there are some widely used parameters
 and nomenclature that must be acknowledged.
 
-As parameters, there are some that remain always the same. The first one is
-`data`, which is the data frame that has been previously loaded before.
-The second one is `path`, which is the folder where the outputted PDFs
-will be stored. In case the specified folder does not exist, it will be
-automatically created. In case you want to name the output PDF file in a 
-certain way, you must specify it using the `filename` argument. Additionally, 
-you can store the created intermediate files using `keep.files = TRUE`.
-Ultimately, labeleR uses its own templates to create the documents. However, 
-these can be downloaded and modified for the specific purposes of each user. To 
-do so, open a new RMarkdown file in RStudio, using the labeleR template you want to edit, and after saving it locally, specify its directory path in the `template` argument.
+As parameters, there are some that remain always the same. The first one
+is `data`, which is the data frame that has been previously loaded
+before. The second one is `path`, which is the folder where the
+outputted PDFs will be stored. In case the specified folder does not
+exist, it will be automatically created. In case you want to name the
+output PDF file in a certain way, you must specify it using the
+`filename` argument. Additionally, you can store the created
+intermediate files using `keep.files = TRUE`. Ultimately, labeleR uses
+its own templates to create the documents. However, these can be
+downloaded and modified for the specific purposes of each user. To do
+so, open a new RMarkdown file in RStudio, using the labeleR template you
+want to edit, and after saving it locally, specify its directory path in
+the `template` argument.
 
-In some of the files, pictures (as logos or signatures) can be
-included. For these, parameter names are `lpic` (standing for left
-picture, in the top), `rpic` (right picture, also in the top) and
-`signature.pic` (signature picture) in the certificates; and `logo` in
-the collection label. These pictures should be specified as the path
-where the picture is stored.
+In some of the files, pictures (as logos or signatures) can be included.
+For these, parameter names are `lpic` (standing for left picture, in the
+top), `rpic` (right picture, also in the top) and `signature.pic`
+(signature picture) in the certificates; and `logo` in the collection
+label. These pictures should be specified as the path where the picture
+is stored.
 
 As for the parameters nomenclature, there are two kinds. "Fixed
 parameters" are those that remain the same in all the certificates (e.g.
@@ -142,7 +145,7 @@ Now let's start using labeleR!
 To help you see the structure of our templates in a more visual way, we
 will display some examples inspired in the Harry Potter universe.
 
-## 2.1 Attendance certificates
+### 2.1 Attendance certificates
 
 Attendance certificates are one of the least variable certificates; the
 only variable parameter is the name of the attendees. Our template
@@ -156,7 +159,7 @@ The structure of the certificate looks as follows.
 | ![Attendance certificate (blank)](man/figures/Attendance_blank.png) |
 |---------------------------------------------------------------------|
 
-### Attendance certificate example:
+#### Attendance certificate example:
 
 In this example, we create four different certificates for four students
 of Hogwarts School, in which the Headmaster certifies they have attended
@@ -190,17 +193,21 @@ document.
 | ![Attendance certificates](man/figures/Attendance_certificates.png) |
 |---------------------------------------------------------------------|
 
-## 2.2 Participation certificates
+### 2.2 Participation certificates
 
 Participation certificates are similar to the previous, but with more
 variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
 rendered in english and in spanish.
 
-| ![Participation certificate (blank)](man/figures/Participation_blank.png)|
-|-----------------------------------------------------------------------|
++-----------------------------------------------------------------------+
+| ![Participation certificate                                           |
+| (blank)](man/figures/Participation_blank.png)                         |
++=======================================================================+
+|                                                                       |
++-----------------------------------------------------------------------+
 
-### Participation certificate example:
+#### Participation certificate example:
 
 Here, Albus Dumbledore certifies that four of the school teachers have
 participated in some seminars with different titles, different
@@ -231,11 +238,14 @@ create_certificate_participation(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![Participation certificate](man/figures/Participation_certificates.png)              |
-|---------------------------------------------------------------------|
++-----------------------------------------------------------------------+
+| ![Participation                                                       |
+| certificate](man/figures/Participation_certificates.png)              |
++=======================================================================+
+|                                                                       |
++-----------------------------------------------------------------------+
 
-
-## 2.3 Badges
+### 2.3 Badges
 
 Badges (and all documents from now onwards) are rendered in a single
 document, with eight accreditation cards per DIN-A4 page in this case.
@@ -246,7 +256,7 @@ include a dot line in the bottom for individual hand-edition.
 | ![Badges (blank)](man/figures/Badges_blank.png) |
 |-------------------------------------------------|
 
-### Badges example:
+#### Badges example:
 
 As an example, we present the accreditation cards that might have been
 used in the International Conference of Muggleology, where the only
@@ -269,7 +279,7 @@ create_badge(
 | ![Badges example](man/figures/Badges.png) |
 |-------------------------------------------|
 
-## 2.4 Herbarium labels
+### 2.4 Herbarium labels
 
 Herbarium labels are one of the documents with more variable parameters,
 as there is a lot of information to be included. Here, we have used a
@@ -290,7 +300,7 @@ the labels, so we recommend to be concise.
 | ![Herbarium label (blank)](man/figures/Herbarium_blank.png) |
 |-------------------------------------------------------------|
 
-### Herbarium labels example:
+#### Herbarium labels example:
 
 In this example, we show the labels some students have created for their
 herbarium assignment of the Herbology class.
@@ -327,7 +337,7 @@ create_herbarium_label(
 | ![Herbarium labels example](man/figures/Herbarium_labels.png) |
 |---------------------------------------------------------------|
 
-## 2.5 Collection labels
+### 2.5 Collection labels
 
 Collection labels are one of the most aesthetic labels. They have five
 variable parameters (which are not recommended to be too long, as
@@ -340,11 +350,13 @@ As a novelty, the user may manually fix the backgroud and text colours
 to their preference, using HTML colour codes (same code as HEX, but
 without the '\#'). By default, background colours are two hues of green.
 
-
++-----------------------------------------------------------------------+
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
-|-----------------------------------------------------------------------|
++=======================================================================+
+|                                                                       |
++-----------------------------------------------------------------------+
 
-### Collection labels example:
+#### Collection labels example:
 
 In this example we can see six labels created for the school's displayed
 collection of stuffed animals.
@@ -369,7 +381,7 @@ create_collection_label(
 | ![Collection labels example](man/figures/collection_labels.png) |
 |-----------------------------------------------------------------|
 
-## 2.6 Collection tinylabels
+### 2.6 Collection tinylabels
 
 This type of labels is a simplified version of the previous, and
 includes just five variable fields and the possibility of including a QR
@@ -387,7 +399,7 @@ per sheet" in the printer's options.
 | ![Tinylabels (blank)](man/figures/tinylabels_blank.png) |
 |---------------------------------------------------------|
 
-### Tinylabels example:
+#### Tinylabels example:
 
 Here, tinylabels are created for typical collections stored in boxes, so
 a normal collection label would be to big.
