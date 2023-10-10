@@ -78,18 +78,26 @@ people_list_long <- as.data.frame(people_list_long)
 When using labeleR’s functions, there are some widely used parameters
 and nomenclature that must be acknowledged.
 
-As parameters, there are 2 that are always the same. The first one is
-`data`, which is the data frame that has been previously loaded before.
-The second one is `path`, which is the folder where the outputted PDFs
-will be stored. In case the specified folder does not exist, it will be
-automatically created.
+As parameters, there are some that remain always the same. The first one
+is `data`, which is the data frame that has been previously loaded
+before. The second one is `path`, which is the folder where the
+outputted PDFs will be stored. In case the specified folder does not
+exist, it will be automatically created. In case you want to name the
+output PDF file in a certain way, you must specify it using the
+`filename` argument. Additionally, you can store the created
+intermediate files using `keep.files = TRUE`. Ultimately, labeleR uses
+its own templates to create the documents. However, these can be
+downloaded and modified for the specific purposes of each user. To do
+so, open a new RMarkdown file in RStudio, using the labeleR template you
+want to edit, and after saving it locally, specify its directory path in
+the `template` argument.
 
-In some of the labels, pictures (as logos or signatures) can be
-included. For these, parameter names are `lpic` (standing for left
-picture, in the top), `rpic` (right picture, also in the top) and
-`signature.pic` (signature picture) in the certificates; and `logo` in
-the collection label. These pictures should be specified as the path
-where the picture is stored.
+In some of the files, pictures (as logos or signatures) can be included.
+For these, parameter names are `lpic` (standing for left picture, in the
+top), `rpic` (right picture, also in the top) and `signature.pic`
+(signature picture) in the certificates; and `logo` in the collection
+label. These pictures should be specified as the path where the picture
+is stored.
 
 As for the parameters nomenclature, there are two kinds. “Fixed
 parameters” are those that remain the same in all the certificates (e.g.
@@ -139,7 +147,8 @@ of Hogwarts School, in which the Headmaster certifies they have attended
 
 create_certificate_attendance(
   data = attendance.table,
-  path = "attendance_certificates",
+  path = "labeleR_output",
+  filename = "attendance_certificates",
   language = "English" ,
   name.column = "Names",
   type = "class",
@@ -180,7 +189,8 @@ affiliations, dates and communication types.
 ``` r
 create_certificate_participation(
   data = participation.table,
-  path = "participation_certificates",
+  path = "labeleR_output",
+  filename = "participation_certificates",
   language = "English",
   name.column = "Name",
   affiliation.column = "House",
@@ -225,7 +235,8 @@ changing fields are names and affiliations of attendees.
 
 create_badge(
   data = badges.table,
-  path = "badges",
+  path = "labeleR_output",
+  filename = "badges",
   event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
   name.column = "List",
   affiliation.column = "Affiliation",
@@ -266,7 +277,8 @@ herbarium assignment of the Herbology class.
 ``` r
 create_herbarium_label(
   data = herbarium.table,
-  path = "herbarium_labels",
+  path = "labeleR_output",
+  filename = "herbarium_labels",
   qr="QR_code",
   title ="Magical flora of the British Isles" ,
   subtitle = "Project: Eliminating plant blindness in Hogwarts students",
@@ -317,7 +329,8 @@ collection of stuffed animals.
 ``` r
 create_collection_label(
   data = label.table,
-  path = "labels",
+  path = "labeleR_output",
+  filename = "labels",
   qr="QR_code",
   field1.column = "field1",
   field2.column = "field2",
@@ -360,7 +373,8 @@ a normal collection label would be to big.
 create_tinylabel(
   data = tiny.table,
   qr="QR_code",
-  path = "man/figures",
+  path = "labeleR_output",
+  filename = "tinylabels",
   field1.column ="field2",
   field2.column ="field1",
   field3.column ="field3",
