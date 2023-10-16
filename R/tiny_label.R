@@ -27,8 +27,6 @@
 #' @author  Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
 #'
 #' @examplesIf interactive()
-#' data <- read_sheet("https://docs.google.com/spreadsheets/
-#'         d/1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
 #' create_tinylabel(
 #' data = tiny.table,
 #' qr = "QR_code",
