@@ -31,11 +31,11 @@
 #' data = tiny.table,
 #' qr = "QR_code",
 #' path = "LabeleR_output",
-#' field1.column = "campo1",
-#' field2.column = "campo2",
-#' field3.column = "campo3",
-#' field4.column = "campo4",
-#' field5.column = "campo5"
+#' field1.column = "field1",
+#' field2.column = "field2",
+#' field3.column = "field3",
+#' field4.column = "field4",
+#' field5.column = "field5"
 #' )
 #'
 
