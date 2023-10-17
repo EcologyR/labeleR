@@ -36,35 +36,29 @@ repository and install!
 ```{r install labeleR, eval=F}
 # install.packages("devtools")
 devtools::install_github("EcologyR/labeleR")
-library(labeleR)
 ```
 
-```{r install labeleR back, include=F}
-devtools::install_github("EcologyR/labeleR")
-library(labeleR)
-```
+If you want to clone the repository, you can find the code [here](https://github.com/EcologyR/labeleR).
 
-If you want to clone the repository, you can find the code
-[here](https://github.com/EcologyR/labeleR).
 
-## 1. Getting started
+### TinyTeX
 
-### 1.1 TinyTeX
+**labeleR** depends on LaTeX, so you must have it also installed. We recommend using [TinyTeX](https://yihui.org/tinytex/). 
 
-On the first place, we must warn the renderization of the documents with
-labeleR depends on LaTeX, so you must have it installed on the first
-place. Don't worry, its very easy!
+First, you would need to install the `tinytex` R package, and then run the installation:
 
 ```{r install LaTeX, eval=F}
 # install.packages("tinytex")
 tinytex::install_tinytex()
 ```
 
-If you don't have tinytex installed, or it's the first time you use
-labeleR it may take a while until all packages are correctly installed.
-Don't worry, it will be much quicker next time!
+The first time you install tinytex or use **labeleR** it may take a while until all packages are correctly installed. Don't worry, it will be much quicker next time!
 
-### 1.2 Loading the data
+
+
+## 1. Getting started
+
+### 1.1 Loading the data
 
 The very first thing you need to start using labeleR is a data frame
 where the information is included. This data frame can be imported to
