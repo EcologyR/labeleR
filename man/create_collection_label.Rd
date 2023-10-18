@@ -7,6 +7,7 @@
 create_collection_label(
   data = NULL,
   path = NULL,
+  filename = NULL,
   qr = NULL,
   field1.column = NULL,
   field2.column = NULL,
@@ -24,6 +25,8 @@ create_collection_label(
 \item{data}{a data frame. Each row contains the information by species that will appear in the label.}
 
 \item{path}{Character. Path to folder where the PDF file will be saved.}
+
+\item{filename}{Character. Filename of the pdf. If NULL, default is "Collection_label".}
 
 \item{qr}{String. Free text or column of \code{data} that specifies the link where to create the QR code.
 If the specified value is not a column name of \code{data}, all the QRs will be equal,

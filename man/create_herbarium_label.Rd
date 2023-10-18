@@ -7,6 +7,7 @@
 create_herbarium_label(
   data = data,
   path = NULL,
+  filename = NULL,
   title = NULL,
   subtitle = NULL,
   qr = NULL,
@@ -35,6 +36,8 @@ create_herbarium_label(
 \item{data}{a data frame. Each row contains the information by species that will appear in the label.}
 
 \item{path}{Character. Path to folder where the PDF file will be saved.}
+
+\item{filename}{Character. Filename of the pdf. If NULL, default is "Herbarium".}
 
 \item{title}{Main title at the top of the labels. Can be blank if set to NULL.}
 

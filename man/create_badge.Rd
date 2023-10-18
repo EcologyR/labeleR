@@ -7,6 +7,7 @@
 create_badge(
   data = NULL,
   path = NULL,
+  filename = NULL,
   event = NULL,
   name.column = NULL,
   affiliation.column = NULL,
@@ -20,6 +21,8 @@ create_badge(
 \item{data}{a data frame including names and (optionally) affiliations.}
 
 \item{path}{Character. Path to folder where the PDF file will be saved.}
+
+\item{filename}{Character. Filename of the pdf. If NULL, default is "Badges".}
 
 \item{event}{Character. Title of the event.}
 
@@ -49,8 +52,9 @@ Create badges (8 per DIN-A4 page)
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 create_badge(
-data = badge.table,
+data = badges.table,
 path = "labeleR_output",
+filename = NULL,
 event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 name.column = "List",
 affiliation.column = "Affiliation",

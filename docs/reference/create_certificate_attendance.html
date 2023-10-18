@@ -54,6 +54,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_certificate_attendance</span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  filename <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  language <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"English"</span>, <span class="st">"Spanish"</span><span class="op">)</span>,</span>
 <span>  name.column <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">""</span>,</span>
@@ -79,6 +80,10 @@
 
 <dt>path</dt>
 <dd><p>Character. Path to folder where the PDF certificates will be saved.</p></dd>
+
+
+<dt>filename</dt>
+<dd><p>Character. Filename of the pdf. If NULL, default is "Attendance" for English, "Asistencia" for Spanish".</p></dd>
 
 
 <dt>language</dt>
