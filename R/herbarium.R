@@ -269,6 +269,7 @@ create_herbarium_label <- function(data = data,
   out.name <- filename
   output_file <- paste0(out.name,'.pdf')
 
+  data <- as.data.frame(data)
    for (i in 1:ncol(data)){
     data[is.na(data[,i]),i]<-"~"
   }
