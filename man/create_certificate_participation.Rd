@@ -7,6 +7,7 @@
 create_certificate_participation(
   data = NULL,
   path = NULL,
+  filename = NULL,
   language = c("English", "Spanish"),
   name.column = NULL,
   affiliation.column = NULL,
@@ -29,6 +30,8 @@ create_certificate_participation(
 \item{data}{A data frame containing participants' names and contributions.}
 
 \item{path}{path Character. Path to folder where the PDF certificates will be saved.}
+
+\item{filename}{Character. Filename of the pdf. If NULL, default is "Participation" for English, "Participacion" for Spanish".}
 
 \item{language}{Character. Select 'English' or 'Spanish'.}
 

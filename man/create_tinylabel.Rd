@@ -8,6 +8,7 @@ create_tinylabel(
   data = NULL,
   qr = NULL,
   path = NULL,
+  filename = NULL,
   field1.column = NULL,
   field2.column = NULL,
   field3.column = NULL,
@@ -25,6 +26,8 @@ If the specified value is not a column name of \code{data}, all the QRs will be 
 and will output the specified \code{qr}.}
 
 \item{path}{Character. Path to folder where the PDF file will be saved.}
+
+\item{filename}{Character. Filename of the pdf. If NULL, default is "Tiny_label".}
 
 \item{field1.column}{Character (optional). Name of the column in \code{data} storing the first free text to
 appear at the top of the label.}
@@ -50,17 +53,15 @@ Create tiny labels (16 per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-data <- read_sheet("https://docs.google.com/spreadsheets/
-        d/1Bd_IVgGup4MapTgPq-cqqP05zYl-Q4SfUCBJ5oDSrMs/edit?usp=sharing")
 create_tinylabel(
 data = tiny.table,
 qr = "QR_code",
 path = "LabeleR_output",
-field1.column = "campo1",
-field2.column = "campo2",
-field3.column = "campo3",
-field4.column = "campo4",
-field5.column = "campo5"
+field1.column = "field1",
+field2.column = "field2",
+field3.column = "field3",
+field4.column = "field4",
+field5.column = "field5"
 )
 \dontshow{\}) # examplesIf}
 }

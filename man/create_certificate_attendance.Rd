@@ -7,6 +7,7 @@
 create_certificate_attendance(
   data = NULL,
   path = NULL,
+  filename = NULL,
   language = c("English", "Spanish"),
   name.column = NULL,
   type = "",
@@ -27,6 +28,8 @@ create_certificate_attendance(
 \item{data}{a data frame containing attendees' names (in \code{name.column})}
 
 \item{path}{Character. Path to folder where the PDF certificates will be saved.}
+
+\item{filename}{Character. Filename of the pdf. If NULL, default is "Attendance" for English, "Asistencia" for Spanish".}
 
 \item{language}{Character. Select 'English' or 'Spanish'.}
 

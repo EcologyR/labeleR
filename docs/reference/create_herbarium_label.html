@@ -54,6 +54,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_herbarium_label</span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">data</span>,</span>
 <span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  filename <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  title <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  subtitle <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  qr <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -87,6 +88,10 @@
 
 <dt>path</dt>
 <dd><p>Character. Path to folder where the PDF file will be saved.</p></dd>
+
+
+<dt>filename</dt>
+<dd><p>Character. Filename of the pdf. If NULL, default is "Herbarium".</p></dd>
 
 
 <dt>title</dt>
