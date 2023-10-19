@@ -1,5 +1,5 @@
 Package: labeleR
-Title: Package to create your own labels, certificates, and much more! :)
+Title: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents
 Version: 0.0.0.9000
 Authors@R: 
   c(
@@ -9,8 +9,12 @@ Authors@R:
            comment = c(ORCID = "0000-0001-9065-9316")),
   person("Francisco", "Rodríguez-Sánchez", , "frodriguez@us.es", role = "aut",
            comment = c(ORCID = "0000-0002-7981-1599"))
-    )
-Description: With this packages you can create labels, herbarium labels, ID cards, custom certificates
+  )
+Description: 'labeleR' makes it easy to create custom labels, badges, certificates
+  and other documents. It can be used to automate the production of potentially large 
+  numbers of accreditation badges, attendance and participation certificates, 
+  herbarium and collection labels, etc. Documents are generated in PDF format, 
+  which requires a working installation of 'LaTeX', such as 'TinyTeX'.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -21,7 +25,6 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Suggests: 
-    gsheet,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
