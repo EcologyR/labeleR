@@ -46,7 +46,7 @@ use_image <- function(image = NULL, name = NULL, folder = NULL) {
   ## If logos not provided
   if (is.null(image)) {  # create blank image
     grDevices::png(file.path(folder, paste0(name, ".png")), 150, 150, "px")
-    par(bg="transparent")
+    graphics::par(bg="transparent")
     graphics::plot.new()
     grDevices::dev.off()
   }
