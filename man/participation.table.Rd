@@ -5,16 +5,21 @@
 \alias{participation.table}
 \title{participation.table}
 \format{
-A data frame
-
-\describe{
-A data frame with 2 rows and 5 columns
-}
+An object of class \code{data.frame} with 4 rows and 5 columns.
 }
 \usage{
 participation.table
 }
 \description{
 Example data to create participation certificates
+}
+\details{
+\tabular{lllll}{
+   Name \tab Date \tab Title \tab Comm.type \tab House \cr
+   Severus Snape \tab 01/01/1993 \tab Advanced potions with more than six plants \tab oral communication \tab Slytherin \cr
+   Minerva McGonagall \tab 01/01/1994 \tab From cat to ape: transformations in the XX century \tab poster \tab Gryffindor \cr
+   Alastor Moody \tab 01/01/1995 \tab Distentangling the three unforgivable curses \tab poster \tab Gryffindor \cr
+   Rubeus Hagrid \tab 01/01/1996 \tab Why is your hyppogryph not flying? Insights on flight efficiency \tab oral communication \tab Gryffindor \cr
+}
 }
 \keyword{datasets}

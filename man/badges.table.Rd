@@ -5,16 +5,25 @@
 \alias{badges.table}
 \title{badges.table}
 \format{
-A data frame
-
-\describe{
-A data frame with 8 rows and 2 columns
-}
+An object of class \code{data.frame} with 8 rows and 2 columns.
 }
 \usage{
 badges.table
 }
 \description{
-Example data to create identificative badges
+Example data to create identification badges
+}
+\details{
+\tabular{ll}{
+   List \tab Affiliation \cr
+   Cornelius Fudge \tab Ministry of Magic \cr
+   Rita Skeeter \tab The Daily Prophet \cr
+   Bartemius Crouch \tab Magic Security Department, Ministry of Magic \cr
+   Newt Scamander \tab Department of Magizoology (Ministry of Magic) \cr
+   Garrick Ollivander \tab Ollivander's Wand Shop in Diagon Alley \cr
+   Lily Potter \tab Gryffindor House (Hogwarts S.W.W.) \cr
+   Peter Pettigrew \tab Gryffindor House (Hogwarts S.W.W.) \cr
+   Sirius Black \tab Azkaban prisioner \cr
+}
 }
 \keyword{datasets}

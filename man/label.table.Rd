@@ -5,11 +5,7 @@
 \alias{label.table}
 \title{label.table}
 \format{
-A data frame
-
-\describe{
-A data frame with 40 rows and 8 columns
-}
+A data frame containing information on collected specimens.
 }
 \usage{
 label.table
