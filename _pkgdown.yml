@@ -1,4 +1,29 @@
-url: ~
-template:
-  bootstrap: 5
+# url: ~
+# template:
+#   bootstrap: 5
+
+reference:
+- title: labeleR functions and example datasets
+
+- title: Functions
+  contents:
+  - create_certificate_attendance
+  - create_certificate_participation
+  - create_badge
+  - create_herbarium_label
+  - create_collection_label
+  - create_tinylabel
+
+
+
+- title: Example datasets
+  contents:
+  - attendance.table
+  - participation.table
+  - badges.table
+  - herbarium.table
+  - label.table
+  - tiny.table
+
+
 
