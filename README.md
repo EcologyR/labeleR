@@ -21,89 +21,95 @@ repository and install!
 ``` r
 # install.packages("devtools")
 devtools::install_github("EcologyR/labeleR")
-library(labeleR)
 ```
 
 If you want to clone the repository, you can find the code
 [here](https://github.com/EcologyR/labeleR).
 
-## 1. Getting started
+### TinyTeX
 
-### 1.1 TinyTeX
+**labeleR** depends on LaTeX, so you must have it also installed. We
+recommend using [TinyTeX](https://yihui.org/tinytex/).
 
-On the first place, we must warn the renderization of the documents with
-labeleR depends on LaTeX, so you must have it installed on the first
-place. Don’t worry, its very easy!
+First, you would need to install the `tinytex` R package, and then run
+the installation:
 
 ``` r
 # install.packages("tinytex")
 tinytex::install_tinytex()
 ```
 
-If you don’t have tinytex installed, or it’s the first time you use
-labeleR it may take a while until all packages are correctly installed.
-Don’t worry, it will be much quicker next time!
+The first time you install tinytex or use **labeleR** it may take a
+while until all packages are correctly installed. Don’t worry, it will
+be much quicker next time!
 
-### 1.2 Loading the data
+## 1. Getting started
+
+``` r
+library("labeleR")
+#>  [90mWelcome to the[39m [4m[1mlabeleR[22m[24m [90mpackage.[39m
+#> 
+#>  [3mPackage developed by Ignacio Ramos-Gutiérrez, Julia G. de Aledo & Francisco Rodríguez-Sánchez[23m
+#> 
+#>  🐦  TW:  @iramosgutierrez 
+#>  🐦  TW:  @juliagdealedo 
+#>  🐦  TW:  @frod_san
+#> 
+```
+
+### 1.1 Loading the data
 
 The very first thing you need to start using labeleR is a data frame
 where the information is included. This data frame can be imported to
 the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’
-excel sheet, using `read.table( )` and alike functions), but it can be
-also imported from a Google Sheets function.
+excel sheet, using `read.table()`, `readxl::read_excel()`, and alike
+functions), but it can be also imported from Google Sheets.
 
-To do so, you just have to use `gsheet`’s `gsheet2tbl` function,
-specifying the Google Sheet URL. In fact, you don’t need to use the
-whole URL, but just the specific part of it.  
-For instance, in this URL:
-<https://docs.google.com/spreadsheets/d/>**1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw**/edit#gid=0”
-you just need the text in bold.  
-However, a key point to bear in mind is that the Google Sheet document
-must grant (at least as viewer) access to anyone with the link;
-otherwise R will not be able to open it.
-
-Finally, in order for labeleR to work correctly, the imported table
-should be converted to a data frame.
+To do so, you could use `gsheet2tbl` function from `gsheet` package,
+specifying the Google Sheet URL:
 
 ``` r
 library(gsheet)
 
 #URL: https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0
 people_list_long <- gsheet2tbl("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
-people_list_long <- as.data.frame(people_list_long)
 ```
 
-### 1.3 Some advice for the labeleR functions
+A key point to bear in mind is that the Google Sheet document must grant
+at least view access to anyone with the link; otherwise R will not be
+able to open it.
 
-When using labeleR’s functions, there are some widely used parameters
-and nomenclature that must be acknowledged.
+### 1.2 Some advice for the labeleR functions
 
-As parameters, there are some that remain always the same. The first one
-is `data`, which is the data frame that has been previously loaded
-before. The second one is `path`, which is the folder where the
-outputted PDFs will be stored. In case the specified folder does not
-exist, it will be automatically created. In case you want to name the
-output PDF file in a certain way, you must specify it using the
-`filename` argument. Additionally, you can store the created
-intermediate files using `keep.files = TRUE`. Ultimately, labeleR uses
-its own templates to create the documents. However, these can be
-downloaded and modified for the specific purposes of each user. To do
-so, open a new RMarkdown file in RStudio, using the labeleR template you
-want to edit, and after saving it locally, specify its directory path in
-the `template` argument.
+When using labeleR’s functions, there are some widely used arguments and
+nomenclature that must be acknowledged.
 
-In some of the files, pictures (as logos or signatures) can be included.
-For these, parameter names are `lpic` (standing for left picture, in the
+The first required argument in all functions is `data`, which is the
+data frame that has been previously loaded. The second one is `path`,
+which is the folder where the output PDFs will be stored. In case the
+specified folder does not exist, it will be automatically created. In
+case you want to name the output PDF file in a certain way, you must
+specify it using the `filename` argument. Additionally, you can store
+the created intermediate files (e.g. Rmarkdown and LaTeX files) using
+`keep.files = TRUE`.
+
+Ultimately, labeleR uses its own templates to create the documents.
+However, these can be modified for specific purposes. To do so, open a
+new RMarkdown file in RStudio, using the labeleR template you want to
+edit, and after saving it locally, specify its directory path in the
+`template` argument.
+
+Pictures (such as logos or signatures) are included in some templates.
+For these, argument names are `lpic` (standing for left picture, in the
 top), `rpic` (right picture, also in the top) and `signature.pic`
 (signature picture) in the certificates; and `logo` in the collection
-label. These pictures should be specified as the path where the picture
-is stored.
+label. In all these cases the path to the picture file must be provided.
 
 As for the parameters nomenclature, there are two kinds. “Fixed
 parameters” are those that remain the same in all the certificates (e.g.
 the name of a conference in an accreditation, or the name of a speaker
 in an attendance certificate). These parameters are named using a unique
-word (e.g. `event` or `speaker`), and can be filled in using a free text
+word (e.g. `event` or `speaker`), and can be filled in using free text
 that will be printed in all documents. On the other hand, “variable
 parameters” are those which vary among documents, and therefore differ
 among rows (e.g. attendees names to a conference, or species in
@@ -123,21 +129,21 @@ Now let’s start using labeleR!
 To help you see the structure of our templates in a more visual way, we
 will display some examples inspired in the Harry Potter universe.
 
-## 2.1 Attendance certificates
+### 2.1 Attendance certificates
 
-Attendance certificates are one of the least variable certificates; the
-only variable parameter is the name of the attendees. Our template
-allows to include a signature as an image, so the signer does not have
-to go through them all. This certificate is available both in english
-and spanish. In case pictures look too big or small, we recommend to
-modify their size, as they are set to have a given height.
+Attendance certificates are one of the easiest templates; the only
+variable parameter is the name of the attendees. Our template allows to
+include a signature as an image, so the signer does not have to go
+through them all. This certificate is available both in English and
+Spanish. In case pictures look too big or small, we recommend to modify
+their size, as they are set to have a given height.
 
 The structure of the certificate looks as follows.
 
 | ![Attendance certificate (blank)](man/figures/Attendance_blank.png) |
 |---------------------------------------------------------------------|
 
-### Attendance certificate example:
+#### Attendance certificate example:
 
 In this example, we create four different certificates for four students
 of Hogwarts School, in which the Headmaster certifies they have attended
@@ -170,17 +176,35 @@ document.
 | ![Attendance certificates](man/figures/Attendance_certificates.png) |
 |---------------------------------------------------------------------|
 
-## 2.2 Participation certificates
+### 2.2 Participation certificates
 
 Participation certificates are similar to the previous, but with more
 variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
-rendered in english and in spanish.
+rendered in English and in Spanish.
 
-| ![Participation certificate (blank)](man/figures/Participation_blank.png) |
-|---------------------------------------------------------------------------|
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_blank.png"
+alt="Participation certificate (blank)" />
+<figcaption aria-hidden="true">Participation certificate
+(blank)</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
-### Participation certificate example:
+#### Participation certificate example:
 
 Here, Albus Dumbledore certifies that four of the school teachers have
 participated in some seminars with different titles, different
@@ -211,10 +235,27 @@ create_certificate_participation(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![Participation certificate](man/figures/Participation_certificates.png) |
-|--------------------------------------------------------------------------|
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_certificates.png"
+alt="Participation certificate" />
+<figcaption aria-hidden="true">Participation certificate</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
-## 2.3 Badges
+### 2.3 Badges
 
 Badges (and all documents from now onwards) are rendered in a single
 document, with eight accreditation cards per DIN-A4 page in this case.
@@ -225,7 +266,7 @@ include a dot line in the bottom for individual hand-edition.
 | ![Badges (blank)](man/figures/Badges_blank.png) |
 |-------------------------------------------------|
 
-### Badges example:
+#### Badges example:
 
 As an example, we present the accreditation cards that might have been
 used in the International Conference of Muggleology, where the only
@@ -248,7 +289,7 @@ create_badge(
 | ![Badges example](man/figures/Badges.png) |
 |-------------------------------------------|
 
-## 2.4 Herbarium labels
+### 2.4 Herbarium labels
 
 Herbarium labels are one of the documents with more variable parameters,
 as there is a lot of information to be included. Here, we have used a
@@ -269,7 +310,7 @@ the labels, so we recommend to be concise.
 | ![Herbarium label (blank)](man/figures/Herbarium_blank.png) |
 |-------------------------------------------------------------|
 
-### Herbarium labels example:
+#### Herbarium labels example:
 
 In this example, we show the labels some students have created for their
 herbarium assignment of the Herbology class.
@@ -305,7 +346,7 @@ create_herbarium_label(
 | ![Herbarium labels example](man/figures/Herbarium_labels.png) |
 |---------------------------------------------------------------|
 
-## 2.5 Collection labels
+### 2.5 Collection labels
 
 Collection labels are one of the most aesthetic labels. They have five
 variable parameters (which are not recommended to be too long, as
@@ -318,10 +359,27 @@ As a novelty, the user may manually fix the backgroud and text colours
 to their preference, using HTML colour codes (same code as HEX, but
 without the ‘\#’). By default, background colours are two hues of green.
 
-| ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
-|-----------------------------------------------------------------------|
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/collection_labels_blank.png"
+alt="Collection labels (blank)" />
+<figcaption aria-hidden="true">Collection labels (blank)</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
-### Collection labels example:
+#### Collection labels example:
 
 In this example we can see six labels created for the school’s displayed
 collection of stuffed animals.
@@ -346,7 +404,7 @@ create_collection_label(
 | ![Collection labels example](man/figures/collection_labels.png) |
 |-----------------------------------------------------------------|
 
-## 2.6 Collection tinylabels
+### 2.6 Collection tinylabels
 
 This type of labels is a simplified version of the previous, and
 includes just five variable fields and the possibility of including a QR
@@ -364,7 +422,7 @@ per sheet” in the printer’s options.
 | ![Tinylabels (blank)](man/figures/tinylabels_blank.png) |
 |---------------------------------------------------------|
 
-### Tinylabels example:
+#### Tinylabels example:
 
 Here, tinylabels are created for typical collections stored in boxes, so
 a normal collection label would be to big.
@@ -392,6 +450,17 @@ If using this package, please cite it:
 
 ``` r
 citation("labeleR")
+#> To cite labeleR in publications use:
+#> 
+#>   G. de Aledo, J., Ramos-Gutiérrez, I. 2023. labeleR.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {LabeleR},
+#>     author = {Julia G. {de Aledo} and Ignacio Ramos-Gutierrez},
+#>     year = {2023},
+#>   }
 ```
 
 ## Funding
