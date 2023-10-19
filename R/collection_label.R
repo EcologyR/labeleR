@@ -79,16 +79,22 @@ create_collection_label <- function(data = NULL,
     filename <- "Collection_label"
   }
 
-  # If qr is not a column in data, use same qr for all items
+
+
+  ## QR code
+
+  if (!is.null(qr)) {
+    stopifnot(is.character(qr))
+    # If qr is not a column in data, use same qr for all items
+    if (!(qr %in% colnames(data))) {
+      data$qr <- qr   # recycling to all rows in data
+      qr <- "qr"    # used later for selecting column
+    }
+  }
   if (is.null(qr)) {
     message("No qr provided")
-    qr <- ""
-  }
-
-  if (!(qr %in% colnames(data))) {
-    data$qr <- qr
-    qr <- "qr"
-    data[, qr] <- as.character(data[, qr])
+    data$qr <- ""
+    qr <- "qr"    # used later for selecting column
   }
 
 
@@ -165,7 +171,7 @@ create_collection_label <- function(data = NULL,
     output_dir = path,
     output_file = output_file,
     params = list(
-      qr.i = data[,qr],
+      qr.i = data[, qr],
       field1.i = if (field1.column == "") {bl.char} else {data[,field1.column]},
       field2.i = if (field2.column == "") {bl.char} else {data[,field2.column]},
       field3.i = if (field3.column == "") {bl.char} else {data[,field3.column]},
