@@ -47,7 +47,7 @@ by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown and PNG lpic and rpic 
 appear in the same folder.
 }
 \description{
-Create badges (8 per DIN-A4 page)
+Create badges (8 badges per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

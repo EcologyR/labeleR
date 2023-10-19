@@ -69,7 +69,7 @@ by \code{path}. If \code{keep.files = TRUE}, the Rmarkdown template and PNG logo
 will also appear in the same folder.
 }
 \description{
-Create certificate of attendance (1 per DIN-A4 page)
+Create certificate of attendance (1 certificate per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

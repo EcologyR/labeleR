@@ -1,6 +1,6 @@
 #' Create certificate of attendance
 #'
-#' Create certificate of attendance (1 per DIN-A4 page)
+#' Create certificate of attendance (1 certificate per DIN-A4 page)
 #'
 #' @param data a data frame containing attendees' names (in `name.column`)
 #' @param path Character. Path to folder where the PDF certificates will be saved.

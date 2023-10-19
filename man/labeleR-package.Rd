@@ -4,9 +4,9 @@
 \name{labeleR-package}
 \alias{labeleR}
 \alias{labeleR-package}
-\title{labeleR: Package to create your own labels, certificates, and much more! :)}
+\title{labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents}
 \description{
-With this packages you can create labels, herbarium labels, ID cards, custom certificates
+'labeleR' makes it easy to create custom labels, badges, certificates and other documents. It can be used to automate the production of potentially large numbers of accreditation badges, attendance and participation certificates, herbarium and collection labels, etc. Documents are generated in PDF format, which requires a working installation of 'LaTeX', such as 'TinyTeX'.
 }
 \seealso{
 Useful links:

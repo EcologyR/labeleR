@@ -1,6 +1,6 @@
 #' Create badges
 #'
-#' Create badges (8 per DIN-A4 page)
+#' Create badges (8 badges per DIN-A4 page)
 #'
 #' @param data a data frame including names and (optionally) affiliations.
 #' @param path Character. Path to folder where the PDF file will be saved.
@@ -71,8 +71,10 @@ create_badge <- function(data = NULL,
   }
 
   check_column_in_df(data, name.column)
-  if (!is.null(affiliation.column)) check_column_in_df(data, affiliation.column)
 
+  if (!is.null(affiliation.column)) {
+    check_column_in_df(data, affiliation.column)
+  }
   if (is.null(affiliation.column)) {
     affiliation.column <- ""
   }

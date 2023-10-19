@@ -1,6 +1,6 @@
 #' Create certificate of participation
 #'
-#' Create certificate of participation  (1 per DIN-A4 page)
+#' Create certificate of participation  (1 certificate per DIN-A4 page)
 #'
 #' @param data A data frame containing participants' names and contributions.
 #' @param path path Character. Path to folder where the PDF certificates will be saved.
