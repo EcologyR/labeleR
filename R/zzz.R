@@ -26,6 +26,19 @@ check_column_in_df <- function(df = NULL, column = NULL) {
 }
 
 
+check_column_or_create_empty_char <- function(df = NULL, column = NULL) {
+
+  if (!is.null(column)) {
+    check_column_in_df(df, column)
+    out <- column
+  } else {
+    out <- ""
+  }
+
+  out
+
+}
+
 
 #### Function to use logos/images provided by the user as PNG files,
 ## or create blank small images if not provided (NULL)

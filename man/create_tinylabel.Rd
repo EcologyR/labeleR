@@ -21,9 +21,9 @@ create_tinylabel(
 \arguments{
 \item{data}{a data frame including information of a species}
 
-\item{qr}{String. Free text or column of \code{data} that specifies the link where to create the QR code.
-If the specified value is not a column name of \code{data}, all the QRs will be equal,
-and will output the specified \code{qr}.}
+\item{qr}{String. Free text or column of \code{data} that specifies the link for the QR code.
+If the specified value of \code{qr} is not a column name of \code{data},
+all the QRs will be equal, pointing to the same link.}
 
 \item{path}{Character. Path to folder where the PDF file will be saved.}
 
@@ -43,20 +43,26 @@ appear below field3.}
 
 \item{field5.column}{Character (optional). Name of the column in \code{data} storing the fifth free text to
 appear below field4.}
+
+\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+in the output folder? Default is FALSE.}
+
+\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+using the default template included in \code{labeleR}.}
 }
 \value{
 A PDF file named "Tiny_label.pdf" is saved on disk, in the folder defined
 by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown file will also appear in the same folder.
 }
 \description{
-Create tiny labels (16 per DIN-A4 page)
+Create tiny labels (16 labels per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 create_tinylabel(
 data = tiny.table,
 qr = "QR_code",
-path = "LabeleR_output",
+path = "labeleR_output",
 field1.column = "field1",
 field2.column = "field2",
 field3.column = "field3",

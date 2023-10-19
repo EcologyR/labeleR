@@ -43,15 +43,15 @@ create_herbarium_label(
 
 \item{subtitle}{Subtitle at the bottom of the labels. Can be blank if set to NULL.}
 
-\item{qr}{String. Free text or column of \code{data} that specifies the text to create the QR code.
-If the specified value is not a column name of \code{data}, all the QRs will be equal,
-and will output the specified \code{qr}.}
+\item{qr}{String. Free text or column of \code{data} that specifies the link for the QR code.
+If the specified value of \code{qr} is not a column name of \code{data},
+all the QRs will be equal, pointing to the same link.}
 
 \item{family.column}{Character (optional). Name of the column in \code{data} storing the family of the taxon.}
 
-\item{taxon.column}{Character (optional). Name of the column in \code{data} storing the taxons' name.}
+\item{taxon.column}{Character (optional). Name of the column in \code{data} storing the taxon name.}
 
-\item{author.column}{Character (optional). Name of the column in \code{data} storing the taxons' author.}
+\item{author.column}{Character (optional). Name of the column in \code{data} storing the taxon author.}
 
 \item{det.column}{Character (optional). Name of the column in \code{data} storing the determiner of the voucher.}
 
@@ -61,7 +61,7 @@ was determined.}
 \item{location.column}{Character (optional). Name of the column in \code{data} storing where the voucher
 was collected.}
 
-\item{area.description.column}{Character (optional). Name of the column in \code{data} storing the decription
+\item{area.description.column}{Character (optional). Name of the column in \code{data} storing the description
 of the area.}
 
 \item{latitude.column}{Character (optional). Name of the column in \code{data} storing the latitude
@@ -92,19 +92,25 @@ collector's assistants.}
 
 \item{date.column}{Character (optional). Name of the column in \code{data} storing the date when the specimen
 was collected.}
+
+\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+in the output folder? Default is FALSE.}
+
+\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+using the default template included in \code{labeleR}.}
 }
 \value{
 A pdf file with four herbarium labels per page within an 'output' folder.
 }
 \description{
-Create herbarium labels (4 per DIN-A4 page)
+Create herbarium labels (4 labels per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 create_herbarium_label (
 data = herbarium.table,
-path = "LabeleR_output",
+path = "labeleR_output",
 title = "Magical flora of the British Isles",
 subtitle = "Project: Eliminating plant blindness in Hogwarts students",
 qr = "QR_code",

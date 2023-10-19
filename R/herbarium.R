@@ -1,24 +1,24 @@
 #' Create herbarium labels
 #'
-#' Create herbarium labels (4 per DIN-A4 page)
+#' Create herbarium labels (4 labels per DIN-A4 page)
 #'
 #' @param data a data frame. Each row contains the information by species that will appear in the label.
 #' @param path Character. Path to folder where the PDF file will be saved.
 #' @param filename Character. Filename of the pdf. If NULL, default is "Herbarium".
 #' @param title Main title at the top of the labels. Can be blank if set to NULL.
 #' @param subtitle Subtitle at the bottom of the labels. Can be blank if set to NULL.
-#' @param qr String. Free text or column of \code{data} that specifies the text to create the QR code.
-#'          If the specified value is not a column name of \code{data}, all the QRs will be equal,
-#'          and will output the specified \code{qr}.
+#' @param qr String. Free text or column of \code{data} that specifies the link for the QR code.
+#'          If the specified value of `qr` is not a column name of \code{data},
+#'          all the QRs will be equal, pointing to the same link.
 #' @param family.column Character (optional). Name of the column in `data` storing the family of the taxon.
-#' @param taxon.column Character (optional). Name of the column in `data` storing the taxons' name.
-#' @param author.column Character (optional). Name of the column in `data` storing the taxons' author.
+#' @param taxon.column Character (optional). Name of the column in `data` storing the taxon name.
+#' @param author.column Character (optional). Name of the column in `data` storing the taxon author.
 #' @param det.column Character (optional). Name of the column in `data` storing the determiner of the voucher.
 #' @param date.det.column Character (optional). Name of the column in `data` storing the date when the voucher
 #' was determined.
 #' @param location.column Character (optional). Name of the column in `data` storing where the voucher
 #' was collected.
-#' @param area.description.column Character (optional). Name of the column in `data` storing the decription
+#' @param area.description.column Character (optional). Name of the column in `data` storing the description
 #' of the area.
 #' @param latitude.column Character (optional). Name of the column in `data` storing the latitude
 #' where the specimen was collected.
@@ -39,6 +39,7 @@
 #' collector's assistants.
 #' @param date.column Character (optional). Name of the column in `data` storing the date when the specimen
 #' was collected.
+#' @inheritParams create_badge
 #'
 #' @return A pdf file with four herbarium labels per page within an 'output' folder.
 #'
@@ -50,7 +51,7 @@
 #'
 #' create_herbarium_label (
 #' data = herbarium.table,
-#' path = "LabeleR_output",
+#' path = "labeleR_output",
 #' title = "Magical flora of the British Isles",
 #' subtitle = "Project: Eliminating plant blindness in Hogwarts students",
 #' qr = "QR_code",
@@ -98,11 +99,14 @@ create_herbarium_label <- function(data = data,
                                    date.column = NULL,
                                    keep.files = FALSE,
                                    template = NULL
-                                 ){
+){
 
-  if(is.null(data)){
-    stop(" a 'data' data.frame must be provided.")
+  ## Check arguments
+
+  if (is.null(data)) {
+    stop("Please provide a data.frame or tibble.")
   }
+
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
   if (is.null(path)) {stop("A folder path must be specified.")}
@@ -113,123 +117,80 @@ create_herbarium_label <- function(data = data,
 
   if (is.null(filename)) {
     message("No file name provided")
-    filename <- "Herbarium.pdf"
+    filename <- "Herbarium"
   }
 
 
-  if(any(apply(data, 1, nchar)>150)){
-  message("Warning: cells containing too long texts may alter the result.
-           Please consider shortening the content of your cells.")
-    }
+  if (any(apply(data, 1, nchar) > 150)) {
+    message("Too long texts may give undesired results. Please consider shortening long fields.")
+  }
 
-  if(is.null(title)){
+
+  if (is.null(title)) {
     message("No title provided")
-    title <- ""}
+    title <- ""
+  }
 
-  if(is.null(subtitle)){
+  if (is.null(subtitle)) {
     message("No subtitle provided")
-    subtitle <- ""}
+    subtitle <- ""
+  }
 
-  if(!is.null(qr)){
-  if(!(qr %in% colnames(data))){
-    message("QR value is not a column. Using string to create QR codes")
-    data$qr <- qr
-    qr <- "qr"
-    data[,qr]<- as.character (data[,qr])
+
+  ## QR code
+
+  if (!is.null(qr)) {
+    stopifnot(is.character(qr))
+    # If qr is not a column in data, use same qr for all items
+    if (!(qr %in% colnames(data))) {
+      data$qr <- qr   # recycling to all rows in data
+      qr <- "qr"    # used later for selecting column
     }
-    }
-
-
-    if (!is.null(family.column)) {
-      check_column_in_df(data, family.column)
-      data[,family.column] <- toupper(data[,family.column])
+  }
+  if (is.null(qr)) {
+    message("No qr provided")
+    data$qr <- ""
+    qr <- "qr"    # used later for selecting column
   }
 
 
-  if(is.null(taxon.column)){
-    taxon.column<-""
-  }
-    check_column_in_df(data, taxon.column)
 
-  if(is.null(author.column)){
-    author.column<-""
-  }
-    check_column_in_df(data, author.column)
 
-  if(is.null(det.column)){
-    det.column<-""
+  if (!is.null(family.column)) {
+    check_column_in_df(data, family.column)
+    data[,family.column] <- toupper(data[,family.column])
   }
-    check_column_in_df(data, det.column)
 
-  if(is.null(date.det.column)){
-    det.column<-""
-  }
-    check_column_in_df(data, date.det.column)
-
-  if(is.null(location.column)){
-    location.column<-""
-  }
-    check_column_in_df(data, location.column)
-
-  if(is.null(area.description.column)){
-    area.description.column<-""
-  }
+  if (!is.null(area.description.column)) {
     check_column_in_df(data, area.description.column)
-
-  data[,area.description.column] <- as.character( data[,area.description.column])
-
-
-  if(is.null(latitude.column)){
-    latitude.column<-""
+    data[,area.description.column] <- as.character(data[,area.description.column])
   }
-  check_column_in_df(data, latitude.column)
 
 
-  if(is.null(longitude.column)){
-    longitude.column<-""
-  }
-  check_column_in_df(data, longitude.column)
+
+  ## Check columns are in data or create empty characters if NULL
+
+  family.column <- check_column_or_create_empty_char(data, family.column)
+  taxon.column <- check_column_or_create_empty_char(data, taxon.column)
+  author.column <- check_column_or_create_empty_char(data, author.column)
+  det.column <- check_column_or_create_empty_char(data, det.column)
+  date.det.column <- check_column_or_create_empty_char(data, date.det.column)
+  location.column <- check_column_or_create_empty_char(data, location.column)
+  area.description.column <- check_column_or_create_empty_char(data, area.description.column)
+  latitude.column <- check_column_or_create_empty_char(data, latitude.column)
+  longitude.column <- check_column_or_create_empty_char(data, longitude.column)
+  location.column <- check_column_or_create_empty_char(data, location.column)
+  elevation.column <- check_column_or_create_empty_char(data, elevation.column)
+  field1.column <- check_column_or_create_empty_char(data, field1.column)
+  field2.column <- check_column_or_create_empty_char(data, field2.column)
+  field3.column <- check_column_or_create_empty_char(data, field3.column)
+  collector.column <- check_column_or_create_empty_char(data, collector.column)
+  collection.column <- check_column_or_create_empty_char(data, collection.column)
+  assistants.column <- check_column_or_create_empty_char(data, assistants.column)
+  date.column <- check_column_or_create_empty_char(data, date.column)
 
 
-  if(is.null(elevation.column)){
-    elevation.column<-""
-  }
-  check_column_in_df(data, elevation.column)
 
-  if(is.null(field1.column)){
-    field1.column<-""
-  }
-  check_column_in_df(data, field1.column)
-
-  if(is.null(field2.column)){
-    field2.column<-""
-  }
-  check_column_in_df(data, field2.column)
-
-  if(is.null(field3.column)){
-    field3.column<-""
-  }
-  check_column_in_df(data, field3.column)
-
-  if(is.null(collector.column)){
-    collector.column<-""
-  }
-  check_column_in_df(data, collector.column)
-
-  if(is.null(collection.column)){
-    collection.column<-""
-  }
-  check_column_in_df(data, collection.column)
-
-  if(is.null(assistants.column)){
-    assistants.column<-""
-  }
-  check_column_in_df(data, assistants.column)
-
-  if(is.null(date.column)){
-    date.column<-""
-  }
-  check_column_in_df(data, date.column)
 
 
   ## Keep intermediate files? If no, using tempdir for intermediate files
@@ -239,17 +200,16 @@ create_herbarium_label <- function(data = data,
     folder <- path  # all files will remain there
   }
 
+
+
   #### Defining Rmd template to use ####
 
   if (is.null(template)) { # use pkg default
-
-      file.copy(
-        from = system.file("rmarkdown/templates/herbarium/skeleton/skeleton.Rmd", package = "labeleR"),
-        to = file.path(folder, "herbarium.Rmd"),
-        overwrite = TRUE
-      )
-
-
+    file.copy(
+      from = system.file("rmarkdown/templates/herbarium/skeleton/skeleton.Rmd", package = "labeleR"),
+      to = file.path(folder, "herbarium.Rmd"),
+      overwrite = TRUE
+    )
   }
 
   if (!is.null(template)) {
@@ -265,44 +225,42 @@ create_herbarium_label <- function(data = data,
 
 
 
-  tmpl_file   <- "tmp/herbarium.Rmd"
-  out.name <- filename
-  output_file <- paste0(out.name,'.pdf')
+  ## Render
+  output_file <- paste0(filename,'.pdf')
+  data <- as.data.frame(data)  ## to exploit drop = TRUE when selecting cols below
+  bl.char <- rep("~", times = nrow(data))
 
-  data <- as.data.frame(data)
-   for (i in 1:ncol(data)){
-    data[is.na(data[,i]),i]<-"~"
+  for (i in 1:ncol(data)) {
+    data[is.na(data[,i]), i] <- "~"
   }
-
- bl.char <- rep("~", times=nrow(data))
 
   rmarkdown::render(
     input = file.path(folder, "herbarium.Rmd"),
     output_dir = path,
     output_file = output_file,
     params = list(
-      title              = if(is.null(title                  )){bl.char}else{title},
-      subtitle           = if(is.null(subtitle               )){bl.char}else{subtitle},
-      qr.i               = if(is.null(qr                     )){NULL   }else{data [,qr]},
-      family.i           = if(is.null(family.column          )){bl.char}else{data [,family.column]},
-      taxon.i            = if((taxon.column           ==""   )){bl.char}else{data [,taxon.column]},
-      author.i           = if((author.column          ==""   )){bl.char}else{data [,author.column]},
-      det.i              = if((det.column             ==""   )){bl.char}else{data [,det.column]},
-      date.det.i         = if((date.det.column        ==""   )){bl.char}else{data [,date.det.column]},
-      location.i         = if((location.column        ==""   )){bl.char}else{data [,location.column]},
-      area.description.i = if((area.description.column==""   )){bl.char}else{data [,area.description.column]},
-      latitude.i         = if((latitude.column        ==""   )){bl.char}else{data [,latitude.column]},
-      longitude.i        = if((longitude.column       ==""   )){bl.char}else{data [,longitude.column]},
-      elevation.i        = if((elevation.column       ==""   )){bl.char}else{data [,elevation.column]},
-      field1.i           = if((field1.column          ==""   )){bl.char}else{data [,field1.column]},
-      field2.i           = if((field2.column          ==""   )){bl.char}else{data [,field2.column]},
-      field3.i           = if((field3.column          ==""   )){bl.char}else{data [,field3.column]},
-      collector.i        = if((collector.column       ==""   )){bl.char}else{data [,collector.column]},
-      collection.i       = if((collection.column      ==""   )){bl.char}else{data [,collection.column]},
-      assistants.i       = if((assistants.column      ==""   )){bl.char}else{data [,assistants.column]},
-      date.i             = if((date.column            ==""   )){bl.char}else{data [,date.column]}
+      qr.i = data[, qr],
+      title              = if (title                   == "") {bl.char} else {title},
+      subtitle           = if (subtitle                == "") {bl.char} else {subtitle},
+      family.i           = if (family.column           == "") {bl.char} else {data[,family.column]},
+      taxon.i            = if (taxon.column            == "") {bl.char} else {data[,taxon.column]},
+      author.i           = if (author.column           == "") {bl.char} else {data[,author.column]},
+      det.i              = if (det.column              == "") {bl.char} else {data[,det.column]},
+      date.det.i         = if (date.det.column         == "") {bl.char} else {data[,date.det.column]},
+      location.i         = if (location.column         == "") {bl.char} else {data[,location.column]},
+      area.description.i = if (area.description.column == "") {bl.char} else {data[,area.description.column]},
+      latitude.i         = if (latitude.column         == "") {bl.char} else {data[,latitude.column]},
+      longitude.i        = if (longitude.column        == "") {bl.char} else {data[,longitude.column]},
+      elevation.i        = if (elevation.column        == "") {bl.char} else {data[,elevation.column]},
+      field1.i           = if (field1.column           == "") {bl.char} else {data[,field1.column]},
+      field2.i           = if (field2.column           == "") {bl.char} else {data[,field2.column]},
+      field3.i           = if (field3.column           == "") {bl.char} else {data[,field3.column]},
+      collector.i        = if (collector.column        == "") {bl.char} else {data[,collector.column]},
+      collection.i       = if (collection.column       == "") {bl.char} else {data[,collection.column]},
+      assistants.i       = if (assistants.column       == "") {bl.char} else {data[,assistants.column]},
+      date.i             = if (date.column             == "") {bl.char} else {data[,date.column]}
     )
-    )
+  )
 
 }
 

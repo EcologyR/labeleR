@@ -72,6 +72,10 @@ create_tinylabel <- function(data = NULL,
   }
 
 
+  if (any(apply(data, 1, nchar) > 150)) {
+    message("Too long texts may give undesired results. Please consider shortening long fields.")
+  }
+
 
   ## QR code
 
@@ -91,42 +95,14 @@ create_tinylabel <- function(data = NULL,
 
 
 
-  ## Check field columns or creaty empty characters if NULL
+  ## Check columns are in data or create empty characters if NULL
 
-  if (is.null(field1.column)) {
-    field1.column <- ""
-  } else {
-    check_column_in_df(data, field1.column)
-  }
+  field1.column <- check_column_or_create_empty_char(data, field1.column)
+  field2.column <- check_column_or_create_empty_char(data, field2.column)
+  field3.column <- check_column_or_create_empty_char(data, field3.column)
+  field4.column <- check_column_or_create_empty_char(data, field4.column)
+  field5.column <- check_column_or_create_empty_char(data, field5.column)
 
-  if (is.null(field2.column)) {
-    field2.column <- ""
-  } else {
-    check_column_in_df(data, field2.column)
-  }
-
-  if (is.null(field3.column)) {
-    field3.column <- ""
-  } else {
-    check_column_in_df(data, field3.column)
-  }
-
-  if (is.null(field4.column)) {
-    field4.column <- ""
-  } else {
-    check_column_in_df(data, field4.column)
-  }
-
-  if (is.null(field5.column)) {
-    field5.column <- ""
-  } else {
-    check_column_in_df(data, field5.column)
-  }
-
-
-  if (any(apply(data, 1, nchar) > 150)) {
-    message("Too long texts may give undesired results. Please consider shortening long fields.")
-  }
 
 
 
