@@ -42,10 +42,9 @@ test_that("Rmd file is present when keep.files = TRUE", {
 
   create_certificate_attendance(data = data, path = path, type = "Adventure",
                                 title = "Going to Mordor",
-                                organiser = "The Fellowship of The Ring",
                                 hours = "1000", name.column = "Names",
                                 language = "English", signer = "Gandalf",
-                                speaker = "Sauron", date = "10/07/3064",
+                                date = "10/07/3064",
                                 keep.files = TRUE
   )
 
