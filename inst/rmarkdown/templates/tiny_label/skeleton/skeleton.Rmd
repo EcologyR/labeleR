@@ -43,9 +43,9 @@ for (i in 1:length(params$field1.i)) {
   \\end{minipage}
   \\hspace{0.01\\textwidth}
   \\begin{minipage}[c]{0.05\\textwidth}",
-  if(!is.null(qr)) "\\qrcode[height=1.8in, version=5]{",
-  if(!is.null(qr)) params$qr.i[i],
-  if(!is.null(qr)) "}",
+  if (params$qr.i[i] != "") "\\qrcode[height=1.8in, version=5]{",
+  if (params$qr.i[i] != "") params$qr.i[i],
+  if (params$qr.i[i] != "") "}",
   "
   \\end{minipage}
   \\end{mdframed}\n
