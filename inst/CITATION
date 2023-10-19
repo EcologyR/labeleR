@@ -1,9 +1,8 @@
-citHeader("To cite labeleR in publications use:")
 
-citEntry(
-  entry    = "Manual",
-  title    = "LabeleR",
-  author   = c("Ignacio Ramos-Gutierrez", "Julia G. de Aledo", "Francisco Rodríguez-Sánchez"),
-  year     = "2023",
-  textVersion = "Ramos-Gutiérrez, I. G. de Aledo, J., Rodríguez-Sánchez, F. 2023. labeleR."
+bibentry(
+  bibtype = "Manual",
+  title   = "labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents",
+  author  = c("Ignacio Ramos-Gutierrez", "Julia G. de Aledo", "Francisco Rodríguez-Sánchez"),
+  year    = "2023",
+  url     = "https://EcologyR.github.io/labeleR/",
 )
