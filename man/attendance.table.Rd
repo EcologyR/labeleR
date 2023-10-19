@@ -5,16 +5,21 @@
 \alias{attendance.table}
 \title{attendance.table}
 \format{
-A data frame
-
-\describe{
-A data frame with 2 rows and 5 columns
-}
+An object of class \code{data.frame} with 4 rows and 1 columns.
 }
 \usage{
 attendance.table
 }
 \description{
 Example data to create attendance certificates
+}
+\details{
+A data frame with the name of attendees\tabular{l}{
+   Names \cr
+   Harry Potter \cr
+   Hermione Granger \cr
+   Neville Longbottom \cr
+   Ginny Weasley \cr
+}
 }
 \keyword{datasets}

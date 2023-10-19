@@ -5,11 +5,7 @@
 \alias{tiny.table}
 \title{tiny.table}
 \format{
-A data frame
-
-\describe{
-A data frame with 40 rows and 8 columns
-}
+A data frame containing information on individual samples.
 }
 \usage{
 tiny.table

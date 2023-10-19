@@ -5,11 +5,7 @@
 \alias{herbarium.table}
 \title{herbarium.table}
 \format{
-A data frame
-
-\describe{
-A data frame with 6 rows and 19 columns
-}
+A data frame containing information on taxonomy, collection details, etc.
 }
 \usage{
 herbarium.table
