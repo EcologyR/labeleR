@@ -28,9 +28,9 @@ create_collection_label(
 
 \item{filename}{Character. Filename of the pdf. If NULL, default is "Collection_label".}
 
-\item{qr}{String. Free text or column of \code{data} that specifies the link where to create the QR code.
-If the specified value is not a column name of \code{data}, all the QRs will be equal,
-and will output the specified \code{qr}.}
+\item{qr}{String. Free text or column of \code{data} that specifies the link for the QR code.
+If the specified value of \code{qr} is not a column name of \code{data},
+all the QRs will be equal, pointing to the same link.}
 
 \item{field1.column}{Character (optional). Name of the column in \code{data} storing the first free text to
 appear at the top of the label.}
@@ -51,21 +51,28 @@ appear below field4.}
 
 \item{bgcolor}{HTML color for label background. Default is D0ECC1}
 
-\item{textcolor}{HTML color for label text. Default is 1E3F20
+\item{textcolor}{HTML color for label text. Default is 1E3F20}
 
-#' @return A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
+\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+in the output folder? Default is FALSE.}
+
+\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+using the default template included in \code{labeleR}.}
+}
+\value{
+A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
 by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown and PNG logo files will also
-appear in the same folder.}
+appear in the same folder.
 }
 \description{
-Create collection labels (8 per DIN-A4 page)
+Create collection labels (8 labels per DIN-A4 page)
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 create_collection_label(
-data = collection.table,
-path = "LabeleR_output",
+data = label.table,
+path = "labeleR_output",
 qr = "QR_code",
 field1.column = "field1",
 field2.column = "field2",

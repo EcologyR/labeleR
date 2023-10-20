@@ -3,6 +3,19 @@
 
 # labeleR
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/EcologyR/labeleR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/EcologyR/labeleR?branch=master)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Project Status: Active - The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](http://hits.dwyl.com/EcologyR/labeleR)
+[![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](http://hits.dwyl.com/EcologyR/labeleR)
+<!-- badges: end -->
+
 <img src="man/figures/labeleR.png" width="140px" align="right"/>
 
 This is a package to create your own labels, certificates, and much
@@ -47,14 +60,6 @@ be much quicker next time!
 
 ``` r
 library("labeleR")
-#>  [90mWelcome to the[39m [4m[1mlabeleR[22m[24m [90mpackage.[39m
-#> 
-#>  [3mPackage developed by Ignacio Ramos-Gutiérrez, Julia G. de Aledo & Francisco Rodríguez-Sánchez[23m
-#> 
-#>  🐦  TW:  @iramosgutierrez 
-#>  🐦  TW:  @juliagdealedo 
-#>  🐦  TW:  @frod_san
-#> 
 ```
 
 ### 1.1 Loading the data
@@ -90,7 +95,7 @@ which is the folder where the output PDFs will be stored. In case the
 specified folder does not exist, it will be automatically created. In
 case you want to name the output PDF file in a certain way, you must
 specify it using the `filename` argument. Additionally, you can store
-the created intermediate files (e.g. Rmarkdown and LaTeX files) using
+the created intermediate files (e.g. Rmarkdown, picture files) using
 `keep.files = TRUE`.
 
 Ultimately, labeleR uses its own templates to create the documents.
@@ -450,16 +455,19 @@ If using this package, please cite it:
 
 ``` r
 citation("labeleR")
-#> To cite labeleR in publications use:
+#> To cite package 'labeleR' in publications use:
 #> 
-#>   G. de Aledo, J., Ramos-Gutiérrez, I. 2023. labeleR.
+#>   Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2023). _labeleR:
+#>   Automate the Production of Custom Labels, Badges, Certificates, and
+#>   Other Documents_. <https://EcologyR.github.io/labeleR/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {LabeleR},
-#>     author = {Julia G. {de Aledo} and Ignacio Ramos-Gutierrez},
+#>     title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
+#>     author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},
 #>     year = {2023},
+#>     url = {https://EcologyR.github.io/labeleR/},
 #>   }
 ```
 

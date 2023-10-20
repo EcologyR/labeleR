@@ -1,6 +1,6 @@
 Package: labeleR
 Title: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
   c(
   person("Ignacio", "Ramos-Gutiérrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre"),

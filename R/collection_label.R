@@ -1,13 +1,13 @@
 #' Create collection labels
 #'
-#' Create collection labels (8 per DIN-A4 page)
+#' Create collection labels (8 labels per DIN-A4 page)
 #'
 #' @param data a data frame. Each row contains the information by species that will appear in the label.
 #' @param path Character. Path to folder where the PDF file will be saved.
 #' @param filename Character. Filename of the pdf. If NULL, default is "Collection_label".
-#' @param qr String. Free text or column of \code{data} that specifies the link where to create the QR code.
-#'          If the specified value is not a column name of \code{data}, all the QRs will be equal,
-#'          and will output the specified \code{qr}.
+#' @param qr String. Free text or column of \code{data} that specifies the link for the QR code.
+#'          If the specified value of `qr` is not a column name of \code{data},
+#'          all the QRs will be equal, pointing to the same link.
 #' @param field1.column Character (optional). Name of the column in `data` storing the first free text to
 #' appear at the top of the label.
 #' @param field2.column Character (optional). Name of the column in `data` storing the second free text to
@@ -21,8 +21,9 @@
 #' @param logo Character (optional) Path to a PNG image to be located in the label bottom.
 #' @param bgcolor HTML color for label background. Default is D0ECC1
 #' @param textcolor HTML color for label text. Default is 1E3F20
+#' @inheritParams create_badge
 #'
-#'#' @return A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
+#' @return A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an Rmarkdown and PNG logo files will also
 #' appear in the same folder.
 #'
@@ -33,8 +34,8 @@
 #' @examplesIf interactive()
 #'
 #' create_collection_label(
-#' data = collection.table,
-#' path = "LabeleR_output",
+#' data = label.table,
+#' path = "labeleR_output",
 #' qr = "QR_code",
 #' field1.column = "field1",
 #' field2.column = "field2",
@@ -78,41 +79,35 @@ create_collection_label <- function(data = NULL,
     filename <- "Collection_label"
   }
 
+
+
+  ## QR code
+
+  if (!is.null(qr)) {
+    stopifnot(is.character(qr))
+    # If qr is not a column in data, use same qr for all items
+    if (!(qr %in% colnames(data))) {
+      data$qr <- qr   # recycling to all rows in data
+      qr <- "qr"    # used later for selecting column
+    }
+  }
   if (is.null(qr)) {
     message("No qr provided")
-    qr <- ""
+    data$qr <- ""
+    qr <- "qr"    # used later for selecting column
   }
 
-  if (!(qr %in% colnames(data))) {
-    data$qr <- qr
-    qr <- "qr"
-    data[,qr]<- as.character (data[,qr])
-  }
 
-  if (is.null(field1.column)) {
-    field1.column <- ""
-  }
-  check_column_in_df(data, field1.column)
+  ## Check field columns are in data or create empty characters if NULL
 
-  if (is.null(field2.column)) {
-    field2.column <- ""
-  }
-  check_column_in_df(data, field2.column)
+  field1.column <- check_column_or_create_empty_char(data, field1.column)
+  field2.column <- check_column_or_create_empty_char(data, field2.column)
+  field3.column <- check_column_or_create_empty_char(data, field3.column)
+  field4.column <- check_column_or_create_empty_char(data, field4.column)
+  field5.column <- check_column_or_create_empty_char(data, field5.column)
 
-  if (is.null(field3.column)) {
-    field3.column <- ""
-  }
-  check_column_in_df(data, field3.column)
 
-  if (is.null(field4.column)) {
-    field4.column <- ""
-  }
-  check_column_in_df(data, field4.column)
 
-  if (is.null(field5.column)) {
-    field5.column <- ""
-  }
-  check_column_in_df(data, field5.column)
 
 
   ## Keep intermediate files? If no, using tempdir for intermediate files
@@ -147,18 +142,18 @@ create_collection_label <- function(data = NULL,
   ## Render
   output_file <- paste0(filename,'.pdf')
   data <- as.data.frame(data)  ## to exploit drop = TRUE when selecting cols below
-  bl.char <- rep("~", times=nrow(data))
+  bl.char <- rep("~", times = nrow(data))
   rmarkdown::render(
     input = file.path(folder, "collection_label.Rmd"),
     output_dir = path,
     output_file = output_file,
     params = list(
-      qr.i = data[,qr],
-      field1.i =if(field1.column==""){bl.char}else{data[,field1.column]},
-      field2.i =if(field2.column==""){bl.char}else{data[,field2.column]},
-      field3.i =if(field3.column==""){bl.char}else{data[,field3.column]},
-      field4.i =if(field4.column==""){bl.char}else{data[,field4.column]},
-      field5.i =if(field5.column==""){bl.char}else{data[,field5.column]},
+      qr.i = data[, qr],
+      field1.i = if (field1.column == "") {bl.char} else {data[,field1.column]},
+      field2.i = if (field2.column == "") {bl.char} else {data[,field2.column]},
+      field3.i = if (field3.column == "") {bl.char} else {data[,field3.column]},
+      field4.i = if (field4.column == "") {bl.char} else {data[,field4.column]},
+      field5.i = if (field5.column == "") {bl.char} else {data[,field5.column]},
       bgcolor = bgcolor,
       textcolor = textcolor
     )

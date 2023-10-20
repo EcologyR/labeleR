@@ -1,17 +1,4 @@
 
-.onAttach <- function(lib, pkg)
-{
-  packageStartupMessage(
-    cat(" \033[90mWelcome to the\033[39m \033[4m\033[1mlabeleR\033[22m\033[24m \033[90mpackage.\033[39m\n\n",
-           "\033[3mPackage developed by Ignacio Ramos-Gutiérrez, Julia G. de Aledo & Francisco Rodríguez-Sánchez\033[23m\n\n",
-           "\U1F426","/","\U1D54F", "@iramosgutierrez","\n",
-           "\U1F426","/","\U1D54F", "@juliagdealedo", "\n",
-           "\U1F426","/","\U1D54F", "@frod_san","\n")
-    )
-}
-
-
-
 
 #### Check columns in data
 
@@ -25,6 +12,19 @@ check_column_in_df <- function(df = NULL, column = NULL) {
   }
 }
 
+
+check_column_or_create_empty_char <- function(df = NULL, column = NULL) {
+
+  if (!is.null(column)) {
+    check_column_in_df(df, column)
+    out <- column
+  } else {
+    out <- ""
+  }
+
+  out
+
+}
 
 
 #### Function to use logos/images provided by the user as PNG files,
