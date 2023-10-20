@@ -425,9 +425,7 @@ create_tinylabel(
 
 ## Citation
 
-If using this package, please cite it:
-
-```{r citation, eval=TRUE}
+```{r citation, eval=TRUE, comment=NA, echo=FALSE}
 citation("labeleR")
 ```
 
