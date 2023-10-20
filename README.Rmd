@@ -21,7 +21,6 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/EcologyR/labeleR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/EcologyR/labeleR?branch=master)
 `r badger::badge_lifecycle("stable")`
 `r badger::badge_repostatus("Active")`
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](http://hits.dwyl.com/EcologyR/labeleR)

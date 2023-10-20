@@ -6,8 +6,6 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/EcologyR/labeleR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/EcologyR/labeleR?branch=master)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
