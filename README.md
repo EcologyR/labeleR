@@ -186,26 +186,9 @@ variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
 rendered in English and in Spanish.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><figure>
-<img src="man/figures/Participation_blank.png"
-alt="Participation certificate (blank)" />
-<figcaption aria-hidden="true">Participation certificate
-(blank)</figcaption>
-</figure></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+| ![Participation certificate (blank)](man/figures/Participation_blank.png) |
+|---------------------------------------------------------------------------|
+|                                                                           |
 
 #### Participation certificate example:
 
@@ -238,25 +221,9 @@ create_certificate_participation(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><figure>
-<img src="man/figures/Participation_certificates.png"
-alt="Participation certificate" />
-<figcaption aria-hidden="true">Participation certificate</figcaption>
-</figure></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+| ![Participation certificate](man/figures/Participation_certificates.png) |
+|--------------------------------------------------------------------------|
+|                                                                          |
 
 ### 2.3 Badges
 
@@ -362,25 +329,9 @@ As a novelty, the user may manually fix the backgroud and text colours
 to their preference, using HTML colour codes (same code as HEX, but
 without the ‘\#’). By default, background colours are two hues of green.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><figure>
-<img src="man/figures/collection_labels_blank.png"
-alt="Collection labels (blank)" />
-<figcaption aria-hidden="true">Collection labels (blank)</figcaption>
-</figure></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+| ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
+|-----------------------------------------------------------------------|
+|                                                                       |
 
 #### Collection labels example:
 
@@ -449,24 +400,24 @@ create_tinylabel(
 
 ## Citation
 
-    To cite package 'labeleR' in publications use:
 
-      Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2023). _labeleR:
-      Automate the Production of Custom Labels, Badges, Certificates, and
-      Other Documents_. <https://EcologyR.github.io/labeleR/>.
+    To cite labeleR in publications use:
+
+      Ramos-Gutiérrez, I. G. de Aledo, J., Rodríguez-Sánchez, F. 2023.
+      labeleR.
 
     A BibTeX entry for LaTeX users is
 
       @Manual{,
-        title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
+        title = {LabeleR},
         author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},
         year = {2023},
-        url = {https://EcologyR.github.io/labeleR/},
       }
 
 ## Funding
 
-The development of this software has been funded by Fondo Europeo de
-Desarrollo Regional (FEDER) and Consejería de Transformación Económica,
-Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto
-US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).
+The development of this software has been funded by the European Union -
+Next Generation EU, Fondo Europeo de Desarrollo Regional (FEDER) and
+Consejería de Transformación Económica, Industria, Conocimiento y
+Universidades of Junta de Andalucía (proyecto US-1381388 led by
+Francisco Rodríguez Sánchez, Universidad de Sevilla).
