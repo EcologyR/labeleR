@@ -64,7 +64,7 @@ test_that("PDF certificates are created with an '&' ", {
   skip_on_cran()
 
   ## Spanish
-  create_herbarium_label(data = data, path = path, filename =  filename,
+  create_herbarium_label(data = data2, path = path, filename =  filename,
                          title ="example herbarium label" ,
                          subtitle = "is labeleR working correctly?",
                          family.column = "Family",
