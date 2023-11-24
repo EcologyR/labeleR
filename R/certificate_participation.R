@@ -103,10 +103,21 @@ create_certificate_participation <- function(
   }
 
   check_column_in_df(data, name.column)
-  if (!is.null(affiliation.column)) check_column_in_df(data, affiliation.column)
+  data[,name.column]<- check_latex(data, name.column)
+
+  if (!is.null(affiliation.column)) {
+    check_column_in_df(data, affiliation.column)
+    data[,affiliation.column]<- check_latex(data, affiliation.column)
+  }
+
   check_column_in_df(data, comm.type.column)
+  data[,comm.type.column]<- check_latex(data, comm.type.column)
+
   check_column_in_df(data, title.column)
+  data[,title.column]<- check_latex(data, title.column)
+
   check_column_in_df(data, date.column)
+  data[,date.column]<- check_latex(data, date.column)
 
   stopifnot(is.character(type))
   stopifnot(is.character(event))

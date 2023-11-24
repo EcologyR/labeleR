@@ -71,9 +71,11 @@ create_badge <- function(data = NULL,
   }
 
   check_column_in_df(data, name.column)
+  data[,name.column]<- check_latex(data, name.column)
 
   if (!is.null(affiliation.column)) {
     check_column_in_df(data, affiliation.column)
+    data[,affiliation.column]<- check_latex(data, affiliation.column)
   }
   if (is.null(affiliation.column)) {
     affiliation.column <- ""
