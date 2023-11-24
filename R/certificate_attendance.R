@@ -94,6 +94,7 @@ create_certificate_attendance <- function(
   }
 
   check_column_in_df(data, name.column)
+  data[,name.column]<- check_latex(data, name.column)
 
   stopifnot(is.character(type))
   stopifnot(is.character(title))
