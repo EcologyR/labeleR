@@ -20,11 +20,45 @@ data <- data.frame("ID"=                  "1",
                    "Longitude"=           "1º2'3''N",
                    "QR_code" =            "https://powo.science.kew.org/results?q=Trorgssionis"
                    )
+data2 <- data
+data2$Collector <- c("Person1&Person2")
 
 path <- tempdir()
 filename <- "labeleR_test"
 
 test_that("PDF certificates are created", {
+
+  skip_on_ci()
+  skip_on_cran()
+
+  ## Spanish
+  create_herbarium_label(data = data, path = path, filename =  filename,
+                         title ="example herbarium label" ,
+                         subtitle = "is labeleR working correctly?",
+                         family.column = "Family",
+                         taxon.column = "Taxon",
+                         author.column = "Author",
+                         det.column = "det",
+                         date.det.column = "Det_date",
+                         location.column = "Location",
+                         area.description.column = "Area_description",
+                         latitude.column = "Latitude",
+                         longitude.column = "Longitude",
+                         elevation.column = "Elevation",
+                         field1.column = "life_form",
+                         field2.column = "Observations",
+                         field3.column = "Height",
+                         collector.column = "Collector",
+                         collection.column = "Collection_number",
+                         assistants.column = "Assistants",
+                         date.column = "Date"    )
+
+  expect_true(file.exists(file.path(path, paste0(filename,".pdf"))))
+
+})
+
+
+test_that("PDF certificates are created with an '&' ", {
 
   skip_on_ci()
   skip_on_cran()
