@@ -88,6 +88,8 @@ create_certificate_participation <- function(
   if (is.null(data)) {
     stop("A data.frame must be provided.")
   }
+
+  if(!(all(class(data)=="data.frame"))){data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
   if (is.null(path)) {stop("A folder path must be specified.")}
