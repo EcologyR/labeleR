@@ -3,11 +3,11 @@ Title: Automate the Production of Custom Labels, Badges, Certificates, and Other
 Version: 0.0.1
 Authors@R: 
   c(
-  person("Ignacio", "Ramos-Gutiérrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre"),
+  person("Ignacio", "Ramos-Gutiérrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre", "cph"),
     comment = c(ORCID = "0000-0002-8675-0114")),
-  person("Julia G.", "de Aledo", , "juliagdealedo@gmail.com", role = "aut",
+  person("Julia G.", "de Aledo", , "juliagdealedo@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0001-9065-9316")),
-  person("Francisco", "Rodríguez-Sánchez", , "frodriguez@us.es", role = "aut",
+  person("Francisco", "Rodríguez-Sánchez", , "frodriguez@us.es", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-7981-1599"))
   )
 Description: Functions to create custom labels, badges, certificates
