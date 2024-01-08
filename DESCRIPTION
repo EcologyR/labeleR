@@ -10,8 +10,8 @@ Authors@R:
   person("Francisco", "Rodríguez-Sánchez", , "frodriguez@us.es", role = "aut",
            comment = c(ORCID = "0000-0002-7981-1599"))
   )
-Description: 'labeleR' makes it easy to create custom labels, badges, certificates
-  and other documents. It can be used to automate the production of potentially large 
+Description: Functions to create custom labels, badges, certificates
+  and other documents. Automate the production of potentially large 
   numbers of accreditation badges, attendance and participation certificates, 
   herbarium and collection labels, etc. Documents are generated in PDF format, 
   which requires a working installation of 'LaTeX', such as 'TinyTeX'.
