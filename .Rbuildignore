@@ -12,3 +12,4 @@
 output/
 
 
+^cran-comments\.md$
