@@ -187,25 +187,26 @@ create_herbarium_label <- function(data = data,
   assistants.column       <- check_column_or_create_empty_char(data, assistants.column)
   date.column             <- check_column_or_create_empty_char(data, date.column)
 
-  if(!is.null(family.column           ))  {data[,family.column           ]<- check_latex(data, family.column           )}
-  if(!is.null(taxon.column            ))  {data[,taxon.column            ]<- check_latex(data, taxon.column            )}
-  if(!is.null(author.column           ))  {data[,author.column           ]<- check_latex(data, author.column           )}
-  if(!is.null(det.column              ))  {data[,det.column              ]<- check_latex(data, det.column              )}
-  if(!is.null(date.det.column         ))  {data[,date.det.column         ]<- check_latex(data, date.det.column         )}
-  if(!is.null(location.column         ))  {data[,location.column         ]<- check_latex(data, location.column         )}
-  if(!is.null(area.description.column ))  {data[,area.description.column ]<- check_latex(data, area.description.column )}
-  if(!is.null(latitude.column         ))  {data[,latitude.column         ]<- check_latex(data, latitude.column         )}
-  if(!is.null(longitude.column        ))  {data[,longitude.column        ]<- check_latex(data, longitude.column        )}
-  if(!is.null(location.column         ))  {data[,location.column         ]<- check_latex(data, location.column         )}
-  if(!is.null(elevation.column        ))  {data[,elevation.column        ]<- check_latex(data, elevation.column        )}
-  if(!is.null(field1.column           ))  {data[,field1.column           ]<- check_latex(data, field1.column           )}
-  if(!is.null(field2.column           ))  {data[,field2.column           ]<- check_latex(data, field2.column           )}
-  if(!is.null(field3.column           ))  {data[,field3.column           ]<- check_latex(data, field3.column           )}
-  if(!is.null(collector.column        ))  {data[,collector.column        ]<- check_latex(data, collector.column        )}
-  if(!is.null(collection.column       ))  {data[,collection.column       ]<- check_latex(data, collection.column       )}
-  if(!is.null(assistants.column       ))  {data[,assistants.column       ]<- check_latex(data, assistants.column       )}
-  if(!is.null(date.column             ))  {data[,date.column             ]<- check_latex(data, date.column             )}
+  arguments <- c(family.column           ,
+                 taxon.column            ,
+                 author.column           ,
+                 det.column              ,
+                 date.det.column         ,
+                 location.column         ,
+                 area.description.column ,
+                 latitude.column         ,
+                 longitude.column        ,
+                 elevation.column        ,
+                 field1.column           ,
+                 field2.column           ,
+                 field3.column           ,
+                 collector.column        ,
+                 collection.column       ,
+                 assistants.column       ,
+                 date.column             )
+  arguments <- arguments[arguments!=""]
 
+  data <- check_latex_columns(data, arguments)
 
 
 

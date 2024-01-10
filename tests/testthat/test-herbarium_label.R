@@ -1,7 +1,7 @@
 
 
 data <- data.frame("ID"=                  "1",
-                   "Collector"=           "Person1",
+                   "Collector"=           "Person1&Person2",
                    "Collection_number"=   "11.2",
                    "Assistants"=          "Person2, Person3",
                    "Family"=              "Canellae",
@@ -12,7 +12,7 @@ data <- data.frame("ID"=                  "1",
                    "life_form"=           "shrub",
                    "Observations"=        "none",
                    "Height"=              "1m",
-                   "Location"=            "AAAAA",
+                   "Location"=            "AAA#AA",
                    "Area_description"=    "AAAAA",
                    "Elevation"=           "314 m.a.s.l.",
                    "Date"=                "2/2/2002",

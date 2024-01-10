@@ -107,11 +107,10 @@ create_collection_label <- function(data = NULL,
   field4.column <- check_column_or_create_empty_char(data, field4.column)
   field5.column <- check_column_or_create_empty_char(data, field5.column)
 
-  if(!is.null(field1.column))  {data[,field1.column]<- check_latex(data, field1.column)}
-  if(!is.null(field2.column))  {data[,field2.column]<- check_latex(data, field2.column)}
-  if(!is.null(field3.column))  {data[,field3.column]<- check_latex(data, field3.column)}
-  if(!is.null(field4.column))  {data[,field4.column]<- check_latex(data, field4.column)}
-  if(!is.null(field5.column))  {data[,field5.column]<- check_latex(data, field5.column)}
+  arguments <- c(field1.column,field2.column,field3.column,field4.column,field5.column)
+  arguments <- arguments[arguments!=""]
+
+  data <- check_latex_columns(data, arguments)
 
 
 
