@@ -3,15 +3,22 @@
 
 check_latex<- function(df = NULL, column=NULL){
   df[[column]] <- gsub("&", "\\\\&", df[[column]])
-  df[[column]] <- gsub("%", "\\%", df[[column]])
+  df[[column]] <- gsub("%", "\\\\%", df[[column]])
   # df[,column] <- gsub("$", "\\$", df[,column])#added to all texts at the end
-  df[[column]] <- gsub("#", "\\#", df[[column]])
-  df[[column]] <- gsub("_", "\\_", df[[column]]) #document names get truncated
+  df[[column]] <- gsub("#", "\\\\#", df[[column]])
+  df[[column]] <- gsub("_", "\\\\_", df[[column]]) #document names get truncated
   # df[,column] <- gsub("{", "\\{", df[,column]) #document names get truncated
-  df[[column]] <- gsub("}", "\\}", df[[column]])
+  df[[column]] <- gsub("}", "\\\\}", df[[column]])
   df[[column]] <- gsub("~", "-"  , df[[column]]) #unable to render with \\~
   df[[column]] <- gsub("\\^", "\\\\^"  , df[[column]])#name truncated and accent to the next letter
-  return(df[[column]])
+  return(df[,column, drop=FALSE])
+}
+
+check_latex_columns <- function(df= NULL, columns= NULL){
+  for(column in columns){
+    df[,column] <- check_latex(df, column)
+  }
+  return(df)
 }
 
 
