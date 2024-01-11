@@ -93,10 +93,10 @@ collector's assistants.}
 \item{date.column}{Character (optional). Name of the column in \code{data} storing the date when the specimen
 was collected.}
 
-\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+\item{keep.files}{Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.}
 
-\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+\item{template}{Character (optional) RMarkdown template to use. If not provided,
 using the default template included in \code{labeleR}.}
 }
 \value{

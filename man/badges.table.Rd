@@ -23,7 +23,7 @@ Example data to create identification badges
    Garrick Ollivander \tab Ollivander's Wand Shop in Diagon Alley \cr
    Lily Potter \tab Gryffindor House (Hogwarts S.W.W.) \cr
    Peter Pettigrew \tab Gryffindor House (Hogwarts S.W.W.) \cr
-   Sirius Black \tab Azkaban prisioner \cr
+   Sirius Black \tab Azkaban prisoner \cr
 }
 }
 \keyword{datasets}

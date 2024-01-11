@@ -11,13 +11,13 @@
 #' storing participants' affiliation.
 #' @param lpic Character (optional) Path to a PNG image to be located in the badge top-left.
 #' @param rpic Character (optional) Path to a PNG image to be located in the badge top-right.
-#' @param keep.files Logical. Keep the Rmarkdown template and associated files
+#' @param keep.files Logical. Keep the RMarkdown template and associated files
 #' in the output folder? Default is FALSE.
-#' @param template Character (optional) Rmarkdown template to use. If not provided,
+#' @param template Character (optional) RMarkdown template to use. If not provided,
 #' using the default template included in `labeleR`.
 #'
 #' @return A PDF file named "Badges.pdf" is saved on disk, in the folder defined
-#' by `path`. If `keep.files = TRUE`, an Rmarkdown and PNG lpic and rpic files will also
+#' by `path`. If `keep.files = TRUE`, an RMarkdown and PNG lpic and rpic files will also
 #' appear in the same folder.
 #'
 #' @export

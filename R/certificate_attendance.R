@@ -19,13 +19,13 @@
 #' the bottom, above signer's name.
 #' @param lpic Character (optional). Path to a PNG image to appear in the top-left.
 #' @param rpic Character (optional). Path to a PNG image to appear in the top-right.
-#' @param keep.files Logical. Keep the Rmarkdown template and associated files
+#' @param keep.files Logical. Keep the RMarkdown template and associated files
 #' in the output folder? Default is FALSE.
-#' @param template Character (optional) Rmarkdown template to use. If not provided,
+#' @param template Character (optional) RMarkdown template to use. If not provided,
 #' using the default template included in `labeleR`.
 #'
 #' @return PDF certificates are saved on disk, in the folder defined
-#' by `path`. If `keep.files = TRUE`, the Rmarkdown template and PNG logo files
+#' by `path`. If `keep.files = TRUE`, the RMarkdown template and PNG logo files
 #' will also appear in the same folder.
 #'
 #' @export

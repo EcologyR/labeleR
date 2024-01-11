@@ -21,7 +21,7 @@
 #' @inheritParams create_badge
 #'
 #' @return A PDF file named "Tiny_label.pdf" is saved on disk, in the folder defined
-#' by `path`. If `keep.files = TRUE`, an Rmarkdown file will also appear in the same folder.
+#' by `path`. If `keep.files = TRUE`, an RMarkdown file will also appear in the same folder.
 #'
 #' @export
 #'

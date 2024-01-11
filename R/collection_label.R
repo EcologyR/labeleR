@@ -24,7 +24,7 @@
 #' @inheritParams create_badge
 #'
 #' @return A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
-#' by `path`. If `keep.files = TRUE`, an Rmarkdown and PNG logo files will also
+#' by `path`. If `keep.files = TRUE`, an RMarkdown and PNG logo files will also
 #' appear in the same folder.
 #'
 #' @export
