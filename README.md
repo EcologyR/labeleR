@@ -10,8 +10,8 @@
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](http://hits.dwyl.com/EcologyR/labeleR)
-[![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](http://hits.dwyl.com/EcologyR/labeleR)
+[![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](https://hits.dwyl.com/EcologyR/labeleR)
+[![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](https://hits.dwyl.com/EcologyR/labeleR)
 <!-- badges: end -->
 
 <img src="man/figures/labeleR.png" width="140px" align="right"/>
@@ -93,7 +93,7 @@ which is the folder where the output PDFs will be stored. In case the
 specified folder does not exist, it will be automatically created. In
 case you want to name the output PDF file in a certain way, you must
 specify it using the `filename` argument. Additionally, you can store
-the created intermediate files (e.g. Rmarkdown, picture files) using
+the created intermediate files (e.g. RMarkdown, picture files) using
 `keep.files = TRUE`.
 
 Ultimately, labeleR uses its own templates to create the documents.
@@ -227,7 +227,7 @@ document.
 
 ### 2.3 Badges
 
-Badges (and all documents from now onwards) are rendered in a single
+Badges (and all documents from now onward) are rendered in a single
 document, with eight accreditation cards per DIN-A4 page in this case.
 They have only two variable fields (name and affiliation), and can
 include two top images, although are not signed. Accreditation cards
@@ -325,9 +325,9 @@ including a QR code (fixed or variable), a logo image. Field 1 will be
 capitalized (as in `family.column` in the herbarium label, and Field 2
 italicized). Any of the fields can be left blank.
 
-As a novelty, the user may manually fix the backgroud and text colours
-to their preference, using HTML colour codes (same code as HEX, but
-without the ‘\#’). By default, background colours are two hues of green.
+As a novelty, the user may manually fix the backgroud and text colors to
+their preference, using HTML color codes (same code as HEX, but without
+the ‘\#’). By default, background colors are two hues of green.
 
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
 |-----------------------------------------------------------------------|
@@ -401,17 +401,19 @@ create_tinylabel(
 ## Citation
 
 
-    To cite labeleR in publications use:
+    To cite package 'labeleR' in publications use:
 
-      Ramos-Gutiérrez, I. G. de Aledo, J., Rodríguez-Sánchez, F. 2023.
-      labeleR.
+      Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2023). _labeleR:
+      Automate the Production of Custom Labels, Badges, Certificates, and
+      Other Documents_. <https://EcologyR.github.io/labeleR/>.
 
     A BibTeX entry for LaTeX users is
 
       @Manual{,
-        title = {LabeleR},
+        title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
         author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},
         year = {2023},
+        url = {https://EcologyR.github.io/labeleR/},
       }
 
 ## Funding

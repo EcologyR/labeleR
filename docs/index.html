@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Automate the Production of Custom Labels, Badges, Certificates, and Other Documents">
-<meta property="og:description" content="labeleR makes it easy to create custom labels, badges, certificates
-  and other documents. It can be used to automate the production of potentially large 
+<meta property="og:description" content="Functions to create custom labels, badges, certificates
+  and other documents. Automate the production of potentially large 
   numbers of accreditation badges, attendance and participation certificates, 
   herbarium and collection labels, etc. Documents are generated in PDF format, 
   which requires a working installation of LaTeX, such as TinyTeX.">
@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">labeleR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -308,7 +308,7 @@
 <h3 id="id_25-collection-labels">2.5 Collection labels<a class="anchor" aria-label="anchor" href="#id_25-collection-labels"></a>
 </h3>
 <p>Collection labels are one of the most aesthetic labels. They have five variable parameters (which are not recommended to be too long, as explained in the herbarium labels), along with the possibility of including a QR code (fixed or variable), a logo image. Field 1 will be capitalized (as in <code>family.column</code> in the herbarium label, and Field 2 italicized). Any of the fields can be left blank.</p>
-<p>As a novelty, the user may manually fix the backgroud and text colours to their preference, using HTML colour codes (same code as HEX, but without the ‘#’). By default, background colours are two hues of green.</p>
+<p>As a novelty, the user may manually fix the backgroud and text colors to their preference, using HTML color codes (same code as HEX, but without the ‘#’). By default, background colors are two hues of green.</p>
 <table class="table">
 <colgroup><col width="100%"></colgroup>
 <thead><tr class="header">
@@ -385,18 +385,20 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>To cite labeleR <span class="cf">in</span> publications use<span class="sc">:</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>To cite package <span class="st">'labeleR'</span> <span class="cf">in</span> publications use<span class="sc">:</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  Ramos<span class="sc">-</span>Gutiérrez, I. G. de Aledo, J., Rodríguez<span class="sc">-</span>Sánchez, F. <span class="fl">2023.</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  labeleR.</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">@</span>Manual{,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    title <span class="ot">=</span> {LabeleR},</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    author <span class="ot">=</span> {Ignacio Ramos<span class="sc">-</span>Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez<span class="sc">-</span>Sánchez},</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2023</span>},</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  Ramos<span class="sc">-</span>Gutierrez I, de Aledo JG, Rodríguez<span class="sc">-</span>Sánchez <span class="fu">F</span> (<span class="dv">2023</span>). _labeleR<span class="sc">:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  Automate the Production of Custom Labels, Badges, Certificates, and</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  Other Documents_. <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>EcologyR.github.io<span class="sc">/</span>labeleR<span class="sc">/</span><span class="er">&gt;</span>.</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="sc">@</span>Manual{,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    title <span class="ot">=</span> {labeleR<span class="sc">:</span> Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    author <span class="ot">=</span> {Ignacio Ramos<span class="sc">-</span>Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez<span class="sc">-</span>Sánchez},</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2023</span>},</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>EcologyR.github.io<span class="sc">/</span>labeleR<span class="sc">/</span>},</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="funding">Funding<a class="anchor" aria-label="anchor" href="#funding"></a>
@@ -411,7 +413,7 @@
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/EcologyR/labeleR/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/EcologyR/labeleR/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/EcologyR/labeleR/issues/" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -434,9 +436,10 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Ignacio Ramos-Gutiérrez <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-8675-0114" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Julia G. de Aledo <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9065-9316" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Francisco Rodríguez-Sánchez <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-7981-1599" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Ignacio Ramos-Gutiérrez <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-8675-0114" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Julia G. de Aledo <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0001-9065-9316" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Francisco Rodríguez-Sánchez <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-7981-1599" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
@@ -446,8 +449,8 @@
 <li><a href="https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
 <li><a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="http://hits.dwyl.com/EcologyR/labeleR" class="external-link"><img src="https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square" alt="HitCount"></a></li>
-<li><a href="http://hits.dwyl.com/EcologyR/labeleR" class="external-link"><img src="https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&amp;show=unique" alt="HitCount"></a></li>
+<li><a href="https://hits.dwyl.com/EcologyR/labeleR" class="external-link"><img src="https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square" alt="HitCount"></a></li>
+<li><a href="https://hits.dwyl.com/EcologyR/labeleR" class="external-link"><img src="https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&amp;show=unique" alt="HitCount"></a></li>
 </ul>
 </div>
 

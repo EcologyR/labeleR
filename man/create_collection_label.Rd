@@ -53,15 +53,15 @@ appear below field4.}
 
 \item{textcolor}{HTML color for label text. Default is 1E3F20}
 
-\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+\item{keep.files}{Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.}
 
-\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+\item{template}{Character (optional) RMarkdown template to use. If not provided,
 using the default template included in \code{labeleR}.}
 }
 \value{
 A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
-by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown and PNG logo files will also
+by \code{path}. If \code{keep.files = TRUE}, an RMarkdown and PNG logo files will also
 appear in the same folder.
 }
 \description{

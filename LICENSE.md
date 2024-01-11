@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2023 templateRpackage authors
+Copyright (c) 20234 labeleR authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

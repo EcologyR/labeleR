@@ -6,23 +6,28 @@
 \alias{labeleR-package}
 \title{labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents}
 \description{
-'labeleR' makes it easy to create custom labels, badges, certificates and other documents. It can be used to automate the production of potentially large numbers of accreditation badges, attendance and participation certificates, herbarium and collection labels, etc. Documents are generated in PDF format, which requires a working installation of 'LaTeX', such as 'TinyTeX'.
+Functions to create custom labels, badges, certificates and other documents. Automate the production of potentially large numbers of accreditation badges, attendance and participation certificates, herbarium and collection labels, etc. Documents are generated in PDF format, which requires a working installation of 'LaTeX', such as 'TinyTeX'.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/EcologyR/labeleR}
-  \item Report bugs at \url{https://github.com/EcologyR/labeleR/issues}
+  \item \url{https://github.com/EcologyR/labeleR/}
+  \item Report bugs at \url{https://github.com/EcologyR/labeleR/issues/}
 }
 
 }
 \author{
-\strong{Maintainer}: Ignacio Ramos-Gutiérrez \email{ig.ramosgutierrez@gmail.com} (\href{https://orcid.org/0000-0002-8675-0114}{ORCID})
+\strong{Maintainer}: Ignacio Ramos-Gutiérrez \email{ig.ramosgutierrez@gmail.com} (\href{https://orcid.org/0000-0002-8675-0114}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{
-  \item Julia G. de Aledo \email{juliagdealedo@gmail.com} (\href{https://orcid.org/0000-0001-9065-9316}{ORCID})
-  \item Francisco Rodríguez-Sánchez \email{frodriguez@us.es} (\href{https://orcid.org/0000-0002-7981-1599}{ORCID})
+  \item Julia G. de Aledo \email{juliagdealedo@gmail.com} (\href{https://orcid.org/0000-0001-9065-9316}{ORCID}) [copyright holder]
+  \item Francisco Rodríguez-Sánchez \email{frodriguez@us.es} (\href{https://orcid.org/0000-0002-7981-1599}{ORCID}) [copyright holder]
+}
+
+Other contributors:
+\itemize{
+  \item Giorgio Comai [contributor]
 }
 
 }

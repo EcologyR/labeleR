@@ -44,15 +44,15 @@ appear below field3.}
 \item{field5.column}{Character (optional). Name of the column in \code{data} storing the fifth free text to
 appear below field4.}
 
-\item{keep.files}{Logical. Keep the Rmarkdown template and associated files
+\item{keep.files}{Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.}
 
-\item{template}{Character (optional) Rmarkdown template to use. If not provided,
+\item{template}{Character (optional) RMarkdown template to use. If not provided,
 using the default template included in \code{labeleR}.}
 }
 \value{
 A PDF file named "Tiny_label.pdf" is saved on disk, in the folder defined
-by \code{path}. If \code{keep.files = TRUE}, an Rmarkdown file will also appear in the same folder.
+by \code{path}. If \code{keep.files = TRUE}, an RMarkdown file will also appear in the same folder.
 }
 \description{
 Create tiny labels (16 labels per DIN-A4 page)
