@@ -16,7 +16,7 @@ params:
 
 ```{r echo=FALSE, results='asis'}
 
-for (i in 1:length(params$names)) {
+for (i in seq_along(params$names)) {
   
   cat("
   \\pagenumbering{gobble}
