@@ -168,7 +168,7 @@ create_certificate_attendance <- function(
 
   data <- as.data.frame(data) ## to exploit drop = TRUE when selecting cols below
 
-  for (i in seq_along(nrow(data))) {
+  for (i in 1:nrow(data)) {
     out.name <- filename
     out.name <- paste0(out.name, "_", data[i, name.column])
     output_file <- paste0(out.name, '.pdf')
