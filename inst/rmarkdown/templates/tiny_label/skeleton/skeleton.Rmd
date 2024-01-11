@@ -20,7 +20,7 @@ params:
 
 ```{r echo=FALSE, results='asis'}
 
-for (i in 1:length(params$field1.i)) {
+for (i in seq_along(params$field1.i)) {
   
   cat("
   \\begin{mdframed}[linewidth=1pt,linecolor=black]\n
