@@ -12,7 +12,7 @@ test_that("PDF file is created in the provided path", {
   skip_on_cran()
   skip_on_ci()
 
-  create_tiny_label (data, path = path,
+  create_tinylabel (data, path = path,
                           field1.column = "Field1",
                           field2.column = "Field2",
                           field3.column = "Field3",

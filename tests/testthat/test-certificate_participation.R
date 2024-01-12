@@ -15,7 +15,7 @@ test_that("PDF certificates are created", {
   skip_on_cran()
 
   ## Spanish
-  create_participation_certificate(data = data,
+  create_certificate_participation(data = data,
                                    path = path,
                                    language = "Spanish",
                                    name.column = "Names",
@@ -34,7 +34,7 @@ test_that("PDF certificates are created", {
 
 
   ## English
-  create_participation_certificate(data = data,
+  create_certificate_participation(data = data,
                                    path = path,
                                    language = "English",
                                    name.column = "Names",
@@ -60,7 +60,7 @@ test_that("Rmd file is present when keep.files = TRUE", {
   skip_on_ci()
   skip_on_cran()
 
-  create_participation_certificate(data = data,
+  create_certificate_participation(data = data,
                                    path = path,
                                    language = "English",
                                    name.column = "Names",

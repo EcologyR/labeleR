@@ -154,7 +154,7 @@ of Hogwarts School, in which the Headmaster certifies they have attended
 
 ``` r
 
-create_attendance_certificate(
+create_certificate_attendance(
   data = attendance.table,
   path = "labeleR_output",
   filename = "attendance_certificates",
@@ -197,7 +197,7 @@ participated in some seminars with different titles, different
 affiliations, dates and communication types.
 
 ``` r
-create_participation_certificate(
+create_certificate_participation(
   data = participation.table,
   path = "labeleR_output",
   filename = "participation_certificates",

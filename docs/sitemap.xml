@@ -4,16 +4,16 @@
     <loc>/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
     <loc>/index.html</loc>
+  </url>
+  <url>
+    <loc>/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>/LICENSE.html</loc>
   </url>
   <url>
     <loc>/news/index.html</loc>
@@ -23,9 +23,6 @@
   </url>
   <url>
     <loc>/reference/badges.table.html</loc>
-  </url>
-  <url>
-    <loc>/reference/create_accreditation.html</loc>
   </url>
   <url>
     <loc>/reference/create_badge.html</loc>
@@ -59,9 +56,6 @@
   </url>
   <url>
     <loc>/reference/participation.table.html</loc>
-  </url>
-  <url>
-    <loc>/reference/templateRpackage-package.html</loc>
   </url>
   <url>
     <loc>/reference/tiny.table.html</loc>

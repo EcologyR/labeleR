@@ -100,11 +100,11 @@
 <h2 id="id_1-getting-started">1. Getting started<a class="anchor" aria-label="anchor" href="#id_1-getting-started"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EcologyR/labeleR/" class="external-link">"labeleR"</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EcologyR/labeleR" class="external-link">"labeleR"</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="id_11-loading-the-data">1.1 Loading the data<a class="anchor" aria-label="anchor" href="#id_11-loading-the-data"></a>
 </h3>
-<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code>, <code><a href="https://readxl.tidyverse.org/reference/read_excel.html" class="external-link">readxl::read_excel()</a></code>, and alike functions), but it can be also imported from Google Sheets.</p>
+<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code>, <code>readxl::read_excel()</code>, and alike functions), but it can be also imported from Google Sheets.</p>
 <p>To do so, you could use <code>gsheet2tbl</code> function from <code>gsheet</code> package, specifying the Google Sheet URL:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maxconway/gsheet" class="external-link">gsheet</a></span><span class="op">)</span></span>
@@ -145,7 +145,7 @@
 <p>In this example, we create four different certificates for four students of Hogwarts School, in which the Headmaster certifies they have attended 200 h of the Potions class.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="reference/create_attendance_certificate.html">create_attendance_certificate</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="reference/create_certificate_attendance.html">create_certificate_attendance</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">attendance.table</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
 <span>  filename <span class="op">=</span> <span class="st">"attendance_certificates"</span>,</span>
@@ -189,7 +189,7 @@
 </h4>
 <p>Here, Albus Dumbledore certifies that four of the school teachers have participated in some seminars with different titles, different affiliations, dates and communication types.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/create_participation_certificate.html">create_participation_certificate</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/create_certificate_participation.html">create_certificate_participation</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">participation.table</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
 <span>  filename <span class="op">=</span> <span class="st">"participation_certificates"</span>,</span>
@@ -362,7 +362,7 @@
 </h4>
 <p>Here, tinylabels are created for typical collections stored in boxes, so a normal collection label would be to big.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/create_tiny_label.html">create_tiny_label</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu">create_tiny_label</span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">tiny.table</span>,</span>
 <span>  qr<span class="op">=</span><span class="st">"QR_code"</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
