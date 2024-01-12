@@ -93,5 +93,5 @@ signature.pic = NULL,
 \dontshow{\}) # examplesIf}
 }
 \author{
-Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
+Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 }

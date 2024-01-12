@@ -5,12 +5,23 @@
 \alias{herbarium.table}
 \title{herbarium.table}
 \format{
-A data frame containing information on taxonomy, collection details, etc.
+An object of class \code{data.frame} with 6 rows and 19 columns.
 }
 \usage{
 herbarium.table
 }
 \description{
 Example data to create herbarium labels
+}
+\details{
+\tabular{lllllllllllllllllll}{
+   ID \tab Collector \tab Collection_number \tab Assistants \tab Family \tab Taxon \tab Author \tab det \tab Det_date \tab life_form \tab Observations \tab Height \tab Location \tab Area_description \tab Elevation \tab Date \tab Latitude \tab Longitude \tab QR_code \cr
+   1 \tab Hermione Granger \tab 2 \tab Sprout, P., Potter, H., Weasley, R. \tab SOLANACEAE \tab Mandragora officinarum \tab L. \tab Sprout, P. \tab 05/09/1995 \tab Herb \tab This individual belongs to the biggest known population, in Northern Ireland. It was collected at the seedling stage, and grown in a glasshouse prior to its herborisation to avoid harmful crying noise. \tab 45cm. Root diameter 2.5cm aprox. \tab Cargan, Antrim Glens, Northern Ireland. \tab Marsh vegetation; mainly dominated by sedges and rushes. \tab 12 m.a.s.l. \tab 25/07/94 \tab 54.9886 N \tab -6.1392 E \tab https://www.clarin.com/img/2021/12/20/5jTLngUq9_1256x620__1.jpg \cr
+   2 \tab Ron Weasley \tab 5 \tab Potter, H. \tab SALICACEAE \tab Salix muhammadalii subsp. robusta \tab Huff. \tab Sprout, P. \tab 01/09/1992 \tab Tree \tab Collected from the only known extant individual, near to the Hogwarts Castle. Damage marks can be seen in the bark of the branches, due to self-harm. \tab 7.5 m. \tab Hogwarts Gardens, Hogsmeade, Scotland (UK) \tab Open grassland, near the Foridden Forest. \tab 250 m.a.s.l. \tab 01/09/92 \tab 57.4223 N \tab -3.0869 E \tab https://steamuserimages-a.akamaihd.net/ugc/1483325459410929390/8FE97A548651369A35C35018271913794CAD7CEA/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=\%23000000&letterbox=false \cr
+   3 \tab Dobby H.E. \tab 1 \tab Winky H.E. \tab Zosteraceae \tab Zostera phycobranchia \tab (Huff.) Sprout \tab Longbottom, N. \tab 13/11/1994 \tab Aquatic herb \tab Collected in the coast of the North Sea (it was only known from the Mediterranean Sea before). \tab Maximum height of 15 cm, but rhizomes deep to 40-60 cm into the ground. \tab Great Yarmouth, Norwich, United Kingdom \tab 15 m from the shore into the sea, forming a monospecific subacuatic prairie. \tab -3 m.a.s.l. \tab 10/11/1994 \tab 52.629060 N \tab 1.745356 E \tab http://harrypotterdiagon.blogspot.com/2018/01/branquialgas.html \cr
+   4 \tab Pomona Sprout \tab 1990-301a \tab Dumbledore, A. \tab Suffocaceae \tab Lucifericaptia obscura \tab Slyth. \tab Sprout, P. \tab 01/07/1990 \tab Bush \tab Found in a cave near Arundel Castle tower. 15 m beneath the ground level, where no sunlight could reach. \tab 1.5 m. \tab South Stoke, Arundel, United Kingdom. \tab Karstic cave. No other plants found due to the lack of light. \tab 25 m.a.s.l. \tab 08/05/86 \tab 50.8638 N \tab -0.5599 E \tab https://pbs.twimg.com/media/DbpafnCWAAEOI-X.jpg \cr
+   5 \tab Luna Lovegood \tab 5 \tab Xenophilius Lovegood \tab rosaceae \tab Prunus zeppelin \tab Rav. \tab Lovegood, X. \tab 06/08/1996 \tab Tree \tab Cultivated for gardening purposes. \tab 2 m. \tab Ottery St. Catchpole, Devon, England (UK). \tab Garden \tab 40 m.a.s.l. \tab 06/08/1996 \tab 50.7602 N \tab -3.2653 E \tab https://static.wikia.nocookie.net/habbo-potter/images/8/85/Dirigible_Plum.jpg/revision/latest?cb=20180611174816 \cr
+   6 \tab Algie Longbottom \tab 3 \tab Longbottom, N. \tab Mimbulaceae \tab Mimbulus mimbletonia \tab Spore \tab Sprout, P. \tab 25/10/1995 \tab Herb \tab Desert plant usually used as ornamental. In the British isles has been cited as potenial invasive alien species. \tab 30 cm. \tab Tel Afar, Ninaua, Assyria \tab Desert nearby the Tigris river, with some other reptant and crass plants (Tribulus terrestris, Apteranthes europaea). \tab 298 m.a.s.l. \tab 15/07/1995 \tab 36.881382N \tab 42.492363E \tab https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJhvrsQWmyOJFSJFMhPdIXuhjAONN6bXWmlQ&usqp=CAU \cr
+}
 }
 \keyword{datasets}

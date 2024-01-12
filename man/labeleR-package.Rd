@@ -17,12 +17,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Ignacio Ramos-Gutiérrez \email{ig.ramosgutierrez@gmail.com} (\href{https://orcid.org/0000-0002-8675-0114}{ORCID}) [copyright holder]
+\strong{Maintainer}: Ignacio Ramos-Gutierrez \email{ig.ramosgutierrez@gmail.com} (\href{https://orcid.org/0000-0002-8675-0114}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{
   \item Julia G. de Aledo \email{juliagdealedo@gmail.com} (\href{https://orcid.org/0000-0001-9065-9316}{ORCID}) [copyright holder]
-  \item Francisco Rodríguez-Sánchez \email{frodriguez@us.es} (\href{https://orcid.org/0000-0002-7981-1599}{ORCID}) [copyright holder]
+  \item Francisco Rodriguez-Sanchez \email{frodriguez@us.es} (\href{https://orcid.org/0000-0002-7981-1599}{ORCID}) [copyright holder]
 }
 
 Other contributors:

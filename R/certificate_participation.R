@@ -36,7 +36,7 @@
 #'
 #' @export
 #'
-#' @author Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
+#' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 #'
 #' @examplesIf interactive()
 #

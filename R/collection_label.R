@@ -5,8 +5,8 @@
 #' @param data a data frame. Each row contains the information by species that will appear in the label.
 #' @param path Character. Path to folder where the PDF file will be saved.
 #' @param filename Character. Filename of the pdf. If NULL, default is "Collection_label".
-#' @param qr String. Free text or column of \code{data} that specifies the link for the QR code.
-#'          If the specified value of `qr` is not a column name of \code{data},
+#' @param qr String. Free text or column of `data` that specifies the link for the QR code.
+#'          If the specified value of `qr` is not a column name of `data`,
 #'          all the QRs will be equal, pointing to the same link.
 #' @param field1.column Character (optional). Name of the column in `data` storing the first free text to
 #' appear at the top of the label.
@@ -29,7 +29,7 @@
 #'
 #' @export
 #'
-#' @author Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
+#' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 #'
 #' @examplesIf interactive()
 #'

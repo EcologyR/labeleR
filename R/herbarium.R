@@ -7,8 +7,8 @@
 #' @param filename Character. Filename of the pdf. If NULL, default is "Herbarium".
 #' @param title Main title at the top of the labels. Can be blank if set to NULL.
 #' @param subtitle Subtitle at the bottom of the labels. Can be blank if set to NULL.
-#' @param qr String. Free text or column of \code{data} that specifies the link for the QR code.
-#'          If the specified value of `qr` is not a column name of \code{data},
+#' @param qr String. Free text or column of `data` that specifies the link for the QR code.
+#'          If the specified value of `qr` is not a column name of `data`,
 #'          all the QRs will be equal, pointing to the same link.
 #' @param family.column Character (optional). Name of the column in `data` storing the family of the taxon.
 #' @param taxon.column Character (optional). Name of the column in `data` storing the taxon name.
@@ -45,7 +45,7 @@
 #'
 #' @export
 #'
-#' @author Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
+#' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 #'
 #' @examplesIf interactive()
 #'

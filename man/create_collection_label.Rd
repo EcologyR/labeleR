@@ -83,5 +83,5 @@ field5.column = "field7"
 \dontshow{\}) # examplesIf}
 }
 \author{
-Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez
+Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 }

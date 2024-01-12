@@ -31,8 +31,11 @@
 #'
 #' Example data to create herbarium labels
 #'
-#' @format A data frame containing information on taxonomy, collection details, etc.
-#'
+#' @md
+#' @details
+#' ```{r echo=FALSE}
+#' knitr::kable(herbarium.table)
+#' ```
 #'
 "herbarium.table"
 
@@ -41,7 +44,12 @@
 #'
 #' Example data to create collection labels
 #'
-#' @format A data frame containing information on collected specimens.
+#' @md
+#' @details
+#' ```{r echo=FALSE}
+#' knitr::kable(label.table)
+#' ```
+#'
 "label.table"
 
 
@@ -54,6 +62,7 @@
 #' ```{r echo=FALSE}
 #' knitr::kable(participation.table)
 #' ```
+#'
 "participation.table"
 
 
@@ -61,5 +70,10 @@
 #'
 #' Example data to create tinylabels
 #'
-#' @format A data frame containing information on individual samples.
+#' @md
+#' @details
+#' ```{r echo=FALSE}
+#' knitr::kable(tiny.table)
+#' ```
+#'
 "tiny.table"
