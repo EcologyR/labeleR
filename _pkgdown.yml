@@ -6,12 +6,12 @@ reference:
 
 - title: Functions
   contents:
-  - create_certificate_attendance
-  - create_certificate_participation
+  - create_attendance_certificate
+  - create_participation_certificate
   - create_badge
   - create_herbarium_label
   - create_collection_label
-  - create_tinylabel
+  - create_tiny_label
 
 
 

@@ -25,6 +25,9 @@
     <loc>/reference/badges.table.html</loc>
   </url>
   <url>
+    <loc>/reference/create_attendance_certificate.html</loc>
+  </url>
+  <url>
     <loc>/reference/create_badge.html</loc>
   </url>
   <url>
@@ -40,7 +43,13 @@
     <loc>/reference/create_herbarium_label.html</loc>
   </url>
   <url>
+    <loc>/reference/create_participation_certificate.html</loc>
+  </url>
+  <url>
     <loc>/reference/create_tinylabel.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_tiny_label.html</loc>
   </url>
   <url>
     <loc>/reference/herbarium.table.html</loc>

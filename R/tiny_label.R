@@ -28,7 +28,7 @@
 #' @author  Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 #'
 #' @examplesIf interactive()
-#' create_tinylabel(
+#' create_tiny_label(
 #' data = tiny.table,
 #' qr = "QR_code",
 #' path = "labeleR_output",
@@ -40,7 +40,7 @@
 #' )
 #'
 
-create_tinylabel <- function(data = NULL,
+create_tiny_label <- function(data = NULL,
                              qr = NULL,
                              path = NULL,
                              filename = NULL,
