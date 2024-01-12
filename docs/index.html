@@ -100,11 +100,11 @@
 <h2 id="id_1-getting-started">1. Getting started<a class="anchor" aria-label="anchor" href="#id_1-getting-started"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EcologyR/labeleR" class="external-link">"labeleR"</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EcologyR/labeleR/" class="external-link">"labeleR"</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="id_11-loading-the-data">1.1 Loading the data<a class="anchor" aria-label="anchor" href="#id_11-loading-the-data"></a>
 </h3>
-<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code>, <code>readxl::read_excel()</code>, and alike functions), but it can be also imported from Google Sheets.</p>
+<p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code>, <code><a href="https://readxl.tidyverse.org/reference/read_excel.html" class="external-link">readxl::read_excel()</a></code>, and alike functions), but it can be also imported from Google Sheets.</p>
 <p>To do so, you could use <code>gsheet2tbl</code> function from <code>gsheet</code> package, specifying the Google Sheet URL:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maxconway/gsheet" class="external-link">gsheet</a></span><span class="op">)</span></span>
@@ -117,10 +117,10 @@
 <h3 id="id_12-some-advice-for-the-labeler-functions">1.2 Some advice for the labeleR functions<a class="anchor" aria-label="anchor" href="#id_12-some-advice-for-the-labeler-functions"></a>
 </h3>
 <p>When using labeleR’s functions, there are some widely used arguments and nomenclature that must be acknowledged.</p>
-<p>The first required argument in all functions is <code>data</code>, which is the data frame that has been previously loaded. The second one is <code>path</code>, which is the folder where the output PDFs will be stored. In case the specified folder does not exist, it will be automatically created. In case you want to name the output PDF file in a certain way, you must specify it using the <code>filename</code> argument. Additionally, you can store the created intermediate files (e.g. Rmarkdown, picture files) using <code>keep.files = TRUE</code>.</p>
+<p>The first required argument in all functions is <code>data</code>, which is the data frame that has been previously loaded. The second one is <code>path</code>, which is the folder where the output PDFs will be stored. In case the specified folder does not exist, it will be automatically created. In case you want to name the output PDF file in a certain way, you must specify it using the <code>filename</code> argument. Additionally, you can store the created intermediate files (e.g. RMarkdown, picture files) using <code>keep.files = TRUE</code>.</p>
 <p>Ultimately, labeleR uses its own templates to create the documents. However, these can be modified for specific purposes. To do so, open a new RMarkdown file in RStudio, using the labeleR template you want to edit, and after saving it locally, specify its directory path in the <code>template</code> argument.</p>
 <p>Pictures (such as logos or signatures) are included in some templates. For these, argument names are <code>lpic</code> (standing for left picture, in the top), <code>rpic</code> (right picture, also in the top) and <code>signature.pic</code> (signature picture) in the certificates; and <code>logo</code> in the collection label. In all these cases the path to the picture file must be provided.</p>
-<p>As for the parameters nomenclature, there are two kinds. “Fixed parameters” are those that remain the same in all the certificates (e.g. the name of a conference in an accreditation, or the name of a speaker in an attendance certificate). These parameters are named using a unique word (e.g. <code>event</code> or <code>speaker</code>), and can be filled in using free text that will be printed in all documents. On the other hand, “variable parameters” are those which vary among documents, and therefore differ among rows (e.g. attendees names to a conference, or species in herbarium labels). To specify the column of data in which this information is stored, two-word parameters are used (i.e. <code>name.column</code> or <code>species.column</code>). The only parameter that does not follow this philosophy is <code>qr</code> in the functions that allow to plot them (i.e. <code>create_herbarium_label</code>, <code>create_collection_label</code> and <code>create_tinylabel</code>). This parameter can be set as a column name, which will result in variable parameter, or as a free text (not column name), which will be used as a fixed one.</p>
+<p>As for the parameters nomenclature, there are two kinds. “Fixed parameters” are those that remain the same in all the certificates (e.g. the name of a conference in an accreditation, or the name of a speaker in an attendance certificate). These parameters are named using a unique word (e.g. <code>event</code> or <code>speaker</code>), and can be filled in using free text that will be printed in all documents. On the other hand, “variable parameters” are those which vary among documents, and therefore differ among rows (e.g. attendees names to a conference, or species in herbarium labels). To specify the column of data in which this information is stored, two-word parameters are used (i.e. <code>name.column</code> or <code>species.column</code>). The only parameter that does not follow this philosophy is <code>qr</code> in the functions that allow to plot them (i.e. <code>create_herbarium_label</code>, <code>create_collection_label</code> and <code>create_tiny_label</code>). This parameter can be set as a column name, which will result in variable parameter, or as a free text (not column name), which will be used as a fixed one.</p>
 </div>
 </div>
 <div class="section level2">
@@ -145,7 +145,7 @@
 <p>In this example, we create four different certificates for four students of Hogwarts School, in which the Headmaster certifies they have attended 200 h of the Potions class.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="reference/create_certificate_attendance.html">create_certificate_attendance</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="reference/create_attendance_certificate.html">create_attendance_certificate</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">attendance.table</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
 <span>  filename <span class="op">=</span> <span class="st">"attendance_certificates"</span>,</span>
@@ -189,7 +189,7 @@
 </h4>
 <p>Here, Albus Dumbledore certifies that four of the school teachers have participated in some seminars with different titles, different affiliations, dates and communication types.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/create_certificate_participation.html">create_certificate_participation</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/create_participation_certificate.html">create_participation_certificate</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">participation.table</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
 <span>  filename <span class="op">=</span> <span class="st">"participation_certificates"</span>,</span>
@@ -223,7 +223,7 @@
 <div class="section level3">
 <h3 id="id_23-badges">2.3 Badges<a class="anchor" aria-label="anchor" href="#id_23-badges"></a>
 </h3>
-<p>Badges (and all documents from now onwards) are rendered in a single document, with eight accreditation cards per DIN-A4 page in this case. They have only two variable fields (name and affiliation), and can include two top images, although are not signed. Accreditation cards include a dot line in the bottom for individual hand-edition.</p>
+<p>Badges (and all documents from now onward) are rendered in a single document, with eight accreditation cards per DIN-A4 page in this case. They have only two variable fields (name and affiliation), and can include two top images, although are not signed. Accreditation cards include a dot line in the bottom for individual hand-edition.</p>
 <table class="table">
 <thead><tr class="header">
 <th><img src="reference/figures/Badges_blank.png" alt="Badges (blank)"></th>
@@ -362,7 +362,7 @@
 </h4>
 <p>Here, tinylabels are created for typical collections stored in boxes, so a normal collection label would be to big.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/create_tinylabel.html">create_tinylabel</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/create_tiny_label.html">create_tiny_label</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">tiny.table</span>,</span>
 <span>  qr<span class="op">=</span><span class="st">"QR_code"</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
@@ -436,9 +436,9 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Ignacio Ramos-Gutiérrez <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-8675-0114" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Ignacio Ramos-Gutierrez <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-8675-0114" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Julia G. de Aledo <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0001-9065-9316" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Francisco Rodríguez-Sánchez <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-7981-1599" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Francisco Rodriguez-Sanchez <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-7981-1599" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -460,7 +460,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Ignacio Ramos-Gutiérrez, Julia G. de Aledo, Francisco Rodríguez-Sánchez.</p>
+<p>Developed by Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez.</p>
 </div>
 
 <div class="pkgdown">

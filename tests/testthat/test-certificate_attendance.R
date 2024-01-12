@@ -9,7 +9,7 @@ test_that("PDF certificates are created", {
   skip_on_cran()
 
   ## Spanish
-  create_certificate_attendance(data = data, path = path, type = "Adventure",
+  create_attendance_certificate(data = data, path = path, type = "Adventure",
                                 title = "Going to Mordor",
                                 hours = "1000", name.column = "Names",
                                 language = "Spanish", signer = "Gandalf",
@@ -21,7 +21,7 @@ test_that("PDF certificates are created", {
 
 
   ## English
-  create_certificate_attendance(data = data, path = path, type = "Adventure",
+  create_attendance_certificate(data = data, path = path, type = "Adventure",
                                 title = "Going to Mordor",
                                 hours = "1000", name.column = "Names",
                                 language = "English", signer = "Gandalf",
@@ -40,7 +40,7 @@ test_that("Rmd file is present when keep.files = TRUE", {
   skip_on_ci()
   skip_on_cran()
 
-  create_certificate_attendance(data = data, path = path, type = "Adventure",
+  create_attendance_certificate(data = data, path = path, type = "Adventure",
                                 title = "Going to Mordor",
                                 hours = "1000", name.column = "Names",
                                 language = "English", signer = "Gandalf",
