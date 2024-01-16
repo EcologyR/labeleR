@@ -2,7 +2,7 @@
 
 * Functions names renamed
 * Keep user parameters unchanged
-* Description ammended
+* Description amended
 
 # labeleR 0.1.0
 
