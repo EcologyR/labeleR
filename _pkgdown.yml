@@ -1,9 +1,5 @@
-# url: ~
-# template:
-#   bootstrap: 5
-
+url: https://ecologyr.github.io/labeleR/
 reference:
-
 - title: Functions
   contents:
   - create_attendance_certificate
@@ -13,8 +9,6 @@ reference:
   - create_collection_label
   - create_tiny_label
 
-
-
 - title: Example datasets
   contents:
   - attendance.table
@@ -23,6 +17,4 @@ reference:
   - herbarium.table
   - label.table
   - tiny.table
-
-
 
