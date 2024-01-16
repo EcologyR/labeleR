@@ -1,6 +1,6 @@
 Package: labeleR
 Title: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
   c(
   person("Ignacio", "Ramos-Gutierrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre", "cph"),
@@ -11,7 +11,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-7981-1599")),
   person("Giorgio", "Comai", role = "ctb")
   )
-Description: Functions to create custom labels, badges, certificates
+Description: Create custom labels, badges, certificates
   and other documents. Automate the production of potentially large 
   numbers of accreditation badges, attendance and participation certificates, 
   herbarium and collection labels, etc. Documents are generated in PDF format, 
