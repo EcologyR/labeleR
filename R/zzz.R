@@ -67,6 +67,9 @@ use_image <- function(image = NULL, name = NULL, folder = NULL) {
 
   ## If logos not provided
   if (is.null(image)) {  # create blank image
+    oldpar <- par(no.readonly = TRUE)
+    on.exit(par(oldpar))
+
     grDevices::png(file.path(folder, paste0(name, ".png")), 150, 150, "px")
     graphics::par(bg="transparent")
     graphics::plot.new()
