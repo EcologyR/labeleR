@@ -84,22 +84,22 @@ Create certificate of participation  (1 certificate per DIN-A4 page)
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 create_participation_certificate(
-data = participation.table,
-path = "labeleR_output",
-language = "Spanish",
-name.column = "Name",
-affiliation.column = "House",
-comm.type.column = "Comm.type",
-title.column = "Title",
-date.column = "Date",
-type = "online seminar",
-event = "Hogwarts School of Witchcraft and Wizardry",
-freetext = "which lasted 2 hours",
-signer = "A.P.W.B. Dumbledore",
-signer.role = "School Headmaster",
-lpic = NULL,
-rpic = NULL,
-signature.pic = NULL
+  data = participation.table,
+  path = "labeleR_output",
+  language = "Spanish",
+  name.column = "Name",
+  affiliation.column = "House",
+  comm.type.column = "Comm.type",
+  title.column = "Title",
+  date.column = "Date",
+  type = "online seminar",
+  event = "Hogwarts School of Witchcraft and Wizardry",
+  freetext = "which lasted 2 hours",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
+  lpic = NULL,
+  rpic = NULL,
+  signature.pic = NULL
 )
 \dontshow{\}) # examplesIf}
 }

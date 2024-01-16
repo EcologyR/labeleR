@@ -71,14 +71,14 @@ Create collection labels (8 labels per DIN-A4 page)
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 create_collection_label(
-data = label.table,
-path = "labeleR_output",
-qr = "QR_code",
-field1.column = "field1",
-field2.column = "field2",
-field3.column = "field3",
-field4.column = "field6",
-field5.column = "field7"
+  data = label.table,
+  path = "labeleR_output",
+  qr = "QR_code",
+  field1.column = "field1",
+  field2.column = "field2",
+  field3.column = "field3",
+  field4.column = "field6",
+  field5.column = "field7"
 )
 \dontshow{\}) # examplesIf}
 }

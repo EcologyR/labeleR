@@ -41,22 +41,22 @@
 #' @examplesIf interactive()
 #
 #' create_participation_certificate(
-#' data = participation.table,
-#' path = "labeleR_output",
-#' language = "Spanish",
-#' name.column = "Name",
-#' affiliation.column = "House",
-#' comm.type.column = "Comm.type",
-#' title.column = "Title",
-#' date.column = "Date",
-#' type = "online seminar",
-#' event = "Hogwarts School of Witchcraft and Wizardry",
-#' freetext = "which lasted 2 hours",
-#' signer = "A.P.W.B. Dumbledore",
-#' signer.role = "School Headmaster",
-#' lpic = NULL,
-#' rpic = NULL,
-#' signature.pic = NULL
+#'   data = participation.table,
+#'   path = "labeleR_output",
+#'   language = "Spanish",
+#'   name.column = "Name",
+#'   affiliation.column = "House",
+#'   comm.type.column = "Comm.type",
+#'   title.column = "Title",
+#'   date.column = "Date",
+#'   type = "online seminar",
+#'   event = "Hogwarts School of Witchcraft and Wizardry",
+#'   freetext = "which lasted 2 hours",
+#'   signer = "A.P.W.B. Dumbledore",
+#'   signer.role = "School Headmaster",
+#'   lpic = NULL,
+#'   rpic = NULL,
+#'   signature.pic = NULL
 #' )
 
 create_participation_certificate <- function(
@@ -89,7 +89,7 @@ create_participation_certificate <- function(
     stop("A data.frame must be provided.")
   }
 
-  if(!(all(class(data)=="data.frame"))){data <- as.data.frame(data)}
+  if (!(all(class(data) == "data.frame"))) {data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
   if (is.null(path)) {stop("A folder path must be specified.")}

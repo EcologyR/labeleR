@@ -75,20 +75,20 @@ Create certificate of attendance (1 certificate per DIN-A4 page)
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 create_attendance_certificate(
-data = attendance.table,
-path = "labeleR_output",
-language = "English",
-name.column = "Names",
-type = "class",
-title = "Potions Class",
-date = "01/01/2021",
-hours = 200,
-freetext = "organised by {\\\\bf Hogwarts School year 1992-1993}",
-signer = "A.P.W.B. Dumbledore",
-signer.role = "School Headmaster",
-lpic = NULL,
-rpic = NULL,
-signature.pic = NULL,
+  data = attendance.table,
+  path = "labeleR_output",
+  language = "English",
+  name.column = "Names",
+  type = "class",
+  title = "Potions Class",
+  date = "01/01/2021",
+  hours = 200,
+  freetext = "organised by {\\\\bf Hogwarts School year 1992-1993}",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
+  lpic = NULL,
+  rpic = NULL,
+  signature.pic = NULL,
 )
 \dontshow{\}) # examplesIf}
 }

@@ -15,7 +15,7 @@ check_latex<- function(df = NULL, column=NULL){
 }
 
 check_latex_columns <- function(df= NULL, columns= NULL){
-  for(column in columns){
+  for (column in columns) {
     df[,column] <- check_latex(df, column)
   }
   return(df)
@@ -71,7 +71,7 @@ use_image <- function(image = NULL, name = NULL, folder = NULL) {
     on.exit(suppressWarnings(graphics::par(oldpar)))
 
     grDevices::png(file.path(folder, paste0(name, ".png")), 150, 150, "px")
-    graphics::par(bg="transparent")
+    graphics::par(bg = "transparent")
     graphics::plot.new()
     grDevices::dev.off()
   }

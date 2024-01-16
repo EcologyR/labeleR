@@ -35,20 +35,20 @@
 #' @examplesIf interactive()
 #'
 #' create_attendance_certificate(
-#' data = attendance.table,
-#' path = "labeleR_output",
-#' language = "English",
-#' name.column = "Names",
-#' type = "class",
-#' title = "Potions Class",
-#' date = "01/01/2021",
-#' hours = 200,
-#' freetext = "organised by {\\bf Hogwarts School year 1992-1993}",
-#' signer = "A.P.W.B. Dumbledore",
-#' signer.role = "School Headmaster",
-#' lpic = NULL,
-#' rpic = NULL,
-#' signature.pic = NULL,
+#'   data = attendance.table,
+#'   path = "labeleR_output",
+#'   language = "English",
+#'   name.column = "Names",
+#'   type = "class",
+#'   title = "Potions Class",
+#'   date = "01/01/2021",
+#'   hours = 200,
+#'   freetext = "organised by {\\bf Hogwarts School year 1992-1993}",
+#'   signer = "A.P.W.B. Dumbledore",
+#'   signer.role = "School Headmaster",
+#'   lpic = NULL,
+#'   rpic = NULL,
+#'   signature.pic = NULL,
 #' )
 
 
@@ -79,7 +79,7 @@ create_attendance_certificate <- function(
     stop("A data.frame must be provided.")
   }
 
-  if(!(all(class(data)=="data.frame"))){data <- as.data.frame(data)}
+  if (!(all(class(data) == "data.frame"))) {data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
   if (is.null(path)) {stop("A folder path must be specified.")}
