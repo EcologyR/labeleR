@@ -34,7 +34,7 @@
 #'
 #' @examplesIf interactive()
 #'
-#' create_certificate_attendance(
+#' create_attendance_certificate(
 #' data = attendance.table,
 #' path = "labeleR_output",
 #' language = "English",
@@ -52,7 +52,7 @@
 #' )
 
 
-create_certificate_attendance <- function(
+create_attendance_certificate <- function(
     data = NULL,
     path = NULL,
     filename = NULL,

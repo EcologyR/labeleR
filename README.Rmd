@@ -134,7 +134,7 @@ information is stored, two-word parameters are used (i.e. `name.column`
 or `species.column`). The only parameter that does not follow this
 philosophy is `qr` in the functions that allow to plot them (i.e.
 `create_herbarium_label`, `create_collection_label` and
-`create_tinylabel`). This parameter can be set as a column name, which
+`create_tiny_label`). This parameter can be set as a column name, which
 will result in variable parameter, or as a free text (not column name),
 which will be used as a fixed one.
 
@@ -167,7 +167,7 @@ of Hogwarts School, in which the Headmaster certifies they have attended
 
 ```{r create attendance certificates, eval=FALSE}
 
-create_certificate_attendance(
+create_attendance_certificate(
   data = attendance.table,
   path = "labeleR_output",
   filename = "attendance_certificates",
@@ -214,7 +214,7 @@ participated in some seminars with different titles, different
 affiliations, dates and communication types.
 
 ```{r create participation certificates, eval=FALSE}
-create_certificate_participation(
+create_participation_certificate(
   data = participation.table,
   path = "labeleR_output",
   filename = "participation_certificates",
@@ -405,7 +405,7 @@ Here, tinylabels are created for typical collections stored in boxes, so
 a normal collection label would be to big.
 
 ```{r tinylabels, eval=FALSE}
-create_tinylabel(
+create_tiny_label(
   data = tiny.table,
   qr="QR_code",
   path = "labeleR_output",

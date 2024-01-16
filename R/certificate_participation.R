@@ -40,7 +40,7 @@
 #'
 #' @examplesIf interactive()
 #
-#' create_certificate_participation(
+#' create_participation_certificate(
 #' data = participation.table,
 #' path = "labeleR_output",
 #' language = "Spanish",
@@ -59,7 +59,7 @@
 #' signature.pic = NULL
 #' )
 
-create_certificate_participation <- function(
+create_participation_certificate <- function(
     data = NULL,
     path = NULL,
     filename = NULL,
