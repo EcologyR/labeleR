@@ -6,12 +6,13 @@
 \alias{labeleR-package}
 \title{labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents}
 \description{
-Functions to create custom labels, badges, certificates and other documents. Automate the production of potentially large numbers of accreditation badges, attendance and participation certificates, herbarium and collection labels, etc. Documents are generated in PDF format, which requires a working installation of 'LaTeX', such as 'TinyTeX'.
+Create custom labels, badges, certificates and other documents. Automate the production of potentially large numbers of accreditation badges, attendance and participation certificates, herbarium and collection labels, etc. Documents are generated in PDF format, which requires a working installation of 'LaTeX', such as 'TinyTeX'.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/EcologyR/labeleR/}
+  \item \url{https://ecologyr.github.io/labeleR/}
   \item Report bugs at \url{https://github.com/EcologyR/labeleR/issues/}
 }
 
