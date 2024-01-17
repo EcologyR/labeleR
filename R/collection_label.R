@@ -34,7 +34,7 @@
 #' @examplesIf interactive()
 #'
 #' create_collection_label(
-#'   data = label.table,
+#'   data = collection.table,
 #'   path = "labeleR_output",
 #'   qr = "QR_code",
 #'   field1.column = "field1",

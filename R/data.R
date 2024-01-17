@@ -40,17 +40,17 @@
 "herbarium.table"
 
 
-#' label.table
+#' collection.table
 #'
 #' Example data to create collection labels
 #'
 #' @md
 #' @details
 #' ```{r echo=FALSE}
-#' knitr::kable(label.table)
+#' knitr::kable(collection.table)
 #' ```
 #'
-"label.table"
+"collection.table"
 
 
 #' participation.table
