@@ -1,3 +1,7 @@
+## Comments for labeleR 0.1.2 submission
+
+* We have included a new function to allow columns which have some empty cells.
+
 ## Comments for labeleR 0.1.1 submission
 
 * We have amended the description section within the DESCRIPTION file.
