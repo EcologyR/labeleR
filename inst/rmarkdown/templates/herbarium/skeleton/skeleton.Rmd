@@ -64,7 +64,7 @@ for (i in seq_along(params$collection.i)){
 \\begin{flushleft}
 {\\fontsize{25pt}{100pt}\\selectfont", params$location.i[i],"} \\\\
 {\\fontsize{25pt}{100pt}\\selectfont", params$area.description.i[i],"} \\\\
-{\\fontsize{25pt}{100pt}\\selectfont", params$elevation.i[i],"}\\\\
+{\\fontsize{25pt}{100pt}\\selectfont Elevation:", params$elevation.i[i],"}\\\\
 {\\fontsize{25pt}{100pt}\\selectfont", params$latitude.i[i], " | ", params$longitude.i[i],"} \\\\
 \\vfill
 {\\fontsize{25pt}{100pt}\\selectfont",params$field1.i[i],"} \\\\
