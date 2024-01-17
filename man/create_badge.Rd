@@ -52,14 +52,14 @@ Create badges (8 badges per DIN-A4 page)
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 create_badge(
-data = badges.table,
-path = "labeleR_output",
-filename = NULL,
-event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
-name.column = "List",
-affiliation.column = "Affiliation",
-lpic = NULL,
-rpic = NULL)
+  data = badges.table,
+  path = "labeleR_output",
+  filename = NULL,
+  event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
+  name.column = "List",
+  affiliation.column = "Affiliation",
+  lpic = NULL,
+  rpic = NULL)
 \dontshow{\}) # examplesIf}
 }
 \author{

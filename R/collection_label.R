@@ -34,14 +34,14 @@
 #' @examplesIf interactive()
 #'
 #' create_collection_label(
-#' data = label.table,
-#' path = "labeleR_output",
-#' qr = "QR_code",
-#' field1.column = "field1",
-#' field2.column = "field2",
-#' field3.column = "field3",
-#' field4.column = "field6",
-#' field5.column = "field7"
+#'   data = label.table,
+#'   path = "labeleR_output",
+#'   qr = "QR_code",
+#'   field1.column = "field1",
+#'   field2.column = "field2",
+#'   field3.column = "field3",
+#'   field4.column = "field6",
+#'   field5.column = "field7"
 #' )
 
 create_collection_label <- function(data = NULL,
@@ -66,7 +66,7 @@ create_collection_label <- function(data = NULL,
     stop("Please provide a data.frame or tibble.")
   }
 
-  if(!(all(class(data)=="data.frame"))){data <- as.data.frame(data)}
+  if (!(all(class(data) == "data.frame"))) {data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
   if (is.null(path)) {stop("A folder path must be specified.")}

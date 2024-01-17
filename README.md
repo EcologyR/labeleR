@@ -167,9 +167,9 @@ create_attendance_certificate(
   freetext = "taught by Professor S. Snape",
   signer = "A.P.W.B. Dumbledore",
   signer.role = "School Headmaster",
-  rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  lpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
+  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
 ```
 
@@ -186,9 +186,26 @@ variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
 rendered in English and in Spanish.
 
-| ![Participation certificate (blank)](man/figures/Participation_blank.png) |
-|---------------------------------------------------------------------------|
-|                                                                           |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_blank.png"
+alt="Participation certificate (blank)" />
+<figcaption aria-hidden="true">Participation certificate
+(blank)</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 #### Participation certificate example:
 
@@ -212,18 +229,34 @@ create_participation_certificate(
   freetext = "organized by Hogwarts School of Magic and Wizardry",
   signer = "A.P.W.B. Dumbledore",
   signer.role = "School Headmaster",
-  rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  lpic=system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
-  signature.pic=system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
+  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
+  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
 ```
 
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![Participation certificate](man/figures/Participation_certificates.png) |
-|--------------------------------------------------------------------------|
-|                                                                          |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_certificates.png"
+alt="Participation certificate" />
+<figcaption aria-hidden="true">Participation certificate</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 ### 2.3 Badges
 
@@ -251,8 +284,8 @@ create_badge(
   event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
   name.column = "List",
   affiliation.column = "Affiliation",
-  rpic=system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  lpic=system.file("rmarkdown/pictures/minMagic.png", package = "labeleR")
+  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR")
 )
 ```
 
@@ -290,7 +323,7 @@ create_herbarium_label(
   data = herbarium.table,
   path = "labeleR_output",
   filename = "herbarium_labels",
-  qr="QR_code",
+  qr = "QR_code",
   title ="Magical flora of the British Isles" ,
   subtitle = "Project: Eliminating plant blindness in Hogwarts students",
   family.column = "Family",
@@ -329,9 +362,25 @@ As a novelty, the user may manually fix the backgroud and text colors to
 their preference, using HTML color codes (same code as HEX, but without
 the ‘\#’). By default, background colors are two hues of green.
 
-| ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
-|-----------------------------------------------------------------------|
-|                                                                       |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/collection_labels_blank.png"
+alt="Collection labels (blank)" />
+<figcaption aria-hidden="true">Collection labels (blank)</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 #### Collection labels example:
 
@@ -343,7 +392,7 @@ create_collection_label(
   data = label.table,
   path = "labeleR_output",
   filename = "labels",
-  qr="QR_code",
+  qr = "QR_code",
   field1.column = "field1",
   field2.column = "field2",
   field3.column = "field3",
@@ -379,12 +428,12 @@ per sheet” in the printer’s options.
 #### Tinylabels example:
 
 Here, tinylabels are created for typical collections stored in boxes, so
-a normal collection label would be to big.
+a normal collection label would be too big.
 
 ``` r
 create_tiny_label(
   data = tiny.table,
-  qr="QR_code",
+  qr = "QR_code",
   path = "labeleR_output",
   filename = "tinylabels",
   field1.column ="field2",
@@ -399,7 +448,6 @@ create_tiny_label(
 |---------------------------------------------------|
 
 ## Citation
-
 
     To cite package 'labeleR' in publications use:
 

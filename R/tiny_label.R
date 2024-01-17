@@ -29,14 +29,14 @@
 #'
 #' @examplesIf interactive()
 #' create_tiny_label(
-#' data = tiny.table,
-#' qr = "QR_code",
-#' path = "labeleR_output",
-#' field1.column = "field1",
-#' field2.column = "field2",
-#' field3.column = "field3",
-#' field4.column = "field4",
-#' field5.column = "field5"
+#'   data = tiny.table,
+#'   qr = "QR_code",
+#'   path = "labeleR_output",
+#'   field1.column = "field1",
+#'   field2.column = "field2",
+#'   field3.column = "field3",
+#'   field4.column = "field4",
+#'   field5.column = "field5"
 #' )
 #'
 
@@ -58,7 +58,7 @@ create_tiny_label <- function(data = NULL,
     stop("Please provide a data.frame or tibble.")
   }
 
-  if(!(all(class(data)=="data.frame"))){data <- as.data.frame(data)}
+  if (!(all(class(data) == "data.frame"))) {data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
   if (is.null(path)) {stop("A folder path must be specified.")}
@@ -105,7 +105,7 @@ create_tiny_label <- function(data = NULL,
   field5.column <- check_column_or_create_empty_char(data, field5.column)
 
   arguments <- c(field1.column,field2.column,field3.column,field4.column,field5.column)
-  arguments <- arguments[arguments!=""]
+  arguments <- arguments[arguments != ""]
 
   data <- check_latex_columns(data, arguments)
 

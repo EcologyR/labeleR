@@ -109,26 +109,26 @@ Create herbarium labels (4 labels per DIN-A4 page)
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 create_herbarium_label (
-data = herbarium.table,
-path = "labeleR_output",
-title = "Magical flora of the British Isles",
-subtitle = "Project: Eliminating plant blindness in Hogwarts students",
-qr = "QR_code",
-family.column ="Family",
-taxon.column = "Taxon",
-author.column = "Author",
-det.column = "det",
-date.det.column = "Det_date",
-location.column = "Location",
-latitude.column = "Latitude",
-longitude.column = "Longitude",
-elevation.column = "Elevation",
-field1.column = "life_form",
-field3.column = "Height",
-collector.column = "Collector",
-collection.column = "Collection_number",
-assistants.column = "Assistants",
-date.column = "Date"
+  data = herbarium.table,
+  path = "labeleR_output",
+  title = "Magical flora of the British Isles",
+  subtitle = "Project: Eliminating plant blindness in Hogwarts students",
+  qr = "QR_code",
+  family.column ="Family",
+  taxon.column = "Taxon",
+  author.column = "Author",
+  det.column = "det",
+  date.det.column = "Det_date",
+  location.column = "Location",
+  latitude.column = "Latitude",
+  longitude.column = "Longitude",
+  elevation.column = "Elevation",
+  field1.column = "life_form",
+  field3.column = "Height",
+  collector.column = "Collector",
+  collection.column = "Collection_number",
+  assistants.column = "Assistants",
+  date.column = "Date"
 )
 \dontshow{\}) # examplesIf}
 }

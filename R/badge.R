@@ -26,14 +26,14 @@
 #'
 #' @examplesIf interactive()
 #' create_badge(
-#' data = badges.table,
-#' path = "labeleR_output",
-#' filename = NULL,
-#' event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
-#' name.column = "List",
-#' affiliation.column = "Affiliation",
-#' lpic = NULL,
-#' rpic = NULL)
+#'   data = badges.table,
+#'   path = "labeleR_output",
+#'   filename = NULL,
+#'   event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
+#'   name.column = "List",
+#'   affiliation.column = "Affiliation",
+#'   lpic = NULL,
+#'   rpic = NULL)
 
 create_badge <- function(data = NULL,
                          path = NULL,
@@ -52,7 +52,7 @@ create_badge <- function(data = NULL,
     stop("Please provide a data.frame or tibble.")
   }
 
-  if(!(all(class(data)=="data.frame"))){data <- as.data.frame(data)}
+  if (!(all(class(data) == "data.frame"))) {data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
   if (is.null(path)) {stop("A folder path must be specified.")}
@@ -72,11 +72,11 @@ create_badge <- function(data = NULL,
   }
 
   check_column_in_df(data, name.column)
-  data[,name.column]<- check_latex(data, name.column)
+  data[,name.column] <- check_latex(data, name.column)
 
   if (!is.null(affiliation.column)) {
     check_column_in_df(data, affiliation.column)
-    data[,affiliation.column]<- check_latex(data, affiliation.column)
+    data[,affiliation.column] <- check_latex(data, affiliation.column)
   }
   if (is.null(affiliation.column)) {
     affiliation.column <- ""

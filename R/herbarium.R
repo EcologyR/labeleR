@@ -50,26 +50,26 @@
 #' @examplesIf interactive()
 #'
 #' create_herbarium_label (
-#' data = herbarium.table,
-#' path = "labeleR_output",
-#' title = "Magical flora of the British Isles",
-#' subtitle = "Project: Eliminating plant blindness in Hogwarts students",
-#' qr = "QR_code",
-#' family.column ="Family",
-#' taxon.column = "Taxon",
-#' author.column = "Author",
-#' det.column = "det",
-#' date.det.column = "Det_date",
-#' location.column = "Location",
-#' latitude.column = "Latitude",
-#' longitude.column = "Longitude",
-#' elevation.column = "Elevation",
-#' field1.column = "life_form",
-#' field3.column = "Height",
-#' collector.column = "Collector",
-#' collection.column = "Collection_number",
-#' assistants.column = "Assistants",
-#' date.column = "Date"
+#'   data = herbarium.table,
+#'   path = "labeleR_output",
+#'   title = "Magical flora of the British Isles",
+#'   subtitle = "Project: Eliminating plant blindness in Hogwarts students",
+#'   qr = "QR_code",
+#'   family.column ="Family",
+#'   taxon.column = "Taxon",
+#'   author.column = "Author",
+#'   det.column = "det",
+#'   date.det.column = "Det_date",
+#'   location.column = "Location",
+#'   latitude.column = "Latitude",
+#'   longitude.column = "Longitude",
+#'   elevation.column = "Elevation",
+#'   field1.column = "life_form",
+#'   field3.column = "Height",
+#'   collector.column = "Collector",
+#'   collection.column = "Collection_number",
+#'   assistants.column = "Assistants",
+#'   date.column = "Date"
 #' )
 
 create_herbarium_label <- function(data = data,
@@ -104,7 +104,7 @@ create_herbarium_label <- function(data = data,
   if (is.null(data)) {
     stop("Please provide a data.frame or tibble.")
   }
-  if(!(all(class(data)=="data.frame"))){data <- as.data.frame(data)}
+  if (!(all(class(data) == "data.frame"))) {data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
 
   if (is.null(path)) {stop("A folder path must be specified.")}
@@ -204,7 +204,7 @@ create_herbarium_label <- function(data = data,
                  collection.column       ,
                  assistants.column       ,
                  date.column             )
-  arguments <- arguments[arguments!=""]
+  arguments <- arguments[arguments != ""]
 
   data <- check_latex_columns(data, arguments)
 

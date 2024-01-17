@@ -60,14 +60,14 @@ Create tiny labels (16 labels per DIN-A4 page)
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 create_tiny_label(
-data = tiny.table,
-qr = "QR_code",
-path = "labeleR_output",
-field1.column = "field1",
-field2.column = "field2",
-field3.column = "field3",
-field4.column = "field4",
-field5.column = "field5"
+  data = tiny.table,
+  qr = "QR_code",
+  path = "labeleR_output",
+  field1.column = "field1",
+  field2.column = "field2",
+  field3.column = "field3",
+  field4.column = "field4",
+  field5.column = "field5"
 )
 \dontshow{\}) # examplesIf}
 }
