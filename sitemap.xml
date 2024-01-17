@@ -25,6 +25,9 @@
     <loc>https://ecologyr.github.io/labeleR/reference/badges.table.html</loc>
   </url>
   <url>
+    <loc>https://ecologyr.github.io/labeleR/reference/collection.table.html</loc>
+  </url>
+  <url>
     <loc>https://ecologyr.github.io/labeleR/reference/create_attendance_certificate.html</loc>
   </url>
   <url>
@@ -47,9 +50,6 @@
   </url>
   <url>
     <loc>https://ecologyr.github.io/labeleR/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ecologyr.github.io/labeleR/reference/label.table.html</loc>
   </url>
   <url>
     <loc>https://ecologyr.github.io/labeleR/reference/labeleR-package.html</loc>
