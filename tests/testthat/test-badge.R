@@ -1,6 +1,6 @@
 
 data <- data.frame(Names = c("Pippin", "Frodo"),
-                   Affil = "Home", "Casa")
+                   Affil = c("Home", NA))
 path <- tempdir()
 
 test_that("PDF file is created in the provided path", {

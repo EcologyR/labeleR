@@ -81,6 +81,7 @@ create_attendance_certificate <- function(
 
   if (!(all(class(data) == "data.frame"))) {data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
+  data <- fill_NAs_df(data)
 
   if (is.null(path)) {stop("A folder path must be specified.")}
   if (!file.exists(path)) {

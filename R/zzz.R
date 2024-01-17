@@ -21,6 +21,21 @@ check_latex_columns <- function(df= NULL, columns= NULL){
   return(df)
 }
 
+na2blank <- function(x){
+  x[is.na(x)] <- "~"
+  return(x)}
+
+fill_NAs_df <- function(df = NULL){
+  cols <- colnames(df)
+  rows <- rownames(df)
+  mat <- matrix(apply(df, 2, na2blank), nrow = length(rows), ncol=length(cols))
+  df <- as.data.frame(mat)
+  colnames(df) <- cols
+  rownames(df) <- rows
+
+  return(df)
+}
+
 
 #### Check columns in data
 
