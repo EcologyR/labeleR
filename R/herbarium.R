@@ -250,10 +250,6 @@ create_herbarium_label <- function(data = data,
   data <- as.data.frame(data)  ## to exploit drop = TRUE when selecting cols below
   bl.char <- rep("~", times = nrow(data))
 
-  for (i in 1:nrow(data)) {
-    data[is.na(data[,i]), i] <- "~"
-  }
-
   rmarkdown::render(
     input = file.path(folder, "herbarium.Rmd"),
     output_dir = path,
