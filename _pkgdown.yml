@@ -15,6 +15,6 @@ reference:
   - participation.table
   - badges.table
   - herbarium.table
-  - label.table
+  - collection.table
   - tiny.table
 
