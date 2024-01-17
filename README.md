@@ -186,26 +186,9 @@ variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
 rendered in English and in Spanish.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><figure>
-<img src="man/figures/Participation_blank.png"
-alt="Participation certificate (blank)" />
-<figcaption aria-hidden="true">Participation certificate
-(blank)</figcaption>
-</figure></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+| ![Participation certificate (blank)](man/figures/Participation_blank.png) |
+|---------------------------------------------------------------------------|
+|                                                                           |
 
 #### Participation certificate example:
 
@@ -238,25 +221,9 @@ create_participation_certificate(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><figure>
-<img src="man/figures/Participation_certificates.png"
-alt="Participation certificate" />
-<figcaption aria-hidden="true">Participation certificate</figcaption>
-</figure></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+| ![Participation certificate](man/figures/Participation_certificates.png) |
+|--------------------------------------------------------------------------|
+|                                                                          |
 
 ### 2.3 Badges
 
@@ -362,25 +329,9 @@ As a novelty, the user may manually fix the backgroud and text colors to
 their preference, using HTML color codes (same code as HEX, but without
 the ‘\#’). By default, background colors are two hues of green.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><figure>
-<img src="man/figures/collection_labels_blank.png"
-alt="Collection labels (blank)" />
-<figcaption aria-hidden="true">Collection labels (blank)</figcaption>
-</figure></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+|                                                                       |
+|-----------------------------------------------------------------------|
+| ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
 
 #### Collection labels example:
 
@@ -389,7 +340,7 @@ collection of stuffed animals.
 
 ``` r
 create_collection_label(
-  data = label.table,
+  data = collection.table,
   path = "labeleR_output",
   filename = "labels",
   qr = "QR_code",
@@ -448,6 +399,7 @@ create_tiny_label(
 |---------------------------------------------------|
 
 ## Citation
+
 
     To cite package 'labeleR' in publications use:
 

@@ -352,8 +352,6 @@ without the '\#'). By default, background colors are two hues of green.
 
 +-----------------------------------------------------------------------+
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
-+=======================================================================+
-|                                                                       |
 +-----------------------------------------------------------------------+
 
 #### Collection labels example:
@@ -363,7 +361,7 @@ collection of stuffed animals.
 
 ```{r collection labels, eval=FALSE}
 create_collection_label(
-  data = label.table,
+  data = collection.table,
   path = "labeleR_output",
   filename = "labels",
   qr = "QR_code",
