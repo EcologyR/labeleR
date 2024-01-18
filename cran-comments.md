@@ -1,5 +1,6 @@
 ## Comments for labeleR 0.1.2 submission
 
+* Title added to .Rmd templates (changed in .yaml files) as required for resubmission.
 * We have included a new function to allow columns which have some empty cells.
 
 ## Comments for labeleR 0.1.1 submission
