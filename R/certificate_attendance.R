@@ -71,15 +71,13 @@ create_attendance_certificate <- function(
     keep.files = FALSE,
     template = NULL) {
 
-  language <- match.arg(language)
-
   ## Check arguments
 
   if (is.null(data)) {
     stop("A data.frame must be provided.")
   }
 
-  if (!(all(class(data) == "data.frame"))) {data <- as.data.frame(data)}
+  if ((!(all(class(data) == "data.frame"))) & any(class(data) == "data.frame")) {data <- as.data.frame(data)}
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
   data <- fill_NAs_df(data)
 
@@ -88,6 +86,9 @@ create_attendance_certificate <- function(
     message("The specified folder does not exist. Creating folder")
     dir.create(path)
   }
+
+  language <- match.arg(language, c("English", "Spanish"))
+
 
   if (is.null(filename)) {
     message("No file name provided")
