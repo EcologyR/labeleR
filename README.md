@@ -25,9 +25,16 @@ package you need! Keep an eye on this easy tutorial on how to use it!
 
 ## Installing labeleR
 
-To install **labeleR** from GitHub, you might need to install the
-*devtools* package. Once you have it, you just have to specify the
-repository and install!
+To install the latest stable version of **labeleR** from CRAN, just use
+`install.packages()` function.
+
+``` r
+install.packages("labeleR")
+```
+
+However, if you want to install the latest version of **labeleR** from
+GitHub, you might need to install the *devtools* package. Once you have
+it, you just have to specify the repository and install!
 
 ``` r
 # install.packages("devtools")
