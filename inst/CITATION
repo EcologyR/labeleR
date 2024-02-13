@@ -3,6 +3,6 @@ bibentry(
   bibtype = "Manual",
   title   = "labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents",
   author  = c("Ignacio Ramos-Gutierrez", "Julia G. de Aledo", "Francisco Rodríguez-Sánchez"),
-  year    = "2023",
+  year    = "2024",
   url     = "https://EcologyR.github.io/labeleR/",
 )
