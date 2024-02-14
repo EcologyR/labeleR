@@ -408,23 +408,77 @@ create_tiny_label(
 | ![Tinylabels example](man/figures/tinylabels.png) |
 |---------------------------------------------------|
 
+## 3. Frequently Asked Questions
+
+### Including italic or bold texts within a single text
+
+This implementation should be used just to change text formats in only a
+part of values stored in columns (variable parameters).
+
+To do so, you must edit the cell value, specifying where the italics
+text must start with `\\textit`, and `\\end` where it ends; and
+`\\textbf` followed by `\\end` for bold text. In case you want to
+combine both, you will have to specify `\\end` twice.
+
+For example, this could be helpful to include italics in a species name
+which is included as part of a title; where just the species name should
+be italicized.
+
+``` r
+seminar.table <- data.frame(
+  "Name" = "Rubeus Hagrid",
+  "Date" = "01/01/1996",
+  "Title" = "Population dynamics of a species of giant spider 
+  (\\textitAcromantula gigantea\\end) in Hogwart's Forbidden Forest",
+  "Comm.type" = "seminar",
+  "Affil" = "Hogwarts Keeper of Keys and Grounds")
+
+create_participation_certificate(
+  data = seminar.table,
+  path = "labeleR_output",
+  filename = "participation_certificates",
+  language = "English",
+  name.column = "Name",
+  affiliation.column = "Affil",
+  comm.type.column = "Comm.type",
+  title.column = "Title",
+  date.column = "Date",
+  type = "online",
+  event = "seminar",
+  freetext = "organized by Hogwarts School of Magic and Wizardry",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
+  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
+  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
+)
+  
+```
+
+| ![Custom italics example](man/figures/Participation_certificate_italics.png) |
+|------------------------------------------------------------------------------|
+|                                                                              |
+
 ## Citation
 
-
-    To cite package 'labeleR' in publications use:
-
-      Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2023). _labeleR:
-      Automate the Production of Custom Labels, Badges, Certificates, and
-      Other Documents_. <https://EcologyR.github.io/labeleR/>.
-
-    A BibTeX entry for LaTeX users is
-
-      @Manual{,
-        title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
-        author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},
-        year = {2023},
-        url = {https://EcologyR.github.io/labeleR/},
-      }
+``` r
+citation("labeleR")
+#> 
+#> To cite package 'labeleR' in publications use:
+#> 
+#>   Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2023). _labeleR:
+#>   Automate the Production of Custom Labels, Badges, Certificates, and
+#>   Other Documents_. <https://EcologyR.github.io/labeleR/>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
+#>     author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},
+#>     year = {2023},
+#>     url = {https://EcologyR.github.io/labeleR/},
+#>   }
+```
 
 ## Funding
 
