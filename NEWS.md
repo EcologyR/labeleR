@@ -1,3 +1,7 @@
+# labeleR 0.1.3
+
+* Allow bold and italic text within column texts
+
 # labeleR 0.1.2
 
 * Title added to .Rmd templates (changed in .yaml files).
