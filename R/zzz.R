@@ -11,10 +11,9 @@ check_latex<- function(df = NULL, column=NULL){
   df[[column]] <- gsub("}", "\\\\}", df[[column]])
   df[[column]] <- gsub("~", "-"  , df[[column]]) #unable to render with \\~
   df[[column]] <- gsub("\\^", "\\\\^"  , df[[column]])#name truncated and accent to the next letter
-  df[[column]] <- gsub("\\startit" , "\\textit{"  , df[[column]], fixed = T)#open italize
-  df[[column]] <- gsub("\\endit", "}"  , df[[column]], fixed = T)#close italize
-  df[[column]] <- gsub("\\startbf", "\\textbf{"  , df[[column]], fixed = T)#open bold
-  df[[column]] <- gsub("\\endbf", "}"  , df[[column]], fixed = T)#close bold
+  df[[column]] <- gsub("\\textit" , "\\textit{"  , df[[column]], fixed = T)#open italize
+  df[[column]] <- gsub("\\textbf" , "\\textbf{"  , df[[column]], fixed = T)#open bold
+  df[[column]] <- gsub("\\end", "}"  , df[[column]], fixed = T)#close italize AND bold
   return(df[,column, drop=FALSE])
 }
 
