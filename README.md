@@ -64,6 +64,18 @@ The first time you install tinytex or use **labeleR** it may take a
 while until all packages are correctly installed. Don’t worry, it will
 be much quicker next time!
 
+#### TinyTeX troubleshooting
+
+In case you have problems installing `TinyTeX`’s packages, try running
+this in your console:
+
+``` r
+    tinytex::tlmgr_install(pkgs = c( "zref", "needspace", "pagecolor",
+                                     "bookmark", "changepage", "fp",
+                                     "mdframed", "ms", "pgf", 
+                                     "pspicture", "qrcode"))
+```
+
 ## 1. Getting started
 
 ``` r
