@@ -7,7 +7,6 @@ editor_options:
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -20,11 +19,13 @@ knitr::opts_chunk$set(
 # labeleR
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml)
 `r badger::badge_lifecycle("stable")`
 `r badger::badge_repostatus("Active")`
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](https://hits.dwyl.com/EcologyR/labeleR)
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](https://hits.dwyl.com/EcologyR/labeleR)
+
 <!-- badges: end -->
 
 <img src="man/figures/labeleR.png" width="140px" align="right"/>
@@ -38,16 +39,16 @@ package you need! Keep an eye on this easy tutorial on how to use it!
 
 ## Installing labeleR
 
-To install the latest stable version of **labeleR** from CRAN, just use 
+To install the latest stable version of **labeleR** from CRAN, just use
 `install.packages()` function.
 
 ```{r install labeleR CRAN, eval=F}
 install.packages("labeleR")
 ```
 
-However, if you want to install the latest version of **labeleR** from GitHub, 
-you might need to install the *devtools* package. Once you have it, 
-you just have to specify the repository and install!
+However, if you want to install the latest version of **labeleR** from
+GitHub, you might need to install the *devtools* package. Once you have
+it, you just have to specify the repository and install!
 
 ```{r install labeleR GH, eval=F}
 # install.packages("devtools")
@@ -353,9 +354,9 @@ including a QR code (fixed or variable), a logo image. Field 1 will be
 capitalized (as in `family.column` in the herbarium label, and Field 2
 italicized). Any of the fields can be left blank.
 
-As a novelty, the user may manually fix the backgroud and text colors
-to their preference, using HTML color codes (same code as HEX, but
-without the '\#'). By default, background colors are two hues of green.
+As a novelty, the user may manually fix the backgroud and text colors to
+their preference, using HTML color codes (same code as HEX, but without
+the '\#'). By default, background colors are two hues of green.
 
 +-----------------------------------------------------------------------+
 | ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
@@ -427,16 +428,70 @@ create_tiny_label(
 | ![Tinylabels example](man/figures/tinylabels.png) |
 |---------------------------------------------------|
 
+## 3. Frequently Asked Questions
+
+### Including italic or bold texts within a single text
+
+This implementation should be used just to change text formats in only a
+part of values stored in columns (variable parameters). 
+
+To do so, you must edit the cell value, specifying where the italics text must start
+with `\\textit`, and `\\end` where it ends; and `\\textbf` followed by
+`\\end` for bold text. In case you want to combine both, you will have
+to specify `\\end` twice.
+
+For example, this could be helpful to
+include italics in a species name which is included as part of a title;
+where just the species name should be italicized.
+
+```{r custom italics, eval=FALSE}
+seminar.table <- data.frame(
+  "Name" = "Rubeus Hagrid",
+  "Date" = "01/01/1996",
+  "Title" = "Population dynamics of a species of giant spider 
+  (\\textitAcromantula gigantea\\end) in Hogwart's Forbidden Forest",
+  "Comm.type" = "seminar",
+  "Affil" = "Hogwarts Keeper of Keys and Grounds")
+
+create_participation_certificate(
+  data = seminar.table,
+  path = "labeleR_output",
+  filename = "participation_certificates",
+  language = "English",
+  name.column = "Name",
+  affiliation.column = "Affil",
+  comm.type.column = "Comm.type",
+  title.column = "Title",
+  date.column = "Date",
+  type = "online",
+  event = "seminar",
+  freetext = "organized by Hogwarts School of Magic and Wizardry",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
+  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
+  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
+)
+  
+```
+
++-----------------------------------------------------------------------+
+| ![Custom italics                                                      |
+| example](man/figures/Participation_certificate_italics.png)           |
++=======================================================================+
+|                                                                       |
++-----------------------------------------------------------------------+
+
 ## Citation
 
-```{r citation, eval=TRUE, comment=NA, echo=FALSE}
+```{r citation, eval=TRUE}
 citation("labeleR")
 ```
 
 ## Funding
 
 The development of this software has been funded by the European Union -
-Next Generation EU, Fondo Europeo de Desarrollo Regional (FEDER) and 
-Consejería de Transformación Económica, Industria, Conocimiento y Universidades 
-of Junta de Andalucía (proyecto US-1381388 led by Francisco Rodríguez Sánchez, 
-Universidad de Sevilla).
+Next Generation EU, Fondo Europeo de Desarrollo Regional (FEDER) and
+Consejería de Transformación Económica, Industria, Conocimiento y
+Universidades of Junta de Andalucía (proyecto US-1381388 led by
+Francisco Rodríguez Sánchez, Universidad de Sevilla).
