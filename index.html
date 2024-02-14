@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">labeleR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -97,19 +97,29 @@
 <code class="sourceCode R"><span><span class="co"># install.packages("tinytex")</span></span>
 <span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html" class="external-link">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The first time you install tinytex or use <strong>labeleR</strong> it may take a while until all packages are correctly installed. Don’t worry, it will be much quicker next time!</p>
+<div class="section level4">
+<h4 id="tinytex-troubleshooting">TinyTeX troubleshooting<a class="anchor" aria-label="anchor" href="#tinytex-troubleshooting"></a>
+</h4>
+<p>In case you have problems installing <code>TinyTeX</code>’s packages, try running this in your console:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>    <span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html" class="external-link">tlmgr_install</a></span><span class="op">(</span>pkgs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="st">"zref"</span>, <span class="st">"needspace"</span>, <span class="st">"pagecolor"</span>,</span>
+<span>                                     <span class="st">"bookmark"</span>, <span class="st">"changepage"</span>, <span class="st">"fp"</span>,</span>
+<span>                                     <span class="st">"mdframed"</span>, <span class="st">"ms"</span>, <span class="st">"pgf"</span>, </span>
+<span>                                     <span class="st">"pspicture"</span>, <span class="st">"qrcode"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="id_1-getting-started">1. Getting started<a class="anchor" aria-label="anchor" href="#id_1-getting-started"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EcologyR/labeleR/" class="external-link">"labeleR"</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="id_11-loading-the-data">1.1 Loading the data<a class="anchor" aria-label="anchor" href="#id_11-loading-the-data"></a>
 </h3>
 <p>The very first thing you need to start using labeleR is a data frame where the information is included. This data frame can be imported to the R environment reading it from a file (e.g. a ‘.csv’ file or ‘.xlsx’ excel sheet, using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code>, <code>readxl::read_excel()</code>, and alike functions), but it can be also imported from Google Sheets.</p>
 <p>To do so, you could use <code>gsheet2tbl</code> function from <code>gsheet</code> package, specifying the Google Sheet URL:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maxconway/gsheet" class="external-link">gsheet</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#URL: https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0</span></span>
@@ -146,7 +156,7 @@
 <h4 id="attendance-certificate-example">Attendance certificate example:<a class="anchor" aria-label="anchor" href="#attendance-certificate-example"></a>
 </h4>
 <p>In this example, we create four different certificates for four students of Hogwarts School, in which the Headmaster certifies they have attended 200 h of the Potions class.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="reference/create_attendance_certificate.html">create_attendance_certificate</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">attendance.table</span>,</span>
@@ -191,7 +201,7 @@
 <h4 id="participation-certificate-example">Participation certificate example:<a class="anchor" aria-label="anchor" href="#participation-certificate-example"></a>
 </h4>
 <p>Here, Albus Dumbledore certifies that four of the school teachers have participated in some seminars with different titles, different affiliations, dates and communication types.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/create_participation_certificate.html">create_participation_certificate</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">participation.table</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
@@ -237,7 +247,7 @@
 <h4 id="badges-example">Badges example:<a class="anchor" aria-label="anchor" href="#badges-example"></a>
 </h4>
 <p>As an example, we present the accreditation cards that might have been used in the International Conference of Muggleology, where the only changing fields are names and affiliations of attendees.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="reference/create_badge.html">create_badge</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">badges.table</span>,</span>
@@ -273,7 +283,7 @@
 <h4 id="herbarium-labels-example">Herbarium labels example:<a class="anchor" aria-label="anchor" href="#herbarium-labels-example"></a>
 </h4>
 <p>In this example, we show the labels some students have created for their herbarium assignment of the Herbology class.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/create_herbarium_label.html">create_herbarium_label</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">herbarium.table</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
@@ -322,7 +332,7 @@
 <h4 id="collection-labels-example">Collection labels example:<a class="anchor" aria-label="anchor" href="#collection-labels-example"></a>
 </h4>
 <p>In this example we can see six labels created for the school’s displayed collection of stuffed animals.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/create_collection_label.html">create_collection_label</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">collection.table</span>,</span>
 <span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
@@ -361,7 +371,7 @@
 <h4 id="tinylabels-example">Tinylabels example:<a class="anchor" aria-label="anchor" href="#tinylabels-example"></a>
 </h4>
 <p>Here, tinylabels are created for typical collections stored in boxes, so a normal collection label would be too big.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/create_tiny_label.html">create_tiny_label</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">tiny.table</span>,</span>
 <span>  qr <span class="op">=</span> <span class="st">"QR_code"</span>,</span>
@@ -383,22 +393,74 @@
 </div>
 </div>
 <div class="section level2">
+<h2 id="id_3-frequently-asked-questions">3. Frequently Asked Questions<a class="anchor" aria-label="anchor" href="#id_3-frequently-asked-questions"></a>
+</h2>
+<div class="section level3">
+<h3 id="including-italic-or-bold-texts-within-a-single-text">Including italic or bold texts within a single text<a class="anchor" aria-label="anchor" href="#including-italic-or-bold-texts-within-a-single-text"></a>
+</h3>
+<p>This implementation should be used just to change text formats in only a part of values stored in columns (variable parameters).</p>
+<p>To do so, you must edit the cell value, specifying where the italics text must start with <code>\\textit</code>, and <code>\\end</code> where it ends; and <code>\\textbf</code> followed by <code>\\end</code> for bold text. In case you want to combine both, you will have to specify <code>\\end</code> twice.</p>
+<p>For example, this could be helpful to include italics in a species name which is included as part of a title; where just the species name should be italicized.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">seminar.table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Name"</span> <span class="op">=</span> <span class="st">"Rubeus Hagrid"</span>,</span>
+<span>  <span class="st">"Date"</span> <span class="op">=</span> <span class="st">"01/01/1996"</span>,</span>
+<span>  <span class="st">"Title"</span> <span class="op">=</span> <span class="st">"Population dynamics of a species of giant spider </span></span>
+<span><span class="st">  (\\textitAcromantula gigantea\\end) in Hogwart's Forbidden Forest"</span>,</span>
+<span>  <span class="st">"Comm.type"</span> <span class="op">=</span> <span class="st">"seminar"</span>,</span>
+<span>  <span class="st">"Affil"</span> <span class="op">=</span> <span class="st">"Hogwarts Keeper of Keys and Grounds"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/create_participation_certificate.html">create_participation_certificate</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">seminar.table</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
+<span>  filename <span class="op">=</span> <span class="st">"participation_certificates"</span>,</span>
+<span>  language <span class="op">=</span> <span class="st">"English"</span>,</span>
+<span>  name.column <span class="op">=</span> <span class="st">"Name"</span>,</span>
+<span>  affiliation.column <span class="op">=</span> <span class="st">"Affil"</span>,</span>
+<span>  comm.type.column <span class="op">=</span> <span class="st">"Comm.type"</span>,</span>
+<span>  title.column <span class="op">=</span> <span class="st">"Title"</span>,</span>
+<span>  date.column <span class="op">=</span> <span class="st">"Date"</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"online"</span>,</span>
+<span>  event <span class="op">=</span> <span class="st">"seminar"</span>,</span>
+<span>  freetext <span class="op">=</span> <span class="st">"organized by Hogwarts School of Magic and Wizardry"</span>,</span>
+<span>  signer <span class="op">=</span> <span class="st">"A.P.W.B. Dumbledore"</span>,</span>
+<span>  signer.role <span class="op">=</span> <span class="st">"School Headmaster"</span>,</span>
+<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  lpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/MinMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  signature.pic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span>  </span></code></pre></div>
+<table class="table">
+<colgroup><col width="100%"></colgroup>
+<thead><tr class="header">
+<th><img src="reference/figures/Participation_certificate_italics.png" alt="Custom italics example"></th>
+</tr></thead>
+<tbody><tr class="odd">
+<td></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>To cite package <span class="st">'labeleR'</span> <span class="cf">in</span> publications use<span class="sc">:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  Ramos<span class="sc">-</span>Gutierrez I, de Aledo JG, Rodríguez<span class="sc">-</span>Sánchez <span class="fu">F</span> (<span class="dv">2023</span>). _labeleR<span class="sc">:</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  Automate the Production of Custom Labels, Badges, Certificates, and</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  Other Documents_. <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>EcologyR.github.io<span class="sc">/</span>labeleR<span class="sc">/</span><span class="er">&gt;</span>.</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="sc">@</span>Manual{,</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    title <span class="ot">=</span> {labeleR<span class="sc">:</span> Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    author <span class="ot">=</span> {Ignacio Ramos<span class="sc">-</span>Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez<span class="sc">-</span>Sánchez},</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2023</span>},</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>EcologyR.github.io<span class="sc">/</span>labeleR<span class="sc">/</span>},</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"labeleR"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; To cite package 'labeleR' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2023). _labeleR:</span></span>
+<span><span class="co">#&gt;   Automate the Production of Custom Labels, Badges, Certificates, and</span></span>
+<span><span class="co">#&gt;   Other Documents_. &lt;https://EcologyR.github.io/labeleR/&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;     title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},</span></span>
+<span><span class="co">#&gt;     author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},</span></span>
+<span><span class="co">#&gt;     year = {2023},</span></span>
+<span><span class="co">#&gt;     url = {https://EcologyR.github.io/labeleR/},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="funding">Funding<a class="anchor" aria-label="anchor" href="#funding"></a>
