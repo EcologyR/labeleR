@@ -7,6 +7,9 @@
 #' @param filename Character. Filename of the pdf. If NULL, default is "Attendance" for English, "Asistencia" for Spanish".
 #' @param language Character. Select 'English' or 'Spanish'.
 #' @param name.column Character. Name of the column in `data` storing attendees' name.
+#' @param email.column Character. Name of the column in `data` storing attendees' emails to automatically send them their certificates.
+#' @param email.info List. Must include at least one slot named 'account' specifing a Google Mail accout to send certificates from.
+#' Optionally, other slots named 'subject' and 'body' can be included to specify such parameters in the email.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
 #' @param title Character. Title of the event
 #' @param date Date of the event
@@ -58,6 +61,8 @@ create_attendance_certificate <- function(
     filename = NULL,
     language = c("English", "Spanish"),
     name.column = NULL,
+    email.column = NULL,
+    email.info = NULL,
     type = "",
     title = "",
     date = "",
@@ -96,8 +101,23 @@ create_attendance_certificate <- function(
     if (language == "Spanish") {filename <- "Asistencia"}
   }
 
+  if(!is.null(email.column) & is.null(email.info)){
+    stop("You must specify your email account information")
+  }
+
+  if(!is.null(email.info) &
+     (!inherits(email.info, "list") | !("account" %in% names(email.info)) )
+  ){
+    stop("'email.info' should be a list including at least a slot named \"account\".\n" ,
+          "Optionally, slots 'subject' and 'body' can also be included")
+  }
+
   check_column_in_df(data, name.column)
   data[,name.column]<- check_latex(data, name.column)
+
+  if(!is.null(email.column)){
+  check_column_in_df(data, email.column)
+  }
 
   stopifnot(is.character(type))
   stopifnot(is.character(title))
@@ -192,6 +212,29 @@ create_attendance_certificate <- function(
         signer.role     = if (signer.role     == "") {bl.char} else {signer.role}
       )
     )
+    if(!is.null(email.column)){
+      if(!is.na(data[i,email.column])){
+      mail.to <- data[i,email.column]
+      mail.from <- email.info$account
+      mail.subj <- email.info$subject
+      mail.body <- email.info$body
+
+      if(is.null(mail.subj)){mail.subj <- paste0("Attendance certificate - ", data[i, name.column])}
+
+      if(is.null(mail.body)){mail.body <- paste0("Attendance certificate for ", data[i, name.column],
+                                                 " awarded for attending:","\n",
+                                                 title,"\n",
+                                                 "\n\n\n",
+                                                 "This certificate was automatically sent by labeleR using 'gmailr'")}
+
+      send_certificate_mail(
+        from = mail.from,
+        to = mail.to,
+        subject = mail.subj,
+        body = mail.body,
+        attach = paste0(path, "/", output_file)
+      )
+    }}
 
   }
 

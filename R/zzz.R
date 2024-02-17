@@ -95,3 +95,33 @@ use_image <- function(image = NULL, name = NULL, folder = NULL) {
   }
 
 }
+
+
+#### Function to end gmail certificate
+
+send_certificate_mail <- function(from = NULL, to = NULL,
+                                  subject = "email automatically sent by labeleR",
+                                  body = "",
+                                  attach = NULL){
+
+  if(is.null(from)){stop("A valid email account must be specified. Please make sure to access the Google API with the same account.")}
+  if(is.null(to)){stop("A destination email account must be specified")}
+  if(is.null(body)){body <- "This certificate was automatically sent by labeleR using 'gmailr'"}
+  if(is.null(attach)){stop("A pdf document must be attached.")}
+
+  gmailr::gm_auth_configure(path = system.file("gmailr/labeleR_JSON.json", package = "labeleR"))
+
+
+
+  email <-
+    gmailr::gm_mime() |>
+    gmailr::gm_to(to) |>
+    gmailr::gm_from(from) |>
+    gmailr::gm_subject(subject) |>
+    gmailr::gm_text_body(body) |>
+    gmailr::gm_attach_file(attach)
+
+
+  gmailr::gm_send_message(email)
+
+}

@@ -1,3 +1,7 @@
+# labeleR 0.1.4
+
+* Allow sending certificates via mail
+
 # labeleR 0.1.3
 
 * Allow bold and italic text within column texts

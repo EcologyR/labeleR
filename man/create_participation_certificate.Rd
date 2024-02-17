@@ -14,6 +14,8 @@ create_participation_certificate(
   comm.type.column = NULL,
   title.column = NULL,
   date.column = NULL,
+  email.column = NULL,
+  email.info = NULL,
   type = "",
   event = "",
   freetext = "",
@@ -48,6 +50,11 @@ contribution.}
 
 \item{date.column}{Character. Name of the column in \code{data} storing dates of
 participation.}
+
+\item{email.column}{Character. Name of the column in \code{data} storing attendees' emails to automatically send them their certificates.}
+
+\item{email.info}{List. Must include at least one slot named 'account' specifing a Google Mail accout to send certificates from.
+Optionally, other slots named 'subject' and 'body' can be included to specify such parameters in the email.}
 
 \item{type}{Character (optional). Type of event (conference, workshop, seminar...)}
 

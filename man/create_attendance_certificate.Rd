@@ -10,6 +10,8 @@ create_attendance_certificate(
   filename = NULL,
   language = c("English", "Spanish"),
   name.column = NULL,
+  email.column = NULL,
+  email.info = NULL,
   type = "",
   title = "",
   date = "",
@@ -34,6 +36,11 @@ create_attendance_certificate(
 \item{language}{Character. Select 'English' or 'Spanish'.}
 
 \item{name.column}{Character. Name of the column in \code{data} storing attendees' name.}
+
+\item{email.column}{Character. Name of the column in \code{data} storing attendees' emails to automatically send them their certificates.}
+
+\item{email.info}{List. Must include at least one slot named 'account' specifing a Google Mail accout to send certificates from.
+Optionally, other slots named 'subject' and 'body' can be included to specify such parameters in the email.}
 
 \item{type}{Character (optional). Type of event (conference, workshop, seminar...)}
 

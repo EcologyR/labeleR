@@ -1,6 +1,6 @@
 Package: labeleR
 Title: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: 
   c(
   person("Ignacio", "Ramos-Gutierrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre", "cph"),
@@ -29,4 +29,5 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
-    rmarkdown
+    rmarkdown,
+    gmailr

@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 # labeleR
 
 <!-- badges: start -->
+
 `r badger::badge_cran_release()`
 ![](https://img.shields.io/github/r-package/v/EcologyR/labeleR)
 [![R-CMD-check](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml)
@@ -27,6 +28,7 @@ knitr::opts_chunk$set(
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](https://hits.dwyl.com/EcologyR/labeleR)
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](https://hits.dwyl.com/EcologyR/labeleR)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/labeleR)](https://cran.r-project.org/package=labeleR)
+
 <!-- badges: end -->
 
 <img src="man/figures/labeleR.png" width="140px" align="right"/>
@@ -76,15 +78,18 @@ The first time you install tinytex or use **labeleR** it may take a
 while until all packages are correctly installed. Don't worry, it will
 be much quicker next time!
 
-
 #### TinyTeX troubleshooting
-In case you have problems installing `TinyTeX`'s packages, try running this in your console:
+
+In case you have problems installing `TinyTeX`'s packages, try running
+this in your console:
+
 ```{r TinyTeX pkgs, eval = FALSE}
     tinytex::tlmgr_install(pkgs = c( "zref", "needspace", "pagecolor",
                                      "bookmark", "changepage", "fp",
                                      "mdframed", "ms", "pgf", 
                                      "pspicture", "qrcode"))
 ```
+
 ## 1. Getting started
 
 ```{r load labeleR, eval = FALSE}
@@ -262,6 +267,8 @@ document.
 +=======================================================================+
 |                                                                       |
 +-----------------------------------------------------------------------+
+
+#### **NOTE:** To see how to send certificates automatically *via* email, go to the FAQ section!
 
 ### 2.3 Badges
 
@@ -443,16 +450,16 @@ create_tiny_label(
 ### Including italic or bold texts within a single text
 
 This implementation should be used just to change text formats in only a
-part of values stored in columns (variable parameters). 
+part of values stored in columns (variable parameters).
 
-To do so, you must edit the cell value, specifying where the italics text must start
-with `\\textit`, and `\\end` where it ends; and `\\textbf` followed by
-`\\end` for bold text. In case you want to combine both, you will have
-to specify `\\end` twice.
+To do so, you must edit the cell value, specifying where the italics
+text must start with `\\textit`, and `\\end` where it ends; and
+`\\textbf` followed by `\\end` for bold text. In case you want to
+combine both, you will have to specify `\\end` twice.
 
-For example, this could be helpful to
-include italics in a species name which is included as part of a title;
-where just the species name should be italicized.
+For example, this could be helpful to include italics in a species name
+which is included as part of a title; where just the species name should
+be italicized.
 
 ```{r custom italics, eval=FALSE}
 seminar.table <- data.frame(
@@ -491,6 +498,85 @@ create_participation_certificate(
 +=======================================================================+
 |                                                                       |
 +-----------------------------------------------------------------------+
+
+### Sending certificates automatically using `gmailr`
+
+Both attendance and participation certificates can be sent automatically
+using a gmail account. All you have to do is to specify a mail from
+which you want to send them (it will open a connection through an
+authentication step), and specify a column name where the email
+recipient's accounts are stored.
+
+**NOTE**: The account to be used will be asked only once in each
+session. To change the sending account, you must restart R session. Once
+you have specified your email account, you must enable labeleR
+application to have access to your mail.
+
+To do so, you must first ensure you have installed the `gmailr` package:
+
+```{r load gmailr, eval = FALSE}
+require("gmailr")
+```
+
+To send emails automatically you have to specify, at least, a google
+account within a list. This object must contain a slot named "account",
+where the email must be specified. Additionally, you can also specify
+the email subject in a slot named "subject", and the body content of the
+email in a slot named "body". These latter two are optional, and if not
+specified, default values will be applied.
+
+```{r email list, include = FALSE}
+students.table <- data.frame(
+  "Names" = c("Harry Potter", "Hermione Granger", "Neville Longbottom", "Ginny Weasley"),
+  "email" = c("h.potter@hogwarts.co.uk", "h.granger@hogwarts.co.uk",
+                            "n.longbottom@hogwarts.co.uk", "g.weasley@hogwarts.co.uk"))
+
+```
+
+Now we have a list of attendees with their emails
+
+```{r see table}
+print(students.table)
+```
+
+If we specify the email column and our email information, we can send
+everything automatically!
+
+```{r send email, eval=FALSE}
+
+emailinfo <- list(
+  "account" = "a.dumbledore@hogwarts.co.uk"
+  #, "subject" = "Class certificates - School Year 1992-1993" #optional to use non-default values
+  #, "body" = "Here you have your certificate, dear student!" #optional to use non-default values
+)
+
+
+
+create_attendance_certificate(
+  data = students.table,
+  path = "labeleR_output",
+  filename = "attendance_certificates",
+  language = "English" ,
+  name.column = "Names",
+  
+  email.column = "email",
+  email.info = emailinfo,
+  
+  type = "class",
+  title = "Potions (year 1992-1993)",
+  date = "23/06/1993",
+  hours = "200",
+  freetext = "taught by Professor S. Snape",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
+  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
+)
+  
+```
+
+This way, every student will receive an email with their individual certificate attached.
 
 ## Citation
 

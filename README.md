@@ -15,6 +15,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](https://hits.dwyl.com/EcologyR/labeleR)
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](https://hits.dwyl.com/EcologyR/labeleR)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/labeleR)](https://cran.r-project.org/package=labeleR)
+
 <!-- badges: end -->
 
 <img src="man/figures/labeleR.png" width="140px" align="right"/>
@@ -247,6 +248,8 @@ document.
 |--------------------------------------------------------------------------|
 |                                                                          |
 
+#### **NOTE:** To see how to send certificates automatically *via* email, go to the FAQ section!
+
 ### 2.3 Badges
 
 Badges (and all documents from now onward) are rendered in a single
@@ -470,6 +473,83 @@ create_participation_certificate(
 | ![Custom italics example](man/figures/Participation_certificate_italics.png) |
 |------------------------------------------------------------------------------|
 |                                                                              |
+
+### Sending certificates automatically using `gmailr`
+
+Both attendance and participation certificates can be sent automatically
+using a gmail account. All you have to do is to specify a mail from
+which you want to send them (it will open a connection through an
+authentication step), and specify a column name where the email
+recipient’s accounts are stored.
+
+**NOTE**: The account to be used will be asked only once in each
+session. To change the sending account, you must restart R session. Once
+you have specified your email account, you must enable labeleR
+application to have access to your mail.
+
+To do so, you must first ensure you have installed the `gmailr` package:
+
+``` r
+require("gmailr")
+```
+
+To send emails automatically you have to specify, at least, a google
+account within a list. This object must contain a slot named “account”,
+where the email must be specified. Additionally, you can also specify
+the email subject in a slot named “subject”, and the body content of the
+email in a slot named “body”. These latter two are optional, and if not
+specified, default values will be applied.
+
+Now we have a list of attendees with their emails
+
+``` r
+print(students.table)
+#>                Names                       email
+#> 1       Harry Potter     h.potter@hogwarts.co.uk
+#> 2   Hermione Granger    h.granger@hogwarts.co.uk
+#> 3 Neville Longbottom n.longbottom@hogwarts.co.uk
+#> 4      Ginny Weasley    g.weasley@hogwarts.co.uk
+```
+
+If we specify the email column and our email information, we can send
+everything automatically!
+
+``` r
+
+emailinfo <- list(
+  "account" = "a.dumbledore@hogwarts.co.uk"
+  #, "subject" = "Class certificates - School Year 1992-1993" #optional to use non-default values
+  #, "body" = "Here you have your certificate, dear student!" #optional to use non-default values
+)
+
+
+
+create_attendance_certificate(
+  data = students.table,
+  path = "labeleR_output",
+  filename = "attendance_certificates",
+  language = "English" ,
+  name.column = "Names",
+  
+  email.column = "email",
+  email.info = emailinfo,
+  
+  type = "class",
+  title = "Potions (year 1992-1993)",
+  date = "23/06/1993",
+  hours = "200",
+  freetext = "taught by Professor S. Snape",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
+  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
+)
+  
+```
+
+This way, every student will receive an email with their individual
+certificate attached.
 
 ## Citation
 
