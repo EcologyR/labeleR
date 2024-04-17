@@ -36,7 +36,7 @@ params:
 ```{r echo=FALSE, results='asis'}
 for (i in seq_along(params$collection.i)){
   cat("
-\\begin{mdframed}[linewidth=2pt,linecolor=black]\n
+\\begin{mdframed}[linewidth=2pt,linecolor=black, innerleftmargin = 1.5 cm, innerrightmargin = 1.5 cm]\n
 \\pagenumbering{gobble}
 \\begin{center}
 \\bigskip
