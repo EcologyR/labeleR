@@ -1,3 +1,7 @@
+# labeleR 0.1.4
+
+* Add inner margin to herbarium labels
+
 # labeleR 0.1.3
 
 * Allow bold and italic text within column texts
