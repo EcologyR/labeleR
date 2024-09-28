@@ -93,7 +93,7 @@ create_abstractbook <- function(data = NULL,
     affiliation.address.column <- ""
   }
 
-  for(i in seq_along(nrow(data))){
+  for(i in seq_len(nrow(data))){
   authors <- data[i,authors.column]
   authors <- gsub("; ", ";", authors)
   authors <- gsub(" ;", ";", authors)
@@ -132,6 +132,7 @@ create_abstractbook <- function(data = NULL,
 
   affil.use <- paste0("\\item ", affils.unique, " ", aff.names, collapse="")
   data$affil.use[i] <- affil.use
+  rm(authors, auth.use, affils.unique, aff.names, affil.use)
   }
 
   if (!is.null(text.column)) {
