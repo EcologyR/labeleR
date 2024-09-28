@@ -1,0 +1,45 @@
+---
+title: ''
+geometry: "left=2cm,right=2cm,top=3cm,bottom=3cm"
+output:
+  pdf_document: default
+classoption: 
+  - portrait
+header-includes:
+params:
+  title.i: ""
+  authors.i: ""
+  affiliations.i: ""
+  text.i: ""
+---
+
+```{r echo=FALSE, results='asis'}
+
+cat(" \\pagenumbering{arabic}")
+
+for (i in seq_along(params$title.i)) {
+  
+  cat("
+  \\begin{center}
+  {\\fontsize{22pt}{20pt}\\selectfont\\bf\\vspace{.7cm}", params$title.i[i], "} \\\\
+  \\bigskip
+  \\vfill
+  {\\fontsize{16pt}{20pt}\\selectfont\\bf", params$authors.i[i], "} \\\\
+  \\bigskip
+  \\vfill
+  \\begin{itemize}
+  {\\fontsize{14pt}{14pt}\\selectfont
+  ", params$affiliations.i[i], "} \\\\
+  \\end{itemize}
+  \\bigskip
+  \\vfill
+  \\end{center}
+  \\fontsize{14pt}{20pt}\\selectfont", params$text.i[i], "  \\
+  \\vfill
+  \\pagebreak
+  ")
+}
+```
+
+
+
