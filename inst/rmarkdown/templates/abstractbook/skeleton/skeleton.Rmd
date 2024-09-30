@@ -11,30 +11,35 @@ params:
   authors.i: ""
   affiliations.i: ""
   text.i: ""
+  title.cex: ""
+  authors.cex: ""
+  affiliations.cex: ""
+  text.cex: ""
 ---
 
 ```{r echo=FALSE, results='asis'}
-
-cat(" \\pagenumbering{arabic}")
+cat(
+if(file.exists("frontpage.pdf")) "\\includegraphics{frontpage.pdf}\\pagebreak",
+"\\pagenumbering{arabic}")
 
 for (i in seq_along(params$title.i)) {
   
   cat("
   \\begin{center}
-  {\\fontsize{22pt}{20pt}\\selectfont\\bf\\vspace{.7cm}", params$title.i[i], "} \\\\
+  {\\fontsize{",params$title.cex[i],"pt}{20pt}\\selectfont\\bf\\vspace{.7cm}", params$title.i[i], "} \\\\
   \\bigskip
   \\vfill
-  {\\fontsize{16pt}{20pt}\\selectfont\\bf", params$authors.i[i], "} \\\\
+  {\\fontsize{",params$authors.cex[i],"pt}{20pt}\\selectfont\\bf", params$authors.i[i], "} \\\\
   \\bigskip
   \\vfill
   \\begin{itemize}
-  {\\fontsize{14pt}{14pt}\\selectfont
+  {\\fontsize{",params$affiliations.cex[i],"pt}{14pt}\\selectfont
   ", params$affiliations.i[i], "} \\\\
   \\end{itemize}
   \\bigskip
   \\vfill
   \\end{center}
-  \\fontsize{14pt}{20pt}\\selectfont", params$text.i[i], "  \\
+  \\fontsize{",params$text.cex[i],"pt}{20pt}\\selectfont", params$text.i[i], "  \\
   \\vfill
   \\pagebreak
   ")

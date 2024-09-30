@@ -13,6 +13,11 @@ create_abstractbook(
   affiliation.column = NULL,
   affiliation.address.column = NULL,
   text.column = NULL,
+  frontpage = NULL,
+  title.cex = 22,
+  authors.cex = 16,
+  affiliations.cex = 14,
+  text.cex = 14,
   keep.files = FALSE,
   template = NULL
 )
@@ -37,6 +42,16 @@ Separations between each author's affiliations must be specified using a semi-co
 
 \item{affiliation.address.column}{Name of the column in \code{data} specifying the address for
 each affiliation. The number shoud be the same followed in \code{affiliation.column}.}
+
+\item{frontpage}{Character. Path to PDF file to be inserted before the book of abstracts (as front page and/or introduction).}
+
+\item{title.cex}{Text font size used for the title. Default is 22.}
+
+\item{authors.cex}{Text font size used for the authors' names. Default is 16.}
+
+\item{affiliations.cex}{Text font size used for the affiliation addresses Default is 14.}
+
+\item{text.cex}{Text font size used for the abstract main text body. Default is 14.}
 
 \item{keep.files}{Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.}

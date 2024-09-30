@@ -17,6 +17,11 @@
 #' @param affiliation.address.column Name of the column in `data` specifying the address for
 #' each affiliation. The number shoud be the same followed in `affiliation.column`.
 #' @param text.colum Name of the column in `data` storing the abstract text.
+#' @param frontpage Character. Path to PDF file to be inserted before the book of abstracts (as front page and/or introduction).
+#' @param title.cex Text font size used for the title. Default is 22.
+#' @param authors.cex Text font size used for the authors' names. Default is 16.
+#' @param affiliations.cex Text font size used for the affiliation addresses Default is 14.
+#' @param text.cex Text font size used for the abstract main text body. Default is 14.
 #' @param keep.files Logical. Keep the RMarkdown template and associated files
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
@@ -40,6 +45,11 @@ create_abstractbook <- function(data = NULL,
                          affiliation.column = NULL,
                          affiliation.address.column = NULL,
                          text.column = NULL,
+                         frontpage = NULL,
+                         title.cex = 22 ,
+                         authors.cex = 16,
+                         affiliations.cex = 14,
+                         text.cex = 14,
                          keep.files = FALSE,
                          template = NULL) {
 
@@ -106,7 +116,7 @@ create_abstractbook <- function(data = NULL,
 
 
   if(!(length(authors) == length(affils))) {
-    stop("Authors and affiliations must have the same length.
+    stop("Error in line: ",i,". Authors and affiliations must have the same length.
          Please check you have used semicolons (';') as separators.")
   }
 
@@ -126,7 +136,7 @@ create_abstractbook <- function(data = NULL,
   aff.names <- unlist(strsplit(aff.names, split=";"))
 
   if(!(length(affils.unique) == length(aff.names))) {
-    stop("There must be the same amount of affiliations as affiliation names.
+    stop("Error in line: ",i, ". There must be the same amount of affiliations as affiliation names.
          Please check you have used semicolons (';') as separators.")
   }
 
@@ -145,13 +155,21 @@ create_abstractbook <- function(data = NULL,
   }
 
 
-
-
   ## Keep intermediate files? If no, using tempdir for intermediate files
   if (!isTRUE(keep.files)) {
     folder <- tempdir()
   } else {
     folder <- path  # all files will remain there
+  }
+
+  if(!is.null(frontpage)){
+    if(!file.exists(frontpage)){stop("Specified PDF does not exist")}
+    file.copy(from =  frontpage,
+              to = file.path(folder, "frontpage.pdf"),
+              overwrite = TRUE)
+  }
+  if(is.null(frontpage) & file.exists(paste0(folder,"/frontpage.pdf"))){
+    file.remove(paste0(folder,"/frontpage.pdf"))
   }
 
 
@@ -182,10 +200,14 @@ create_abstractbook <- function(data = NULL,
     output_dir = path,
     output_file = output_file,
     params = list(
-      title.i        = data[, title.column   ],
-      authors.i      = data[,"auth.use" ],
-      affiliations.i =  data[,"affil.use"],
-      text.i         = if (text.column        == "") {"~"} else {data[, text.column       ]}
+      title.i           = data[, title.column   ],
+      authors.i         = data[,"auth.use" ],
+      affiliations.i    =  data[,"affil.use"],
+      text.i            = if (text.column        == "") {"~"} else {data[, text.column       ] },
+      title.cex         = as.character(rep(title.cex        , times = nrow(data))) ,
+      authors.cex       = as.character(rep(authors.cex      , times = nrow(data))) ,
+      affiliations.cex  = as.character(rep(affiliations.cex , times = nrow(data))) ,
+      text.cex          = as.character(rep(text.cex         , times = nrow(data)))
 
     )
   )
