@@ -11,7 +11,6 @@ create_abstractbook(
   title.column = NULL,
   authors.column = NULL,
   affiliation.column = NULL,
-  affiliation.address.column = NULL,
   text.column = NULL,
   frontpage = NULL,
   title.cex = 22,
@@ -29,19 +28,15 @@ create_abstractbook(
 
 \item{filename}{Character. Filename of the pdf. If NULL, default is "AbstractBook".}
 
-\item{title.column}{Character. Name of the column in \code{data}
-storing abstracts' titles.}
+\item{title.column}{Character. Name of the column in \code{data} storing abstracts' titles.}
 
-\item{authors.column}{Character. Name of the column in \code{data}
-storing abstracts' names. Different authors names must be separated using a semi-colon (';').}
+\item{authors.column}{Character. Name of the column in \code{data} storing abstract authors' names
+and affiliations. Numeric (and symbol, e.g. '*') affiliations MUST be specified between brackets.
+Authors must be separated using a semi-colon (';').}
 
-\item{affiliation.column}{Character (optional). Name of the column in \code{data} storing the numbers
-or symbols (e.g. '*' for corresponding author) representing each autor affiliations.
-Different affiliations of each author  must be specified using a comma (',') as separator.
-Separations between each author's affiliations must be specified using a semi-colon (';').}
-
-\item{affiliation.address.column}{Name of the column in \code{data} specifying the address for
-each affiliation. The number shoud be the same followed in \code{affiliation.column}.}
+\item{affiliation.column}{Character. Name of the column in \code{data} storing the addresses for each
+affiliation number (specified between brackets after author names, in \code{authors.column}).
+Separations between  authors must be specified using a semi-colon (';').}
 
 \item{frontpage}{Character. Path to PDF file to be inserted before the book of abstracts (as front page and/or introduction).}
 
@@ -71,8 +66,22 @@ Create a book of abstracts given a dataframe or tibble.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+create_abstractbook(
+data=abstract.table,
+path = "labeleR_output",
+filename = "congress_abstractbook",
+title.column = "abstract_title",
+authors.column = "authors",
+affiliation.column = "affiliation",
+text.column = "abstract_text",
+title.cex = 20,
+authors.cex = 15,
+affiliations.cex = 14,
+text.cex = 12,
+frontpage = "Congress_frontpage.pdf"
+)
 \dontshow{\}) # examplesIf}
 }
 \author{
-Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
+Ignacio Ramos-Gutierrez, Julia G. de Aledo, Jimena Martín-Mateo, Francisco Rodriguez-Sanchez
 }

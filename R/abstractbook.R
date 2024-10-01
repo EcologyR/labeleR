@@ -6,16 +6,13 @@
 #' @param data a data frame including abstract titles, names, affiliations and abstract texts.
 #' @param path Character. Path to folder where the PDF file will be saved.
 #' @param filename Character. Filename of the pdf. If NULL, default is "AbstractBook".
-#' @param title.column Character. Name of the column in `data`
-#' storing abstracts' titles.
-#' @param authors.column Character. Name of the column in `data`
-#' storing abstracts' names. Different authors names must be separated using a semi-colon (';').
-#' @param affiliation.column Character (optional). Name of the column in `data` storing the numbers
-#' or symbols (e.g. '*' for corresponding author) representing each autor affiliations.
-#' Different affiliations of each author  must be specified using a comma (',') as separator.
-#' Separations between each author's affiliations must be specified using a semi-colon (';').
-#' @param affiliation.address.column Name of the column in `data` specifying the address for
-#' each affiliation. The number shoud be the same followed in `affiliation.column`.
+#' @param title.column Character. Name of the column in `data` storing abstracts' titles.
+#' @param authors.column Character. Name of the column in `data` storing abstract authors' names
+#' and affiliations. Numeric (and symbol, e.g. '*') affiliations MUST be specified between brackets.
+#' Authors must be separated using a semi-colon (';').
+#' @param affiliation.column Character. Name of the column in `data` storing the addresses for each
+#' affiliation number (specified between brackets after author names, in `authors.column`).
+#' Separations between  authors must be specified using a semi-colon (';').
 #' @param text.colum Name of the column in `data` storing the abstract text.
 #' @param frontpage Character. Path to PDF file to be inserted before the book of abstracts (as front page and/or introduction).
 #' @param title.cex Text font size used for the title. Default is 22.
@@ -33,9 +30,23 @@
 #'
 #' @export
 #'
-#' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
+#' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo, Jimena Martín-Mateo, Francisco Rodriguez-Sanchez
 #'
 #' @examplesIf interactive()
+#' create_abstractbook(
+#' data=abstract.table,
+#' path = "labeleR_output",
+#' filename = "congress_abstractbook",
+#' title.column = "abstract_title",
+#' authors.column = "authors",
+#' affiliation.column = "affiliation",
+#' text.column = "abstract_text",
+#' title.cex = 20,
+#' authors.cex = 15,
+#' affiliations.cex = 14,
+#' text.cex = 12,
+#' frontpage = "Congress_frontpage.pdf"
+#')
 
 create_abstractbook <- function(data = NULL,
                          path = NULL,
@@ -43,7 +54,6 @@ create_abstractbook <- function(data = NULL,
                          title.column = NULL,
                          authors.column = NULL,
                          affiliation.column = NULL,
-                         affiliation.address.column = NULL,
                          text.column = NULL,
                          frontpage = NULL,
                          title.cex = 22 ,
@@ -95,54 +105,66 @@ create_abstractbook <- function(data = NULL,
     affiliation.column <- ""
   }
 
-  if (!is.null(affiliation.address.column)) {
-    check_column_in_df(data, affiliation.address.column)
-    data[,affiliation.address.column] <- check_latex(data, affiliation.address.column)
-  }
-  if (is.null(affiliation.address.column)) {
-    affiliation.address.column <- ""
-  }
-
   for(i in seq_len(nrow(data))){
   authors <- data[i,authors.column]
   authors <- gsub("; ", ";", authors)
   authors <- gsub(" ;", ";", authors)
   authors <- unlist(strsplit(authors, split=";"))
 
-  affils <- data[i,affiliation.column]
-  affils <- gsub("; ", ";", affils)
-  affils <- gsub(" ;", ";", affils)
-  affils <- unlist(strsplit(affils, split=";"))
+
+    error.open <- which(!(grepl("\\(", authors)))
+    error.close<- which(!(grepl("\\)", authors)))
+
+    if(any(error.open)){
+    stop("Error in line: ",i,". Unmatched opening bracket in author(s) ",
+         paste0(error.open, collapse = " & "))
+         }
+    if(any(error.close)){
+      stop("Error in line: ",i,". Unmatched closing bracket in author(s) ",
+           paste0(error.close, collapse = " & "))
+    }
+
+    auth.use <- gsub("\\(", "\\\\textsuperscript{", authors)
+    auth.use <- gsub("\\)", "}", auth.use)
+
+    auth.use <- paste0(auth.use, collapse = ", ")
+    data$auth.use[i] <- auth.use
 
 
-  if(!(length(authors) == length(affils))) {
-    stop("Error in line: ",i,". Authors and affiliations must have the same length.
-         Please check you have used semicolons (';') as separators.")
+
+  affils.unique <-  substr( x = authors, regexpr("\\(", authors)+1,  regexpr("\\)", authors)-1) |>
+  paste0( collapse = ",") |>
+  strsplit(split=",") |>
+  unlist() |>
+  unique()
+
+  if(any(affils.unique == "*")){
+    cor.pos <- which(affils.unique == "*")
+    affils.unique <- c(affils.unique[-cor.pos], affils.unique[cor.pos])
   }
 
 
-  auth.use <- paste0(authors, "\\textsuperscript{",affils,"}", collapse = ", ")
-  data$auth.use[i] <- auth.use
 
 
+  affiliations <- data[i,affiliation.column] |>
+    gsub(pattern = "; ", replacement = ";") |>
+    strsplit(split=";") |>
+    unlist()
 
-  affils.unique <- paste0(affils, collapse = ",")
-  affils.unique <- unique(unlist(strsplit(affils, split=",")))
-
-
-  aff.names <- data[i,affiliation.address.column]
-  aff.names <- gsub("; ", ";", aff.names)
-  aff.names <- gsub(" ;", ";", aff.names)
-  aff.names <- unlist(strsplit(aff.names, split=";"))
-
-  if(!(length(affils.unique) == length(aff.names))) {
+  if(!(length(affils.unique) == length(affiliations))) {
     stop("Error in line: ",i, ". There must be the same amount of affiliations as affiliation names.
-         Please check you have used semicolons (';') as separators.")
+         Please check opening and closing brackets, and that you have used semicolons (';') as separators.")
   }
 
-  affil.use <- paste0("\\item ", affils.unique, " ", aff.names, collapse="")
+  if(any(substr(affiliations, 1,1) == "*")){
+    cor.pos <- which(substr(affiliations, 1,1) == "*")
+    # if(length(cor.pos) > 1){message("Please specify ")}
+    affiliations <- c(affiliations[-cor.pos], affiliations[cor.pos])
+  }
+
+  affil.use <- paste0("\\item ",affiliations, collapse="")
   data$affil.use[i] <- affil.use
-  rm(authors, auth.use, affils.unique, aff.names, affil.use)
+  rm(authors, auth.use, affils.unique, affiliations, affil.use)
   }
 
   if (!is.null(text.column)) {
