@@ -77,3 +77,16 @@
 #' ```
 #'
 "tiny.table"
+
+
+#' abstract.table
+#'
+#' Example data to create abstract books
+#'
+#' @md
+#' @details
+#' ```{r echo=FALSE}
+#' knitr::kable(abstract.table)
+#' ```
+#'
+"abstract.table"

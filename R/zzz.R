@@ -48,7 +48,7 @@ check_column_in_df <- function(df = NULL, column = NULL) {
   stopifnot(is.character(column))
   if (!(column) %in% colnames(df)) {
     stop("Column '", column ,
-         " is not a column in your 'data' object. Please select from \n",
+         "' is not a column in your 'data' object. Please select from \n",
          paste0("- ", colnames(df), sep = "\n"))
   }
 }
