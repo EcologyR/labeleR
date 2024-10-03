@@ -120,11 +120,11 @@ create_abstractbook <- function(data = NULL,
     error.close<- which(!(grepl("\\)", authors)))
 
     if(any(error.open)){
-    stop("Error in line: ",i,". Unmatched opening bracket in author(s) ",
+    stop("Error in line: ",i,". Unmatched closing bracket in author(s) ",
          paste0(error.open, collapse = " & "))
          }
     if(any(error.close)){
-      stop("Error in line: ",i,". Unmatched closing bracket in author(s) ",
+      stop("Error in line: ",i,". Unmatched opening bracket in author(s) ",
            paste0(error.close, collapse = " & "))
     }
 
@@ -136,11 +136,11 @@ create_abstractbook <- function(data = NULL,
 
 
 
-  affils.unique <-  substr( x = authors, regexpr("\\(", authors)+1,  regexpr("\\)", authors)-1) |>
-  paste0( collapse = ",") |>
-  strsplit(split=",") |>
-  unlist() |>
-  unique()
+  affils.unique <-  substr( x = authors, regexpr("\\(", authors)+1,  regexpr("\\)", authors)-1)
+  affils.unique <- paste0(affils.unique, collapse = ",")
+  affils.unique <- strsplit(affils.unique, split=",")
+  affils.unique <- unlist(affils.unique)
+  affils.unique <- unique(affils.unique)
 
   if(any(affils.unique == "*")){
     cor.pos <- which(affils.unique == "*")
@@ -150,10 +150,10 @@ create_abstractbook <- function(data = NULL,
 
 
 
-  affiliations <- data[i,affiliation.column] |>
-    gsub(pattern = "; ", replacement = ";") |>
-    strsplit(split=";") |>
-    unlist()
+  affiliations <- data[i,affiliation.column]
+  affiliations <- gsub(affiliations, pattern = "; ", replacement = ";")
+  affiliations <- strsplit(affiliations, split=";")
+  affiliations <- unlist(affiliations)
 
   if(!(length(affils.unique) == length(affiliations))) {
     stop("Error in line: ",i, ". There must be the same amount of affiliations as affiliation names.
