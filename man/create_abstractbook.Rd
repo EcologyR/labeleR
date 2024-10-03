@@ -64,6 +64,10 @@ appear in the same folder.
 \description{
 Create a book of abstracts given a dataframe or tibble.
 }
+\details{
+You can copy and modify at your convenience  \href{https://docs.google.com/forms/d/1u4SFWDobQrD8AEvKpvPCdwAZiVGd55B2dAtPmPEfU6E/copy}{this Google form template}
+to retrieve abstract information which will match labeleR's requirements for a straightforward use.
+}
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 create_abstractbook(

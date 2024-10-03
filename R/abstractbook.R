@@ -28,6 +28,10 @@
 #' by `path`. If `keep.files = TRUE`, an RMarkdown will also
 #' appear in the same folder.
 #'
+#' @details You can copy and modify at your convenience  \href{https://docs.google.com/forms/d/1u4SFWDobQrD8AEvKpvPCdwAZiVGd55B2dAtPmPEfU6E/copy}{this Google form template}
+#' to retrieve abstract information which will match labeleR's requirements for a straightforward use.
+#'
+#'
 #' @export
 #'
 #' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo, Jimena Martín-Mateo, Francisco Rodriguez-Sanchez
