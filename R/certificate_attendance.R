@@ -8,7 +8,7 @@
 #' @param language Character. Select 'English' or 'Spanish'.
 #' @param name.column Character. Name of the column in `data` storing attendees' name.
 #' @param email.column Character. Name of the column in `data` storing attendees' emails to automatically send them their certificates.
-#' @param email.info List. Must include at least one slot named 'account' specifing a Google Mail accout to send certificates from.
+#' @param email.info List. Must include at least one slot named 'user' specifing a Google Mail accout to send certificates from.
 #' Optionally, other slots named 'subject' and 'body' can be included to specify such parameters in the email.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
 #' @param title Character. Title of the event
@@ -110,15 +110,15 @@ create_attendance_certificate <- function(
   if(sendmail){
     create_smtp_creds_key(id = email.info$creds.name,
                           provider = "gmail",
-                          user = email.info$account,
+                          user = email.info$user,
                           overwrite = T)
     credentials <- blastula::view_credential_keys()
-    credentials <- credentials[credentials$username == email.info$account &
+    credentials <- credentials[credentials$username == email.info$user &
                                  credentials$id == email.info$creds.name,]
     if(nrow(credentials) == 0){
       stop("You must create sour mail sending application (dont't worry, it is very easy, and is necessary only the first time!).
 
-- First access this link using the specified  mail account:
+- First access this link using the specified  mail user:
 https://myaccount.google.com/apppasswords
 
 - Create an application. The used application name must be specified in email.info, within the creds.name slot.
@@ -129,13 +129,13 @@ https://myaccount.google.com/apppasswords
     }
 
   if(!is.null(email.column) & is.null(email.info)){
-    stop("You must specify your email account information")
+    stop("You must specify your email user information")
   }
 
   if(!is.null(email.info) &
-     (!inherits(email.info, "list") | !(("account") %in% names(email.info)) | !(("creds.name") %in% names(email.info)))
+     (!inherits(email.info, "list") | !(("user") %in% names(email.info)) | !(("creds.name") %in% names(email.info)))
   ){
-    stop("'email.info' should be a list including at least two slots named \"account\" and \"creds.name\".\n" ,
+    stop("'email.info' should be a list including at least two slots named \"user\" and \"creds.name\".\n" ,
           "Optionally, slots 'subject' and 'body' can also be included")
   }
 
@@ -241,10 +241,11 @@ https://myaccount.google.com/apppasswords
       )
     )
 
-    if(sendmail & !is.na(data[i,email.column])){
+    if(sendmail){
+      if(!is.na(data[i,email.column])){
 
       mail.to <- data[i,email.column]
-      mail.from <- email.info$account
+      mail.from <- email.info$user
       mail.subj <- email.info$subject
       mail.body <- email.info$body
 
@@ -258,21 +259,22 @@ https://myaccount.google.com/apppasswords
 
 
       email <- blastula::compose_email(
-        body = mail.body,
-        footer = "Mail sent on automatically using labeleR.
-                    https://ecologyr.github.io/labeleR/")
+        body = blastula::md(mail.body),
+        footer = blastula::md(
+"Mail sent on automatically using labeleR.\r\n
+https://ecologyr.github.io/labeleR/"))
       email <- blastula::add_attachment(email, file = paste0(path, "/", output_file))
 
 
       blastula::smtp_send(
         email,
-        credentials = creds_key(email.info$creds.name),
+        credentials = blastula::creds_key(email.info$creds.name),
         to = mail.to,
         from = mail.from,
         subject = mail.subj)
 
 
-    }
+    }}
 
   }
 
