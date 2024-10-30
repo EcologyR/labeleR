@@ -101,43 +101,8 @@ create_attendance_certificate <- function(
     if (language == "Spanish") {filename <- "Asistencia"}
   }
 
-  if(!is.null(email.column) & !is.null(email.info)){
-    sendmail <- TRUE
-    }else {
-      sendmail <- FALSE
-    }
 
-  if(sendmail){
-    create_smtp_creds_key(id = email.info$creds.name,
-                          provider = "gmail",
-                          user = email.info$user,
-                          overwrite = T)
-    credentials <- blastula::view_credential_keys()
-    credentials <- credentials[credentials$username == email.info$user &
-                                 credentials$id == email.info$creds.name,]
-    if(nrow(credentials) == 0){
-      stop("You must create sour mail sending application (dont't worry, it is very easy, and is necessary only the first time!).
-
-- First access this link using the specified  mail user:
-https://myaccount.google.com/apppasswords
-
-- Create an application. The used application name must be specified in email.info, within the creds.name slot.
-
-- Save the password anywhere safe, as you will be asked for it later.")
-    }
-
-    }
-
-  if(!is.null(email.column) & is.null(email.info)){
-    stop("You must specify your email user information")
-  }
-
-  if(!is.null(email.info) &
-     (!inherits(email.info, "list") | !(("user") %in% names(email.info)) | !(("creds.name") %in% names(email.info)))
-  ){
-    stop("'email.info' should be a list including at least two slots named \"user\" and \"creds.name\".\n" ,
-          "Optionally, slots 'subject' and 'body' can also be included")
-  }
+  sendmail <- sendmail_setup(email.column, email.info)
 
 
   check_column_in_df(data, name.column)
@@ -241,40 +206,15 @@ https://myaccount.google.com/apppasswords
       )
     )
 
-    if(sendmail){
-      if(!is.na(data[i,email.column])){
-
-      mail.to <- data[i,email.column]
-      mail.from <- email.info$user
-      mail.subj <- email.info$subject
-      mail.body <- email.info$body
-
-      if(is.null(mail.subj)){mail.subj <- paste0("Attendance certificate - ", data[i, name.column])}
-
-      if(is.null(mail.body)){mail.body <- paste0("Attendance certificate for ", data[i, name.column],
-                                                 " awarded for attending:","\n",
-                                                 title,"\n",
-                                                 "\n\n\n",
-                                                 "This certificate was automatically sent by labeleR using 'blastula'")}
-
-
-      email <- blastula::compose_email(
-        body = blastula::md(mail.body),
-        footer = blastula::md(
-"Mail sent on automatically using labeleR.\r\n
-https://ecologyr.github.io/labeleR/"))
-      email <- blastula::add_attachment(email, file = paste0(path, "/", output_file))
-
-
-      blastula::smtp_send(
-        email,
-        credentials = blastula::creds_key(email.info$creds.name),
-        to = mail.to,
-        from = mail.from,
-        subject = mail.subj)
-
-
-    }}
+    if(isTRUE(sendmail)){
+      send_mail(data = data,
+               row = i,
+               email.info = email.info,
+               name.column  =  name.column ,
+               email.column =  email.column ,
+               attachment = paste0(path, "/", output_file)
+      )
+    }
 
   }
 

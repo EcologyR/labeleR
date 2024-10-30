@@ -97,9 +97,71 @@ use_image <- function(image = NULL, name = NULL, folder = NULL) {
 }
 
 
-#### Function to end gmail certificate
+#### Function to set the SMTP server
+sendmail_setup <- function(email.column, email.info){
 
-sendmail <- function(data, row, email.info,
+  if( is.null(email.column) & !is.null(email.info)){
+    stop("You must specify the email column")
+  }
+
+  if(!is.null(email.column) & is.null(email.info)){
+    stop("You must specify your email information")
+  }
+
+  if(!is.null(email.info) &
+     (!inherits(email.info, "list") |
+      !(("user") %in% names(email.info)) |
+      !(("app.name") %in% names(email.info)))){
+    stop("'email.info' should be a list including at least two slots named 'user' and 'app.name'.\n" ,
+         "Optionally, slots 'cc', 'bcc', 'subject' and 'body' can also be included")
+  }
+
+  if(!is.null(email.column) & !is.null(email.info)){
+    sendmail <- TRUE
+  }else {
+    sendmail <- FALSE
+  }
+
+  if (isTRUE(sendmail)) {
+    sendmail <- utils::askYesNo("You are trying to send automatically certificates via email. Are you sure you want to continue?",
+                                default = FALSE,
+                                prompts = getOption("askYesNo", gettext(c("Yes", "No", "Cancel"))))
+  }
+
+  if(isTRUE(sendmail)){
+
+    credentials <- blastula::view_credential_keys()
+    credentials <- credentials[credentials$username == email.info$user &
+                                 credentials$id == email.info$app.name,]
+    if(nrow(credentials) == 0){
+      message("You must create sour mail sending application (dont't worry, it is very easy, and is necessary only the first time!).
+
+- First access this link using the specified  mail user (R will open it for you):
+https://myaccount.google.com/apppasswords
+
+- Create an application. The used application name must be specified in email.info, within the app.name slot.
+
+- Save the password anywhere safe, as you will be asked for it later!\n\n")
+
+      utils::browseURL("https://myaccount.google.com/apppasswords")
+    }
+
+    blastula::create_smtp_creds_key(id = email.info$app.name,
+                                    provider = "gmail",
+                                    user = email.info$user,
+                                    overwrite = T)
+    credentials <- blastula::view_credential_keys()
+    credentials <- credentials[credentials$username == email.info$user &
+                                 credentials$id == email.info$app.name,]
+
+  }
+
+  return(sendmail)
+}
+
+#### Function to send a mail and atachment within the loop
+
+send_mail <- function(data, row, email.info,
                      name.column, email.column,
                      attachment){
   mail.to <- data[row,email.column]
@@ -129,7 +191,7 @@ https://ecologyr.github.io/labeleR/"))
 
     blastula::smtp_send(
       email,
-      credentials = blastula::creds_key(email.info$creds.name),
+      credentials = blastula::creds_key(email.info$app.name),
       to = mail.to,
       from = mail.from,
       subject = mail.subj,
@@ -138,3 +200,6 @@ https://ecologyr.github.io/labeleR/"))
 
 
   }}
+
+
+

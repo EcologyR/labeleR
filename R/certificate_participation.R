@@ -110,16 +110,9 @@ create_participation_certificate <- function(
     if (language == "Spanish") {filename <- "Participacion"}
   }
 
-  if(!is.null(email.column) & is.null(email.info)){
-    stop("You must specify your email account information")
-  }
 
-  if(!is.null(email.info) &
-     (!inherits(email.info, "list") | !("account" %in% names(email.info)) )
-  ){
-    stop("'email.info' should be a list including at least a slot named \"account\".\n" ,
-         "Optionally, slots 'subject' and 'body' can also be included")
-  }
+  sendmail <- sendmail_setup(email.column, email.info)
+
 
   check_column_in_df(data, name.column)
 
@@ -230,30 +223,17 @@ create_participation_certificate <- function(
         signer.role.i = if (signer.role        == "") {bl.char} else {signer.role}
       )
     )
-    if(!is.null(email.column)){
-      if(!is.na(data[i,email.column])){
-      mail.to <- data[i,email.column]
-      mail.from <- email.info$account
-      mail.subj <- email.info$subject
-      mail.body <- email.info$body
 
-      if(is.null(mail.subj)){mail.subj <- paste0("Attendance certificate - ", data[i, name.column])}
-
-      if(is.null(mail.body)){mail.body <- paste0("Attendance certificate for ", data[i, name.column],
-                                                 " awarded for attending:","\n",
-                                                 data[i, title.column],"\n",
-                                                 "\n\n\n",
-                                                 "This certificate was automatically sent by labeleR using 'gmailr'")}
-
-      send_certificate_mail(
-        from = mail.from,
-        to = mail.to,
-        subject = mail.subj,
-        body = mail.body,
-        attach = paste0(path, "/", output_file)
-      )
-    }}
+      if(isTRUE(sendmail)){
+        send_mail(data = data,
+                 row = i,
+                 email.info = email.info,
+                 name.column  =  name.column ,
+                 email.column =  email.column,
+                 attachment = paste0(path, "/", output_file) )
+      }
+    }
   }
 
-}
+
 
