@@ -99,29 +99,42 @@ use_image <- function(image = NULL, name = NULL, folder = NULL) {
 
 #### Function to end gmail certificate
 
-send_certificate_mail <- function(from = NULL, to = NULL,
-                                  subject = "email automatically sent by labeleR",
-                                  body = "",
-                                  attach = NULL){
+sendmail <- function(data, row, email.info,
+                     name.column, email.column,
+                     attachment){
+  mail.to <- data[row,email.column]
 
-  if(is.null(from)){stop("A valid email account must be specified. Please make sure to access the Google API with the same account.")}
-  if(is.null(to)){stop("A destination email account must be specified")}
-  if(is.null(body)){body <- "This certificate was automatically sent by labeleR using 'gmailr'"}
-  if(is.null(attach)){stop("A pdf document must be attached.")}
+  if(is.na(mail.to)){message("email not sent to ", data[row, name.column])}#se puede mandar un auto mensaje??
+  if(!is.na(mail.to)){
 
-  gmailr::gm_auth_configure(path = system.file("gmailr/labeleR_JSON.json", package = "labeleR"))
+    mail.from <- email.info$user
+    mail.subj <- email.info$subject
+    mail.body <- email.info$body
+    mail.cc   <- email.info$cc
+    mail.bcc   <- email.info$bcc
 
+    if(is.null(mail.subj)){mail.subj <- paste0("Certificate - ", data[row, name.column])}
 
-
-  email <-
-    gmailr::gm_mime() |>
-    gmailr::gm_to(to) |>
-    gmailr::gm_from(from) |>
-    gmailr::gm_subject(subject) |>
-    gmailr::gm_text_body(body) |>
-    gmailr::gm_attach_file(attach)
+    if(is.null(mail.body)){mail.body <- paste0("Certificate for ", data[row, name.column],".\n\n",
+                                               "This certificate was automatically sent by labeleR using 'blastula'")}
 
 
-  gmailr::gm_send_message(email)
+    email <- blastula::compose_email(
+      body = blastula::md(mail.body),
+      footer = blastula::md(
+        "Mail sent on automatically using labeleR.\r\n
+https://ecologyr.github.io/labeleR/"))
+    email <- blastula::add_attachment(email, file = attachment)
 
-}
+
+    blastula::smtp_send(
+      email,
+      credentials = blastula::creds_key(email.info$creds.name),
+      to = mail.to,
+      from = mail.from,
+      subject = mail.subj,
+      cc = mail.cc,
+      bcc = mail.bcc)
+
+
+  }}
