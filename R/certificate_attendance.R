@@ -8,8 +8,7 @@
 #' @param language Character. Select 'English' or 'Spanish'.
 #' @param name.column Character. Name of the column in `data` storing attendees' name.
 #' @param email.column Character. Name of the column in `data` storing attendees' emails to automatically send them their certificates.
-#' @param email.info List. Must include at least one slot named 'user' specifing a Google Mail accout to send certificates from.
-#' Optionally, other slots named 'subject' and 'body' can be included to specify such parameters in the email.
+#' @param email.info Object created using 'email_configuration()' function.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
 #' @param title Character. Title of the event
 #' @param date Date of the event

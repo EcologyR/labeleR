@@ -120,6 +120,10 @@ check_file_name <- function(name, suffix, path){
 }
 
 
+#' Setup the email server
+#'
+#' Create the email.info object to feed the certificate creation functions
+#'
 #' @param user Character. Email account used to send certificates.
 #' @param app.name Name of the mail application used to send emails. To create one, access `https://myaccount.google.com/apppasswords`
 #' @param subject Character. Subject of the email to be sent If not specified, labeleR will use a default value.
