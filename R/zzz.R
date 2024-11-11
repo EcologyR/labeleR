@@ -97,6 +97,25 @@ use_image <- function(image = NULL, name = NULL, folder = NULL) {
 }
 
 
+#Function to change a name between brackets
+check_file_name <- function(name, suffix, path){
+
+  if(!file.exists(paste0(path, "/", name, suffix))){
+    newname <- name
+  }else{
+    if(!grepl("\\(", name) & !grepl("\\)", name)){
+      newname <- paste0(name, "(2)")
+    }else{
+      p1 <- unlist(gregexec("\\(", name))
+      p2 <- unlist(gregexec("\\)", name))
+      num <- substr(name, p1+1, p2-1)
+      num <- as.integer(num)
+      newname <- paste0(substr(name, 1, p1),num+1 ,")")
+    }
+  }
+  return(newname)
+}
+
 #### Function to set the SMTP server
 sendmail_setup <- function(email.column, email.info){
 

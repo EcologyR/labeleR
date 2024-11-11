@@ -200,8 +200,9 @@ create_participation_certificate <- function(
 
   for (i in 1:nrow(data)) {
     out.name <- filename
-    out.name <- paste0(out.name, "_", data[i, name.column], "_",
-                       gsub("/","-", data[i, date.column]))
+    out.name <- paste0(out.name, "_", data[i, name.column])
+    out.name <- check_file_name(out.name, ".pdf", path)
+
     output_file <- paste0(out.name,'.pdf')
 
     bl.char <- "~"
