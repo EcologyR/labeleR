@@ -191,7 +191,7 @@ send_mail <- function(data, row, email.info,
     email <- blastula::compose_email(
       body = blastula::md(mail.body),
       footer = blastula::md(
-        "Mail sent on automatically using labeleR.\r\n
+        "Mail sent automatically using labeleR.\r\n
 https://ecologyr.github.io/labeleR/"))
     email <- blastula::add_attachment(email, file = attachment)
 
