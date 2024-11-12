@@ -51,9 +51,10 @@ contribution.}
 \item{date.column}{Character. Name of the column in \code{data} storing dates of
 participation.}
 
-\item{email.column}{Character. Name of the column in \code{data} storing attendees' emails to automatically send them their certificates.}
+\item{email.column}{Character. Name of the column in \code{data} storing attendees' email address
+to automatically send them their certificates.}
 
-\item{email.info}{Object created using 'email_configuration()' function.}
+\item{email.info}{Object created using \code{\link[=configure_email]{configure_email()}} function.}
 
 \item{type}{Character (optional). Type of event (conference, workshop, seminar...)}
 

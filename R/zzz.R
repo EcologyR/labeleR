@@ -127,14 +127,14 @@ sendmail_setup <- function(email.column, email.info){
   }
 
   if(!is.null(email.column) & is.null(email.info)){
-    stop("You must specify an email.info object.\nUse function 'email_configuration()' to create it.")
+    email.info <- configure_email()
   }
 
   if(!is.null(email.info) &
      (!inherits(email.info, "list") |
       !(("user") %in% names(email.info)) |
       !(("app.name") %in% names(email.info)))){
-    stop("'email.info' should be a list object created using 'email_configuration()' function")
+    stop("'email.info' should be a list object created using 'configure_email' function")
   }
 
   if(!is.null(email.column) & !is.null(email.info)){
@@ -150,18 +150,18 @@ sendmail_setup <- function(email.column, email.info){
     if(is.na(sendmail)){stop("Cancel button selected. Aborting.")}
   }
 
-  if(isTRUE(sendmail)){
-
-
-    blastula::create_smtp_creds_key(id = email.info$app.name,
-                                    provider = "gmail",
-                                    user = email.info$user,
-                                    overwrite = T)
-    credentials <- blastula::view_credential_keys()
-    credentials <- credentials[credentials$username == email.info$user &
-                                 credentials$id == email.info$app.name,]
-
-  }
+  # if(isTRUE(sendmail)){
+  #
+  #
+  #   blastula::create_smtp_creds_key(id = email.info$app.name,
+  #                                   provider = "gmail",
+  #                                   user = email.info$user,
+  #                                   overwrite = T)
+  #   credentials <- blastula::view_credential_keys()
+  #   credentials <- credentials[credentials$username == email.info$user &
+  #                                credentials$id == email.info$app.name,]
+  #
+  # }
 
   return(sendmail)
 }
@@ -173,8 +173,8 @@ send_mail <- function(data, row, email.info,
                      attachment){
   mail.to <- data[row,email.column]
 
-  if(is.na(mail.to)){message("email not sent to ", data[row, name.column])}#se puede mandar un auto mensaje??
-  if(!is.na(mail.to)){
+  if (!grepl("@", mail.to)) {message("email not sent to ", data[row, name.column])}#se puede mandar un auto mensaje??
+  if (grepl("@", mail.to)){
 
     mail.from <- email.info$user
     mail.subj <- email.info$subject

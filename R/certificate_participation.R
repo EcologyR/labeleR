@@ -15,8 +15,9 @@
 #' contribution.
 #' @param date.column Character. Name of the column in `data` storing dates of
 #' participation.
-#' @param email.column Character. Name of the column in `data` storing attendees' emails to automatically send them their certificates.
-#' @param email.info Object created using 'email_configuration()' function.
+#' @param email.column Character. Name of the column in `data` storing attendees' email address
+#' to automatically send them their certificates.
+#' @param email.info Object created using [configure_email()] function.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
 #' @param event Character. Title of the event
 #' @param freetext Character (optional). Free text to insert before the date.

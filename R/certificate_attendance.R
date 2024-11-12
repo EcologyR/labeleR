@@ -7,8 +7,9 @@
 #' @param filename Character. Filename of the pdf. If NULL, default is "Attendance" for English, "Asistencia" for Spanish".
 #' @param language Character. Select 'English' or 'Spanish'.
 #' @param name.column Character. Name of the column in `data` storing attendees' name.
-#' @param email.column Character. Name of the column in `data` storing attendees' emails to automatically send them their certificates.
-#' @param email.info Object created using 'email_configuration()' function.
+#' @param email.column Character. Name of the column in `data` storing attendees' email address
+#' to automatically send them their certificates.
+#' @param email.info Object created using [configure_email()] function.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
 #' @param title Character. Title of the event
 #' @param date Date of the event
