@@ -188,6 +188,7 @@ send_mail <- function(data, row, email.info,
                                                "This certificate was automatically sent by labeleR using 'blastula'")}
 
 
+    mail.body <- gsub("\n", "\n\n", mail.body)
     email <- blastula::compose_email(
       body = blastula::md(mail.body),
       footer = blastula::md(
