@@ -452,10 +452,12 @@ create_tiny_label(
 This implementation should be used just to change text formats in only a
 part of values stored in columns (variable parameters).
 
-To do so, you must edit the cell value, specifying where the italics
-text must start with `\\textit`, and `\\end` where it ends; and
-`\\textbf` followed by `\\end` for bold text. In case you want to
-combine both, you will have to specify `\\end` twice.
+
+To do so, you must edit the cell value, specifying where the italics text must start
+with `\\textit` (or `\\emph`, which allows to open italics in a reular text, and vice-versa), and `\\end` where it ends; and `\\textbf` followed by
+`\\end` for bold text. In case you want to combine both, you will have
+to specify `\\end` twice.
+
 
 For example, this could be helpful to include italics in a species name
 which is included as part of a title; where just the species name should

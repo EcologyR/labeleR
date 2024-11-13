@@ -45,12 +45,12 @@ for (i in seq_along(params$field1.i)) {
   \\end{minipage}
   \\end{flushright}
   \\begin{adjustwidth}{1cm}{1cm}
-  {\\fontsize{35pt}{100pt}\\emph{\\selectfont\\textcolor{mycolortext}{",
+  {\\fontsize{35pt}{100pt}\\selectfont\\emph{\\textcolor{mycolortext}{",
   params$field1.i[i],
-  "}} \\\\
+  "}}} \\\\
   \\linebreak
   \\linebreak
-  {\\fontsize{40pt}{0pt}\\selectfont\\bf\\textcolor{mycolortext}{", 
+  {\\fontsize{40pt}{0pt}\\selectfont\\bf{\\textcolor{mycolortext}{", 
   params$field2.i[i],
   "}}} \\\\
   \\vfill
