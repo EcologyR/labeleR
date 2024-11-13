@@ -96,6 +96,7 @@ specifying the Google Sheet URL:
 
 ``` r
 library(gsheet)
+#> Warning: package 'gsheet' was built under R version 4.4.2
 
 #URL: https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0
 people_list_long <- gsheet2tbl("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
@@ -209,9 +210,26 @@ variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
 rendered in English and in Spanish.
 
-| ![Participation certificate (blank)](man/figures/Participation_blank.png) |
-|---------------------------------------------------------------------------|
-|                                                                           |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_blank.png"
+alt="Participation certificate (blank)" />
+<figcaption aria-hidden="true">Participation certificate
+(blank)</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 #### Participation certificate example:
 
@@ -244,9 +262,25 @@ create_participation_certificate(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![Participation certificate](man/figures/Participation_certificates.png) |
-|--------------------------------------------------------------------------|
-|                                                                          |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_certificates.png"
+alt="Participation certificate" />
+<figcaption aria-hidden="true">Participation certificate</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 #### **NOTE:** To see how to send certificates automatically *via* email, go to the FAQ section!
 
@@ -354,9 +388,20 @@ As a novelty, the user may manually fix the backgroud and text colors to
 their preference, using HTML color codes (same code as HEX, but without
 the ‘\#’). By default, background colors are two hues of green.
 
-|                                                                       |
-|-----------------------------------------------------------------------|
-| ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><figure>
+<img src="man/figures/collection_labels_blank.png"
+alt="Collection labels (blank)" />
+<figcaption aria-hidden="true">Collection labels (blank)</figcaption>
+</figure></td>
+</tr>
+</tbody>
+</table>
 
 #### Collection labels example:
 
@@ -431,8 +476,9 @@ This implementation should be used just to change text formats in only a
 part of values stored in columns (variable parameters).
 
 To do so, you must edit the cell value, specifying where the italics
-text must start with `\\textit`, and `\\end` where it ends; and
-`\\textbf` followed by `\\end` for bold text. In case you want to
+text must start with `\\textit` (or `\\emph`, which allows to open
+italics in a reular text, and vice-versa), and `\\end` where it ends;
+and `\\textbf` followed by `\\end` for bold text. In case you want to
 combine both, you will have to specify `\\end` twice.
 
 For example, this could be helpful to include italics in a species name
@@ -470,95 +516,33 @@ create_participation_certificate(
   
 ```
 
-| ![Custom italics example](man/figures/Participation_certificate_italics.png) |
-|------------------------------------------------------------------------------|
-|                                                                              |
-
-### Sending certificates automatically using `gmailr`
-
-Both attendance and participation certificates can be sent automatically
-using a gmail account. All you have to do is to specify a mail from
-which you want to send them (it will open a connection through an
-authentication step), and specify a column name where the email
-recipient’s accounts are stored.
-
-**NOTE**: The account to be used will be asked only once in each
-session. To change the sending account, you must restart R session. Once
-you have specified your email account, you must enable labeleR
-application to have access to your mail.
-
-To do so, you must first ensure you have installed the `gmailr` package:
-
-``` r
-require("gmailr")
-```
-
-To send emails automatically you have to specify, at least, a google
-account within a list. This object must contain a slot named “account”,
-where the email must be specified. Additionally, you can also specify
-the email subject in a slot named “subject”, and the body content of the
-email in a slot named “body”. These latter two are optional, and if not
-specified, default values will be applied.
-
-Now we have a list of attendees with their emails
-
-``` r
-print(students.table)
-#>                Names                       email
-#> 1       Harry Potter     h.potter@hogwarts.co.uk
-#> 2   Hermione Granger    h.granger@hogwarts.co.uk
-#> 3 Neville Longbottom n.longbottom@hogwarts.co.uk
-#> 4      Ginny Weasley    g.weasley@hogwarts.co.uk
-```
-
-If we specify the email column and our email information, we can send
-everything automatically!
-
-``` r
-
-emailinfo <- list(
-  "account" = "a.dumbledore@hogwarts.co.uk"
-  #, "subject" = "Class certificates - School Year 1992-1993" #optional to use non-default values
-  #, "body" = "Here you have your certificate, dear student!" #optional to use non-default values
-)
-
-
-
-create_attendance_certificate(
-  data = students.table,
-  path = "labeleR_output",
-  filename = "attendance_certificates",
-  language = "English" ,
-  name.column = "Names",
-  
-  email.column = "email",
-  email.info = emailinfo,
-  
-  type = "class",
-  title = "Potions (year 1992-1993)",
-  date = "23/06/1993",
-  hours = "200",
-  freetext = "taught by Professor S. Snape",
-  signer = "A.P.W.B. Dumbledore",
-  signer.role = "School Headmaster",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  lpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
-)
-  
-```
-
-This way, every student will receive an email with their individual
-certificate attached.
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_certificate_italics.png"
+alt="Custom italics example" />
+<figcaption aria-hidden="true">Custom italics example</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 ## Citation
 
 ``` r
 citation("labeleR")
-#> 
 #> To cite package 'labeleR' in publications use:
 #> 
-#>   Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2023). _labeleR:
+#>   Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2024). _labeleR:
 #>   Automate the Production of Custom Labels, Badges, Certificates, and
 #>   Other Documents_. <https://EcologyR.github.io/labeleR/>.
 #> 
@@ -567,7 +551,7 @@ citation("labeleR")
 #>   @Manual{,
 #>     title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
 #>     author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},
-#>     year = {2023},
+#>     year = {2024},
 #>     url = {https://EcologyR.github.io/labeleR/},
 #>   }
 ```
