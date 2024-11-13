@@ -29,8 +29,8 @@ test_that("PDF certificates are created", {
                                    signer.role = "Head"
   )
 
-  expect_true(file.exists(file.path(path, "Participacion_Pippin_02-06-2016.pdf")))
-  expect_true(file.exists(file.path(path, "Participacion_Merry_2016-04-03.pdf")))
+  expect_true(file.exists(file.path(path, "Participacion_Pippin.pdf")))
+  expect_true(file.exists(file.path(path, "Participacion_Merry.pdf")))
 
 
   ## English
@@ -48,8 +48,8 @@ test_that("PDF certificates are created", {
                                    signer.role = "Head"
   )
 
-  expect_true(file.exists(file.path(path, "Participation_Pippin_02-06-2016.pdf")))
-  expect_true(file.exists(file.path(path, "Participation_Merry_2016-04-03.pdf")))
+  expect_true(file.exists(file.path(path, "Participation_Pippin.pdf")))
+  expect_true(file.exists(file.path(path, "Participation_Merry.pdf")))
 
 
 })

@@ -15,6 +15,9 @@
 #' contribution.
 #' @param date.column Character. Name of the column in `data` storing dates of
 #' participation.
+#' @param email.column Character. Name of the column in `data` storing attendees' email address
+#' to automatically send them their certificates.
+#' @param email.info Object created using [configure_email()] function.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
 #' @param event Character. Title of the event
 #' @param freetext Character (optional). Free text to insert before the date.
@@ -69,6 +72,8 @@ create_participation_certificate <- function(
     comm.type.column = NULL,
     title.column = NULL,
     date.column = NULL,
+    email.column = NULL,
+    email.info = NULL,
     type = "",
     event = "",
     freetext = "",
@@ -105,6 +110,10 @@ create_participation_certificate <- function(
     if (language == "Spanish") {filename <- "Participacion"}
   }
 
+
+  sendmail <- sendmail_setup(email.column, email.info)
+
+
   check_column_in_df(data, name.column)
 
   if (!is.null(affiliation.column)) {
@@ -117,6 +126,10 @@ create_participation_certificate <- function(
   check_column_in_df(data, title.column)
 
   check_column_in_df(data, date.column)
+
+  if(!is.null(email.column)){
+    check_column_in_df(data, email.column)
+  }
 
   arguments <- c(name.column, comm.type.column, title.column, date.column)
   arguments <- arguments[arguments!=""]
@@ -187,8 +200,9 @@ create_participation_certificate <- function(
 
   for (i in 1:nrow(data)) {
     out.name <- filename
-    out.name <- paste0(out.name, "_", data[i, name.column], "_",
-                       gsub("/","-", data[i, date.column]))
+    out.name <- paste0(out.name, "_", data[i, name.column])
+    out.name <- check_file_name(out.name, ".pdf", path)
+
     output_file <- paste0(out.name,'.pdf')
 
     bl.char <- "~"
@@ -211,7 +225,16 @@ create_participation_certificate <- function(
       )
     )
 
+      if(isTRUE(sendmail)){
+        send_mail(data = data,
+                 row = i,
+                 email.info = email.info,
+                 name.column  =  name.column ,
+                 email.column =  email.column,
+                 attachment = paste0(path, "/", output_file) )
+      }
+    }
   }
 
-}
+
 

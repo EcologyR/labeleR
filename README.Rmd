@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 # labeleR
 
 <!-- badges: start -->
+
 `r badger::badge_cran_release()`
 ![](https://img.shields.io/github/r-package/v/EcologyR/labeleR)
 [![R-CMD-check](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EcologyR/labeleR/actions/workflows/R-CMD-check.yaml)
@@ -27,6 +28,7 @@ knitr::opts_chunk$set(
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](https://hits.dwyl.com/EcologyR/labeleR)
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](https://hits.dwyl.com/EcologyR/labeleR)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/labeleR)](https://cran.r-project.org/package=labeleR)
+
 <!-- badges: end -->
 
 <img src="man/figures/labeleR.png" width="140px" align="right"/>
@@ -76,15 +78,18 @@ The first time you install tinytex or use **labeleR** it may take a
 while until all packages are correctly installed. Don't worry, it will
 be much quicker next time!
 
-
 #### TinyTeX troubleshooting
-In case you have problems installing `TinyTeX`'s packages, try running this in your console:
+
+In case you have problems installing `TinyTeX`'s packages, try running
+this in your console:
+
 ```{r TinyTeX pkgs, eval = FALSE}
     tinytex::tlmgr_install(pkgs = c( "zref", "needspace", "pagecolor",
                                      "bookmark", "changepage", "fp",
                                      "mdframed", "ms", "pgf", 
                                      "pspicture", "qrcode"))
 ```
+
 ## 1. Getting started
 
 ```{r load labeleR, eval = FALSE}
@@ -262,6 +267,8 @@ document.
 +=======================================================================+
 |                                                                       |
 +-----------------------------------------------------------------------+
+
+#### **NOTE:** To see how to send certificates automatically *via* email, go to the FAQ section!
 
 ### 2.3 Badges
 
@@ -443,16 +450,18 @@ create_tiny_label(
 ### Including italic or bold texts within a single text
 
 This implementation should be used just to change text formats in only a
-part of values stored in columns (variable parameters). 
+part of values stored in columns (variable parameters).
+
 
 To do so, you must edit the cell value, specifying where the italics text must start
 with `\\textit` (or `\\emph`, which allows to open italics in a reular text, and vice-versa), and `\\end` where it ends; and `\\textbf` followed by
 `\\end` for bold text. In case you want to combine both, you will have
 to specify `\\end` twice.
 
-For example, this could be helpful to
-include italics in a species name which is included as part of a title;
-where just the species name should be italicized.
+
+For example, this could be helpful to include italics in a species name
+which is included as part of a title; where just the species name should
+be italicized.
 
 ```{r custom italics, eval=FALSE}
 seminar.table <- data.frame(
@@ -491,6 +500,8 @@ create_participation_certificate(
 +=======================================================================+
 |                                                                       |
 +-----------------------------------------------------------------------+
+
+
 
 ## Citation
 

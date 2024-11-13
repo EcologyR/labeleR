@@ -14,6 +14,8 @@ create_participation_certificate(
   comm.type.column = NULL,
   title.column = NULL,
   date.column = NULL,
+  email.column = NULL,
+  email.info = NULL,
   type = "",
   event = "",
   freetext = "",
@@ -48,6 +50,11 @@ contribution.}
 
 \item{date.column}{Character. Name of the column in \code{data} storing dates of
 participation.}
+
+\item{email.column}{Character. Name of the column in \code{data} storing attendees' email address
+to automatically send them their certificates.}
+
+\item{email.info}{Object created using \code{\link[=configure_email]{configure_email()}} function.}
 
 \item{type}{Character (optional). Type of event (conference, workshop, seminar...)}
 
