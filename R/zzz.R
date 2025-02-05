@@ -96,3 +96,119 @@ use_image <- function(image = NULL, name = NULL, folder = NULL) {
   }
 
 }
+
+
+#Function to change a name between brackets
+check_file_name <- function(name, suffix, path){
+
+  if(!file.exists(paste0(path, "/", name, suffix))){
+    newname <- name
+  }else{
+    files <- list.files(path, pattern = name)
+    if(length(files)==1){
+      newname <- paste0(name, "(2)")
+    }else{
+      files <- gsub(name, "", files)
+      files <- gsub(suffix, "", files)
+      files <- files[files!=""]
+      files <- gsub("\\(", "", files)
+      files <- gsub("\\)", "", files)
+      num <- max(as.numeric(files))
+      newname <- paste0(name, "(",num+1 ,")")
+    }
+  }
+  return(newname)
+}
+
+#### Function to set the SMTP server
+sendmail_setup <- function(email.column, email.info){
+
+  if( is.null(email.column) & !is.null(email.info)){
+    stop("You must specify the email column")
+  }
+
+  if(!is.null(email.column) & is.null(email.info)){
+    email.info <- configure_email()
+  }
+
+  if(!is.null(email.info) &
+     (!inherits(email.info, "list") |
+      !(("user") %in% names(email.info)) |
+      !(("app.name") %in% names(email.info)))){
+    stop("'email.info' should be a list object created using 'configure_email' function")
+  }
+
+  if(!is.null(email.column) & !is.null(email.info)){
+    sendmail <- TRUE
+  }else {
+    sendmail <- FALSE
+  }
+
+  if (isTRUE(sendmail)) {
+    sendmail <- utils::askYesNo("You are trying to send automatically certificates via email. Are you sure you want to continue with the automatic sending?",
+                                default = FALSE,
+                                prompts = getOption("askYesNo", gettext(c("Yes", "No", "Cancel"))))
+    if(is.na(sendmail)){stop("Cancel button selected. Aborting.")}
+  }
+
+  # if(isTRUE(sendmail)){
+  #
+  #
+  #   blastula::create_smtp_creds_key(id = email.info$app.name,
+  #                                   provider = "gmail",
+  #                                   user = email.info$user,
+  #                                   overwrite = T)
+  #   credentials <- blastula::view_credential_keys()
+  #   credentials <- credentials[credentials$username == email.info$user &
+  #                                credentials$id == email.info$app.name,]
+  #
+  # }
+
+  return(sendmail)
+}
+
+#### Function to send a mail and atachment within the loop
+
+send_mail <- function(data, row, email.info,
+                     name.column, email.column,
+                     attachment){
+  mail.to <- data[row,email.column]
+
+  if (!grepl("@", mail.to)) {message("email not sent to ", data[row, name.column])}#se puede mandar un auto mensaje??
+  if (grepl("@", mail.to)){
+
+    mail.from <- email.info$user
+    mail.subj <- email.info$subject
+    mail.body <- email.info$body
+    mail.cc   <- email.info$cc
+    mail.bcc   <- email.info$bcc
+
+    if(is.null(mail.subj)){mail.subj <- paste0("Certificate - ", data[row, name.column])}
+
+    if(is.null(mail.body)){mail.body <- paste0("Certificate for ", data[row, name.column],".\n\n",
+                                               "This certificate was automatically sent by labeleR using 'blastula'")}
+
+
+    mail.body <- gsub("\n", "\n\n", mail.body)
+    email <- blastula::compose_email(
+      body = blastula::md(mail.body),
+      footer = blastula::md(
+        "Mail sent automatically using labeleR.\r\n
+https://ecologyr.github.io/labeleR/"))
+    email <- blastula::add_attachment(email, file = attachment)
+
+
+    blastula::smtp_send(
+      email,
+      credentials = blastula::creds_key(email.info$app.name),
+      to = mail.to,
+      from = mail.from,
+      subject = mail.subj,
+      cc = mail.cc,
+      bcc = mail.bcc)
+
+
+  }}
+
+
+

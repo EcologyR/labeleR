@@ -1,6 +1,6 @@
 Package: labeleR
 Title: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents
-Version: 0.1.4
+Version: 0.2.0
 Authors@R: 
   c(
   person("Ignacio", "Ramos-Gutierrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre", "cph"),
@@ -26,6 +26,8 @@ Depends:
     R (>= 3.5.0)
 LazyData: true
 Suggests: 
+    blastula,
+    keyring,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 

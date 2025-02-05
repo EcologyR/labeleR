@@ -1,3 +1,7 @@
+# labeleR 0.2.0
+
+* Allow sending certificates via mail
+
 # labeleR 0.1.4
 
 * Add inner margin to herbarium labels
