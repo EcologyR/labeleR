@@ -14,6 +14,8 @@
 #' affiliation number (specified between brackets after author names, in `authors.column`).
 #' Separations between  authors must be specified using a semi-colon (';').
 #' @param text.colum Name of the column in `data` storing the abstract text.
+#' @param toc Logical. If TRUE, a Table of Contents will be included.
+#' @param toc.title Character. Title to name the Table of Contents. Default is "Index".
 #' @param frontpage Character. Path to PDF file to be inserted before the book of abstracts (as front page and/or introduction).
 #' @param title.cex Text font size used for the title. Default is 22.
 #' @param authors.cex Text font size used for the authors' names. Default is 16.
@@ -60,6 +62,8 @@ create_abstractbook <- function(data = NULL,
                          affiliation.column = NULL,
                          text.column = NULL,
                          frontpage = NULL,
+                         toc = TRUE,
+                         toc.title = "Index",
                          title.cex = 22 ,
                          authors.cex = 16,
                          affiliations.cex = 14,
@@ -227,6 +231,8 @@ create_abstractbook <- function(data = NULL,
     output_file = output_file,
     params = list(
       title.i           = data[, title.column   ],
+      toc               = toc,
+      toc.title         = toc.title,
       authors.i         = data[,"auth.use" ],
       affiliations.i    =  data[,"affil.use"],
       text.i            = if (text.column        == "") {"~"} else {data[, text.column       ] },
