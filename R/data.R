@@ -77,3 +77,16 @@
 #' ```
 #'
 "tiny.table"
+
+
+#' multichoice.table
+#'
+#' Example data to create multiple choice tests
+#'
+#' @md
+#' @details
+#' ```{r echo=FALSE}
+#' knitr::kable(multichoice.table)
+#' ```
+#'
+"multichoice.table"

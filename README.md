@@ -191,8 +191,8 @@ create_attendance_certificate(
   freetext = "taught by Professor S. Snape",
   signer = "A.P.W.B. Dumbledore",
   signer.role = "School Headmaster",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  lpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
   signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
 ```
@@ -253,7 +253,7 @@ create_participation_certificate(
   freetext = "organized by Hogwarts School of Magic and Wizardry",
   signer = "A.P.W.B. Dumbledore",
   signer.role = "School Headmaster",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
   lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
   signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
@@ -282,7 +282,9 @@ alt="Participation certificate" />
 </tbody>
 </table>
 
+
 #### **NOTE:** To see how to send certificates automatically *via* email, go to the FAQ section!
+
 
 ### 2.3 Badges
 
@@ -310,7 +312,7 @@ create_badge(
   event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
   name.column = "List",
   affiliation.column = "Affiliation",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
   lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR")
 )
 ```
@@ -509,7 +511,7 @@ create_participation_certificate(
   freetext = "organized by Hogwarts School of Magic and Wizardry",
   signer = "A.P.W.B. Dumbledore",
   signer.role = "School Headmaster",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
   lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
   signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
