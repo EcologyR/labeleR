@@ -11,6 +11,6 @@
 .Rprofile
 output/
 
-
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^CITATION\.cff$
