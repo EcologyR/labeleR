@@ -33,7 +33,7 @@ affiliations:
   - name: Universidad de Sevilla
     index: 4
 citation_author: de Aledo et. al.
-date: '`r Sys.Date()`'
+date: '2025-02-05'
 year: 2025
 bibliography: paper.bib
 output: rticles::joss_article
@@ -74,9 +74,12 @@ et al., 2001; Author2 et al., 2002)"
 
 Figures can be plotted like so:
 
-```{r}
+
+``` r
 plot(1:10)
 ```
+
+![](ms_joss_files/figure-latex/unnamed-chunk-1-1.pdf)<!-- --> 
 
 # Acknowledgements
 
