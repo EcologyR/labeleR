@@ -15,6 +15,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](https://hits.dwyl.com/EcologyR/labeleR)
 [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](https://hits.dwyl.com/EcologyR/labeleR)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/labeleR)](https://cran.r-project.org/package=labeleR)
+
 <!-- badges: end -->
 
 <img src="man/figures/labeleR.png" width="140px" align="right"/>
@@ -95,6 +96,7 @@ specifying the Google Sheet URL:
 
 ``` r
 library(gsheet)
+#> Warning: package 'gsheet' was built under R version 4.4.2
 
 #URL: https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0
 people_list_long <- gsheet2tbl("1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw")
@@ -279,6 +281,10 @@ alt="Participation certificate" />
 </tr>
 </tbody>
 </table>
+
+
+#### **NOTE:** To see how to send certificates automatically *via* email, go to the FAQ section!
+
 
 ### 2.3 Badges
 

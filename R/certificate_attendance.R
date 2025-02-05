@@ -7,6 +7,9 @@
 #' @param filename Character. Filename of the pdf. If NULL, default is "Attendance" for English, "Asistencia" for Spanish".
 #' @param language Character. Select 'English' or 'Spanish'.
 #' @param name.column Character. Name of the column in `data` storing attendees' name.
+#' @param email.column Character. Name of the column in `data` storing attendees' email address
+#' to automatically send them their certificates.
+#' @param email.info Object created using [configure_email()] function.
 #' @param type Character (optional). Type of event (conference, workshop, seminar...)
 #' @param title Character. Title of the event
 #' @param date Date of the event
@@ -58,6 +61,8 @@ create_attendance_certificate <- function(
     filename = NULL,
     language = c("English", "Spanish"),
     name.column = NULL,
+    email.column = NULL,
+    email.info = NULL,
     type = "",
     title = "",
     date = "",
@@ -96,8 +101,16 @@ create_attendance_certificate <- function(
     if (language == "Spanish") {filename <- "Asistencia"}
   }
 
+
+  sendmail <- sendmail_setup(email.column, email.info)
+
+
   check_column_in_df(data, name.column)
   data[,name.column]<- check_latex(data, name.column)
+
+  if(!is.null(email.column)){
+  check_column_in_df(data, email.column)
+  }
 
   stopifnot(is.character(type))
   stopifnot(is.character(title))
@@ -173,6 +186,7 @@ create_attendance_certificate <- function(
   for (i in 1:nrow(data)) {
     out.name <- filename
     out.name <- paste0(out.name, "_", data[i, name.column])
+    out.name <- check_file_name(out.name, ".pdf", path)
     output_file <- paste0(out.name, '.pdf')
 
     bl.char <- "~"
@@ -192,6 +206,16 @@ create_attendance_certificate <- function(
         signer.role     = if (signer.role     == "") {bl.char} else {signer.role}
       )
     )
+
+    if(isTRUE(sendmail)){
+      send_mail(data = data,
+               row = i,
+               email.info = email.info,
+               name.column  =  name.column ,
+               email.column =  email.column ,
+               attachment = paste0(path, "/", output_file)
+      )
+    }
 
   }
 

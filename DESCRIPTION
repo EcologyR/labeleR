@@ -29,6 +29,8 @@ Depends:
     R (>= 3.5.0)
 LazyData: true
 Suggests: 
+    blastula,
+    keyring,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
