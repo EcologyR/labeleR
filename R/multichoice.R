@@ -29,7 +29,7 @@
 #'
 #' @export
 #'
-#' @author  Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
+#' @author  Ignacio Ramos-Gutierrez, Jimena Mateo-Martín, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 #'
 #' @examplesIf interactive()
 #' create_multichoice(

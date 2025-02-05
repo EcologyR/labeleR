@@ -90,5 +90,5 @@ seeds = c(1:2)
 \dontshow{\}) # examplesIf}
 }
 \author{
-Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
+Ignacio Ramos-Gutierrez, Jimena Mateo-Martín, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 }
