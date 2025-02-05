@@ -6,8 +6,11 @@ output:
 classoption: 
   - portrait
 header-includes:
+  - \usepackage{sectsty}
 params:
   title.i: ""
+  toc: ""
+  toc.title: ""
   authors.i: ""
   affiliations.i: ""
   text.i: ""
@@ -19,14 +22,29 @@ params:
 
 ```{r echo=FALSE, results='asis'}
 cat(
-if(file.exists("frontpage.pdf")) "\\includegraphics{frontpage.pdf}\\pagebreak",
-"\\pagenumbering{arabic}")
+  "\\thispagestyle{empty}",
+  if(file.exists("frontpage.pdf")) "\\includegraphics{frontpage.pdf}")
+
+if(isTRUE(toc)){
+cat(
+  "\\renewcommand{\\contentsname}{", params$toc.title, "}",
+  "\\tableofcontents\\",
+    "\\thispagestyle{empty}",
+  "\\pagebreak"
+)
+}
+
+cat("\\pagenumbering{arabic}")
+cat("\\sectionfont{\\fontsize{",params$title.cex[1],"pt}{15pt}\\selectfont}"
+)
 
 for (i in seq_along(params$title.i)) {
   
   cat("
   \\begin{center}
-  {\\fontsize{",params$title.cex[i],"pt}{20pt}\\selectfont\\bf\\vspace{.7cm}", params$title.i[i], "} \\\\
+
+
+  \\section{",params$title.i[i],"}
   \\bigskip
   \\vfill
   {\\fontsize{",params$authors.cex[i],"pt}{20pt}\\selectfont\\bf", params$authors.i[i], "} \\\\
@@ -41,10 +59,9 @@ for (i in seq_along(params$title.i)) {
   \\end{center}
   \\fontsize{",params$text.cex[i],"pt}{20pt}\\selectfont", params$text.i[i], "  \\
   \\vfill
+
   \\pagebreak
   ")
 }
 ```
-
-
-
+  <!-- # \\addcontentsline{toc}{section}{",params$title.i[i],"} -->
