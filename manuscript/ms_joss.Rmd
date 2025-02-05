@@ -1,0 +1,113 @@
+---
+title: 'labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents'
+
+tags:
+  - R
+  - Rmarkdown
+  - LaTeX
+  - scientific collections
+  - scientific events
+  - herbaria
+  - automation
+  - exams
+
+authors:
+  - name: Julia G. de Aledo
+    orcid: 0000-0001-9065-9316
+    affiliation: "1,2" # (Multiple affiliations must be quoted)
+  - name: Jimena Mateo-Martín
+    orcid: 0000-0000-0000-0000
+    affiliation: 1
+  - name: Francisco Rodríguez-Sánchez
+    orcid: 0000-0002-7981-1599
+    affiliation: 3
+  - name: Ignacio Ramos-Gutiérrez
+    orcid: 0000-0002-8675-0114
+    affiliation: "1,3"
+
+  
+affiliations:
+ - name: Universidad Autónoma de Madrid
+   index: 1
+ - name: Estación Biológica de Doñana
+   index: 2
+ - name: Universidad de Sevilla
+   index: 3
+citation_author: G. de Aledo et. al.
+date: '`r Sys.Date()`'
+year: 2025
+bibliography: paper.bib
+output: rticles::joss_article
+csl: apa.csl
+journal: JOSS
+---
+
+# Summary
+
+The forces on stars, galaxies, and dark matter under external gravitational
+fields lead to the dynamical evolution of structures in the universe. The orbits
+of these bodies are therefore key to understanding the formation, history, and
+future state of galaxies. The field of "galactic dynamics," which aims to model
+the gravitating components of galaxies to study their structure and evolution,
+is now well-established, commonly taught, and frequently used in astronomy.
+Aside from toy problems and demonstrations, the majority of problems require
+efficient numerical tools, many of which require the same base code (e.g., for
+performing numerical orbit integration).
+
+``Gala`` is an Astropy-affiliated Python package for galactic dynamics. Python
+enables wrapping low-level languages (e.g., C) for speed without losing
+flexibility or ease-of-use in the user-interface. The API for ``Gala`` was
+designed to provide a class-based and user-friendly interface to fast (C or
+Cython-optimized) implementations of common operations such as gravitational
+potential and force evaluation, orbit integration, dynamical transformations,
+and chaos indicators for nonlinear dynamics. ``Gala`` also relies heavily on and
+interfaces well with the implementations of physical units and astronomical
+coordinate systems in the ``Astropy`` package [@astropy] (``astropy.units`` and
+``astropy.coordinates``).
+
+``Gala`` was designed to be used by both astronomical researchers and by
+students in courses on gravitational dynamics or astronomy. It has already been
+used in a number of scientific publications [@Pearson:2017] and has also been
+used in graduate courses on Galactic dynamics to, e.g., provide interactive
+visualizations of textbook material [@Binney:2008]. The combination of speed,
+design, and support for Astropy functionality in ``Gala`` will enable exciting
+scientific explorations of forthcoming data releases from the *Gaia* mission
+[@gaia] by students and experts alike.
+
+# Mathematics
+
+Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
+
+Double dollars make self-standing equations:
+
+$$\Theta(x) = \left\{\begin{array}{l}
+0\textrm{ if } x < 0\cr
+1\textrm{ else}
+\end{array}\right.$$
+
+
+# Citations
+
+Citations to entries in paper.bib should be in
+[rMarkdown](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
+format.
+
+For a quick reference, the following citation commands can be used:
+- `@author:2001`  ->  "Author et al. (2001)"
+- `[@author:2001]` -> "(Author et al., 2001)"
+- `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
+
+# Rendered R Figures
+
+Figures can be plotted like so:
+
+```{r}
+plot(1:10)
+```
+
+# Acknowledgements
+
+We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
+Oh, and support from Kathryn Johnston during the genesis of this project.
+
+# References
