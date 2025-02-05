@@ -15,13 +15,14 @@
 #' storing the third choice (INCORRECT).
 #' @param option4.column Character (optional for 3 choice questions). Name of the column in `data`
 #' storing the fourth choice (INCORRECT).
-#' @param image.column Character (optional). File path of an image which may appear by the side of the question.
+#' @param image.column Character (optional). Name of the column containing file paths to an image
+#'  which may appear by the side of the question.
 #' @param solutions Logical. Whether or not a PDF with the solutions should be rendered.
 #' @param start Numeric. Number of the first question (useful if exams are split in several parts).
-#' @param frontpage Character (optional). Path to PDF file to be inserted before the document
-#' (as front page and/or instructions).
 #' @param seeds Numeric vector of undefined length. Seeds to randomize question order and choice order.
 #' If the length of `seeds` is longer than one, a multiple choice exam will be rendered for EACH ONE specified.
+#' @param frontpage Character (optional). Path to PDF file to be inserted before the document
+#' (as front page and/or instructions).
 #' @inheritParams create_badge
 #'
 #' @return A PDF file is saved on disk, in the folder defined
@@ -59,8 +60,8 @@ create_multichoice <- function(data = NULL,
                                image.column = NULL,
                                solutions = F,
                                start = 1,
-                               frontpage = NULL,
                                seeds = NULL,
+                               frontpage = NULL,
                                keep.files = FALSE,
                                template = NULL) {
 
@@ -70,7 +71,8 @@ create_multichoice <- function(data = NULL,
     stop("Please provide a data.frame or tibble.")
   }
 
-  if ((!(all(class(data) == "data.frame"))) & any(class(data) == "data.frame")) {data <- as.data.frame(data)}
+  # if ((!(all(class(data) == "data.frame"))) & any(class(data) == "data.frame")) {data <- as.data.frame(data)}
+  data <- as.data.frame(data)
   if (!inherits(data, "data.frame")) {stop("The 'data' object must be a data frame.")}
   data <- fill_NAs_df(data)
 
@@ -90,12 +92,12 @@ create_multichoice <- function(data = NULL,
     message("Too long texts may give undesired results. Please consider shortening long fields.")
   }
 
-  if(!(is.null(option4.column)) & is.null(option3.column)){
+  if (!(is.null(option4.column)) & is.null(option3.column)) {
     stop("Please use option3.column instead of option4.column for a three-option multiple choice")
   }
   n.opt <- 2
-  if(!is.null(option3.column)){n.opt <- 3}
-  if(!is.null(option4.column)){n.opt <- 4}
+  if (!is.null(option3.column)) {n.opt <- 3}
+  if (!is.null(option4.column)) {n.opt <- 4}
 
   if (is.null(title)) {
     message("No title provided")
@@ -127,13 +129,13 @@ create_multichoice <- function(data = NULL,
     folder <- path  # all files will remain there
   }
 
-  if(!is.null(frontpage)){
-    if(!file.exists(frontpage)){stop("Specified PDF does not exist")}
+  if (!is.null(frontpage)) {
+    if (!file.exists(frontpage)) {stop("Specified PDF does not exist")}
     file.copy(from =  frontpage,
               to = file.path(folder, "frontpage.pdf"),
               overwrite = TRUE)
   }
-  if(is.null(frontpage) & file.exists(paste0(folder,"/frontpage.pdf"))){
+  if (is.null(frontpage) & file.exists(paste0(folder,"/frontpage.pdf"))) {
     file.remove(paste0(folder,"/frontpage.pdf"))
   }
 
@@ -156,12 +158,12 @@ create_multichoice <- function(data = NULL,
 
   #Randomize order
 
-  if(is.null(seeds)){stop ("Please set at least one seed to start the randomization process.\n",
+  if (is.null(seeds)) {stop("Please set at least one seed to start the randomization process.\n",
                            "Remember or store this number anywhere for reproducibility")}
-  if(any(duplicated(seeds))){stop("Please do not include duplicate seeds.")}
+  if (any(duplicated(seeds))) {stop("Please do not include duplicate seeds.")}
 
 
-  for(seed in seeds){
+  for (seed in seeds) {
 
     model <- LETTERS[which(seeds==seed)]
 
@@ -169,13 +171,13 @@ create_multichoice <- function(data = NULL,
     olddata <- data
     datasols <- data
 
-    order <- sample(1:nrow(data), nrow(data), replace = F )
+    order <- sample(1:nrow(data), nrow(data), replace = FALSE)
     data <- data[order,]
     datasols <- datasols[order,]
     datasols[,2] <- paste0("\\underline{",datasols[,2],"}")
 
 
-    for(i in 1:nrow(data)){
+    for (i in 1:nrow(data)){
       set.seed(seed+i)
       data[i,2:(n.opt+1)] <- data[i,1+(sample(1:(n.opt), n.opt, replace = F ))]
       set.seed(seed+i)
@@ -184,14 +186,14 @@ create_multichoice <- function(data = NULL,
 
 
 
-    if(image.column != ""){
+    if (image.column != "") {
       for(i in 1:nrow(data)){
         if(data[i, image.column] != "-"){
           use_image(data[i, image.column], name = paste0("image",i), folder)
         }else{
           use_image(NULL, name = paste0("image",i), folder)
         }}
-    }else{
+    }else{  ## if image.column was null, create blank image
       for(i in 1:nrow(data)){
         use_image(NULL, name = paste0("image",i), folder)
       }
@@ -226,7 +228,7 @@ create_multichoice <- function(data = NULL,
 
 
 
-    if(solutions){
+    if (isTRUE(solutions)) {
 
       output_file <- paste0(filename,'_solutions.pdf')
       if(length(seeds)>1){output_file <- paste0(filename,"_",model,'_solutions.pdf')}

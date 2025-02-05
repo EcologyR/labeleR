@@ -81,7 +81,7 @@
 
 #' multichoice.table
 #'
-#' Example data to create multiple coice tests
+#' Example data to create multiple choice tests
 #'
 #' @md
 #' @details

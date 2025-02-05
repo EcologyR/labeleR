@@ -1,6 +1,6 @@
 Package: labeleR
 Title: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents
-Version: 0.1.4
+Version: 0.3.0
 Authors@R: 
   c(
   person("Ignacio", "Ramos-Gutierrez",, "ig.ramosgutierrez@gmail.com", role = c("aut", "cre", "cph"),
@@ -9,7 +9,7 @@ Authors@R:
     comment = c(ORCID = "0000-0001-9065-9316")),
   person("Jimena", "Mateo-Martín", , "jimena.mateo.martin@gmail.com", role = c("aut", "cph"),
     comment = c(ORCID = "0000-0002-9757-5497")),
-  person("Francisco", "Rodriguez-Sanchez", , "frodriguez@us.es", role = c("aut", "cph"),
+  person("Francisco", "Rodriguez-Sanchez", , "f.rodriguez.sanc@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-7981-1599")),
   person("Giorgio", "Comai", role = "ctb")
   )

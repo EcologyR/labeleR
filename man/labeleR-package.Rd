@@ -24,7 +24,7 @@ Authors:
 \itemize{
   \item Julia G. de Aledo \email{juliagdealedo@gmail.com} (\href{https://orcid.org/0000-0001-9065-9316}{ORCID}) [copyright holder]
   \item Jimena Mateo-Martín \email{jimena.mateo.martin@gmail.com} (\href{https://orcid.org/0000-0002-9757-5497}{ORCID}) [copyright holder]
-  \item Francisco Rodriguez-Sanchez \email{frodriguez@us.es} (\href{https://orcid.org/0000-0002-7981-1599}{ORCID}) [copyright holder]
+  \item Francisco Rodriguez-Sanchez \email{f.rodriguez.sanc@gmail.com} (\href{https://orcid.org/0000-0002-7981-1599}{ORCID}) [copyright holder]
 }
 
 Other contributors:

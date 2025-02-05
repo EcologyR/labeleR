@@ -17,8 +17,8 @@ create_multichoice(
   image.column = NULL,
   solutions = F,
   start = 1,
-  frontpage = NULL,
   seeds = NULL,
+  frontpage = NULL,
   keep.files = FALSE,
   template = NULL
 )
@@ -46,17 +46,18 @@ storing the third choice (INCORRECT).}
 \item{option4.column}{Character (optional for 3 choice questions). Name of the column in \code{data}
 storing the fourth choice (INCORRECT).}
 
-\item{image.column}{Character (optional). File path of an image which may appear by the side of the question.}
+\item{image.column}{Character (optional). Name of the column containing file paths to an image
+which may appear by the side of the question.}
 
 \item{solutions}{Logical. Whether or not a PDF with the solutions should be rendered.}
 
 \item{start}{Numeric. Number of the first question (useful if exams are split in several parts).}
 
-\item{frontpage}{Character (optional). Path to PDF file to be inserted before the document
-(as front page and/or instructions).}
-
 \item{seeds}{Numeric vector of undefined length. Seeds to randomize question order and choice order.
 If the length of \code{seeds} is longer than one, a multiple choice exam will be rendered for EACH ONE specified.}
+
+\item{frontpage}{Character (optional). Path to PDF file to be inserted before the document
+(as front page and/or instructions).}
 
 \item{keep.files}{Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.}

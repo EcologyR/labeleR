@@ -189,8 +189,8 @@ create_attendance_certificate(
   freetext = "taught by Professor S. Snape",
   signer = "A.P.W.B. Dumbledore",
   signer.role = "School Headmaster",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  lpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
   signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
 ```
@@ -208,9 +208,26 @@ variable parameters (such as speaker, title and type of communication,
 etc.). As well as the attendance certificate, these documents can be
 rendered in English and in Spanish.
 
-| ![Participation certificate (blank)](man/figures/Participation_blank.png) |
-|---------------------------------------------------------------------------|
-|                                                                           |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_blank.png"
+alt="Participation certificate (blank)" />
+<figcaption aria-hidden="true">Participation certificate
+(blank)</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 #### Participation certificate example:
 
@@ -234,7 +251,7 @@ create_participation_certificate(
   freetext = "organized by Hogwarts School of Magic and Wizardry",
   signer = "A.P.W.B. Dumbledore",
   signer.role = "School Headmaster",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
   lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
   signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
@@ -243,9 +260,25 @@ create_participation_certificate(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![Participation certificate](man/figures/Participation_certificates.png) |
-|--------------------------------------------------------------------------|
-|                                                                          |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_certificates.png"
+alt="Participation certificate" />
+<figcaption aria-hidden="true">Participation certificate</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 ### 2.3 Badges
 
@@ -273,7 +306,7 @@ create_badge(
   event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
   name.column = "List",
   affiliation.column = "Affiliation",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
   lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR")
 )
 ```
@@ -351,9 +384,20 @@ As a novelty, the user may manually fix the backgroud and text colors to
 their preference, using HTML color codes (same code as HEX, but without
 the ‘\#’). By default, background colors are two hues of green.
 
-|                                                                       |
-|-----------------------------------------------------------------------|
-| ![Collection labels (blank)](man/figures/collection_labels_blank.png) |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><figure>
+<img src="man/figures/collection_labels_blank.png"
+alt="Collection labels (blank)" />
+<figcaption aria-hidden="true">Collection labels (blank)</figcaption>
+</figure></td>
+</tr>
+</tbody>
+</table>
 
 #### Collection labels example:
 
@@ -428,8 +472,9 @@ This implementation should be used just to change text formats in only a
 part of values stored in columns (variable parameters).
 
 To do so, you must edit the cell value, specifying where the italics
-text must start with `\\textit`, and `\\end` where it ends; and
-`\\textbf` followed by `\\end` for bold text. In case you want to
+text must start with `\\textit` (or `\\emph`, which allows to open
+italics in a reular text, and vice-versa), and `\\end` where it ends;
+and `\\textbf` followed by `\\end` for bold text. In case you want to
 combine both, you will have to specify `\\end` twice.
 
 For example, this could be helpful to include italics in a species name
@@ -460,25 +505,40 @@ create_participation_certificate(
   freetext = "organized by Hogwarts School of Magic and Wizardry",
   signer = "A.P.W.B. Dumbledore",
   signer.role = "School Headmaster",
-  rpic = system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
   lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
   signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
 )
   
 ```
 
-| ![Custom italics example](man/figures/Participation_certificate_italics.png) |
-|------------------------------------------------------------------------------|
-|                                                                              |
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><figure>
+<img src="man/figures/Participation_certificate_italics.png"
+alt="Custom italics example" />
+<figcaption aria-hidden="true">Custom italics example</figcaption>
+</figure></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+</tbody>
+</table>
 
 ## Citation
 
 ``` r
 citation("labeleR")
-#> 
 #> To cite package 'labeleR' in publications use:
 #> 
-#>   Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2023). _labeleR:
+#>   Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2024). _labeleR:
 #>   Automate the Production of Custom Labels, Badges, Certificates, and
 #>   Other Documents_. <https://EcologyR.github.io/labeleR/>.
 #> 
@@ -487,7 +547,7 @@ citation("labeleR")
 #>   @Manual{,
 #>     title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
 #>     author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},
-#>     year = {2023},
+#>     year = {2024},
 #>     url = {https://EcologyR.github.io/labeleR/},
 #>   }
 ```

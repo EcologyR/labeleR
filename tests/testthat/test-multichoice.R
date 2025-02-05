@@ -8,19 +8,14 @@ data <- data.frame(question = c("why?", "where?", "when?", "who?"),
 
 path <- tempdir()
 
-file.copy(
-  system.file("rmarkdown/pictures/Hogwarts_logo.png", package = "labeleR"),
-  to = paste0(path, "/image.png")
-    )
-
 data_image <- data
-data_image$image <- paste0(path, "/image.png")
+data_image$image <- system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR")
+
+
 test_that("PDF file is not created if no seeds are provided", {
 
   skip_on_cran()
   skip_on_ci()
-
-
 
   expect_error(
     create_multichoice(data,
@@ -48,7 +43,7 @@ test_that("PDF file is created in the provided path", {
                      option2.column = "opt2",
                      seeds = 1
 
-                     )
+  )
 
   expect_true(file.exists(file.path(path, "Exam.pdf")))
 
@@ -66,9 +61,7 @@ test_that("PDF file is created in the provided path when using image", {
                      option2.column = "opt2",
                      seeds = 1,
                      image.column = "image"
-   )
-
-
+  )
 
   expect_true(file.exists(file.path(path, "Exam.pdf")))
 

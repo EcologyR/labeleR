@@ -11,7 +11,7 @@ An object of class \code{data.frame} with 7 rows and 5 columns.
 multichoice.table
 }
 \description{
-Example data to create multiple coice tests
+Example data to create multiple choice tests
 }
 \details{
 \tabular{lllll}{
