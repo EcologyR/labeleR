@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Automate the Production of Custom Labels, Badges, Certificates, and Other Documents">
-<meta property="og:description" content="Create custom labels, badges, certificates and other documents. Automate the production of potentially large numbers of accreditation badges, attendance and participation certificates, herbarium and collection labels, etc. Documents are generated in PDF format, which requires a working installation of LaTeX, such as TinyTeX.">
+<meta property="og:description" content="Create custom labels, badges, certificates and other documents. Automate the production of potentially large numbers of herbarium and collection labels, accreditation badges, attendance and participation certificates, etc, and deliver them automatically. Documents are generated in PDF format, which requires a working installation of LaTeX, such as TinyTeX.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">labeleR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -169,8 +169,8 @@
 <span>  freetext <span class="op">=</span> <span class="st">"taught by Professor S. Snape"</span>,</span>
 <span>  signer <span class="op">=</span> <span class="st">"A.P.W.B. Dumbledore"</span>,</span>
 <span>  signer.role <span class="op">=</span> <span class="st">"School Headmaster"</span>,</span>
-<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
-<span>  lpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwartslogo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  lpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwartslogo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  signature.pic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>In this example, each certificate will be rendered in an individual PDF document.</p>
@@ -220,7 +220,7 @@ Participation certificate (blank)
 <span>  freetext <span class="op">=</span> <span class="st">"organized by Hogwarts School of Magic and Wizardry"</span>,</span>
 <span>  signer <span class="op">=</span> <span class="st">"A.P.W.B. Dumbledore"</span>,</span>
 <span>  signer.role <span class="op">=</span> <span class="st">"School Headmaster"</span>,</span>
-<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwartslogo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  lpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/MinMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  signature.pic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -269,7 +269,7 @@ Participation certificate
 <span>  event <span class="op">=</span> <span class="st">"INTERNATIONAL CONFERENCE OF MUGGLEOLOGY"</span>,</span>
 <span>  name.column <span class="op">=</span> <span class="st">"List"</span>,</span>
 <span>  affiliation.column <span class="op">=</span> <span class="st">"Affiliation"</span>,</span>
-<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwartslogo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  lpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/MinMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <table class="table">
@@ -442,7 +442,7 @@ Collection labels (blank)
 <span>  freetext <span class="op">=</span> <span class="st">"organized by Hogwarts School of Magic and Wizardry"</span>,</span>
 <span>  signer <span class="op">=</span> <span class="st">"A.P.W.B. Dumbledore"</span>,</span>
 <span>  signer.role <span class="op">=</span> <span class="st">"School Headmaster"</span>,</span>
-<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwarts_logo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
+<span>  rpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/Hogwartslogo.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  lpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/MinMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span>,</span>
 <span>  signature.pic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
@@ -522,6 +522,7 @@ Custom italics example
 <ul class="list-unstyled">
 <li>Ignacio Ramos-Gutierrez <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-8675-0114" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Julia G. de Aledo <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0001-9065-9316" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Jimena Mateo-Martín <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-9757-5497" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Francisco Rodriguez-Sanchez <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-7981-1599" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
@@ -546,7 +547,7 @@ Custom italics example
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez.</p>
+<p>Developed by Ignacio Ramos-Gutierrez, Julia G. de Aledo, Jimena Mateo-Martín, Francisco Rodriguez-Sanchez.</p>
 </div>
 
 <div class="pkgdown">
