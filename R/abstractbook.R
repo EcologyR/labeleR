@@ -13,7 +13,7 @@
 #' @param affiliation.column Character. Name of the column in `data` storing the addresses for each
 #' affiliation number (specified between brackets after author names, in `authors.column`).
 #' Separations between  authors must be specified using a semi-colon (';').
-#' @param text.colum Name of the column in `data` storing the abstract text.
+#' @param text.column Name of the column in `data` storing the abstract text.
 #' @param toc Logical. If TRUE, a Table of Contents will be included.
 #' @param toc.title Character. Title to name the Table of Contents. Default is "Index".
 #' @param frontpage Character. Path to PDF file to be inserted before the book of abstracts (as front page and/or introduction).

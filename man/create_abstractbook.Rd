@@ -40,6 +40,8 @@ Authors must be separated using a semi-colon (';').}
 affiliation number (specified between brackets after author names, in \code{authors.column}).
 Separations between  authors must be specified using a semi-colon (';').}
 
+\item{text.column}{Name of the column in \code{data} storing the abstract text.}
+
 \item{frontpage}{Character. Path to PDF file to be inserted before the book of abstracts (as front page and/or introduction).}
 
 \item{toc}{Logical. If TRUE, a Table of Contents will be included.}
@@ -59,8 +61,6 @@ in the output folder? Default is FALSE.}
 
 \item{template}{Character (optional) RMarkdown template to use. If not provided,
 using the default template included in \code{labeleR}.}
-
-\item{text.colum}{Name of the column in \code{data} storing the abstract text.}
 }
 \value{
 A PDF file named after \code{filename} is saved on disk, in the folder defined
