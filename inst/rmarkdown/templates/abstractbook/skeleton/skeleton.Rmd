@@ -22,8 +22,9 @@ params:
 
 ```{r echo=FALSE, results='asis'}
 cat(
+  "\\pagenumbering{arabic}",
   "\\thispagestyle{empty}",
-  if(file.exists("frontpage.pdf")) "\\includegraphics{frontpage.pdf}")
+  if(file.exists("frontpage.pdf")) "\\includegraphics[width=0.95\\textwidth,height=0.95\\textheight,keepaspectratio]{frontpage.pdf}")
 
 if(isTRUE(toc)){
 cat(
@@ -34,7 +35,7 @@ cat(
 )
 }
 
-cat("\\pagenumbering{arabic}")
+
 cat("\\sectionfont{\\fontsize{",params$title.cex[1],"pt}{15pt}\\selectfont}"
 )
 

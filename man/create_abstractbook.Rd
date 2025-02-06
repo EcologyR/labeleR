@@ -13,6 +13,8 @@ create_abstractbook(
   affiliation.column = NULL,
   text.column = NULL,
   frontpage = NULL,
+  toc = TRUE,
+  toc.title = "Index",
   title.cex = 22,
   authors.cex = 16,
   affiliations.cex = 14,
@@ -39,6 +41,10 @@ affiliation number (specified between brackets after author names, in \code{auth
 Separations between  authors must be specified using a semi-colon (';').}
 
 \item{frontpage}{Character. Path to PDF file to be inserted before the book of abstracts (as front page and/or introduction).}
+
+\item{toc}{Logical. If TRUE, a Table of Contents will be included.}
+
+\item{toc.title}{Character. Title to name the Table of Contents. Default is "Index".}
 
 \item{title.cex}{Text font size used for the title. Default is 22.}
 
