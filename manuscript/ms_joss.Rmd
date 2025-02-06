@@ -46,41 +46,92 @@ editor_options:
 
 # Summary
 
-LabeleR is a R package designed to automate the creation of scientific collection labels and event documents. It simplifies repetitive and time-consuming tasks, offering a practical alternative to manual tools or costly, complex software. With LabeleR, users can generate a wide variety of customizable PDF documents for storage or automatic email distribution.
+labeleR is an R package designed to automate the creation of scientific
+collection labels and event documents. It simplifies repetitive and
+time-consuming tasks, offering a practical alternative to manual or
+costly tools. With labeleR, users can generate a wide variety of
+customizable PDF documents for storage or automatic email distribution.
 
-The package provides eight core functions: three for managing scientific collections (herbarium labels, collection labels, and compact "tinylabels") and four for organizing scientific events (personal badges, abstract books and certificates of attendance or participation). Users can easily select a data source, incorporate QR codes, logos, pictures, customize content, and create custom templates. LabeleR transforms tedious workflows into efficient processes, contributing to greater scientific productivity by simplifying complex documentation tasks. We believe that this versatile tool contributes to scientific efficiency by simplifying complex, time-demanding labelling and organization processes.
+The package provides a set of functions classified into two groups:
+scientific collection management (e.g., herbarium labels, collection
+labels, and compact "tinylabels"), scientific events organization (e.g.,
+personal badges, abstract books and certificates of attendance and
+participation). Users can easily select a data source, incorporate QR
+codes, logos, and pictures, customize content, and create custom
+templates. labeleR transforms tedious and repetitive workflows into
+efficient, reproducible processes, contributing to greater scientific
+productivity. The package is available under an open-source license, and
+can be freely downloaded from CRAN or the developing GitHub repository
+(<https://ecologyr.github.io/labeleR/>).
 
-# Workflow
+# Statement of need
 
-This R package consists of eight functions built around a workflow: dataset > R > RMarkdown > LaTeX > PDF. Each function accepts four types of arguments: (1) R-based, including dataframes, paths, and output filenames; (2) fixed, such as the name of the project, event, signer, as well as a path to a logo or image, which remain constant across documents; (3) variable, referring to dataset columns; and (4) mixed, which can be directly entered in the function or linked to dataset columns. Each function is tied to a specific RMarkdown template, allowing a mix of LaTeX language for de desired aesthethic outcome and R code to dynamically insert fixed and variable variables specified in the function. The function also allows custom Rmarkdown templates. The outputs are in pdf format and can be saved locally or automatically emailed to each of the participants for certificate-related functions.
+The automation of scientific documentation has been addressed for over
+50 years from different perspectives (Vitt et al, 1977). Currently,
+there are various available tools for the management and design of
+labels and event documents. Large-scale label generation tools for
+herbarium and scientific collections (used by institutions such as
+museums, botanical gardens or herbaria) are often paid and proprietary
+software (e.g., BRAHMS, 2025; IrisBG, 2024). Microsoft Excel-Word
+integration through Mailing lists is commonly used at a smaller scale,
+although it still is paid software with limited capacity to manage large
+databases. Most existing free alternatives require the installation of a
+program, come with a specific learning curve, and are often only
+compatible with Windows (e.g., Pando et al., 2029; PLabel, 2020), or are
+designed for very specific purposes (e.g., EntomoLabels (2022) for
+insects or LichenLabler (2025) for lichens). These options are not
+open-source and offer limited customization. The Herblabel R package
+(Zhang et al., 2016), can be used to generate herbarium labels, but it
+is less customizable and does not support the inclusion of images and QR
+codes. On the other hand, the production of credentials and certificates
+for scientific events is either done manually (e.g., PowerPoint, 2023),
+through paid online servers, or by hiring an event organization company.
+To our knowledge, there are no free, customizable tools that offer these
+services and also include the feature of emailing signed documents to
+the participants.
+
+# Package description
+
+The functions in the labeleR package are designed to transfer
+information from a data frame into specific parameter fields in an
+Rmarkdown document, which ultimately generates a PDF document (see
+Figure 1). The functions include three types of arguments. First, R
+instructions (blue elements in Figure 1), such as the data object
+containing the information, or the path and file name of the rendered
+document. Second, “fixed” arguments (red elements in Figure 1), which
+remain constant across all documents, are specified as a string in the
+function (e.g., the name of the herbarium or event). Lastly, “variable”
+arguments (yellow elements in Figure 1), contain the information
+changing among documents (e.g., taxonomic names in labels or attendee
+names in certificates). These parameters are set by specifying the
+column name of the data frame where each field is stored. A QR code can
+be included either through a fixed argument (remaining the same for all
+documents if a string is provided) or a variable argument (changing in
+each iteration if a column name is specified), without the need for
+external software. Additionally, users can customize the Rmarkdown
+template for personal purposes by modifying an existing one and
+specifying the new file in the ‘template’ parameter.
+
+![Figure 1. labeleR package workflow. Information stored in a dataset is passed through an R function where it is inserted in a RMarkdown file and rendered as a PDF output. labeleR functions accept three types of arguments: R instructions (blue), fixed (red), and variable (yellow). Each function is associated with a specific but customisable RMarkdown template using LATEX syntax and functions to incorporate place information. The outputs are in PDF format and are saved locally or automatically emailed to participants.](figures/Fig1.png)
+
+# Documents included in labeleR
+## Labels for collections
+Despite the modernisation of natural sciences through digitisation and the development of new technologies, sample labelling remains a crucial process for effective scientific research. Labels are integral to all steps of the scientific process, from labelling test tubes in laboratories to storing various materials (inert, animals, plants), or even displaying collections in museums or botanical gardens. Thus, it is essential to update the tools used for label creation. An easy-to-use tool for bulk rendering is vital for efficiently producing uniform and traceable labels. Here, we present three common types of labels: “herbarium” (the most complex version), “collection” (the most aesthetic one) and “tinylabels” (a compact simplified version, for small insect collections) (see Figure 2). These documents also allow the inclusion of QR codes (e.g., links to websites or images, or identification codes) without external tools, which can be extremely useful for quickly accessing and linking the information they contain.
 
 
-![alt text here](fig1.png)
+![Figure 2. Examples of the outcomes from each label-related function of the labeleR package. a) Herbarium label: designed for accompanying stored plant vouchers (e.g. in a herbarium). It includes fixed fields (title and subtitle) and variable fields (e.g. taxon, date, coordinates, elevation, etc.). The family field is by default both capitalized and bold, and the species name is italic. Size: 4 labels/page. b) Collection label: includes variable fields (by default the first appears in italic, the second in bold). A logo can be inserted at the bottom. Font and background colors are also customizable. Size: 8 labels/page. c) Tinylabel: is a simplified version of the collection label, including five fields. Size: 16/page. All three functions can include an optional QR code.](figures/Fig2.png)
 
 
+## Documents for scientific events
+Scientific events play a crucial role in academic activities, showcasing novel research to the rest of the community. Inherent to the celebration of these events are a set of documents necessary for their smooth operation, such as identification badges, abstract books and certificates for attendees and participants. These events often host a high number of participants, exponentially increasing the workload needed for these tasks. Event documentation, although similar in structure, varies aesthetically between editions (e.g., logos, location or organizers).  With labeleR, templates and code can be customized according to the event, and bulk rendering significantly decreases the amount of time invested in the creation of such materials. Additionally, manually delivering individual attendance and participation certificates is highly time-consuming. Thus, labeleRs functions allow users to automatically send individual documents to email addresses stored in a column by configuring an SMTP server (using the configure_email function).
+
+![Figure 3. Examples of the outcomes from each event-related function of the labeleR package. a) Abstract book: creates pages with title, authors, affiliations and an abstract (variable fields) and can include a table of contents and a front page. b) Badges for personal identification: includes name and affiliation, a fixed field for the title, and the option to add two images on top. A dashed line at the bottom allows for additional hand-written information. c) Attendance certificate: the name of the attendee appears as a variable field while event name, signer, and date are fixed fields. d) Participation certificate: includes the name, affiliation and title of the communication, and several fixed fields. Both certificate functions allow the addition of two images on top, and a signature at the bottom, and offer a Spanish and English version of the templates.](figures/Fig3.png)
 # Citations
 
-Citations to entries in paper.bib should be in
-[rMarkdown](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-format.
 
-For a quick reference, the following citation commands can be used: -
-`@author:2001` -\> "Author et al. (2001)" - `[@author:2001]` -\>
-"(Author et al., 2001)" - `[@author1:2001; @author2:2001]` -\> "(Author1
-et al., 2001; Author2 et al., 2002)"
-
-# Rendered R Figures
-
-Figures can be plotted like so:
-
-```{r}
-plot(1:10)
-```
 
 # Acknowledgements
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and
-Semyeong Oh, and support from Kathryn Johnston during the genesis of
-this project.
+CRUZCAMPO S.L.
 
 # References
