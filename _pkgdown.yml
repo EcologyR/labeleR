@@ -8,6 +8,7 @@ reference:
   - create_herbarium_label
   - create_collection_label
   - create_tiny_label
+  - create_multichoice
   - configure_email
 
 - title: Example datasets
@@ -18,4 +19,5 @@ reference:
   - herbarium.table
   - collection.table
   - tiny.table
+  - multichoice.table
 
