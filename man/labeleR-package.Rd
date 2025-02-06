@@ -6,7 +6,7 @@
 \alias{labeleR-package}
 \title{labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents}
 \description{
-Create custom labels, badges, certificates and other documents. Automate the production of potentially large numbers of accreditation badges, attendance and participation certificates, herbarium and collection labels, etc. Documents are generated in PDF format, which requires a working installation of 'LaTeX', such as 'TinyTeX'.
+Create custom labels, badges, certificates and other documents. Automate the production of potentially large numbers of herbarium and collection labels, accreditation badges, attendance and participation certificates, etc, and deliver them automatically. Documents are generated in PDF format, which requires a working installation of 'LaTeX', such as 'TinyTeX'.
 }
 \seealso{
 Useful links:
@@ -23,7 +23,8 @@ Useful links:
 Authors:
 \itemize{
   \item Julia G. de Aledo \email{juliagdealedo@gmail.com} (\href{https://orcid.org/0000-0001-9065-9316}{ORCID}) [copyright holder]
-  \item Francisco Rodriguez-Sanchez \email{frodriguez@us.es} (\href{https://orcid.org/0000-0002-7981-1599}{ORCID}) [copyright holder]
+  \item Jimena Mateo-Martín \email{jimena.mateo.martin@gmail.com} (\href{https://orcid.org/0000-0002-9757-5497}{ORCID}) [copyright holder]
+  \item Francisco Rodriguez-Sanchez \email{f.rodriguez.sanc@gmail.com} (\href{https://orcid.org/0000-0002-7981-1599}{ORCID}) [copyright holder]
 }
 
 Other contributors:
