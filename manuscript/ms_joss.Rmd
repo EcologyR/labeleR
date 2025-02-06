@@ -14,7 +14,7 @@ authors:
     orcid: 0000-0001-9065-9316
     affiliation: "1,2" # (Multiple affiliations must be quoted)
   - name: Jimena Mateo-Martín
-    orcid: 0000-0000-0000-0000
+    orcid: 0000-0002-9757-5497
     affiliation: 3
   - name: Francisco Rodríguez-Sánchez
     orcid: 0000-0002-7981-1599
@@ -46,14 +46,14 @@ editor_options:
 
 # Summary
 
-LabeleR is a R package, is an open-source tool designed to automate the creation of scientific collection labels, and document for events. It simplifies processes that are typically repetitive and time-consuming, offering an alternative to traditional methods, like Microsoft integrations, or expensive, complex software. LabeleR enables users a wide variety of PDF documents that can be either stored, printed, or sent automatically via email.
 
-Users can easily choose their source database, input QR codes and logos, customize content according to specific needs and even create their own custom templates. The package has six main functions, three of them focused on the management of scientific collections (herbarium labels, collection labels, and a smaller version called “tinylabels”), and another three functions on the organization of scientific events (event badges, attendance certificates, and participation certificates). LabeleR turns a tedious process into a quick activity to obtain labels and/or certificates in PDF format for easy printing or distribution. We believe that this versatile tool contributes to scientific efficiency by simplifying complex, time-demanding labelling and organization processes.
+LabeleR is a R package designed to automate the creation of scientific collection labels and event documents. It simplifies repetitive and time-consuming tasks, offering a practical alternative to manual tools or costly, complex software. With LabeleR, users can generate a wide variety of customizable PDF documents for storage or automatic email distribution.
 
+The package provides eight core functions: three for managing scientific collections (herbarium labels, collection labels, and compact "tinylabels") and four for organizing scientific events (personal badges, abstract books and certificates of attendance or participation). Users can easily select a data source, incorporate QR codes, logos, pictures, customize content, and create custom templates. LabeleR transforms tedious workflows into efficient processes, contributing to greater scientific productivity by simplifying complex documentation tasks. We believe that this versatile tool contributes to scientific efficiency by simplifying complex, time-demanding labelling and organization processes.
 
-# Pipeline
+# Workflow
 
-This R package encompasses eight functions that are built under the same pipeline (dataset > R > Rmarkdown > latex > PDF). Each R function includes four types of arguments: R based (data, path, filename), fixed, text written in the console or path for a picture; variable, which will refer to a column of the dataset; and mixed, which can be either written directly or refer to a column. The fixed arguments will remain by default the same across all documents (e.g. name of the project, event, the signer position). The variable ones are params hosted in a Rmarkdown template, which is written and renderized in LaTeX language with embebbed chunks of R to be able to be custom the number of results in a single PDF page (1, 4, 8, or 16). The outputs can be either stored in the local path indicated in the function and then printed or sent, ot the outputs can be sent automatically through email.
+This R package consists of eight functions built around a workflow: dataset > R > RMarkdown > LaTeX > PDF. Each function accepts four types of arguments: (1) R-based, including dataframes, paths, and output filenames; (2) fixed, such as the name of the project, event, signer, as well as a path to a logo or image, which remain constant across documents; (3) variable, referring to dataset columns; and (4) mixed, which can be directly entered in the function or linked to dataset columns. Each function is tied to a specific RMarkdown template, allowing a mix of LaTeX language for de desired aestethic outcome and R code to dynamically insert fixed and variable variables specified in the function. The outputs are in pdf format and can be saved locally or automatically emailed to each of the participants for certificate-related functions.
 
 
 ![alt text here](fig1.png)
