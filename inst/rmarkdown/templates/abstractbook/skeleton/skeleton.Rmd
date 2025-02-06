@@ -1,0 +1,68 @@
+---
+title: ''
+geometry: "left=2cm,right=2cm,top=3cm,bottom=3cm"
+output:
+  pdf_document: default
+classoption: 
+  - portrait
+header-includes:
+  - \usepackage{sectsty}
+params:
+  title.i: ""
+  toc: ""
+  toc.title: ""
+  authors.i: ""
+  affiliations.i: ""
+  text.i: ""
+  title.cex: ""
+  authors.cex: ""
+  affiliations.cex: ""
+  text.cex: ""
+---
+
+```{r echo=FALSE, results='asis'}
+cat(
+  "\\pagenumbering{arabic}",
+  "\\thispagestyle{empty}",
+  if(file.exists("frontpage.pdf")) "\\includegraphics[width=0.95\\textwidth,height=0.95\\textheight,keepaspectratio]{frontpage.pdf}")
+
+if(isTRUE(toc)){
+cat(
+  "\\renewcommand{\\contentsname}{", params$toc.title, "}",
+  "\\tableofcontents\\",
+    "\\thispagestyle{empty}",
+  "\\pagebreak"
+)
+}
+
+
+cat("\\sectionfont{\\fontsize{",params$title.cex[1],"pt}{15pt}\\selectfont}"
+)
+
+for (i in seq_along(params$title.i)) {
+  
+  cat("
+  \\begin{center}
+
+
+  \\section{",params$title.i[i],"}
+  \\bigskip
+  \\vfill
+  {\\fontsize{",params$authors.cex[i],"pt}{20pt}\\selectfont\\bf", params$authors.i[i], "} \\\\
+  \\bigskip
+  \\vfill
+  \\begin{itemize}
+  {\\fontsize{",params$affiliations.cex[i],"pt}{14pt}\\selectfont
+  ", params$affiliations.i[i], "} \\\\
+  \\end{itemize}
+  \\bigskip
+  \\vfill
+  \\end{center}
+  \\fontsize{",params$text.cex[i],"pt}{20pt}\\selectfont", params$text.i[i], "  \\
+  \\vfill
+
+  \\pagebreak
+  ")
+}
+```
+  <!-- # \\addcontentsline{toc}{section}{",params$title.i[i],"} -->
