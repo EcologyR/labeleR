@@ -59,10 +59,11 @@
 <span>  filename <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  language <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"English"</span>, <span class="st">"Spanish"</span><span class="op">)</span>,</span>
 <span>  name.column <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  affiliation.column <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  comm.type.column <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  title.column <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  date.column <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  affiliation.column <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  comm.type.column <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  title.column <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  coauthor.column <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  date.column <span class="op">=</span> <span class="st">""</span>,</span>
 <span>  email.column <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  email.info <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">""</span>,</span>
@@ -115,6 +116,10 @@ participation type (e.g. poster, oral communication, etc)</p></dd>
 <dt id="arg-title-column">title.column<a class="anchor" aria-label="anchor" href="#arg-title-column"></a></dt>
 <dd><p>Character. Name of the column in <code>data</code> storing the title of the
 contribution.</p></dd>
+
+
+<dt id="arg-coauthor-column">coauthor.column<a class="anchor" aria-label="anchor" href="#arg-coauthor-column"></a></dt>
+<dd><p>Name of the column in <code>data</code> storing the names of the coauthors to the contribution.</p></dd>
 
 
 <dt id="arg-date-column">date.column<a class="anchor" aria-label="anchor" href="#arg-date-column"></a></dt>
