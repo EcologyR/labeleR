@@ -9,17 +9,17 @@ type: software
 license: MIT
 title: 'labeleR: Automate the Production of Custom Labels, Badges, Certificates, and
   Other Documents'
-version: 0.2.0
+version: 0.4.0
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.labeleR
 - type: url
   value: https://ecologyr.github.io/labeleR/
 abstract: Create custom labels, badges, certificates and other documents. Automate
-  the production of potentially large numbers of accreditation badges, attendance
-  and participation certificates, herbarium and collection labels, etc. Documents
-  are generated in PDF format, which requires a working installation of 'LaTeX', such
-  as 'TinyTeX'.
+  the production of potentially large numbers of herbarium and collection labels,
+  accreditation badges, attendance and participation certificates, etc, and deliver
+  them automatically. Documents are generated in PDF format, which requires a working
+  installation of 'LaTeX', such as 'TinyTeX'.
 authors:
 - family-names: Ramos-Gutierrez
   given-names: Ignacio
@@ -30,9 +30,13 @@ authors:
   name-particle: de
   email: juliagdealedo@gmail.com
   orcid: https://orcid.org/0000-0001-9065-9316
+- family-names: Mateo-Martín
+  given-names: Jimena
+  email: jimena.mateo.martin@gmail.com
+  orcid: https://orcid.org/0000-0002-9757-5497
 - family-names: Rodriguez-Sanchez
   given-names: Francisco
-  email: frodriguez@us.es
+  email: f.rodriguez.sanc@gmail.com
   orcid: https://orcid.org/0000-0002-7981-1599
 preferred-citation:
   type: manual
