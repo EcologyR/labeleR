@@ -3,16 +3,16 @@
 #'
 #' Create a book of abstracts given a dataframe or tibble.
 #'
-#' @param data a data frame including abstract titles, names, affiliations and abstract texts.
+#' @param data a data frame including titles, author names, affiliations and abstracts.
 #' @param path Character. Path to folder where the PDF file will be saved.
 #' @param filename Character. Filename of the pdf. If NULL, default is "AbstractBook".
 #' @param title.column Character. Name of the column in `data` storing abstracts' titles.
-#' @param authors.column Character. Name of the column in `data` storing abstract authors' names
+#' @param authors.column Character. Name of the column in `data` storing authors' names
 #' and affiliations. Numeric (and symbol, e.g. '*') affiliations MUST be specified between brackets.
 #' Authors must be separated using a semi-colon (';').
 #' @param affiliation.column Character. Name of the column in `data` storing the addresses for each
 #' affiliation number (specified between brackets after author names, in `authors.column`).
-#' Separations between  authors must be specified using a semi-colon (';').
+#' Separations between authors must be specified using a semi-colon (';').
 #' @param text.column Name of the column in `data` storing the abstract text.
 #' @param toc Logical. If TRUE, a Table of Contents will be included.
 #' @param toc.title Character. Title to name the Table of Contents. Default is "Index".

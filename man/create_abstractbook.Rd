@@ -24,7 +24,7 @@ create_abstractbook(
 )
 }
 \arguments{
-\item{data}{a data frame including abstract titles, names, affiliations and abstract texts.}
+\item{data}{a data frame including titles, author names, affiliations and abstracts.}
 
 \item{path}{Character. Path to folder where the PDF file will be saved.}
 
@@ -32,13 +32,13 @@ create_abstractbook(
 
 \item{title.column}{Character. Name of the column in \code{data} storing abstracts' titles.}
 
-\item{authors.column}{Character. Name of the column in \code{data} storing abstract authors' names
+\item{authors.column}{Character. Name of the column in \code{data} storing authors' names
 and affiliations. Numeric (and symbol, e.g. '*') affiliations MUST be specified between brackets.
 Authors must be separated using a semi-colon (';').}
 
 \item{affiliation.column}{Character. Name of the column in \code{data} storing the addresses for each
 affiliation number (specified between brackets after author names, in \code{authors.column}).
-Separations between  authors must be specified using a semi-colon (';').}
+Separations between authors must be specified using a semi-colon (';').}
 
 \item{text.column}{Name of the column in \code{data} storing the abstract text.}
 
