@@ -13,6 +13,7 @@
 #' participation type (e.g. poster, oral communication, etc)
 #' @param title.column Character. Name of the column in `data` storing the title of the
 #' contribution.
+#' @param coauthor.column Name of the column in `data` storing the names of the coauthors to the contribution.
 #' @param date.column Character. Name of the column in `data` storing dates of
 #' participation.
 #' @param email.column Character. Name of the column in `data` storing attendees' email address
@@ -71,6 +72,7 @@ create_participation_certificate <- function(
     affiliation.column = "",
     comm.type.column = "",
     title.column = "",
+    coauthor.column = "",
     date.column = "",
     email.column = NULL,
     email.info = NULL,
@@ -124,6 +126,11 @@ create_participation_certificate <- function(
   if (comm.type.column != "") {
   check_column_in_df(data, comm.type.column)
   data[,comm.type.column]<- check_latex(data, comm.type.column)
+  }
+
+  if (coauthor.column != "") {
+    check_column_in_df(data, coauthor.column)
+    data[,coauthor.column]<- check_latex(data, coauthor.column)
   }
 
   if (date.column != "") {
@@ -227,6 +234,7 @@ create_participation_certificate <- function(
         event.i       = if (event              == "") {bl.char} else {event},
         comm.type.i   = if (comm.type.column   == "") {bl.char} else {data[i, comm.type.column]},
         title.i       = if (title.column       == "") {bl.char} else {data[i, title.column]},
+        coauthor.i    = if (coauthor.column    == "") {bl.char} else {data[i, coauthor.column]},
         date.i        = if (date.column        == "") {bl.char} else {data[i, date.column]},
         freetext.i    = if (freetext           == "") {bl.char} else {freetext},
         signer.i      = if (signer             == "") {bl.char} else {signer},
