@@ -68,10 +68,10 @@ create_participation_certificate <- function(
     filename = NULL,
     language = c("English", "Spanish"),
     name.column = NULL,
-    affiliation.column = NULL,
-    comm.type.column = NULL,
-    title.column = NULL,
-    date.column = NULL,
+    affiliation.column = "",
+    comm.type.column = "",
+    title.column = "",
+    date.column = "",
     email.column = NULL,
     email.info = NULL,
     type = "",
@@ -116,22 +116,31 @@ create_participation_certificate <- function(
 
   check_column_in_df(data, name.column)
 
-  if (!is.null(affiliation.column)) {
+  if (affiliation.column != "") {
     check_column_in_df(data, affiliation.column)
     data[,affiliation.column]<- check_latex(data, affiliation.column)
   }
 
+  if (comm.type.column != "") {
   check_column_in_df(data, comm.type.column)
+  data[,comm.type.column]<- check_latex(data, comm.type.column)
+  }
+
+  if (date.column != "") {
+    check_column_in_df(data, date.column)
+    data[,date.column]<- check_latex(data, date.column)
+  }
+
 
   check_column_in_df(data, title.column)
 
-  check_column_in_df(data, date.column)
+
 
   if(!is.null(email.column)){
     check_column_in_df(data, email.column)
   }
 
-  arguments <- c(name.column, comm.type.column, title.column, date.column)
+  arguments <- c(name.column, title.column) #these are the compulsory arguments
   arguments <- arguments[arguments!=""]
 
   data <- check_latex_columns(data, arguments)
