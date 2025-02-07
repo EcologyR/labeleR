@@ -6,7 +6,7 @@
 cff-version: 1.2.0
 message: 'To cite package "labeleR" in publications use:'
 type: software
-license: MIT
+license: GPL-3.0-or-later
 title: 'labeleR: Automate the Production of Custom Labels, Badges, Certificates, and
   Other Documents'
 version: 0.4.0
@@ -52,9 +52,13 @@ preferred-citation:
     name-particle: de
     email: juliagdealedo@gmail.com
     orcid: https://orcid.org/0000-0001-9065-9316
+  - family-names: Mateo-Martín
+    given-names: Jimena
+    email: jimena.mateo.martin@gmail.com
+    orcid: https://orcid.org/0000-0002-9757-5497
   - family-names: Rodríguez-Sánchez
     given-names: Francisco
-  year: '2024'
+  year: '2025'
   url: https://EcologyR.github.io/labeleR/
 repository: https://CRAN.R-project.org/package=labeleR
 repository-code: https://github.com/EcologyR/labeleR/issues/
