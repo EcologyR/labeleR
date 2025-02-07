@@ -12,8 +12,8 @@
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](https://hits.dwyl.com/EcologyR/labeleR)
-[![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](https://hits.dwyl.com/EcologyR/labeleR)
+<!-- [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square)](https://hits.dwyl.com/EcologyR/labeleR) -->
+<!-- [![HitCount](https://hits.dwyl.com/EcologyR/labeleR.svg?style=flat-square&show=unique)](https://hits.dwyl.com/EcologyR/labeleR) -->
 [![](https://cranlogs.r-pkg.org/badges/grand-total/labeleR)](https://cran.r-project.org/package=labeleR)
 
 <!-- badges: end -->
@@ -656,16 +656,17 @@ create_participation_certificate(
 citation("labeleR")
 #> To cite package 'labeleR' in publications use:
 #> 
-#>   Ramos-Gutierrez I, de Aledo JG, Rodríguez-Sánchez F (2024). _labeleR:
-#>   Automate the Production of Custom Labels, Badges, Certificates, and
-#>   Other Documents_. <https://EcologyR.github.io/labeleR/>.
+#>   Ramos-Gutierrez I, de Aledo JG, Mateo-Martín J, Rodríguez-Sánchez F
+#>   (2025). _labeleR: Automate the Production of Custom Labels, Badges,
+#>   Certificates, and Other Documents_.
+#>   <https://EcologyR.github.io/labeleR/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
-#>     author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Francisco Rodríguez-Sánchez},
-#>     year = {2024},
+#>     author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez},
+#>     year = {2025},
 #>     url = {https://EcologyR.github.io/labeleR/},
 #>   }
 ```
