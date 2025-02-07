@@ -11,6 +11,7 @@ params:
   event.i: ""
   comm.type.i: ""
   title.i: ""
+  coauthor.i: ""
   date.i: ""
   signer.i: ""
   signer.role.i: ""
@@ -48,6 +49,9 @@ with the `r params$comm.type.i`: \\
 
 {\Huge\bf `r params$title.i` } \\
 \vfill
+
+`r if(params$coauthor.i != "~"){ paste0("coauthored by: ", params$coauthor.i, "\\\\")}`
+
 
 
 on date `r params$date.i`. \\
