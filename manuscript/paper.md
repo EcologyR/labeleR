@@ -12,15 +12,19 @@ tags:
 authors:
   - name: Julia G. de Aledo
     orcid: 0000-0001-9065-9316
+    equal-contrib: true
     affiliation: "1,2,3" # (Multiple affiliations must be quoted)
   - name: Jimena Mateo-Martín
     orcid: 0000-0002-9757-5497
+    equal-contrib: true
     affiliation: 3
   - name: Francisco Rodríguez-Sánchez
     orcid: 0000-0002-7981-1599
+    equal-contrib: true
     affiliation: 4
   - name: Ignacio Ramos-Gutiérrez
     orcid: 0000-0002-8675-0114
+    equal-contrib: true
     affiliation: "3,4"
   
 affiliations:
@@ -32,16 +36,11 @@ affiliations:
     index: 3
   - name: Universidad de Sevilla
     index: 4
-citation_author: de Aledo et. al.
-date: '2025-02-07'
-year: 2025
+    
+
+date: 07 February 2025
 bibliography: paper.bib
-output: rticles::joss_article
-csl: apa.csl
-journal: JOSS
-editor_options: 
-  markdown: 
-    wrap: 72
+
 ---
 
 # Summary
