@@ -1,4 +1,7 @@
 url: https://ecologyr.github.io/labeleR/
+template:
+  bootstrap: 5
+  bootswatch: minty
 reference:
 - title: Functions
   contents:
