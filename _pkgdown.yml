@@ -2,6 +2,7 @@ url: https://ecologyr.github.io/labeleR/
 reference:
 - title: Functions
   contents:
+  - create_abstractbook
   - create_attendance_certificate
   - create_participation_certificate
   - create_badge
@@ -13,6 +14,7 @@ reference:
 
 - title: Example datasets
   contents:
+  - abstract.table
   - attendance.table
   - participation.table
   - badges.table
