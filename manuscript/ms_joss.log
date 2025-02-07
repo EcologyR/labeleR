@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.5)  6 FEB 2025 20:03
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.5)  7 FEB 2025 10:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -953,11 +953,6 @@ File: figures/Fig2.png Graphic file (type bmp)
 File: figures/Fig3.png Graphic file (type bmp)
 <figures/Fig3.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
-[][]
- []
-
-
 
 File: C:/Users/MAYBE/AppData/Local/R/win-library/4.4/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
 <C:/Users/MAYBE/AppData/Local/R/win-library/4.4/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
@@ -985,18 +980,18 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ms_joss.out' has not changed.
-(rerunfilecheck)             Checksum: 3120325FFDD07EC0A1297A2993E88BF7;1167.
+(rerunfilecheck)             Checksum: 0FFF69550AB5FFCE996EF445247421C9;1258.
 Package logreq Info: Writing requests to 'ms_joss.run.xml'.
 \openout1 = `ms_joss.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34483 strings out of 475846
- 713692 string characters out of 5773212
- 1569789 words of memory out of 5000000
- 56933 multiletter control sequences out of 15000+600000
+ 34484 strings out of 475846
+ 713703 string characters out of 5773212
+ 1569935 words of memory out of 5000000
+ 56934 multiletter control sequences out of 15000+600000
  565677 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,12n,87p,934b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,87p,1024b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on ms_joss.pdf (4 pages).
