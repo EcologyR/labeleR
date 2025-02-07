@@ -1,3 +1,11 @@
+# labeleR 0.4.0
+
+* New function to create book of abstracts
+
+# labeleR 0.3.0
+
+* New function to create randomized multichoice tests
+
 # labeleR 0.2.0
 
 * Allow sending certificates via mail
