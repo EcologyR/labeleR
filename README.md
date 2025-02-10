@@ -654,21 +654,21 @@ create_participation_certificate(
 
 ``` r
 citation("labeleR")
-#> To cite package 'labeleR' in publications use:
-#> 
-#>   Ramos-Gutierrez I, de Aledo JG, Mateo-Martín J, Rodríguez-Sánchez F
-#>   (2025). _labeleR: Automate the Production of Custom Labels, Badges,
-#>   Certificates, and Other Documents_.
-#>   <https://EcologyR.github.io/labeleR/>.
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Manual{,
-#>     title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
-#>     author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez},
-#>     year = {2025},
-#>     url = {https://EcologyR.github.io/labeleR/},
-#>   }
+To cite package 'labeleR' in publications use:
+
+  Ramos-Gutierrez I, de Aledo JG, Mateo-Martín J, Rodríguez-Sánchez F
+  (2025). _labeleR: Automate the Production of Custom Labels, Badges,
+  Certificates, and Other Documents_.
+  <https://EcologyR.github.io/labeleR/>.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
+    author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez},
+    year = {2025},
+    url = {https://EcologyR.github.io/labeleR/},
+  }
 ```
 
 ## Funding
@@ -678,3 +678,10 @@ Next Generation EU, Fondo Europeo de Desarrollo Regional (FEDER) and
 Consejería de Transformación Económica, Industria, Conocimiento y
 Universidades of Junta de Andalucía (proyecto US-1381388 led by
 Francisco Rodríguez Sánchez, Universidad de Sevilla).
+
+## Code of Conduct
+
+Please note that the labeleR project is released with a [Contributor
+Code of
+Conduct](https://ecologyr.github.io/labeleR/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.
