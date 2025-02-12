@@ -1,18 +1,21 @@
-## Comments for labeleR 0.1.2 submission
-
-* Title added to .Rmd templates (changed in .yaml files) as required for resubmission.
-* We have included a new function to allow columns which have some empty cells.
-
-## Comments for labeleR 0.1.1 submission
-
-* We have amended the description section within the DESCRIPTION file.
-* We do not include references in the description file.
-* User parameters are restored after changing in zzz.R
-* We do not include any vignettes in labeleR, so we do not have to choose a title.
-
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 3 notes
 
-* This is a new release.
+❯ checking CRAN incoming feasibility ... [7s/25s] NOTE
+  Maintainer: ‘Ignacio Ramos-Gutierrez <ig.ramosgutierrez@gmail.com>’
+  
+  License components with restrictions and base license permitting such:
+    GPL (>= 3) + file LICENSE
+  File 'LICENSE':
+    YEAR: 2024
+    COPYRIGHT HOLDER: labeleR authors
+
+❯ checking installed package size ... NOTE
+    installed size is  5.0Mb
+    sub-directories of 1Mb or more:
+      help   4.4Mb
+
+❯ checking for future file timestamps ... NOTE
+  unable to verify current time

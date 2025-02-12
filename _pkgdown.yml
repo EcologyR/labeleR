@@ -1,21 +1,28 @@
 url: https://ecologyr.github.io/labeleR/
+template:
+  bootstrap: 5
+  bootswatch: minty
 reference:
 - title: Functions
   contents:
+  - create_abstractbook
   - create_attendance_certificate
   - create_participation_certificate
   - create_badge
   - create_herbarium_label
   - create_collection_label
   - create_tiny_label
+  - create_multichoice
   - configure_email
 
 - title: Example datasets
   contents:
+  - abstract.table
   - attendance.table
   - participation.table
   - badges.table
   - herbarium.table
   - collection.table
   - tiny.table
+  - multichoice.table
 

@@ -1,0 +1,82 @@
+---
+title: ''
+geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+output:
+  pdf_document: default
+header-includes:
+   -  \usepackage{enumitem}
+   -  \usepackage{pdfpages}
+params:
+  model: ""
+  title: ""
+  start: ""
+  question.i: ""
+  option1.i: ""
+  option2.i: ""
+  option3.i: ""
+  option4.i: ""
+  image.i: ""
+---
+
+```{r echo=FALSE, results='asis'}
+ cat(
+    "\\begin{center}
+     \\pagenumbering{gobble}
+    ",
+    if(file.exists("frontpage.pdf")) "\\includegraphics{frontpage.pdf}\\pagebreak",
+    "
+    {\\fontsize{20pt}{20pt}\\selectfont
+     \\bf {",params$title,
+     if(params$model[i] != "~") paste0("\\\\(",params$model[i],")\\\\"),
+     "}
+    }
+     \\vspace{2cm}
+     
+    {\\fontsize{15pt}{20pt}\\selectfont
+     Name: \\dotfill Date: \\dotfill \\bigbreak
+    \\dotfill
+    }
+    
+     \\end{center}
+     \\begin{flushleft}
+
+     \\vfill
+     "
+     )
+
+for (i in seq_along(params$question.i)) {
+  
+  cat(
+   "{\\fontsize{15pt}{20pt}\\selectfont\\bf",
+   (i+start-1),". ",
+   params$question.i[i],"}\\\\",
+  "\\begin{minipage}[b][0ex][t]{0.25\\textwidth}
+   \\includegraphics[height=1.5in]{",paste0("image",i,".png"),"}
+   \\end{minipage}
+   \\hspace{0.01\\textwidth}
+   \\begin{minipage}[b][0ex][t]{0.7\\textwidth}
+   \\begin{itemize}
+   {\\fontsize{12pt}{5pt}\\selectfont",
+   "\\item[a)]", params$option1.i[i], "\\\\",
+   "\\item[b)]", params$option2.i[i], "\\\\",
+   if (params$option3.i[i]!= "~") "\\item[c)]", params$option3.i[i], "\\\\",
+   if (params$option4.i[i]!= "~") "\\item[d)]", params$option4.i[i], "\\\\",
+   "}
+   \\end{itemize}
+   \\end{minipage}
+   \\vfill
+   ",
+  if ((i-3) %% 4 == 0){
+  "\\pagebreak
+  "}
+    )
+}
+cat(
+"\\end{flushleft}
+ \\pagebreak"
+)
+```
+
+
+
+
