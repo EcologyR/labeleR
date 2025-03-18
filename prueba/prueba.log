@@ -1,0 +1,486 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.17)  18 MAR 2025 17:29
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**prueba.tex
+(./prueba.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+(./agujournal2018.cls
+Document Class: agujournal2018 08/23/2018
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (./trackchanges.sty
+Package: trackchanges 2009/04/22 v0.7.0 TrackChanges file 
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count196
+\calc@Bcount=\count197
+\calc@Adimen=\dimen143
+\calc@Bdimen=\dimen144
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count198
+\calc@Cskip=\skip51
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/generic/soul/soul.sty
+Package: soul 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/generic/soul/soul-ori.sty
+Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
+\SOUL@word=\toks18
+\SOUL@lasttoken=\toks19
+\SOUL@syllable=\toks20
+\SOUL@cmds=\toks21
+\SOUL@buffer=\toks22
+\SOUL@token=\toks23
+\SOUL@syllgoal=\dimen145
+\SOUL@syllwidth=\dimen146
+\SOUL@charkern=\dimen147
+\SOUL@hyphkern=\dimen148
+\SOUL@dimen=\dimen149
+\SOUL@dimeni=\dimen150
+\SOUL@minus=\count199
+\SOUL@comma=\count266
+\SOUL@apo=\count267
+\SOUL@grave=\count268
+\SOUL@spaceskip=\skip52
+\SOUL@ttwidth=\dimen151
+\SOUL@uldp=\dimen152
+\SOUL@ulht=\dimen153
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/morefloats/morefloats.sty
+Package: morefloats 2025/01/28 v1.1a Raise limit of unprocessed floats (HMM)
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+Package morefloats Info: Maximum number of possible floats asked for: 36
+(morefloats)             (i.e. 18 more floats).
+(morefloats)             LaTeX might run out of memory before this
+(morefloats)             (in which case it will notify you).
+)
+\c@userid=\count269
+\c@changenumber=\count270
+\c@storefootnote=\count271
+\c@numeditors=\count272
+\c@maxeditors=\count273
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2025/01/29 line numbers on paragraphs v5.4
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count274
+)
+\linenopenalty=\count275
+\output=\toks24
+\linenoprevgraf=\count276
+\linenumbersep=\dimen154
+\linenumberwidth=\dimen155
+\c@linenumber=\count277
+\c@pagewiselinenumber=\count278
+\c@LN@truepage=\count279
+\c@internallinenumber=\count280
+\c@internallinenumbers=\count281
+\quotelinenumbersep=\dimen156
+\bframerule=\dimen157
+\bframesep=\dimen158
+\bframebox=\box52
+LaTeX Info: Redefining \\ on input line 3187.
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2023/06/22 v3.6 ragged2e Package
+\CenteringLeftskip=\skip53
+\RaggedLeftLeftskip=\skip54
+\RaggedRightLeftskip=\skip55
+\CenteringRightskip=\skip56
+\RaggedLeftRightskip=\skip57
+\RaggedRightRightskip=\skip58
+\CenteringParfillskip=\skip59
+\RaggedLeftParfillskip=\skip60
+\RaggedRightParfillskip=\skip61
+\JustifyingParfillskip=\skip62
+\CenteringParindent=\skip63
+\RaggedLeftParindent=\skip64
+\RaggedRightParindent=\skip65
+\JustifyingParindent=\skip66
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+\c@r@tfl@t=\count282
+\rotFPtop=\skip67
+\rotFPbot=\skip68
+\rot@float@box=\box53
+\rot@mess@toks=\toks25
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box54
+\UL@hyphenbox=\box55
+\UL@skip=\skip69
+\UL@hook=\toks26
+\UL@height=\dimen159
+\UL@pe=\count283
+\UL@pixel=\dimen160
+\ULC@box=\box56
+Package: ulem 2019/11/18
+\ULdepth=\dimen161
+)
+\draftskip=\count284
+\c@section=\count285
+\c@subsection=\count286
+\c@subsubsection=\count287
+\c@paragraph=\count288
+\c@subparagraph=\count289
+\c@figure=\count290
+\c@table=\count291
+\abovecaptionskip=\skip70
+\belowcaptionskip=\skip71
+\c@appendnum=\count292
+\bibindent=\dimen162
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/apacite/apacite.sty
+Package: apacite 2013/07/21 v6.03 APA citation
+\c@BibCnt=\count293
+\bibleftmargin=\skip72
+\bibindent=\skip73
+\bibparsep=\skip74
+\bibitemsep=\skip75
+\biblabelsep=\skip76
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip77
+\bibsep=\skip78
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count294
+)
+LaTeX Info: Redefining \BBA on input line 1149.
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/generic/soul/soulutf8.sty
+Package: soulutf8 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
+
+Package soulutf8 Warning: This package is obsolete,
+(soulutf8)                use the soul package directly. 
+(soulutf8)                 on input line 29.
+
+) (/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count295
+\l__pdf_internal_box=\box57
+) (./prueba.aux)
+\openout1 = `prueba.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+
+Package trackchanges Warning: TrackChanges is not compatable with the 
+(trackchanges)                'ulem' package.
+(trackchanges)                Use the 'soul' package instead.
+
+\c@maskedRefs=\count296
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/apacite/english.apc
+File: english.apc 2013/07/21 v6.03 apacite language file
+LaTeX Info: Redefining \BPBI on input line 129.
+LaTeX Info: Redefining \BHBI on input line 130.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 121.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 121.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 121.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 121.
+
+
+[1{/Users/juliag.dealedo/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (25.01576pt too wide) in paragraph at lines 178--183
+\OT1/cmr/m/n/10 A good ab-stract will be-gin with a short de-scrip-tion of the prob-lem be-ing ad-dressed, briefly 
+ []
+
+
+Overfull \hbox (1.43231pt too wide) in paragraph at lines 178--183
+\OT1/cmr/m/n/10 de-scribe the new data or anal-y-ses, then briefly states the main con-clu-sion(s) and how 
+ []
+
+
+Overfull \hbox (28.84923pt too wide) in paragraph at lines 186--188
+\OT1/cmr/m/n/10 Some jour-nals re-quire a plain lan-guage sum-mary. See: https://publications.agu.org/author- 
+ []
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 191.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 191.
+
+
+Overfull \hbox (24.18239pt too wide) in paragraph at lines 193--196
+[]\OT1/cmr/m/n/10 The main text should start with an in-tro-duc-tion. Ex-cept for short manuscripts (such 
+ []
+
+
+Overfull \hbox (26.09898pt too wide) in paragraph at lines 193--196
+\OT1/cmr/m/n/10 as com-ments and replies), the text should be di-vided into sec-tions, each with its own head- 
+ []
+
+
+Overfull \hbox (1.43224pt too wide) in paragraph at lines 197--201
+[]\OT1/cmr/m/n/10 Headings should be sen-tence frag-ments and do not be-gin with a low-er-case let-ter 
+ []
+
+
+Overfull \hbox (16.3768pt too wide) in paragraph at lines 197--201
+\OT1/cmr/m/n/10 or num-ber. Cap-i-tal-ize the first let-ter of each word (ex-cept for prepo-si-tions, con-junc-tions, 
+ []
+
+
+Overfull \hbox (2.01555pt too wide) in paragraph at lines 206--208
+[]\OT1/cmr/m/n/10 Do not use bul-leted lists; enu-mer-ated lists are okay. Use #. for list for a cleaner 
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 218.
+(/Users/juliag.dealedo/Library/TinyTeX/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 218.
+
+Overfull \hbox (12.09886pt too wide) in paragraph at lines 218--226
+[]\OT1/cmr/m/n/10 Please use ONLY \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 citet and \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 citep for ref-er-ence ci-ta-tions. DO NOT use other cite 
+ []
+
+
+Overfull \hbox (21.23793pt too wide) in paragraph at lines 218--226
+\OT1/cmr/m/n/10 com-mands (e.g., \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 cite, \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 citeyear, \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 nocite, \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 citealp, etc.). Ex-am-ple \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 citet and \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 citep: ...as 
+ []
+
+
+Overfull \hbox (15.76576pt too wide) in paragraph at lines 218--226
+\OT1/cmr/m/n/10 shown by Lev-i-tus et al.[] (2012), Nun-cio, Luis, and Yuan (2011) and Raphael (2004) ...as 
+ []
+
+
+Overfull \hbox (23.40463pt too wide) in paragraph at lines 218--226
+\OT1/cmr/m/n/10 shown by (Lev-i-tus et al.[], 2012), (Nun-cio et al.[], 2011), (Raphael, 2004). ...has been shown 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[2]
+Overfull \hbox (16.18227pt too wide) in paragraph at lines 231--233
+[]\OT1/cmr/m/n/10 As of 2018 we rec-om-mend use of the TrackChanges pack-age to mark re-vi-sions. The 
+ []
+
+
+Overfull \hbox (5.59889pt too wide) in paragraph at lines 250--254
+[]\OT1/cmr/m/n/10 Enter Fig-ures and Ta-bles near as pos-si-ble to where they are first men-tioned: DO 
+ []
+
+
+Overfull \hbox (37.21027pt too wide) in paragraph at lines 250--254
+\OT1/cmr/m/n/10 NOT USE \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 psfrag or \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 subfigure com-mands. DO NOT USE \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 newcommand, \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 renewcommand, 
+ []
+
+<prueba_files/figure-latex/unnamed-chunk-2-1.pdf, id=24, 434.62375pt x 250.9375pt>
+File: prueba_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use prueba_files/figure-latex/unnamed-chunk-2-1.pdf>
+Package pdftex.def Info: prueba_files/figure-latex/unnamed-chunk-2-1.pdf  used on input line 256.
+(pdftex.def)             Requested size: 434.62268pt x 250.93687pt.
+
+Overfull \hbox (37.1377pt too wide) in paragraph at lines 256--256
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 262.
+
+Overfull \hbox (2.25162pt too wide) in paragraph at lines 281--283
+[]\OT1/cmr/m/n/10 AGU prefers the use of \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 sidewaystable\OMS/cmsy/m/n/10 g \OT1/cmr/m/n/10 over \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 landscapetable\OMS/cmsy/m/n/10 g \OT1/cmr/m/n/10 as it causes fewer 
+ []
+
+<prueba_files/figure-latex/unnamed-chunk-3-1.pdf, id=25, 434.62375pt x 250.9375pt>
+File: prueba_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use prueba_files/figure-latex/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: prueba_files/figure-latex/unnamed-chunk-3-1.pdf  used on input line 285.
+(pdftex.def)             Requested size: 434.62268pt x 250.93687pt.
+
+Overfull \hbox (2.2657pt too wide) in paragraph at lines 297--300
+[]\OT1/cmr/m/n/10 If us-ing num-bered lines, please sur-round equa-tions with \OMS/cmsy/m/n/10 n\OT1/cmr/m/n/10 begin\OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 linenomath*\OMS/cmsy/m/n/10 g\OT1/cmr/m/n/10 ... 
+ []
+
+
+
+[3]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[4 <./prueba_files/figure-latex/unnamed-chunk-2-1.pdf>]
+
+[5 <./prueba_files/figure-latex/unnamed-chunk-3-1.pdf>]
+Overfull \hbox (4.35988pt too wide) in paragraph at lines 339--343
+[]\OT1/cmr/m/n/10 Equation in German-born physi-cist Al-bert Ein-stein's the-ory of spe-cial rel-a- 
+ []
+
+
+Overfull \hbox (8.43468pt too wide) in paragraph at lines 339--343
+\OT1/cmr/m/n/10 tiv-ity that showed that the in-creased rel-a-tivis-tic mass ($\OML/cmm/m/it/10 m$\OT1/cmr/m/n/10 ) of a body comes from 
+ []
+
+
+Overfull \hbox (11.25182pt too wide) in paragraph at lines 339--343
+\OT1/cmr/m/n/10 the en-ergy of mo-tion of the body|that is, its ki-netic en-ergy ($\OML/cmm/m/it/10 E$\OT1/cmr/m/n/10 )|divided by the 
+ []
+
+
+Overfull \hbox (1.70999pt too wide) in paragraph at lines 347--350
+[]\OT1/cmr/m/n/10 The ac-knowl-edg-ments must list: A state-ment that in-di-cates to the reader where 
+ []
+
+
+Overfull \hbox (10.46014pt too wide) in paragraph at lines 347--350
+\OT1/cmr/m/n/10 the data sup-port-ing the con-clu-sions can be ob-tained (for ex-am-ple, in the ref-er-ences, ta- 
+ []
+
+
+Overfull \hbox (6.2935pt too wide) in paragraph at lines 355--357
+[]\OT1/cmr/m/n/10 Other af-fil-i-a-tions for any au-thor that may be per-ceived as hav-ing a con-flict of in- 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[6]
+
+[7] (./prueba.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 14--34
+[]\OT1/cmr/m/n/10 Levitus, S., Yarosh, E. S., Zweng, M. M., Antonov, J. I., Boyer, T. P., Bara-nova, 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--34
+\OT1/cmr/m/n/10 trieved from $\OT1/cmtt/m/n/10 http :// www [] .agu [] .org / pubs / crossref / pip / 2012GL051106 [] .shtml$ 
+ []
+
+
+Underfull \hbox (badness 2790) in paragraph at lines 48--62
+[]\OT1/cmr/m/n/10 Nuncio, M., Luis, A. J., & Yuan, X.  (2011).  To-po-graphic me-an-der-ing of Antarc- 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--62
+\OT1/cmr/m/n/10 tic Cir-cum-po-lar Cur-rent and Antarc-tic Cir-cum-po-lar Wave in the ice-ocean- 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--62
+\OT1/cmr/m/n/10 atmosphere sys-tem.  \OT1/cmr/m/it/10 Geo-phys-i-cal Re-search Let-ters\OT1/cmr/m/n/10 , \OT1/cmr/m/it/10 38\OT1/cmr/m/n/10 (13), 1--5.  doi: 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--88
+[]\OT1/cmr/m/n/10 Raphael, M. N.  (2004).  A zonal wave 3 in-dex for the South-ern Hemi-sphere. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--88
+\OT1/cmr/m/it/10 Geo-phys-i-cal Re-search Let-ters\OT1/cmr/m/n/10 , \OT1/cmr/m/it/10 31\OT1/cmr/m/n/10 (23), 1--4.  Re-trieved from $\OT1/cmtt/m/n/10 http :// 
+ []
+
+)
+
+[8] (./prueba.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.45pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4450 strings out of 475171
+ 72167 string characters out of 5765333
+ 472348 words of memory out of 5000000
+ 27365 multiletter control sequences out of 15000+600000
+ 568274 words of font info for 68 fonts, out of 8000000 for 9000
+ 20 hyphenation exceptions out of 8191
+ 85i,10n,93p,321b,373s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </Users/juliag.dealedo/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600.600pk> </Users/juliag.dealedo/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0700.600pk></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></Users/juliag.dealedo/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on prueba.pdf (8 pages, 251629 bytes).
+PDF statistics:
+ 159 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+
