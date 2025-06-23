@@ -51,6 +51,7 @@ options("citation_format" = "pandoc")
 
 The package provides a set of functions classified into two groups: scientific collections (e.g. labels for herbaria or insects) and scientific events organization (e.g. personal badges, abstract books and certificates of attendance and participation). Starting from a tidy dataset, users can easily customize content, incorporate QR codes, logos, images, and edit their own templates. `labeleR` transforms tedious and repetitive workflows into an efficient, reproducible process, contributing to greater scientific productivity. The package is available under an open-source license and can be freely downloaded from CRAN or the GitHub repository (https://ecologyr.github.io/labeleR/).
 
+
 # Statement of need
 
 The management and design of scientific labels and event documents is a time-consuming task. Large-scale label generation tools for herbarium and scientific collections (used by institutions such as museums or botanical gardens) are often paid and proprietary software [e.g. @brahms2025; @irisbg2024]. Microsoft Excel-Word integration through mailing lists is commonly used at a smaller scale, although still involving paid software with limited large database management capacity. Most free alternatives are not open-source, require installing a program with limited customization, and are often only compatible with Windows operating system [e.g. @elysia2019; @plabel2020], or designed for very specific purposes (e.g. @entomolabels2022 for insects, @lichenlabeler2025 for lichens or @herblabel for plant vouchers). Additionally, credentials and certificates for scientific events are either created manually one at a time, through paid online servers, or by hiring an event organization company. To our knowledge, there are no free, customizable tools for the bulk production and distribution of these documents. `labeleR` fills this gap facilitating the creation of scientific collection labels, conference badges, attendance and participation certificates, and abstract books, among others. 
@@ -58,12 +59,9 @@ The management and design of scientific labels and event documents is a time-con
 
 
 
-
-
 # Package description
 
 The `labeleR` package builds upon the `RMarkdown` ecosystem [@rmarkdown] to generate PDF documents from a tidy data frame in R (Figure 1). `labeleR` functions include three types of arguments: (1) R instructions, such as the data object, paths and file name of the rendered document; (2) “fixed” arguments, text that remains constant across output documents (e.g. event name or image path); (3) “variable” arguments, linked to columns in the dataframe, thus changing between documents (e.g. taxonomic names in labels or attendee names in certificates). A QR code can be included either through a fixed argument or a variable argument, without the need for external software. Users can also edit and adapt the default `RMarkdown` templates provided by the package for their own purposes.
-
 
 
 ![Figure 1. `labeleR` package workflow. Information stored in a dataset passes through an R function into a parameterized `RMarkdown` file using LaTeX syntax, and is then rendered as PDF. `labeleR` functions accept three argument types: R instructions which specify the dataset, paths to images or add custom templates (in blue); fixed arguments, such as titles or subtitles (in red), and variable arguments, linked to columns of the dataset (in yellow). Users work directly on R to introduce the parameters, while `labeleR` works in the background with markdown and latex to produce the results. Output PDF documents can be automatically emailed to participants.](figures/Fig1.png)
