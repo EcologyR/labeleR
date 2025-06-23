@@ -77,17 +77,19 @@ Appropriate labelling of samples is a fundamental step of the scientific process
 
 ![Figure 2. Examples of the outcomes from each label-related function in `labeleR`. a) Herbarium label: for stored plant vouchers; includes fixed fields (title, subtitle) and variable fields (e.g. taxon, date, coordinates, elevation). The family field is by default capitalized and bold, and species name italic. Size: 4 labels/page. b) Collection label: includes variable fields (first field in italics, second in bold), a customizable logo, font and background colors. Size: 8/page. c) Tinylabel: a simplified collection label with five fields. Size: 16/page. All three functions can include an optional QR code.](figures/Fig2.png)
 
-![Figure 3. Examples of outcomes from each event-related function in `labeleR`. a) Abstract book: creates pages with title, authors, affiliations and abstract (variable fields) and can include a table of contents and front page. b) Badges: include name, affiliation, a fixed field for the title, the option to add two images on top, and a dashed line at the bottom for additional hand-written information. c) Attendance certificate: attendee name is a variable field, while event name, signer, and date are fixed fields. d) Participation certificate: includes name, affiliation and title of the communication, and several fixed fields. Both certificate functions allow two images on top, a signature at the bottom, and offer Spanish and English templates.](figures/Fig3.png)
 
 ## Documents for scientific events
 
 Scientific events often host a high number of participants, and require the creation of identification badges, abstract books and certificates for attendees and participants (Figure 3). With `labeleR`, templates and code can be customized according to the event, and bulk rendering significantly decreases the amount of time invested in the creation of such materials. Manually delivering attendance and participation certificates is highly time-consuming, but `labeleR` functions allow users to automatically send individual documents to email addresses stored in a column.
 
-
-
 # Further applications 
 
 The `labeleR` philosophy is quite simple: creating multiple documents with a common design from a dataset containing the required information. It offers a modular structure that allows for customization and extension for new applications. For instance, the newly added `create_multichoice` function generates multichoice tests randomizing the order of questions and possible answers from a given table (question bank). New developments will happen in the GitHub repository (https://github.com/EcologyR/labeleR) and eventually pushed to CRAN. User feedback and code contributions are welcome in the same repository to keep `labeleR` as an open and dynamic tool.
+
+
+![Figure 3. Examples of outcomes from each event-related function in `labeleR`. a) Abstract book: creates pages with title, authors, affiliations and abstract (variable fields) and can include a table of contents and front page. b) Badges: include name, affiliation, a fixed field for the title, the option to add two images on top, and a dashed line at the bottom for additional hand-written information. c) Attendance certificate: attendee name is a variable field, while event name, signer, and date are fixed fields. d) Participation certificate: includes name, affiliation and title of the communication, and several fixed fields. Both certificate functions allow two images on top, a signature at the bottom, and offer Spanish and English templates.](figures/Fig3.png)
+
+
 
 
 # Acknowledgements
