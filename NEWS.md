@@ -1,3 +1,7 @@
+# labeleR 0.4.1
+
+* Font face customizable as function parameter
+
 # labeleR 0.4.0
 
 * New function to create book of abstracts
