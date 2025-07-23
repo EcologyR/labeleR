@@ -22,6 +22,7 @@
 #' the bottom, above signer's name.
 #' @param lpic Character (optional). Path to a PNG image to appear in the top-left.
 #' @param rpic Character (optional). Path to a PNG image to appear in the top-right.
+#' @param font Font face to use. Default in Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. To see a list of fonts see \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.
 #' @param keep.files Logical. Keep the RMarkdown template and associated files
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
@@ -30,6 +31,30 @@
 #' @return PDF certificates are saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, the RMarkdown template and PNG logo files
 #' will also appear in the same folder.
+#'
+#' @details
+#' **font**
+#' Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
+#' differs from `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
+#' Several fonts tried and working are:
+#' - libertinus
+#' - accanthis
+#' - Alegreya
+#' - algolrevived
+#' - almendra
+#' - antpolt
+#' - Archivo
+#' - Baskervaldx
+#' - bitter
+#' - tgbonum
+#' - caladea
+#' - librecaslon
+#' - tgchorus
+#' - cyklop
+#' - forum
+#' - imfellEnglish
+#' - LobsterTwo
+#' - quattrocento
 #'
 #' @export
 #'
@@ -52,6 +77,7 @@
 #'   lpic = NULL,
 #'   rpic = NULL,
 #'   signature.pic = NULL,
+#'   font = "libertinus"
 #' )
 
 
@@ -73,6 +99,7 @@ create_attendance_certificate <- function(
     signature.pic = NULL,
     lpic = NULL,
     rpic = NULL,
+    font = NULL,
     keep.files = FALSE,
     template = NULL) {
 
@@ -99,6 +126,15 @@ create_attendance_certificate <- function(
     message("No file name provided")
     if (language == "English") {filename <- "Attendance"}
     if (language == "Spanish") {filename <- "Asistencia"}
+  }
+
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
   }
 
 
@@ -203,7 +239,8 @@ create_attendance_certificate <- function(
         date            = if (date            == "") {bl.char} else {date},
         hours           = if (hours           == "") {bl.char} else {hours},
         signer          = if (signer          == "") {bl.char} else {signer},
-        signer.role     = if (signer.role     == "") {bl.char} else {signer.role}
+        signer.role     = if (signer.role     == "") {bl.char} else {signer.role},
+        font = font
       )
     )
 

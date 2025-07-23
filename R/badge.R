@@ -11,6 +11,7 @@
 #' storing participants' affiliation.
 #' @param lpic Character (optional) Path to a PNG image to be located in the badge top-left.
 #' @param rpic Character (optional) Path to a PNG image to be located in the badge top-right.
+#' @param font Font face to use. Default in Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. To see a list of fonts see \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.
 #' @param keep.files Logical. Keep the RMarkdown template and associated files
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
@@ -19,6 +20,30 @@
 #' @return A PDF file named "Badges.pdf" is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an RMarkdown and PNG lpic and rpic files will also
 #' appear in the same folder.
+#'
+#' @details
+#' **font**
+#' Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
+#' differs from `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
+#' Several fonts tried and working are:
+#' - libertinus
+#' - accanthis
+#' - Alegreya
+#' - algolrevived
+#' - almendra
+#' - antpolt
+#' - Archivo
+#' - Baskervaldx
+#' - bitter
+#' - tgbonum
+#' - caladea
+#' - librecaslon
+#' - tgchorus
+#' - cyklop
+#' - forum
+#' - imfellEnglish
+#' - LobsterTwo
+#' - quattrocento
 #'
 #' @export
 #'
@@ -32,6 +57,7 @@
 #'   event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
 #'   name.column = "List",
 #'   affiliation.column = "Affiliation",
+#'   font = "libertinus",
 #'   lpic = NULL,
 #'   rpic = NULL)
 
@@ -43,6 +69,7 @@ create_badge <- function(data = NULL,
                          affiliation.column = NULL,
                          lpic = NULL,
                          rpic = NULL,
+                         font = NULL,
                          keep.files = FALSE,
                          template = NULL) {
 
@@ -70,6 +97,15 @@ create_badge <- function(data = NULL,
   if (is.null(event)) {
     message("No event provided")
     event <- ""
+  }
+
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
   }
 
   check_column_in_df(data, name.column)
@@ -126,7 +162,8 @@ create_badge <- function(data = NULL,
     params = list(
       event        = event,
       names        = data[, name.column],
-      affiliations = if (affiliation.column == "") {"~"} else {data[, affiliation.column]}
+      affiliations = if (affiliation.column == "") {"~"} else {data[, affiliation.column]},
+      font = font
     )
   )
 

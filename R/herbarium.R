@@ -41,6 +41,30 @@
 #' was collected.
 #' @inheritParams create_badge
 #'
+#' @details
+#' **font**
+#' Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
+#' differs from `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
+#' Several fonts tried and working are:
+#' - libertinus
+#' - accanthis
+#' - Alegreya
+#' - algolrevived
+#' - almendra
+#' - antpolt
+#' - Archivo
+#' - Baskervaldx
+#' - bitter
+#' - tgbonum
+#' - caladea
+#' - librecaslon
+#' - tgchorus
+#' - cyklop
+#' - forum
+#' - imfellEnglish
+#' - LobsterTwo
+#' - quattrocento
+#'
 #' @return A pdf file with four herbarium labels per page within an 'output' folder.
 #'
 #' @export
@@ -69,7 +93,8 @@
 #'   collector.column = "Collector",
 #'   collection.column = "Collection_number",
 #'   assistants.column = "Assistants",
-#'   date.column = "Date"
+#'   date.column = "Date",
+#'   font = "libertinus"
 #' )
 
 create_herbarium_label <- function(data = data,
@@ -95,6 +120,7 @@ create_herbarium_label <- function(data = data,
                                    collection.column = NULL,
                                    assistants.column = NULL,
                                    date.column = NULL,
+                                   font = NULL,
                                    keep.files = FALSE,
                                    template = NULL
 ){
@@ -117,6 +143,15 @@ create_herbarium_label <- function(data = data,
   if (is.null(filename)) {
     message("No file name provided")
     filename <- "Herbarium"
+  }
+
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
   }
 
 
@@ -274,7 +309,8 @@ create_herbarium_label <- function(data = data,
       collector.i        = if (collector.column        == "") {bl.char} else {data[,collector.column]},
       collection.i       = if (collection.column       == "") {bl.char} else {data[,collection.column]},
       assistants.i       = if (assistants.column       == "") {bl.char} else {data[,assistants.column]},
-      date.i             = if (date.column             == "") {bl.char} else {data[,date.column]}
+      date.i             = if (date.column             == "") {bl.char} else {data[,date.column]},
+      font = font
     )
   )
 

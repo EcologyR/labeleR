@@ -21,6 +21,7 @@
 #' @param authors.cex Text font size used for the authors' names. Default is 16.
 #' @param affiliations.cex Text font size used for the affiliation addresses Default is 14.
 #' @param text.cex Text font size used for the abstract main text body. Default is 14.
+#' @param font Font face to use. Default in Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. To see a list of fonts see \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.
 #' @param keep.files Logical. Keep the RMarkdown template and associated files
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
@@ -30,8 +31,14 @@
 #' by `path`. If `keep.files = TRUE`, an RMarkdown will also
 #' appear in the same folder.
 #'
-#' @details You can copy and modify at your convenience  \href{https://docs.google.com/forms/d/1u4SFWDobQrD8AEvKpvPCdwAZiVGd55B2dAtPmPEfU6E/copy}{this Google form template}
+#' @details
+#'  You can copy and modify at your convenience  \href{https://docs.google.com/forms/d/1u4SFWDobQrD8AEvKpvPCdwAZiVGd55B2dAtPmPEfU6E/copy}{this Google form template}
 #' to retrieve abstract information which will match labeleR's requirements for a straightforward use.
+#'
+#' **font**
+#' Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
+#' differs from `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
+#'
 #'
 #'
 #' @export
@@ -50,6 +57,7 @@
 #' title.cex = 20,
 #' authors.cex = 15,
 #' affiliations.cex = 14,
+#' font = "libertinus",
 #' text.cex = 12,
 #' frontpage = "Congress_frontpage.pdf"
 #')
@@ -68,6 +76,7 @@ create_abstractbook <- function(data = NULL,
                          authors.cex = 16,
                          affiliations.cex = 14,
                          text.cex = 14,
+                         font = NULL,
                          keep.files = FALSE,
                          template = NULL) {
 
@@ -90,6 +99,15 @@ create_abstractbook <- function(data = NULL,
   if (is.null(filename)) {
     message("No file name provided")
     filename <- "AbstractBook"
+  }
+
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
   }
 
   # if (is.null(event)) {
@@ -239,7 +257,8 @@ create_abstractbook <- function(data = NULL,
       title.cex         = as.character(rep(title.cex        , times = nrow(data))) ,
       authors.cex       = as.character(rep(authors.cex      , times = nrow(data))) ,
       affiliations.cex  = as.character(rep(affiliations.cex , times = nrow(data))) ,
-      text.cex          = as.character(rep(text.cex         , times = nrow(data)))
+      text.cex          = as.character(rep(text.cex         , times = nrow(data))),
+      font = font
 
     )
   )
