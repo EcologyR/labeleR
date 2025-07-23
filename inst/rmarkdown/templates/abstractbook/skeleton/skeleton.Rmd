@@ -17,7 +17,9 @@ params:
   title.cex: ""
   authors.cex: ""
   affiliations.cex: ""
-  text.cex: ""
+  text.cex: "" 
+  font: ""
+fontfamily: "`r params$font`"
 ---
 
 ```{r echo=FALSE, results='asis'}

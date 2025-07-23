@@ -16,6 +16,8 @@ params:
   option3.i: ""
   option4.i: ""
   image.i: ""
+  font: ""
+fontfamily: "`r params$font`"
 ---
 
 ```{r echo=FALSE, results='asis'}

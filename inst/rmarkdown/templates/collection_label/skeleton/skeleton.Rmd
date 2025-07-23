@@ -22,7 +22,9 @@ params:
   field4.i: ""
   field5.i: ""
   bgcolor: ""
-  textcolor: ""
+  textcolor: ""  
+  font: ""
+fontfamily: "`r params$font`"
 ---
 
 ```{r echo=FALSE, results='asis'}

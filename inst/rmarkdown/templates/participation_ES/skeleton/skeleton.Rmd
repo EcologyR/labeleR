@@ -16,6 +16,8 @@ params:
   signer.i: ""
   signer.role.i: ""
   freetext.i: ""
+  font: ""
+fontfamily: "`r params$font`"
 ---
 
 \begin{center}

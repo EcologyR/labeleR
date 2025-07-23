@@ -12,6 +12,8 @@ params:
   event: ""
   names: ""
   affiliations: ""
+  font: ""
+fontfamily: "`r params$font`"
 ---
 
 ```{r echo=FALSE, results='asis'}
