@@ -25,29 +25,7 @@
 #' (as front page and/or instructions).
 #' @inheritParams create_badge
 #'
-#' @details
-#' **font**
-#' Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
-#' differs from `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
-#' Several fonts tried and working are:
-#' - libertinus
-#' - accanthis
-#' - Alegreya
-#' - algolrevived
-#' - almendra
-#' - antpolt
-#' - Archivo
-#' - Baskervaldx
-#' - bitter
-#' - tgbonum
-#' - caladea
-#' - librecaslon
-#' - tgchorus
-#' - cyklop
-#' - forum
-#' - imfellEnglish
-#' - LobsterTwo
-#' - quattrocento
+#' @inherit create_badge details
 #'
 #' @return A PDF file is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an RMarkdown file will also appear in the same folder.

@@ -21,36 +21,13 @@
 #' @param logo Character (optional) Path to a PNG image to be located in the label bottom.
 #' @param bgcolor HTML color for label background. Default is D0ECC1
 #' @param textcolor HTML color for label text. Default is 1E3F20
-#' @param font Font face to use. Default in Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. To see a list of fonts see \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.
 #' @inheritParams create_badge
 #'
 #' @return A PDF file named "Collection_label.pdf" is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an RMarkdown and PNG logo files will also
 #' appear in the same folder.
 #'
-#' @details
-#' **font**
-#' Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
-#' differs from `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
-#' Several fonts tried and working are:
-#' - libertinus
-#' - accanthis
-#' - Alegreya
-#' - algolrevived
-#' - almendra
-#' - antpolt
-#' - Archivo
-#' - Baskervaldx
-#' - bitter
-#' - tgbonum
-#' - caladea
-#' - librecaslon
-#' - tgchorus
-#' - cyklop
-#' - forum
-#' - imfellEnglish
-#' - LobsterTwo
-#' - quattrocento
+#' @inherit create_badge details
 #'
 #' @export
 #'

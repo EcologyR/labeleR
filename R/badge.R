@@ -11,7 +11,7 @@
 #' storing participants' affiliation.
 #' @param lpic Character (optional) Path to a PNG image to be located in the badge top-left.
 #' @param rpic Character (optional) Path to a PNG image to be located in the badge top-right.
-#' @param font Font face to use. Default in Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. To see a list of fonts see \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.
+#' @param font Character. Font face to use. Default is Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. A list of fonts is available at \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.
 #' @param keep.files Logical. Keep the RMarkdown template and associated files
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
@@ -22,10 +22,13 @@
 #' appear in the same folder.
 #'
 #' @details
+#'
 #' **font**
-#' Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
-#' differs from `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
-#' Several fonts tried and working are:
+#' Not all fonts can be used. Consider only those which are stated to be 'Part of TeX Live',
+#' and have OTF and TT available. Additionally, fonts whose 'Usage' differs from
+#' `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
+#'
+#' Several fonts tried that seem to work are:
 #' - libertinus
 #' - accanthis
 #' - Alegreya

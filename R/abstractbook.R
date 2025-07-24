@@ -21,25 +21,21 @@
 #' @param authors.cex Text font size used for the authors' names. Default is 16.
 #' @param affiliations.cex Text font size used for the affiliation addresses Default is 14.
 #' @param text.cex Text font size used for the abstract main text body. Default is 14.
-#' @param font Font face to use. Default in Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. To see a list of fonts see \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.
 #' @param keep.files Logical. Keep the RMarkdown template and associated files
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
 #' using the default template included in `labeleR`.
+#' @inheritParams create_badge
 #'
 #' @return A PDF file named after `filename` is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an RMarkdown will also
 #' appear in the same folder.
 #'
-#' @details
-#'  You can copy and modify at your convenience  \href{https://docs.google.com/forms/d/1u4SFWDobQrD8AEvKpvPCdwAZiVGd55B2dAtPmPEfU6E/copy}{this Google form template}
+#' @note
+#' You can copy and modify at your convenience \href{https://docs.google.com/forms/d/1u4SFWDobQrD8AEvKpvPCdwAZiVGd55B2dAtPmPEfU6E/copy}{this Google form template}
 #' to retrieve abstract information which will match labeleR's requirements for a straightforward use.
 #'
-#' **font**
-#' Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
-#' differs from `\normalfont`, `\itshape` and `\bfseries` usually fail during installation and/or rendering.
-#'
-#'
+#' @inherit create_badge details
 #'
 #' @export
 #'

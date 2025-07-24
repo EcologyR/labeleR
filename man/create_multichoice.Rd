@@ -60,7 +60,7 @@ If the length of \code{seeds} is longer than one, a multiple choice exam will be
 \item{frontpage}{Character (optional). Path to PDF file to be inserted before the document
 (as front page and/or instructions).}
 
-\item{font}{Font face to use. Default in Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. To see a list of fonts see \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.}
+\item{font}{Character. Font face to use. Default is Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. A list of fonts is available at \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.}
 
 \item{keep.files}{Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.}
@@ -77,9 +77,11 @@ Creates a multichoice exam, with 4 questions per page (first one has title plus 
 }
 \details{
 \strong{font}
-Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
-differs from \verb{\\normalfont}, \verb{\\itshape} and \verb{\\bfseries} usually fail during installation and/or rendering.
-Several fonts tried and working are:
+Not all fonts can be used. Consider only those which are stated to be 'Part of TeX Live',
+and have OTF and TT available. Additionally, fonts whose 'Usage' differs from
+\verb{\\normalfont}, \verb{\\itshape} and \verb{\\bfseries} usually fail during installation and/or rendering.
+
+Several fonts tried that seem to work are:
 \itemize{
 \item libertinus
 \item accanthis

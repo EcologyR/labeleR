@@ -1,6 +1,6 @@
 # labeleR 0.4.1
 
-* Font face customizable as function parameter
+* New argument `font` allows users to change the document font
 
 # labeleR 0.4.0
 

@@ -54,7 +54,7 @@ appear below field4.}
 
 \item{textcolor}{HTML color for label text. Default is 1E3F20}
 
-\item{font}{Font face to use. Default in Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. To see a list of fonts see \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.}
+\item{font}{Character. Font face to use. Default is Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. A list of fonts is available at \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.}
 
 \item{keep.files}{Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.}
@@ -72,9 +72,11 @@ Create collection labels (8 labels per DIN-A4 page)
 }
 \details{
 \strong{font}
-Not all fonts are able to be used. Consider only those which are stated to be 'Part of TeX Live', and have OTF and TT available. Additionally, fonts whos 'Usage'
-differs from \verb{\\normalfont}, \verb{\\itshape} and \verb{\\bfseries} usually fail during installation and/or rendering.
-Several fonts tried and working are:
+Not all fonts can be used. Consider only those which are stated to be 'Part of TeX Live',
+and have OTF and TT available. Additionally, fonts whose 'Usage' differs from
+\verb{\\normalfont}, \verb{\\itshape} and \verb{\\bfseries} usually fail during installation and/or rendering.
+
+Several fonts tried that seem to work are:
 \itemize{
 \item libertinus
 \item accanthis
