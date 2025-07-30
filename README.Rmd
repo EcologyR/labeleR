@@ -494,10 +494,9 @@ create_multichoice(
 ```
 
 #### Multiple choice exam example:
-| ![](man/figures/multichoice_example.png) |
+
+| ![](man/figures/multichoice_example.png) | 
 |------------------------------------------|
-
-
 
 ## 3. Frequently Asked Questions
 
@@ -512,27 +511,38 @@ here, and some clues on how to adapt them on your template. To see how
 to create and use a custom template see section [1.2 Some advice for the
 labeleR functions].
 
-**\*NOTE:** Backslashes (i.e. `\`) define special characters in different ways. When editing a RMarkdown template (e.g. certificates) only one bar is needed. However, when a text in R has to be passed to Markdown and render after (i.e. templates starting with a `cat()` function), double backslashes (`\\`) must be used!
+**\*NOTE:** Backslashes (i.e. `\`) define special characters in
+different ways. When editing a RMarkdown template (e.g. certificates)
+only one bar is needed. However, when a text in R has to be passed to
+Markdown and render after (i.e. templates starting with a `cat()`
+function), double backslashes (`\\`) must be used!
 
 -   [Text size:]{.underline}\
     Text size can be defined using functions as (e.g.) `{\Huge text }`
     to make it "huge", or different default type sizes ([see
     more](https://texblog.org/2012/08/29/changing-the-font-size-in-latex/)).
     Alternatively, a specific font size can be specified using
-    `{\fontsize{30pt}{0pt}\selectfont text }` (in this case to set a font size of 30).
-    
--   [Text emphasis (bold/italic/teletype):]{.underline}
-    To make a text bold, use `\bf{ text }`.
-    To make a text italics, use `\textit{ text }` or `\emph{ text }` .
-    To make a text appear in code appearance, use `\texttt{ text }`
+    `{\fontsize{30pt}{0pt}\selectfont text }` (in this case to set a
+    font size of 30).
 
--   [Image size:]{.underline}
-    When images are included in documents, their size can be modified using
-    `\includegraphics[height=1.5cm]{lpic.png} ` (in this case to reduce it to 1.5 cm from the original 3 cm). QR codes can be also scaled using  (e.g.) `\qrcode[height=0.5in, version=5]`.
-    
--   [Font type:]{.underline}
-    If a non-default font type has to be used just for one parameter, for example, it should be specified in the template as follows: `{\fontfamily{pcr}\selectfont text }`. Here, what has to be specified is the "font code" ([see available codes here] (https://www.overleaf.com/learn/latex/Font_typefaces); we have used `pcr`, "courier"). Bear in mind that no spaces can be left between the brackets and the code.
+-   [Text emphasis (bold/italic/teletype):]{.underline} To make a text
+    bold, use `\bf{ text }`. To make a text italics, use
+    `\textit{ text }` or `\emph{ text }` . To make a text appear in code
+    appearance, use `\texttt{ text }`
 
+-   [Image size:]{.underline} When images are included in documents,
+    their size can be modified using
+    `\includegraphics[height=1.5cm]{lpic.png}` (in this case to reduce
+    it to 1.5 cm from the original 3 cm). QR codes can be also scaled
+    using (e.g.) `\qrcode[height=0.5in, version=5]`.
+
+-   [Font type:]{.underline} If a non-default font type has to be used
+    just for one parameter, for example, it should be specified in the
+    template as follows: `{\fontfamily{pcr}\selectfont text }`. Here,
+    what has to be specified is the "font code" ([see available codes
+    here](https://www.overleaf.com/learn/latex/Font_typefaces)); we have
+    used `pcr`, "courier"). Bear in mind that no spaces can be left
+    between the brackets and the code.
 
 ### Including italic or bold texts within a single text
 
@@ -579,7 +589,6 @@ create_participation_certificate(
 )
   
 ```
-
 
 ## Send certificates automatically using create_certificate functions
 
@@ -655,8 +664,6 @@ create_attendance_certificate(
   
 )
 ```
-
-
 
 ## Citation
 

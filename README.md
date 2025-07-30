@@ -522,10 +522,10 @@ function), double backslashes (`\\`) must be used!
 - <u>Font type:</u> If a non-default font type has to be used just for
   one parameter, for example, it should be specified in the template as
   follows: `{\fontfamily{pcr}\selectfont text }`. Here, what has to be
-  specified is the “font code” (\[see available codes here\]
-  (<https://www.overleaf.com/learn/latex/Font_typefaces>); we have used
-  `pcr`, “courier”). Bear in mind that no spaces can be left between the
-  brackets and the code.
+  specified is the “font code” ([see available codes
+  here](https://www.overleaf.com/learn/latex/Font_typefaces)); we have
+  used `pcr`, “courier”). Bear in mind that no spaces can be left
+  between the brackets and the code.
 
 ### Including italic or bold texts within a single text
 
