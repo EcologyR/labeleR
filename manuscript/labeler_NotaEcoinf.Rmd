@@ -47,9 +47,13 @@ options("citation_format" = "pandoc")
 
 # Summary
 
-`labeleR` is an R package designed to automate the creation of collection labels and documents for scientific events. It simplifies repetitive and time-consuming tasks, offering a practical alternative to manual or costly tools. With `labeleR`, users can generate a wide variety of customizable PDF documents that can also be automatically emailed.
+`labeleR` is an R package designed to automate the creation of documents for scientific and academic purposes. It simplifies repetitive and time-consuming tasks, offering a practical alternative to manual or costly tools. Starting from a tidy dataset, users can easily customize content, incorporate QR codes, logos, images, and edit their own templates, transforming tedious and repetitive workflows into an efficient, reproducible process. The package is available under an open-source license and can be freely downloaded from CRAN or the GitHub repository (https://ecologyr.github.io/labeleR/). 
 
-The package provides a set of functions classified into two groups: scientific collections (e.g. labels for herbaria or insects) and scientific events organization (e.g. personal badges, abstract books and certificates of attendance and participation). Starting from a tidy dataset, users can easily customize content, incorporate QR codes, logos, images, and edit their own templates. `labeleR` transforms tedious and repetitive workflows into an efficient, reproducible process, contributing to greater scientific productivity. The package is available under an open-source license and can be freely downloaded from CRAN or the GitHub repository (https://ecologyr.github.io/labeleR/).
+`labeleR` functions can generate a wide variety of customizable PDF documents adjusted for multiple requirements. First, there is a set of functions designed to create labels for scientific collections (e.g. labels for herbarium vouchers or insects). These functions are flexible in the information to be included, but also developed to follow a standard aspect, while allowing to incorporate custom information, such as logos or QR codes. Second, documents generated for scientific events organization, such as personal badges, abstract books, or attendance or participation certificates. These latter ones not only can be bulk rendered, but emailed individually, avoiding the repetitive task of individual mailing or storing all certificates in a common online repository.  Additionally, other-purpose resources can be rendered using `labeleR`, as is the case for the multiple-choice test generating function. All `labeleR`-generated documents have been designed a template which we have considered to be optimal for default use. However, they can be edited to render completely customized files, specifically tailored for each individual purpose.
+
+
+
+
 
 
 # Statement of need
