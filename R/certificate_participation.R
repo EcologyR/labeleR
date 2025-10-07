@@ -33,6 +33,9 @@
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
 #' using the default template included in `labeleR`.
+#' @inheritParams create_badge
+#'
+#' @inherit create_badge details
 #'
 #' @return PDF certificates are saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, the RMarkdown template and PNG logo files
@@ -60,7 +63,8 @@
 #'   signer.role = "School Headmaster",
 #'   lpic = NULL,
 #'   rpic = NULL,
-#'   signature.pic = NULL
+#'   signature.pic = NULL,
+#'   font = "libertinus"
 #' )
 
 create_participation_certificate <- function(
@@ -84,6 +88,7 @@ create_participation_certificate <- function(
     signature.pic = NULL,
     lpic = NULL,
     rpic = NULL,
+    font = NULL,
     keep.files = FALSE,
     template = NULL
 ){
@@ -112,6 +117,14 @@ create_participation_certificate <- function(
     if (language == "Spanish") {filename <- "Participacion"}
   }
 
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
+  }
 
   sendmail <- sendmail_setup(email.column, email.info)
 
@@ -238,7 +251,8 @@ create_participation_certificate <- function(
         date.i        = if (date.column        == "") {bl.char} else {data[i, date.column]},
         freetext.i    = if (freetext           == "") {bl.char} else {freetext},
         signer.i      = if (signer             == "") {bl.char} else {signer},
-        signer.role.i = if (signer.role        == "") {bl.char} else {signer.role}
+        signer.role.i = if (signer.role        == "") {bl.char} else {signer.role},
+        font = font
       )
     )
 

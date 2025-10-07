@@ -31,6 +31,8 @@ params:
   collection.i: ""
   assistants.i: ""
   date.i: ""
+  font: ""
+fontfamily: "`r params$font`"
 ---
 
 ```{r echo=FALSE, results='asis'}

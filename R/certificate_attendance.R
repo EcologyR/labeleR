@@ -26,10 +26,13 @@
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
 #' using the default template included in `labeleR`.
+#' @inheritParams create_badge
 #'
 #' @return PDF certificates are saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, the RMarkdown template and PNG logo files
 #' will also appear in the same folder.
+#'
+#' @inherit create_badge details
 #'
 #' @export
 #'
@@ -52,6 +55,7 @@
 #'   lpic = NULL,
 #'   rpic = NULL,
 #'   signature.pic = NULL,
+#'   font = "libertinus"
 #' )
 
 
@@ -73,6 +77,7 @@ create_attendance_certificate <- function(
     signature.pic = NULL,
     lpic = NULL,
     rpic = NULL,
+    font = NULL,
     keep.files = FALSE,
     template = NULL) {
 
@@ -99,6 +104,15 @@ create_attendance_certificate <- function(
     message("No file name provided")
     if (language == "English") {filename <- "Attendance"}
     if (language == "Spanish") {filename <- "Asistencia"}
+  }
+
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
   }
 
 
@@ -203,7 +217,8 @@ create_attendance_certificate <- function(
         date            = if (date            == "") {bl.char} else {date},
         hours           = if (hours           == "") {bl.char} else {hours},
         signer          = if (signer          == "") {bl.char} else {signer},
-        signer.role     = if (signer.role     == "") {bl.char} else {signer.role}
+        signer.role     = if (signer.role     == "") {bl.char} else {signer.role},
+        font = font
       )
     )
 

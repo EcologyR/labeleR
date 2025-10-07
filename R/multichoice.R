@@ -25,6 +25,8 @@
 #' (as front page and/or instructions).
 #' @inheritParams create_badge
 #'
+#' @inherit create_badge details
+#'
 #' @return A PDF file is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an RMarkdown file will also appear in the same folder.
 #'
@@ -43,6 +45,7 @@
 #' option2.column = "opt2",
 #' option3.column = "opt3",
 #' option4.column = "opt4",
+#' font = "libertinus",
 #' start = 1,
 #' solutions=T,
 #' seeds = c(1:2)
@@ -62,6 +65,7 @@ create_multichoice <- function(data = NULL,
                                start = 1,
                                seeds = NULL,
                                frontpage = NULL,
+                               font = NULL,
                                keep.files = FALSE,
                                template = NULL) {
 
@@ -87,6 +91,14 @@ create_multichoice <- function(data = NULL,
     filename <- "Exam"
   }
 
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
+  }
 
   if (any(apply(data, 1, nchar) > 150)) {
     message("Too long texts may give undesired results. Please consider shortening long fields.")
@@ -222,7 +234,8 @@ create_multichoice <- function(data = NULL,
         option2.i = if (option2.column  == "") {bl.char} else {data[,option2.column]},
         option3.i = if (option3.column  == "") {bl.char} else {data[,option3.column]},
         option4.i = if (option4.column  == "") {bl.char} else {data[,option4.column]},
-        image.i = if (image.column  == "") {bl.char} else {data[,image.column]}
+        image.i = if (image.column  == "") {bl.char} else {data[,image.column]},
+        font = font
       )
     )
 
@@ -248,7 +261,8 @@ create_multichoice <- function(data = NULL,
           option2.i = if (option2.column  == "") {bl.char} else {datasols[,option2.column]},
           option3.i = if (option3.column  == "") {bl.char} else {datasols[,option3.column]},
           option4.i = if (option4.column  == "") {bl.char} else {datasols[,option4.column]},
-          image.i = if (image.column  == "") {bl.char} else {data[,image.column]}
+          image.i = if (image.column  == "") {bl.char} else {data[,image.column]},
+          font = font
         )
       )
     }

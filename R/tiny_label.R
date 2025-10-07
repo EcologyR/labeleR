@@ -20,6 +20,8 @@
 #' appear below field4.
 #' @inheritParams create_badge
 #'
+#' @inherit create_badge details
+#'
 #' @return A PDF file named "Tiny_label.pdf" is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an RMarkdown file will also appear in the same folder.
 #'
@@ -36,7 +38,8 @@
 #'   field2.column = "field2",
 #'   field3.column = "field3",
 #'   field4.column = "field4",
-#'   field5.column = "field5"
+#'   field5.column = "field5",
+#'   font = "libertinus"
 #' )
 #'
 
@@ -49,6 +52,7 @@ create_tiny_label <- function(data = NULL,
                              field3.column = NULL,
                              field4.column = NULL,
                              field5.column = NULL,
+                             font = NULL,
                              keep.files = FALSE,
                              template = NULL) {
 
@@ -73,6 +77,14 @@ create_tiny_label <- function(data = NULL,
     filename <- "Tiny_label"
   }
 
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
+  }
 
   if (any(apply(data, 1, nchar) > 150)) {
     message("Too long texts may give undesired results. Please consider shortening long fields.")
@@ -154,7 +166,8 @@ create_tiny_label <- function(data = NULL,
       field2.i = if (field2.column == "") {bl.char} else {data[,field2.column]},
       field3.i = if (field3.column == "") {bl.char} else {data[,field3.column]},
       field4.i = if (field4.column == "") {bl.char} else {data[,field4.column]},
-      field5.i = if (field5.column == "") {bl.char} else {data[,field5.column]}
+      field5.i = if (field5.column == "") {bl.char} else {data[,field5.column]},
+      font = font
     )
   )
 

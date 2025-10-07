@@ -1,3 +1,7 @@
+# labeleR 0.4.1
+
+* New argument `font` allows users to change the document font
+
 # labeleR 0.4.0
 
 * New function to create book of abstracts

@@ -13,6 +13,7 @@ create_badge(
   affiliation.column = NULL,
   lpic = NULL,
   rpic = NULL,
+  font = NULL,
   keep.files = FALSE,
   template = NULL
 )
@@ -35,6 +36,8 @@ storing participants' affiliation.}
 
 \item{rpic}{Character (optional) Path to a PNG image to be located in the badge top-right.}
 
+\item{font}{Character. Font face to use. Default is Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. A list of fonts is available at \url{https://tug.org/FontCatalogue/opentypefonts.html}. See Details for more information.}
+
 \item{keep.files}{Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.}
 
@@ -49,6 +52,34 @@ appear in the same folder.
 \description{
 Create badges (8 badges per DIN-A4 page)
 }
+\details{
+\strong{font}
+Not all fonts can be used. Consider only those which are stated to be 'Part of TeX Live',
+and have OTF and TT available. Additionally, fonts whose 'Usage' differs from
+\verb{\\normalfont}, \verb{\\itshape} and \verb{\\bfseries} usually fail during installation and/or rendering.
+
+Several fonts tried that seem to work are:
+\itemize{
+\item libertinus
+\item accanthis
+\item Alegreya
+\item algolrevived
+\item almendra
+\item antpolt
+\item Archivo
+\item Baskervaldx
+\item bitter
+\item tgbonum
+\item caladea
+\item librecaslon
+\item tgchorus
+\item cyklop
+\item forum
+\item imfellEnglish
+\item LobsterTwo
+\item quattrocento
+}
+}
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 create_badge(
@@ -58,6 +89,7 @@ create_badge(
   event = "INTERNATIONAL CONFERENCE OF MUGGLEOLOGY",
   name.column = "List",
   affiliation.column = "Affiliation",
+  font = "libertinus",
   lpic = NULL,
   rpic = NULL)
 \dontshow{\}) # examplesIf}

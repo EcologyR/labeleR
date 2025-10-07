@@ -27,6 +27,8 @@
 #' by `path`. If `keep.files = TRUE`, an RMarkdown and PNG logo files will also
 #' appear in the same folder.
 #'
+#' @inherit create_badge details
+#'
 #' @export
 #'
 #' @author Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
@@ -56,6 +58,7 @@ create_collection_label <- function(data = NULL,
                                     logo = NULL,
                                     bgcolor = "D0ECC1",
                                     textcolor = "1E3F20",
+                                    font = NULL,
                                     keep.files = FALSE,
                                     template = NULL) {
 
@@ -79,6 +82,15 @@ create_collection_label <- function(data = NULL,
   if (is.null(filename)) {
     message("No file name provided")
     filename <- "Collection_label"
+  }
+
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
   }
 
 
@@ -163,8 +175,10 @@ create_collection_label <- function(data = NULL,
       field4.i = if (field4.column == "") {bl.char} else {data[,field4.column]},
       field5.i = if (field5.column == "") {bl.char} else {data[,field5.column]},
       bgcolor = bgcolor,
-      textcolor = textcolor
+      textcolor = textcolor,
+      font = font
     )
   )
 
-}
+
+  }

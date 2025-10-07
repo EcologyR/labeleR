@@ -33,13 +33,15 @@ knitr::opts_chunk$set(
 
 <img src="man/figures/labeleR.png" width="140px" align="right"/>
 
-Have you ever thought, if there was an automatic way…? labeleR is an R package to optimize the creation of your own collection labels, scientific documentation for events, and much more! 🏷️
+Have you ever thought, if there was an automatic way…? labeleR is an R
+package to optimize the creation of your own collection labels,
+scientific documentation for events, and much more! 🏷️
 
-If you need to create your labels (for your lab, plant
-vouchers, insect collections), attendance, participation certificates or
-accreditation badges (to a course, a congress)... labeleR is the answer!
-Decide which function to use, copy the code into your console, modify it
-and run! Keep an eye 👀 on this easy tutorial on how to use it 👇
+If you need to create your labels (for your lab, plant vouchers, insect
+collections), attendance, participation certificates or accreditation
+badges (to a course, a congress)... labeleR is the answer! Decide which
+function to use, copy the code into your console, modify it and run!
+Keep an eye 👀 on this easy tutorial on how to use it 👇
 
 ## Installing labeleR
 
@@ -191,9 +193,6 @@ Warning! Including too long texts may cause the alteration of the
 structure of the labels, so we recommend to be concise (specially with
 area description!)
 
-| ![](man/figures/Herbarium_blank.png) |
-|-------------------------------------------------------------|
-
 ##### Herbarium labels example:
 
 In this example, we show the labels some students have created for their
@@ -228,9 +227,6 @@ create_herbarium_label(
 
 ```
 
-| ![](man/figures/Herbarium_labels.png) |
-|---------------------------------------------------------------|
-
 #### 2.1.2. Collection labels
 
 Collection labels are one of the most aesthetic labels. They have five
@@ -244,9 +240,6 @@ As a novelty, the user may manually fix the backgroud and text colors to
 their preference, using HTML color codes (same code as HEX, but without
 the '\#'). By default, background colors are two hues of green. Eight
 different labels will fit in each of the A4 pdf pages.
-
-| ![](man/figures/collection_labels_blank.png) |
-|---------------------------------------------------------------|
 
 ##### Collection labels example:
 
@@ -270,9 +263,6 @@ create_collection_label(
 )
 ```
 
-| ![](man/figures/collection_labels.png) |
-|-----------------------------------------------------------------|
-
 ### 2.1.3 Tiny labels
 
 This type of labels is a simplified version of the previous, and
@@ -287,9 +277,6 @@ difficult to read.
 size is too big for the pretended use (as can happen for small insect
 collections, for example), we recommend to use the "print several pages
 per sheet" in the printer's options.
-
-| ![](man/figures/tinylabels_blank.png) |
-|---------------------------------------------------------|
 
 #### Tinylabels example:
 
@@ -310,9 +297,6 @@ create_tiny_label(
 )
 
 ```
-
-| ![](man/figures/tinylabels.png) |
-|---------------------------------------------------|
 
 ### 2.2. Documents for scientific events
 
@@ -356,9 +340,6 @@ As an example, we present the accreditation cards that might have been
 used in the International Conference of Muggleology, where the only
 changing fields are names and affiliations of attendees.
 
-| ![](man/figures/abstractbook_example.png) |
-|------------------------------------------------------|
-
 ### 2.2.2. Badges
 
 Badges can be used for personal accreditation in congresses, courses,
@@ -366,9 +347,6 @@ meetings, etc. They have only two variable fields (name and
 affiliation), and can include two top logos or images, although are not
 signed. Accreditation cards include a dot line in the bottom for
 individual hand-edition.
-
-| ![](man/figures/Badges_blank.png) |
-|-------------------------------------------------|
 
 #### Badges example:
 
@@ -389,12 +367,10 @@ As an example, we present the accreditation cards that might have been
 used in the International Conference of Muggleology, where the only
 changing fields are names and affiliations of attendees.
 
-| ![](man/figures/Badges.png) |
-|-------------------------------------------|
-
 #### 2.2.3. Attendance certificates
 
-**NOTE:** It is possible to send certificates automatically via email! To see how go to the FAQ section!
+**NOTE:** It is possible to send certificates automatically via email!
+To see how go to the FAQ section!
 
 Attendance certificates are one of the easiest templates; the only
 variable parameter is the name of the attendees. Our template allows to
@@ -404,9 +380,6 @@ Spanish. In case pictures look too big or small, it is possible to
 modify their size in the template.
 
 The structure of the certificate looks as follows:
-
-| ![](man/figures/Attendance_blank.png) |
-|---------------------------------------------------------------------|
 
 ##### Attendance certificate example:
 
@@ -439,18 +412,12 @@ create_attendance_certificate(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![](man/figures/Attendance_certificates.png) |
-|---------------------------------------------------------------------|
-
 #### 2.2.4 Participation certificates
 
 Participation certificates are similar to the previous, but with more
 variable parameters (such as speaker, affiliation, title, etc.). As well
 as the attendance certificate, these documents can be rendered in
 English and in Spanish.
-
-| ![](man/figures/Participation_blank.png) |
-|------------------------------------------------------|
 
 #### Participation certificate example:
 
@@ -482,10 +449,6 @@ create_participation_certificate(
 
 In this example, each certificate will be rendered in an individual PDF
 document in a common folder.
-
-| ![](man/figures/Participation_certificates.png) |
-|------------------------------------------------------|
-
 
 ### 2.3. Other functions
 
@@ -532,10 +495,100 @@ create_multichoice(
 
 #### Multiple choice exam example:
 
-| ![](man/figures/multichoice_example.png) |
-|-------------------------------------------------------------|
+| ![](man/figures/multichoice_example.png) | 
+|------------------------------------------|
 
 ## 3. Frequently Asked Questions
+
+### Template customization
+
+One of the greatest features of `labeleR`, in our opinion, is its
+customizable potential to attend all user's needs. Although functions
+have a set number of arguments (as the information they gather has to be
+checked adn translated to LATEX), the way it is rendered can be adapted
+to each user preference. Some of the most common changes are listed
+here, and some clues on how to adapt them on your template. To see how
+to create and use a custom template see section [1.2 Some advice for the
+labeleR functions].
+
+**\*NOTE:** Backslashes (i.e. `\`) define special characters in
+different ways. When editing a RMarkdown template (e.g. certificates)
+only one bar is needed. However, when a text in R has to be passed to
+Markdown and render after (i.e. templates starting with a `cat()`
+function), double backslashes (`\\`) must be used!
+
+-   [Text size:]{.underline}\
+    Text size can be defined using functions as (e.g.) `{\Huge text }`
+    to make it "huge", or different default type sizes ([see
+    more](https://texblog.org/2012/08/29/changing-the-font-size-in-latex/)).
+    Alternatively, a specific font size can be specified using
+    `{\fontsize{30pt}{0pt}\selectfont text }` (in this case to set a
+    font size of 30).
+
+-   [Text emphasis (bold/italic/teletype):]{.underline} To make a text
+    bold, use `\bf{ text }`. To make a text italics, use
+    `\textit{ text }` or `\emph{ text }` . To make a text appear in code
+    appearance, use `\texttt{ text }`
+
+-   [Image size:]{.underline} When images are included in documents,
+    their size can be modified using
+    `\includegraphics[height=1.5cm]{lpic.png}` (in this case to reduce
+    it to 1.5 cm from the original 3 cm). QR codes can be also scaled
+    using (e.g.) `\qrcode[height=0.5in, version=5]`.
+
+-   [Font type:]{.underline} If a non-default font type has to be used
+    just for one parameter, for example, it should be specified in the
+    template as follows: `{\fontfamily{pcr}\selectfont text }`. Here,
+    what has to be specified is the "font code" ([see available codes
+    here](https://www.overleaf.com/learn/latex/Font_typefaces)); we have
+    used `pcr`, "courier"). Bear in mind that no spaces can be left
+    between the brackets and the code.
+
+### Including italic or bold texts within a single text
+
+This implementation should be used just to change text formats in only a
+part of values stored in columns (variable parameters).
+
+To do so, you must edit the cell value, specifying where the italics
+text must start with `\\textit` (or `\\emph`, which allows to open
+italics in a reular text, and vice-versa), and `\\end` where it ends;
+and `\\textbf` followed by `\\end` for bold text. In case you want to
+combine both, you will have to specify `\\end` twice.
+
+For example, this could be helpful to include italics in a species name
+which is included as part of a title; where just the species name should
+be italicized.
+
+```{r custom italics, eval=FALSE}
+seminar.table <- data.frame(
+  "Name" = "Rubeus Hagrid",
+  "Date" = "01/01/1996",
+  "Title" = "Population dynamics of a species of giant spider 
+  (\\textitAcromantula gigantea\\end) in Hogwart's Forbidden Forest",
+  "Comm.type" = "seminar",
+  "Affil" = "Hogwarts Keeper of Keys and Grounds")
+
+create_participation_certificate(
+  data = seminar.table,
+  path = "labeleR_output",
+  filename = "participation_certificates",
+  language = "English",
+  name.column = "Name",
+  affiliation.column = "Affil",
+  comm.type.column = "Comm.type",
+  title.column = "Title",
+  date.column = "Date",
+  type = "online",
+  event = "seminar",
+  freetext = "organized by Hogwarts School of Magic and Wizardry",
+  signer = "A.P.W.B. Dumbledore",
+  signer.role = "School Headmaster",
+  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
+  lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
+  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
+)
+  
+```
 
 ## Send certificates automatically using create_certificate functions
 
@@ -590,9 +643,6 @@ soon as they are rendered!\
 
 Here an example of how the recipient will receive the mail:
 
-| ![](man/figures/Email.png) |
-|-----------------------------------------|
-
 ```{r eval = F}
 
 create_attendance_certificate(
@@ -614,56 +664,6 @@ create_attendance_certificate(
   
 )
 ```
-
-### Including italic or bold texts within a single text
-
-This implementation should be used just to change text formats in only a
-part of values stored in columns (variable parameters).
-
-To do so, you must edit the cell value, specifying where the italics
-text must start with `\\textit` (or `\\emph`, which allows to open
-italics in a reular text, and vice-versa), and `\\end` where it ends;
-and `\\textbf` followed by `\\end` for bold text. In case you want to
-combine both, you will have to specify `\\end` twice.
-
-For example, this could be helpful to include italics in a species name
-which is included as part of a title; where just the species name should
-be italicized.
-
-```{r custom italics, eval=FALSE}
-seminar.table <- data.frame(
-  "Name" = "Rubeus Hagrid",
-  "Date" = "01/01/1996",
-  "Title" = "Population dynamics of a species of giant spider 
-  (\\textitAcromantula gigantea\\end) in Hogwart's Forbidden Forest",
-  "Comm.type" = "seminar",
-  "Affil" = "Hogwarts Keeper of Keys and Grounds")
-
-create_participation_certificate(
-  data = seminar.table,
-  path = "labeleR_output",
-  filename = "participation_certificates",
-  language = "English",
-  name.column = "Name",
-  affiliation.column = "Affil",
-  comm.type.column = "Comm.type",
-  title.column = "Title",
-  date.column = "Date",
-  type = "online",
-  event = "seminar",
-  freetext = "organized by Hogwarts School of Magic and Wizardry",
-  signer = "A.P.W.B. Dumbledore",
-  signer.role = "School Headmaster",
-  rpic = system.file("rmarkdown/pictures/Hogwartslogo.png", package = "labeleR"),
-  lpic = system.file("rmarkdown/pictures/MinMagic.png", package = "labeleR"),
-  signature.pic = system.file("rmarkdown/pictures/dumbledore.png", package = "labeleR")
-)
-  
-```
-
-| ![](man/figures/Participation_certificate_italics.png) |
-|-------------------------------------------------------------|
-
 
 ## Citation
 

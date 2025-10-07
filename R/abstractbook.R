@@ -25,14 +25,17 @@
 #' in the output folder? Default is FALSE.
 #' @param template Character (optional) RMarkdown template to use. If not provided,
 #' using the default template included in `labeleR`.
+#' @inheritParams create_badge
 #'
 #' @return A PDF file named after `filename` is saved on disk, in the folder defined
 #' by `path`. If `keep.files = TRUE`, an RMarkdown will also
 #' appear in the same folder.
 #'
-#' @details You can copy and modify at your convenience  \href{https://docs.google.com/forms/d/1u4SFWDobQrD8AEvKpvPCdwAZiVGd55B2dAtPmPEfU6E/copy}{this Google form template}
+#' @note
+#' You can copy and modify at your convenience \href{https://docs.google.com/forms/d/1u4SFWDobQrD8AEvKpvPCdwAZiVGd55B2dAtPmPEfU6E/copy}{this Google form template}
 #' to retrieve abstract information which will match labeleR's requirements for a straightforward use.
 #'
+#' @inherit create_badge details
 #'
 #' @export
 #'
@@ -50,6 +53,7 @@
 #' title.cex = 20,
 #' authors.cex = 15,
 #' affiliations.cex = 14,
+#' font = "libertinus",
 #' text.cex = 12,
 #' frontpage = "Congress_frontpage.pdf"
 #')
@@ -68,6 +72,7 @@ create_abstractbook <- function(data = NULL,
                          authors.cex = 16,
                          affiliations.cex = 14,
                          text.cex = 14,
+                         font = NULL,
                          keep.files = FALSE,
                          template = NULL) {
 
@@ -90,6 +95,15 @@ create_abstractbook <- function(data = NULL,
   if (is.null(filename)) {
     message("No file name provided")
     filename <- "AbstractBook"
+  }
+
+  if(is.null(font)){
+    font <- ""
+  }else{
+    font <- as.character(font)
+    if(length(font)!= 1){
+      stop("Font length should be 1")
+    }
   }
 
   # if (is.null(event)) {
@@ -239,7 +253,8 @@ create_abstractbook <- function(data = NULL,
       title.cex         = as.character(rep(title.cex        , times = nrow(data))) ,
       authors.cex       = as.character(rep(authors.cex      , times = nrow(data))) ,
       affiliations.cex  = as.character(rep(affiliations.cex , times = nrow(data))) ,
-      text.cex          = as.character(rep(text.cex         , times = nrow(data)))
+      text.cex          = as.character(rep(text.cex         , times = nrow(data))),
+      font = font
 
     )
   )

@@ -16,6 +16,8 @@ params:
   field3.i: ""
   field4.i: ""
   field5.i: ""
+  font: ""
+fontfamily: "`r params$font`"
 ---
 
 ```{r echo=FALSE, results='asis'}
