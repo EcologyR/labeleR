@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">labeleR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,12 +129,6 @@
 <p>Herbarium labels are one of the documents with more variable parameters, as there is a lot of information that can be included. Here, we have chosen what we consider to be the most useful parameters, but we have included three free fields for the user to include the information they prefer. Of course, a field’s name does not force the user to use it for that category (location can be set in the elevation column, on top; and vice versa), but be aware that the <code>family.column</code> content will always be capitalized, and the <code>taxon.column</code> one in italics, so those ones we recommend to use them as stated.</p>
 <p>As said before, the QR can stand for a free text (and therefore remain identical in all labels), or be a column name, and the codes will be rendered with the individual information of each row. Four different labels will fit in each of the A4 pdf pages.</p>
 <p>Warning! Including too long texts may cause the alteration of the structure of the labels, so we recommend to be concise (specially with area description!)</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Herbarium_blank.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 <div class="section level5">
 <h5 id="herbarium-labels-example">Herbarium labels example:<a class="anchor" aria-label="anchor" href="#herbarium-labels-example"></a>
 </h5>
@@ -165,12 +159,6 @@
 <span>  assistants.column <span class="op">=</span> <span class="st">"Assistants"</span>,</span>
 <span>  date.column <span class="op">=</span> <span class="st">"Date"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Herbarium_labels.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 </div>
 <div class="section level4">
@@ -178,12 +166,6 @@
 </h4>
 <p>Collection labels are one of the most aesthetic labels. They have five variable parameters (which are not recommended to be too long, as explained in the herbarium labels), along with the possibility of including a QR code (fixed or variable), an image (logo or picture). Field 1 will be always capitalized (as in <code>family.column</code> in the herbarium label), and Field 2 italicized. Any field can be left blank.</p>
 <p>As a novelty, the user may manually fix the backgroud and text colors to their preference, using HTML color codes (same code as HEX, but without the ‘#’). By default, background colors are two hues of green. Eight different labels will fit in each of the A4 pdf pages.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/collection_labels_blank.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 <div class="section level5">
 <h5 id="collection-labels-example">Collection labels example:<a class="anchor" aria-label="anchor" href="#collection-labels-example"></a>
 </h5>
@@ -203,12 +185,6 @@
 <span>  bgcolor <span class="op">=</span> <span class="st">"D0ECC1"</span>,  <span class="co">#White is "FFFFFF",</span></span>
 <span>  textcolor <span class="op">=</span> <span class="st">"1E3F20"</span> <span class="co">#Black is "000000"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/collection_labels.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 </div>
 </div>
@@ -218,12 +194,6 @@
 <p>This type of labels is a simplified version of the previous, and includes just five variable fields and the possibility of including a QR code.</p>
 <p>We recommend as in the previous cases not to include too long texts neither in the variable arguments nor in the QR, as they can become difficult to read.</p>
 <p>16 different labels will fit in each of the A4 pdf pages. In case this size is too big for the pretended use (as can happen for small insect collections, for example), we recommend to use the “print several pages per sheet” in the printer’s options.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/tinylabels_blank.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 <div class="section level4">
 <h4 id="tinylabels-example">Tinylabels example:<a class="anchor" aria-label="anchor" href="#tinylabels-example"></a>
 </h4>
@@ -240,12 +210,6 @@
 <span>  field4.column <span class="op">=</span><span class="st">"field4"</span>,</span>
 <span>  field5.column <span class="op">=</span><span class="st">"field5"</span> </span>
 <span><span class="op">)</span></span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/tinylabels.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 </div>
 <div class="section level3">
@@ -280,24 +244,12 @@
 <h4 id="abstract-book-example-1">Abstract book example:<a class="anchor" aria-label="anchor" href="#abstract-book-example-1"></a>
 </h4>
 <p>As an example, we present the accreditation cards that might have been used in the International Conference of Muggleology, where the only changing fields are names and affiliations of attendees.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/abstractbook_example.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 </div>
 <div class="section level3">
 <h3 id="id_222-badges">2.2.2. Badges<a class="anchor" aria-label="anchor" href="#id_222-badges"></a>
 </h3>
 <p>Badges can be used for personal accreditation in congresses, courses, meetings, etc. They have only two variable fields (name and affiliation), and can include two top logos or images, although are not signed. Accreditation cards include a dot line in the bottom for individual hand-edition.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Badges_blank.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 <div class="section level4">
 <h4 id="badges-example">Badges example:<a class="anchor" aria-label="anchor" href="#badges-example"></a>
 </h4>
@@ -313,12 +265,6 @@
 <span>  lpic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/MinMagic.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>As an example, we present the accreditation cards that might have been used in the International Conference of Muggleology, where the only changing fields are names and affiliations of attendees.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Badges.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 <div class="section level4">
 <h4 id="id_223-attendance-certificates">2.2.3. Attendance certificates<a class="anchor" aria-label="anchor" href="#id_223-attendance-certificates"></a>
@@ -326,12 +272,6 @@
 <p><strong>NOTE:</strong> It is possible to send certificates automatically via email! To see how go to the FAQ section!</p>
 <p>Attendance certificates are one of the easiest templates; the only variable parameter is the name of the attendees. Our template allows to include a signature as an image, so the signer does not have to go through them all. This certificate is available both in English and Spanish. In case pictures look too big or small, it is possible to modify their size in the template.</p>
 <p>The structure of the certificate looks as follows:</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Attendance_blank.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 <div class="section level5">
 <h5 id="attendance-certificate-example">Attendance certificate example:<a class="anchor" aria-label="anchor" href="#attendance-certificate-example"></a>
 </h5>
@@ -356,24 +296,12 @@
 <span>  signature.pic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>In this example, each certificate will be rendered in an individual PDF document.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Attendance_certificates.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 </div>
 <div class="section level4">
 <h4 id="id_224-participation-certificates">2.2.4 Participation certificates<a class="anchor" aria-label="anchor" href="#id_224-participation-certificates"></a>
 </h4>
 <p>Participation certificates are similar to the previous, but with more variable parameters (such as speaker, affiliation, title, etc.). As well as the attendance certificate, these documents can be rendered in English and in Spanish.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Participation_blank.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 <div class="section level4">
 <h4 id="participation-certificate-example">Participation certificate example:<a class="anchor" aria-label="anchor" href="#participation-certificate-example"></a>
@@ -400,12 +328,6 @@
 <span>  signature.pic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>In this example, each certificate will be rendered in an individual PDF document in a common folder.</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Participation_certificates.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 </div>
 <div class="section level3">
@@ -448,65 +370,26 @@
 <div class="section level2">
 <h2 id="id_3-frequently-asked-questions">3. Frequently Asked Questions<a class="anchor" aria-label="anchor" href="#id_3-frequently-asked-questions"></a>
 </h2>
-</div>
-<div class="section level2">
-<h2 id="send-certificates-automatically-using-create_certificate-functions">Send certificates automatically using create_certificate functions<a class="anchor" aria-label="anchor" href="#send-certificates-automatically-using-create_certificate-functions"></a>
-</h2>
-<p>Sending attendance or participation certificates one by one by hand can be a real nightmare, so labeleR can do it for you (do not get scared, it is really easy!). The only things you need are a gmail account and all the recipient mail addresses stored in a column of your data frame.</p>
-<p>The first thing labeleR needs is permission to send emails. Do not worry, this will only be required the first time you do it! Function <code><a href="reference/configure_email.html">configure_email()</a></code> will drive you step by step through the whole process, but if you prefer to do it manually, go to: <a href="https://myaccount.google.com/apppasswords" class="external-link uri">https://myaccount.google.com/apppasswords</a> and create an app using your gmail account.</p>
-<p><strong>Warning!</strong> Please bear in mind that the gmail account you use will be the one sending the emails, and thus visible for all recipients.<br>
-Once accessed, you have to create an app (the name will not be visible!), and you will be given a password. Save both somewhere safe, as you will be asked for them any time you use this feature.</p>
-<p>Once you have your mailing application, you have to configure the structure you want to use for the mailing distribution (i.e. subject, body, and cc or bcc if you wish). To configure it, just run <code>configure_email(user = "youruser@gmail.com", app.name = "yourapp")</code> , being <em>user</em> your gmail account previously used, and <em>app.name</em> the application name you have already created. Remember to have your password with you, as you will be asked for it.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">myemail</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/configure_email.html">configure_email</a></span><span class="op">(</span>user     <span class="op">=</span> <span class="st">"s.snape@gmail.com"</span>,</span>
-<span>                           app.name <span class="op">=</span> <span class="st">"e-owl"</span>,</span>
-<span>                           subject  <span class="op">=</span> <span class="st">"Potions 1992-1993 Attendance"</span>,</span>
-<span>                           body     <span class="op">=</span> <span class="st">"Dear student, </span></span>
-<span><span class="st">                                       here you have your attendance certificate for this year.</span></span>
-<span><span class="st">                                       Congratulations for having completed it, but remember keep studying for next year!"</span>,</span>
-<span>                           cc       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"albus.dumbledore@hogwarts.co.uk"</span>,</span>
-<span>                                        <span class="st">"minerva.mcgonagall@hogwarts.co.uk"</span><span class="op">)</span>,</span>
-<span>                           bcc      <span class="op">=</span> <span class="st">"cornelius.fudge@min.magic.co.uk"</span></span>
-<span>                           <span class="op">)</span></span></code></pre></div>
-<p><strong>Great!</strong> Now you can send all emails as soon as they are rendered. Just remember to specify the column of your data frame storing each recipient email address in <code>email.column</code> and the created configuration object (here, myemail) in the <code>email.info</code> slot.<br>
-Just for precaution, labeleR will ask if you are <strong>sure</strong> you want to send them, but if you are, just click “Yes” and they will be sent as soon as they are rendered!</p>
+<div class="section level3">
+<h3 id="template-customization">Template customization<a class="anchor" aria-label="anchor" href="#template-customization"></a>
+</h3>
+<p>One of the greatest features of <code>labeleR</code>, in our opinion, is its customizable potential to attend all user’s needs. Although functions have a set number of arguments (as the information they gather has to be checked adn translated to LATEX), the way it is rendered can be adapted to each user preference. Some of the most common changes are listed here, and some clues on how to adapt them on your template. To see how to create and use a custom template see section <a href="#some-advice-for-the-labeler-functions">1.2 Some advice for the labeleR functions</a>.</p>
+<p><strong>*NOTE:</strong> Backslashes (i.e. <code>\</code>) define special characters in different ways. When editing a RMarkdown template (e.g. certificates) only one bar is needed. However, when a text in R has to be passed to Markdown and render after (i.e. templates starting with a <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code> function), double backslashes (<code>\\</code>) must be used!</p>
 <ul>
-<li><em>Amazing! This is just like magic! (G. Lockhart).</em></li>
+<li><p><u>Text size:</u><br>
+Text size can be defined using functions as (e.g.) <code>{\Huge text }</code> to make it “huge”, or different default type sizes (<a href="https://texblog.org/2012/08/29/changing-the-font-size-in-latex/" class="external-link">see more</a>). Alternatively, a specific font size can be specified using <code>{\fontsize{30pt}{0pt}\selectfont text }</code> (in this case to set a font size of 30).</p></li>
+<li><p><u>Text emphasis (bold/italic/teletype):</u> To make a text bold, use <code>\bf{ text }</code>. To make a text italics, use <code>\textit{ text }</code> or <code>\emph{ text }</code> . To make a text appear in code appearance, use <code>\texttt{ text }</code></p></li>
+<li><p><u>Image size:</u> When images are included in documents, their size can be modified using <code>\includegraphics[height=1.5cm]{lpic.png}</code> (in this case to reduce it to 1.5 cm from the original 3 cm). QR codes can be also scaled using (e.g.) <code>\qrcode[height=0.5in, version=5]</code>.</p></li>
+<li><p><u>Font type:</u> If a non-default font type has to be used just for one parameter, for example, it should be specified in the template as follows: <code>{\fontfamily{pcr}\selectfont text }</code>. Here, what has to be specified is the “font code” (<a href="https://www.overleaf.com/learn/latex/Font_typefaces" class="external-link">see available codes here</a>); we have used <code>pcr</code>, “courier”). Bear in mind that no spaces can be left between the brackets and the code.</p></li>
 </ul>
-<p>Here an example of how the recipient will receive the mail:</p>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Email.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="reference/create_attendance_certificate.html">create_attendance_certificate</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">attendance.table</span>,</span>
-<span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
-<span>  filename <span class="op">=</span> <span class="st">"Potions_grades"</span>,</span>
-<span>  language <span class="op">=</span> <span class="st">"English"</span> ,</span>
-<span>  name.column <span class="op">=</span> <span class="st">"Names"</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"class"</span>,</span>
-<span>  title <span class="op">=</span> <span class="st">"Potions (year 1992-1993)"</span>,</span>
-<span>  date <span class="op">=</span> <span class="st">"23/06/1993"</span>,</span>
-<span>  hours <span class="op">=</span> <span class="st">"200"</span>,</span>
-<span>  freetext <span class="op">=</span> <span class="st">"taught by Professor S. Snape"</span>,</span>
-<span>  signer <span class="op">=</span> <span class="st">"S. Snape"</span>,</span>
-<span>  signer.role <span class="op">=</span> <span class="st">"Potions Professor"</span>,</span>
-<span>  </span>
-<span>  email.info <span class="op">=</span> <span class="va">myemail</span>,</span>
-<span>  email.column <span class="op">=</span> <span class="va">students.mails</span></span>
-<span>  </span>
-<span><span class="op">)</span></span></code></pre></div>
+</div>
 <div class="section level3">
 <h3 id="including-italic-or-bold-texts-within-a-single-text">Including italic or bold texts within a single text<a class="anchor" aria-label="anchor" href="#including-italic-or-bold-texts-within-a-single-text"></a>
 </h3>
 <p>This implementation should be used just to change text formats in only a part of values stored in columns (variable parameters).</p>
 <p>To do so, you must edit the cell value, specifying where the italics text must start with <code>\\textit</code> (or <code>\\emph</code>, which allows to open italics in a reular text, and vice-versa), and <code>\\end</code> where it ends; and <code>\\textbf</code> followed by <code>\\end</code> for bold text. In case you want to combine both, you will have to specify <code>\\end</code> twice.</p>
 <p>For example, this could be helpful to include italics in a species name which is included as part of a title; where just the species name should be italicized.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seminar.table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  <span class="st">"Name"</span> <span class="op">=</span> <span class="st">"Rubeus Hagrid"</span>,</span>
 <span>  <span class="st">"Date"</span> <span class="op">=</span> <span class="st">"01/01/1996"</span>,</span>
@@ -535,13 +418,53 @@ Just for precaution, labeleR will ask if you are <strong>sure</strong> you want 
 <span>  signature.pic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"rmarkdown/pictures/dumbledore.png"</span>, package <span class="op">=</span> <span class="st">"labeleR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span>  </span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th><img src="reference/figures/Participation_certificate_italics.png"></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
+</div>
+<div class="section level2">
+<h2 id="send-certificates-automatically-using-create_certificate-functions">Send certificates automatically using create_certificate functions<a class="anchor" aria-label="anchor" href="#send-certificates-automatically-using-create_certificate-functions"></a>
+</h2>
+<p>Sending attendance or participation certificates one by one by hand can be a real nightmare, so labeleR can do it for you (do not get scared, it is really easy!). The only things you need are a gmail account and all the recipient mail addresses stored in a column of your data frame.</p>
+<p>The first thing labeleR needs is permission to send emails. Do not worry, this will only be required the first time you do it! Function <code><a href="reference/configure_email.html">configure_email()</a></code> will drive you step by step through the whole process, but if you prefer to do it manually, go to: <a href="https://myaccount.google.com/apppasswords" class="external-link uri">https://myaccount.google.com/apppasswords</a> and create an app using your gmail account.</p>
+<p><strong>Warning!</strong> Please bear in mind that the gmail account you use will be the one sending the emails, and thus visible for all recipients.<br>
+Once accessed, you have to create an app (the name will not be visible!), and you will be given a password. Save both somewhere safe, as you will be asked for them any time you use this feature.</p>
+<p>Once you have your mailing application, you have to configure the structure you want to use for the mailing distribution (i.e. subject, body, and cc or bcc if you wish). To configure it, just run <code>configure_email(user = "youruser@gmail.com", app.name = "yourapp")</code> , being <em>user</em> your gmail account previously used, and <em>app.name</em> the application name you have already created. Remember to have your password with you, as you will be asked for it.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">myemail</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/configure_email.html">configure_email</a></span><span class="op">(</span>user     <span class="op">=</span> <span class="st">"s.snape@gmail.com"</span>,</span>
+<span>                           app.name <span class="op">=</span> <span class="st">"e-owl"</span>,</span>
+<span>                           subject  <span class="op">=</span> <span class="st">"Potions 1992-1993 Attendance"</span>,</span>
+<span>                           body     <span class="op">=</span> <span class="st">"Dear student, </span></span>
+<span><span class="st">                                       here you have your attendance certificate for this year.</span></span>
+<span><span class="st">                                       Congratulations for having completed it, but remember keep studying for next year!"</span>,</span>
+<span>                           cc       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"albus.dumbledore@hogwarts.co.uk"</span>,</span>
+<span>                                        <span class="st">"minerva.mcgonagall@hogwarts.co.uk"</span><span class="op">)</span>,</span>
+<span>                           bcc      <span class="op">=</span> <span class="st">"cornelius.fudge@min.magic.co.uk"</span></span>
+<span>                           <span class="op">)</span></span></code></pre></div>
+<p><strong>Great!</strong> Now you can send all emails as soon as they are rendered. Just remember to specify the column of your data frame storing each recipient email address in <code>email.column</code> and the created configuration object (here, myemail) in the <code>email.info</code> slot.<br>
+Just for precaution, labeleR will ask if you are <strong>sure</strong> you want to send them, but if you are, just click “Yes” and they will be sent as soon as they are rendered!</p>
+<ul>
+<li><em>Amazing! This is just like magic! (G. Lockhart).</em></li>
+</ul>
+<p>Here an example of how the recipient will receive the mail:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="reference/create_attendance_certificate.html">create_attendance_certificate</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">attendance.table</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"labeleR_output"</span>,</span>
+<span>  filename <span class="op">=</span> <span class="st">"Potions_grades"</span>,</span>
+<span>  language <span class="op">=</span> <span class="st">"English"</span> ,</span>
+<span>  name.column <span class="op">=</span> <span class="st">"Names"</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"class"</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">"Potions (year 1992-1993)"</span>,</span>
+<span>  date <span class="op">=</span> <span class="st">"23/06/1993"</span>,</span>
+<span>  hours <span class="op">=</span> <span class="st">"200"</span>,</span>
+<span>  freetext <span class="op">=</span> <span class="st">"taught by Professor S. Snape"</span>,</span>
+<span>  signer <span class="op">=</span> <span class="st">"S. Snape"</span>,</span>
+<span>  signer.role <span class="op">=</span> <span class="st">"Potions Professor"</span>,</span>
+<span>  </span>
+<span>  email.info <span class="op">=</span> <span class="va">myemail</span>,</span>
+<span>  email.column <span class="op">=</span> <span class="va">students.mails</span></span>
+<span>  </span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -598,10 +521,10 @@ Just for precaution, labeleR will ask if you are <strong>sure</strong> you want 
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Ignacio Ramos-Gutierrez <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-8675-0114" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Julia G. de Aledo <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0001-9065-9316" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Jimena Mateo-Martín <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-9757-5497" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Francisco Rodriguez-Sanchez <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-7981-1599" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Ignacio Ramos-Gutierrez <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-8675-0114" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Julia G. de Aledo <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0001-9065-9316" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Jimena Mateo-Martín <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-9757-5497" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Francisco Rodriguez-Sanchez <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-7981-1599" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -626,7 +549,7 @@ Just for precaution, labeleR will ask if you are <strong>sure</strong> you want 
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>

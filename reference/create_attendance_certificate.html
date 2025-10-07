@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">labeleR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,6 +57,7 @@
 <span>  signature.pic <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  lpic <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  rpic <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  font <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  keep.files <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  template <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -137,6 +138,10 @@ the bottom, above signer's name.</p></dd>
 <dd><p>Character (optional). Path to a PNG image to appear in the top-right.</p></dd>
 
 
+<dt id="arg-font">font<a class="anchor" aria-label="anchor" href="#arg-font"></a></dt>
+<dd><p>Character. Font face to use. Default is Latin Modern. NOTE: not all fonts are supported, so unexpected results may occur. A list of fonts is available at <a href="https://tug.org/FontCatalogue/opentypefonts.html" class="external-link">https://tug.org/FontCatalogue/opentypefonts.html</a>. See Details for more information.</p></dd>
+
+
 <dt id="arg-keep-files">keep.files<a class="anchor" aria-label="anchor" href="#arg-keep-files"></a></dt>
 <dd><p>Logical. Keep the RMarkdown template and associated files
 in the output folder? Default is FALSE.</p></dd>
@@ -153,6 +158,31 @@ using the default template included in <code>labeleR</code>.</p></dd>
 by <code>path</code>. If <code>keep.files = TRUE</code>, the RMarkdown template and PNG logo files
 will also appear in the same folder.</p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p><strong>font</strong>
+Not all fonts can be used. Consider only those which are stated to be 'Part of TeX Live',
+and have OTF and TT available. Additionally, fonts whose 'Usage' differs from
+<code>\normalfont</code>, <code>\itshape</code> and <code>\bfseries</code> usually fail during installation and/or rendering.</p>
+<p>Several fonts tried that seem to work are:</p><ul><li><p>libertinus</p></li>
+<li><p>accanthis</p></li>
+<li><p>Alegreya</p></li>
+<li><p>algolrevived</p></li>
+<li><p>almendra</p></li>
+<li><p>antpolt</p></li>
+<li><p>Archivo</p></li>
+<li><p>Baskervaldx</p></li>
+<li><p>bitter</p></li>
+<li><p>tgbonum</p></li>
+<li><p>caladea</p></li>
+<li><p>librecaslon</p></li>
+<li><p>tgchorus</p></li>
+<li><p>cyklop</p></li>
+<li><p>forum</p></li>
+<li><p>imfellEnglish</p></li>
+<li><p>LobsterTwo</p></li>
+<li><p>quattrocento</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
     <p>Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez</p>
@@ -177,6 +207,7 @@ will also appear in the same folder.</p>
 <span class="r-in"><span>  lpic <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
 <span class="r-in"><span>  rpic <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
 <span class="r-in"><span>  signature.pic <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>  font <span class="op">=</span> <span class="st">"libertinus"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
@@ -190,7 +221,7 @@ will also appear in the same folder.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
