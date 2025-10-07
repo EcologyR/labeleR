@@ -667,7 +667,7 @@ create_attendance_certificate(
 
 ## Citation
 
-```{r citation, eval=TRUE}
+```{r citation, eval=TRUE, comment=NA}
 citation("labeleR")
 ```
 
@@ -678,3 +678,7 @@ Next Generation EU, Fondo Europeo de Desarrollo Regional (FEDER) and
 Consejería de Transformación Económica, Industria, Conocimiento y
 Universidades of Junta de Andalucía (proyecto US-1381388 led by
 Francisco Rodríguez Sánchez, Universidad de Sevilla).
+
+## Code of Conduct
+
+Please note that the labeleR project is released with a [Contributor Code of Conduct](https://ecologyr.github.io/labeleR/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
