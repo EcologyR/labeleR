@@ -100,4 +100,7 @@ This package has been developed collaboratively between Sevilla and Madrid, with
 
 J.G.A. was supported by Next Generation EU Investigo contract (URJC-AI-17) and ANTENNA Biodiversa+ and European Commission (PCI2023-146022-2) postdoctoral contract. J.M.M. was supported by the Comunidad de Madrid and Universidad Autónoma de Madrid doctoral grant PEJ-2020-AI/AMB-17551 and research assistant contract PIPF-2022/ECO-24251. F.R.S. was supported by VI PPIT-US and grants US-1381388 from Universidad de Sevilla/Junta de Andalucía/FEDER-UE and CNS2022-135839 funded by MICIU/AEI/10.13039/501100011033 and by European Union NextGenerationEU/PRTR. I.R.G. was supported by a doctoral  grant at Universidad Autónoma de Madrid and a postdoctoral position at Universidad de Sevilla (CNS2022-135839).
 
+This note has been reviewed through an open and collaborative process available at:  https://github.com/ecoinfAEET/Notas_Ecosistemas/issues/60. We would like to thank David García-Callejas and Verónica Cruz-Alonso for their helpful comments and suggestions.
+
+
 # References
