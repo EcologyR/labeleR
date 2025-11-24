@@ -180,6 +180,9 @@ Warning! Including too long texts may cause the alteration of the
 structure of the labels, so we recommend to be concise (specially with
 area description!)
 
+| ![](man/figures/Herbarium_blank.png) |
+|--------------------------------------|
+
 ##### Herbarium labels example:
 
 In this example, we show the labels some students have created for their
@@ -213,6 +216,9 @@ create_herbarium_label(
 )
 ```
 
+| ![](man/figures/Herbarium_labels.png) |
+|---------------------------------------|
+
 #### 2.1.2. Collection labels
 
 Collection labels are one of the most aesthetic labels. They have five
@@ -226,6 +232,9 @@ As a novelty, the user may manually fix the backgroud and text colors to
 their preference, using HTML color codes (same code as HEX, but without
 the ‘\#’). By default, background colors are two hues of green. Eight
 different labels will fit in each of the A4 pdf pages.
+
+| ![](man/figures/collection_labels_blank.png) |
+|----------------------------------------------|
 
 ##### Collection labels example:
 
@@ -249,6 +258,9 @@ create_collection_label(
 )
 ```
 
+| ![](man/figures/collection_labels.png) |
+|----------------------------------------|
+
 ### 2.1.3 Tiny labels
 
 This type of labels is a simplified version of the previous, and
@@ -263,6 +275,9 @@ difficult to read.
 size is too big for the pretended use (as can happen for small insect
 collections, for example), we recommend to use the “print several pages
 per sheet” in the printer’s options.
+
+| ![](man/figures/tinylabels_blank.png) |
+|---------------------------------------|
 
 #### Tinylabels example:
 
@@ -282,6 +297,9 @@ create_tiny_label(
   field5.column ="field5" 
 )
 ```
+
+| ![](man/figures/tinylabels.png) |
+|---------------------------------|
 
 ### 2.2. Documents for scientific events
 
@@ -319,6 +337,9 @@ frontpage = "Congress_frontpage.pdf"
 )
 ```
 
+| ![](man/figures/abstractbook_example.png) |
+|-------------------------------------------|
+
 #### Abstract book example:
 
 As an example, we present the accreditation cards that might have been
@@ -332,6 +353,9 @@ meetings, etc. They have only two variable fields (name and
 affiliation), and can include two top logos or images, although are not
 signed. Accreditation cards include a dot line in the bottom for
 individual hand-edition.
+
+| ![](man/figures/Badges_blank.png) |
+|-----------------------------------|
 
 #### Badges example:
 
@@ -352,6 +376,9 @@ As an example, we present the accreditation cards that might have been
 used in the International Conference of Muggleology, where the only
 changing fields are names and affiliations of attendees.
 
+| ![](man/figures/Badges.png) |
+|-----------------------------|
+
 #### 2.2.3. Attendance certificates
 
 **NOTE:** It is possible to send certificates automatically via email!
@@ -365,6 +392,9 @@ Spanish. In case pictures look too big or small, it is possible to
 modify their size in the template.
 
 The structure of the certificate looks as follows:
+
+| ![](man/figures/Attendance_blank.png) |
+|---------------------------------------|
 
 ##### Attendance certificate example:
 
@@ -396,12 +426,18 @@ create_attendance_certificate(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
+| ![](man/figures/Attendance_certificates.png) |
+|----------------------------------------------|
+
 #### 2.2.4 Participation certificates
 
 Participation certificates are similar to the previous, but with more
 variable parameters (such as speaker, affiliation, title, etc.). As well
 as the attendance certificate, these documents can be rendered in
 English and in Spanish.
+
+| ![](man/figures/Participation_blank.png) |
+|------------------------------------------|
 
 #### Participation certificate example:
 
@@ -433,6 +469,9 @@ create_participation_certificate(
 
 In this example, each certificate will be rendered in an individual PDF
 document in a common folder.
+
+| ![](man/figures/Participation_certificates.png) |
+|-------------------------------------------------|
 
 ### 2.3. Other functions
 
@@ -573,6 +612,9 @@ create_participation_certificate(
   
 ```
 
+| ![](man/figures/Participation_certificate_italics.png) |
+|--------------------------------------------------------|
+
 ## Send certificates automatically using create_certificate functions
 
 Sending attendance or participation certificates one by one by hand can
@@ -625,6 +667,9 @@ soon as they are rendered!
 - *Amazing! This is just like magic! (G. Lockhart).*
 
 Here an example of how the recipient will receive the mail:
+
+| ![](man/figures/Email.png) |
+|----------------------------|
 
 ``` r
 
