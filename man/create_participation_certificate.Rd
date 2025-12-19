@@ -123,7 +123,7 @@ Several fonts tried that seem to work are:
 }
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 create_participation_certificate(
   data = participation.table,
   path = "labeleR_output",

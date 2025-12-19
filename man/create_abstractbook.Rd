@@ -106,7 +106,7 @@ You can copy and modify at your convenience \href{https://docs.google.com/forms/
 to retrieve abstract information which will match labeleR's requirements for a straightforward use.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 create_abstractbook(
 data=abstract.table,
 path = "labeleR_output",
