@@ -699,17 +699,23 @@ create_attendance_certificate(
 citation("labeleR")
 To cite package 'labeleR' in publications use:
 
-  Ramos-Gutierrez I, de Aledo JG, Mateo-Martín J, Rodríguez-Sánchez F
-  (2025). _labeleR: Automate the Production of Custom Labels, Badges,
-  Certificates, and Other Documents_.
+  de Aledo JG, Mateo-Martín J, Rodríguez-Sánchez F, Ramos-Gutiérrez I
+  (2025). "labeleR: an R package to optimize the generation of
+  collection labels and scientific documents." _Ecosistemas_, *34*(3),
+  3060. doi:10.7818/ECOS.3060 <https://doi.org/10.7818/ECOS.3060>,
   <https://EcologyR.github.io/labeleR/>.
 
 A BibTeX entry for LaTeX users is
 
-  @Manual{,
-    title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
-    author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez},
+  @Article{,
+    title = {labeleR: an R package to optimize the generation of collection labels and scientific documents},
+    author = {Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez and Ignacio Ramos-Gutiérrez},
     year = {2025},
+    journal = {Ecosistemas},
+    volume = {34},
+    number = {3},
+    pages = {3060},
+    doi = {10.7818/ECOS.3060},
     url = {https://EcologyR.github.io/labeleR/},
   }
 ```
