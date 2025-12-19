@@ -1,8 +1,13 @@
 
 bibentry(
-  bibtype = "Manual",
-  title   = "labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents",
-  author  = c("Ignacio Ramos-Gutierrez", "Julia G. de Aledo", "Jimena Mateo-Martín", "Francisco Rodríguez-Sánchez"),
+  bibtype = "Article",
+  title   = "labeleR: an R package to optimize the generation of collection labels and scientific documents",
+  author  = c("Julia G. de Aledo", "Jimena Mateo-Martín", "Francisco Rodríguez-Sánchez", "Ignacio Ramos-Gutiérrez"),
   year    = "2025",
-  url     = "https://EcologyR.github.io/labeleR/",
+  journal = "Ecosistemas",
+  volume  = "34",
+  number  = "3",
+  pages   = "3060",
+  doi     = "10.7818/ECOS.3060",
+  url     = "https://EcologyR.github.io/labeleR/"
 )
