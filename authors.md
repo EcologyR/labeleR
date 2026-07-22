@@ -24,11 +24,29 @@ Source:
 Ramos-Gutierrez I, de Aledo JG, Mateo-Martín J, Rodríguez-Sánchez F
 (2025). *labeleR: Automate the Production of Custom Labels, Badges,
 Certificates, and Other Documents*.
-<https://EcologyR.github.io/labeleR/>.
+<https://CRAN.R-project.org/package=labeleR>.
 
     @Manual{,
       title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
       author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez},
       year = {2025},
-      url = {https://EcologyR.github.io/labeleR/},
+      url = {https://CRAN.R-project.org/package=labeleR},
+    }
+
+de Aledo J, Mateo-Martín J, Rodríguez-Sánchez F, Ramos-Gutierrez I
+(2025). “labeleR: an R package to optimize the generation of collection
+labels and scientific documents.” *Ecosistemas*, **34**(3), 3060–3060.
+[doi:10.7818/ECOS.3060](https://doi.org/10.7818/ECOS.3060).
+<https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060>.
+
+    @Article{de_aledo_labeler_2025,
+      title = {labeleR: an R package to optimize the generation of collection labels and scientific documents},
+      author = {Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez and Ignacio Ramos-Gutierrez},
+      journal = {Ecosistemas},
+      year = {2025},
+      volume = {34},
+      number = {3},
+      pages = {3060--3060},
+      doi = {10.7818/ECOS.3060},
+      url = {https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060},
     }
