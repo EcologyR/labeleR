@@ -169,9 +169,6 @@ Warning! Including too long texts may cause the alteration of the
 structure of the labels, so we recommend to be concise (specially with
 area description!)
 
-| ![](reference/figures/Herbarium_blank.png) |
-|--------------------------------------------|
-
 ##### Herbarium labels example:
 
 In this example, we show the labels some students have created for their
@@ -206,9 +203,6 @@ create_herbarium_label(
 )
 ```
 
-| ![](reference/figures/Herbarium_labels.png) |
-|---------------------------------------------|
-
 #### 2.1.2. Collection labels
 
 Collection labels are one of the most aesthetic labels. They have five
@@ -222,9 +216,6 @@ As a novelty, the user may manually fix the backgroud and text colors to
 their preference, using HTML color codes (same code as HEX, but without
 the ‘#’). By default, background colors are two hues of green. Eight
 different labels will fit in each of the A4 pdf pages.
-
-| ![](reference/figures/collection_labels_blank.png) |
-|----------------------------------------------------|
 
 ##### Collection labels example:
 
@@ -249,9 +240,6 @@ create_collection_label(
 )
 ```
 
-| ![](reference/figures/collection_labels.png) |
-|----------------------------------------------|
-
 ### 2.1.3 Tiny labels
 
 This type of labels is a simplified version of the previous, and
@@ -266,9 +254,6 @@ difficult to read.
 size is too big for the pretended use (as can happen for small insect
 collections, for example), we recommend to use the “print several pages
 per sheet” in the printer’s options.
-
-| ![](reference/figures/tinylabels_blank.png) |
-|---------------------------------------------|
 
 #### Tinylabels example:
 
@@ -289,9 +274,6 @@ create_tiny_label(
   field5.column ="field5" 
 )
 ```
-
-| ![](reference/figures/tinylabels.png) |
-|---------------------------------------|
 
 ### 2.2. Documents for scientific events
 
@@ -330,9 +312,6 @@ frontpage = "Congress_frontpage.pdf"
 )
 ```
 
-| ![](reference/figures/abstractbook_example.png) |
-|-------------------------------------------------|
-
 #### Abstract book example:
 
 As an example, we present the accreditation cards that might have been
@@ -346,9 +325,6 @@ meetings, etc. They have only two variable fields (name and
 affiliation), and can include two top logos or images, although are not
 signed. Accreditation cards include a dot line in the bottom for
 individual hand-edition.
-
-| ![](reference/figures/Badges_blank.png) |
-|-----------------------------------------|
 
 #### Badges example:
 
@@ -370,9 +346,6 @@ As an example, we present the accreditation cards that might have been
 used in the International Conference of Muggleology, where the only
 changing fields are names and affiliations of attendees.
 
-| ![](reference/figures/Badges.png) |
-|-----------------------------------|
-
 #### 2.2.3. Attendance certificates
 
 **NOTE:** It is possible to send certificates automatically via email!
@@ -386,9 +359,6 @@ Spanish. In case pictures look too big or small, it is possible to
 modify their size in the template.
 
 The structure of the certificate looks as follows:
-
-| ![](reference/figures/Attendance_blank.png) |
-|---------------------------------------------|
 
 ##### Attendance certificate example:
 
@@ -421,18 +391,12 @@ create_attendance_certificate(
 In this example, each certificate will be rendered in an individual PDF
 document.
 
-| ![](reference/figures/Attendance_certificates.png) |
-|----------------------------------------------------|
-
 #### 2.2.4 Participation certificates
 
 Participation certificates are similar to the previous, but with more
 variable parameters (such as speaker, affiliation, title, etc.). As well
 as the attendance certificate, these documents can be rendered in
 English and in Spanish.
-
-| ![](reference/figures/Participation_blank.png) |
-|------------------------------------------------|
 
 #### Participation certificate example:
 
@@ -465,9 +429,6 @@ create_participation_certificate(
 
 In this example, each certificate will be rendered in an individual PDF
 document in a common folder.
-
-| ![](reference/figures/Participation_certificates.png) |
-|-------------------------------------------------------|
 
 ### 2.3. Other functions
 
@@ -514,9 +475,6 @@ create_multichoice(
 ```
 
 #### Multiple choice exam example:
-
-| ![](reference/figures/multichoice_example.png) |
-|------------------------------------------------|
 
 ## 3. Frequently Asked Questions
 
@@ -611,9 +569,6 @@ create_participation_certificate(
   
 ```
 
-| ![](reference/figures/Participation_certificate_italics.png) |
-|--------------------------------------------------------------|
-
 ## Send certificates automatically using create_certificate functions
 
 Sending attendance or participation certificates one by one by hand can
@@ -668,9 +623,6 @@ soon as they are rendered!
 
 Here an example of how the recipient will receive the mail:
 
-| ![](reference/figures/Email.png) |
-|----------------------------------|
-
 ``` r
 
 
@@ -703,16 +655,17 @@ To cite package 'labeleR' in publications use:
   Ramos-Gutierrez I, de Aledo JG, Mateo-Martín J, Rodríguez-Sánchez F
   (2025). _labeleR: Automate the Production of Custom Labels, Badges,
   Certificates, and Other Documents_.
-  <https://EcologyR.github.io/labeleR/>.
+  <https://CRAN.R-project.org/package=labeleR>.
 
-A BibTeX entry for LaTeX users is
+  de Aledo J, Mateo-Martín J, Rodríguez-Sánchez F, Ramos-Gutierrez I
+  (2025). "labeleR: an R package to optimize the generation of
+  collection labels and scientific documents." _Ecosistemas_, *34*(3),
+  3060-3060. doi:10.7818/ECOS.3060 <https://doi.org/10.7818/ECOS.3060>,
+  <https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060>.
 
-  @Manual{,
-    title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
-    author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez},
-    year = {2025},
-    url = {https://EcologyR.github.io/labeleR/},
-  }
+To see these entries in BibTeX format, use 'print(<citation>,
+bibtex=TRUE)', 'toBibtex(.)', or set
+'options(citation.bibtex.max=999)'.
 ```
 
 ## Funding

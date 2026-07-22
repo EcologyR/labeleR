@@ -36,7 +36,6 @@ Certificates, and Other Documents*.
 de Aledo J, Mateo-Martín J, Rodríguez-Sánchez F, Ramos-Gutierrez I
 (2025). “labeleR: an R package to optimize the generation of collection
 labels and scientific documents.” *Ecosistemas*, **34**(3), 3060–3060.
-[doi:10.7818/ECOS.3060](https://doi.org/10.7818/ECOS.3060).
 <https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060>.
 
     @Article{de_aledo_labeler_2025,
@@ -47,6 +46,5 @@ labels and scientific documents.” *Ecosistemas*, **34**(3), 3060–3060.
       volume = {34},
       number = {3},
       pages = {3060--3060},
-      doi = {10.7818/ECOS.3060},
       url = {https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060},
     }
