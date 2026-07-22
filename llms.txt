@@ -657,16 +657,39 @@ To cite package 'labeleR' in publications use:
   Certificates, and Other Documents_.
   <https://CRAN.R-project.org/package=labeleR>.
 
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents},
+    author = {Ignacio Ramos-Gutierrez and Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez},
+    year = {2025},
+    url = {https://CRAN.R-project.org/package=labeleR},
+  }
+
   de Aledo J, Mateo-Martín J, Rodríguez-Sánchez F, Ramos-Gutierrez I
   (2025). "labeleR: an R package to optimize the generation of
   collection labels and scientific documents." _Ecosistemas_, *34*(3),
-  3060-3060. doi:10.7818/ECOS.3060 <https://doi.org/10.7818/ECOS.3060>,
+  3060-3060.
   <https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060>.
 
-To see these entries in BibTeX format, use 'print(<citation>,
-bibtex=TRUE)', 'toBibtex(.)', or set
-'options(citation.bibtex.max=999)'.
+A BibTeX entry for LaTeX users is
+
+  @Article{de_aledo_labeler_2025,
+    title = {labeleR: an R package to optimize the generation of collection labels and scientific documents},
+    author = {Julia G. {de Aledo} and Jimena Mateo-Martín and Francisco Rodríguez-Sánchez and Ignacio Ramos-Gutierrez},
+    journal = {Ecosistemas},
+    year = {2025},
+    volume = {34},
+    number = {3},
+    pages = {3060--3060},
+    url = {https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060},
+  }
 ```
+
+Package: <https://CRAN.R-project.org/package=labeleR>.
+
+Article:
+<https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060>.
 
 ## Funding
 
@@ -675,6 +698,14 @@ Next Generation EU, Fondo Europeo de Desarrollo Regional (FEDER) and
 Consejería de Transformación Económica, Industria, Conocimiento y
 Universidades of Junta de Andalucía (proyecto US-1381388 led by
 Francisco Rodríguez Sánchez, Universidad de Sevilla).
+
+## Send us your examples!
+
+If you have used labeleR and you want to share the output with the
+labeleR community, you can send an example to us and we will publish it
+in our website! Please open an issue in the labeleR
+[github](https://github.com/EcologyR/labeleR/issues) or write to
+<ig.ramosgutierrez@gmail.com>.
 
 ## Code of Conduct
 
