@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 devtools::load_all()
+options(citation.bibtex.max=999)
 ```
 
 # labeleR
@@ -714,8 +715,13 @@ create_attendance_certificate(
 ## Citation
 
 ```{r citation, eval=TRUE, comment=NA}
-print(citation("labeleR"), bibtex=TRUE)
+citation("labeleR")
 ```
+
+Package: <https://CRAN.R-project.org/package=labeleR>.
+
+Article: <https://www.revistaecosistemas.net/index.php/ecosistemas/article/view/3060>.
+
 
 ## Funding
 
@@ -724,6 +730,11 @@ Next Generation EU, Fondo Europeo de Desarrollo Regional (FEDER) and
 Consejería de Transformación Económica, Industria, Conocimiento y
 Universidades of Junta de Andalucía (proyecto US-1381388 led by
 Francisco Rodríguez Sánchez, Universidad de Sevilla).
+
+## Send us your examples!
+
+If you have used labeleR and you want to share the output with the labeleR community, you can send an example to us and we will publish it in our website! Please open an issue in the labeleR [github](https://github.com/EcologyR/labeleR/issues) or write to [ig.ramosgutierrez@gmail.com](mailto:ig.ramosgutierrez@gmail.com).
+
 
 ## Code of Conduct
 
