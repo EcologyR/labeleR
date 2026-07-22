@@ -4,7 +4,7 @@ bibentry(
   title   = "labeleR: Automate the Production of Custom Labels, Badges, Certificates, and Other Documents",
   author  = c("Ignacio Ramos-Gutierrez", "Julia G. de Aledo", "Jimena Mateo-Martín", "Francisco Rodríguez-Sánchez"),
   year    = "2025",
-  url     = c("https://EcologyR.github.io/labeleR/",https://CRAN.R-project.org/package=labeleR)
+  url     = "https://CRAN.R-project.org/package=labeleR"
 )
 
 
