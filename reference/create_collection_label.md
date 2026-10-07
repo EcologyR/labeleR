@@ -159,6 +159,8 @@ Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 ## Examples
 
 ``` r
+if (FALSE) { # interactive()
+
 create_collection_label(
   data = collection.table,
   path = "labeleR_output",
@@ -169,18 +171,5 @@ create_collection_label(
   field4.column = "field6",
   field5.column = "field7"
 )
-#> No file name provided
-#> 
-#> 
-#> processing file: collection_label.Rmd
-#> 1/3                  
-#> 2/3 [unnamed-chunk-1]
-#> 3/3                  
-#> output file: collection_label.knit.md
-#> /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/x86_64/pandoc +RTS -K512m -RTS collection_label.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output /private/var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T/RtmpBfQBm6/file343f3cf53454/reference/labeleR_output/Collection_label.tex --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --embed-resources --standalone --highlight-style tango --pdf-engine pdflatex --variable graphics --include-in-header /var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T//RtmpBfQBm6/rmarkdown-str343f61892b51.html 
-#> ! LaTeX Error: File `pagecolor.sty' not found.
-#> 
-#> ! Emergency stop.
-#> <read *> 
-#> Error: LaTeX failed to compile /private/var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T/RtmpBfQBm6/file343f3cf53454/reference/labeleR_output/Collection_label.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See Collection_label.log for more info.
+}
 ```

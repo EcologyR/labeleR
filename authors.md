@@ -19,7 +19,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/EcologyR/labeleR/blob/HEAD/inst/CITATION)
+[`inst/CITATION`](https://github.com/EcologyR/labeleR/blob/master/inst/CITATION)
 
 Ramos-Gutierrez I, de Aledo JG, Mateo-Martín J, Rodríguez-Sánchez F
 (2025). *labeleR: Automate the Production of Custom Labels, Badges,

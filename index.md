@@ -19,6 +19,7 @@ To install the latest stable version of **labeleR** from CRAN, just use
 function.
 
 ``` r
+
 install.packages("labeleR")
 ```
 
@@ -27,6 +28,7 @@ GitHub, you might need to install the *devtools* package. Once you have
 it, you just have to specify the repository and install:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("EcologyR/labeleR")
 ```
@@ -42,6 +44,7 @@ recommend using [TinyTeX](https://yihui.org/tinytex/).
 First, you would need to install the `tinytex` R package:
 
 ``` r
+
 # install.packages("tinytex")
 tinytex::install_tinytex()
 ```
@@ -56,6 +59,7 @@ In case you have problems installing `TinyTeX`’s packages, try running
 this in your console:
 
 ``` r
+
     tinytex::tlmgr_install(pkgs = c( "zref", "needspace", "pagecolor",
                                      "bookmark", "changepage", "fp",
                                      "mdframed", "ms", "pgf", 
@@ -65,6 +69,7 @@ this in your console:
 ## 1. Getting started
 
 ``` r
+
 library("labeleR")
 ```
 
@@ -74,13 +79,12 @@ The very first thing you need to start using labeleR is a dataset where
 the information is included. This dataset can be imported to the R
 environment from a file (‘.csv’), excel sheet (‘.xlsx’), a Google Sheet,
 using [`read.table()`](https://rdrr.io/r/utils/read.table.html),
-[`readxl::read_excel()`](https://readxl.tidyverse.org/reference/read_excel.html),
-[`gsheet::gsheet2tbl()`](https://rdrr.io/pkg/gsheet/man/gsheet2tbl.html)
-and alike functions.
+`readxl::read_excel()`, `gsheet::gsheet2tbl()` and alike functions.
 
 Here an example of a dataset imported from a Google Sheet URL:
 
 ``` r
+
 library(gsheet)
 
 #URL: https://docs.google.com/spreadsheets/d/1inkk3_oNvvt8ajdK4wOkSgPoUyE8JzENrZgSTFJEFBw/edit#gid=0
@@ -174,6 +178,7 @@ In this example, we show the labels some students have created for their
 herbarium assignment of the Herbology class.
 
 ``` r
+
 create_herbarium_label(
   data = herbarium.table,
   path = "labeleR_output",
@@ -227,6 +232,7 @@ In this example we can see six labels created for the school’s displayed
 collection of stuffed animals.
 
 ``` r
+
 create_collection_label(
   data = collection.table,
   path = "labeleR_output",
@@ -270,6 +276,7 @@ Here, tiny labels are created for typical collections stored in insect
 collection boxes, so a normal collection label would be too big.
 
 ``` r
+
 create_tiny_label(
   data = tiny.table,
   qr = "QR_code",
@@ -306,6 +313,7 @@ the XXX Congress, including a cover and a table of contents. In the
 image we present the first four pages.
 
 ``` r
+
 create_abstractbook(
 data=abstract.table,
 path = "labeleR_output",
@@ -345,6 +353,7 @@ individual hand-edition.
 #### Badges example:
 
 ``` r
+
 create_badge(
   data = badges.table,
   path = "labeleR_output",
@@ -389,6 +398,7 @@ of Hogwarts School, in which the Headmaster certifies they have attended
 
 ``` r
 
+
 create_attendance_certificate(
   data = attendance.table,
   path = "labeleR_output",
@@ -431,6 +441,7 @@ participated in some seminars with different titles, different
 affiliations, dates and communication types.
 
 ``` r
+
 create_participation_certificate(
   data = participation.table,
   path = "labeleR_output",
@@ -485,6 +496,7 @@ lost version. A solution document with the correct answers underlined if
 the argument `solutions` is set to TRUE.
 
 ``` r
+
 create_multichoice(
   data = multichoice.table,
   path = "labeleR_output",
@@ -568,6 +580,7 @@ which is included as part of a title; where just the species name should
 be italicized.
 
 ``` r
+
 seminar.table <- data.frame(
   "Name" = "Rubeus Hagrid",
   "Date" = "01/01/1996",
@@ -630,6 +643,7 @@ application name you have already created. Remember to have your
 password with you, as you will be asked for it.
 
 ``` r
+
 myemail <- configure_email(user     = "s.snape@gmail.com",
                            app.name = "e-owl",
                            subject  = "Potions 1992-1993 Attendance",
@@ -658,6 +672,7 @@ Here an example of how the recipient will receive the mail:
 |----------------------------------|
 
 ``` r
+
 
 create_attendance_certificate(
   data = attendance.table,

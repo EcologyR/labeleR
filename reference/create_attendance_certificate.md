@@ -180,6 +180,8 @@ Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 ## Examples
 
 ``` r
+if (FALSE) { # interactive()
+
 create_attendance_certificate(
   data = attendance.table,
   path = "labeleR_output",
@@ -197,16 +199,5 @@ create_attendance_certificate(
   signature.pic = NULL,
   font = "libertinus"
 )
-#> No file name provided
-#> 
-#> 
-#> processing file: attendance.Rmd
-#> 1/1
-#> output file: attendance.knit.md
-#> /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/x86_64/pandoc +RTS -K512m -RTS attendance.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc343f5c2cf88b.tex --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --embed-resources --standalone --highlight-style tango --pdf-engine pdflatex --variable graphics 
-#> ! LaTeX Error: File `libertinus.sty' not found.
-#> 
-#> ! Emergency stop.
-#> <read *> 
-#> Error: LaTeX failed to compile /private/var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T/RtmpBfQBm6/file343f3cf53454/reference/labeleR_output/Attendance_Harry Potter.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See Attendance_Harry Potter.log for more info.
+}
 ```

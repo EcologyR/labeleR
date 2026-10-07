@@ -175,6 +175,7 @@ Francisco Rodriguez-Sanchez
 ## Examples
 
 ``` r
+if (FALSE) { # interactive()
 create_abstractbook(
 data=abstract.table,
 path = "labeleR_output",
@@ -190,6 +191,5 @@ font = "libertinus",
 text.cex = 12,
 frontpage = "Congress_frontpage.pdf"
 )
-#> The specified folder does not exist. Creating folder
-#> Error in create_abstractbook(data = abstract.table, path = "labeleR_output",     filename = "congress_abstractbook", title.column = "abstract_title",     authors.column = "authors", affiliation.column = "affiliation",     text.column = "abstract_text", title.cex = 20, authors.cex = 15,     affiliations.cex = 14, font = "libertinus", text.cex = 12,     frontpage = "Congress_frontpage.pdf"): Specified PDF does not exist
+}
 ```

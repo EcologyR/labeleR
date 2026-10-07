@@ -174,6 +174,7 @@ Francisco Rodriguez-Sanchez
 ## Examples
 
 ``` r
+if (FALSE) { # interactive()
 create_multichoice(
 data = multichoice.table,
 path = "labeleR_output",
@@ -189,17 +190,5 @@ start = 1,
 solutions=T,
 seeds = c(1:2)
 )
-#> 
-#> 
-#> processing file: multichoice.Rmd
-#> 1/3                  
-#> 2/3 [unnamed-chunk-1]
-#> 3/3                  
-#> output file: multichoice.knit.md
-#> /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/x86_64/pandoc +RTS -K512m -RTS multichoice.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output /private/var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T/RtmpBfQBm6/file343f3cf53454/reference/labeleR_output/example_exam_A.tex --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --embed-resources --standalone --highlight-style tango --pdf-engine pdflatex --variable graphics --include-in-header /var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T//RtmpBfQBm6/rmarkdown-str343f2fffb3d0.html 
-#> ! LaTeX Error: File `libertinus.sty' not found.
-#> 
-#> ! Emergency stop.
-#> <read *> 
-#> Error: LaTeX failed to compile /private/var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T/RtmpBfQBm6/file343f3cf53454/reference/labeleR_output/example_exam_A.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See example_exam_A.log for more info.
+}
 ```
