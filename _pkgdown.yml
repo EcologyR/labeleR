@@ -14,7 +14,6 @@ reference:
   - create_tiny_label
   - create_multichoice
   - configure_email
-
 - title: Example datasets
   contents:
   - abstract.table
