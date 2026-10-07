@@ -223,8 +223,6 @@ Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
-
 create_herbarium_label (
   data = herbarium.table,
   path = "labeleR_output",
@@ -248,5 +246,19 @@ create_herbarium_label (
   date.column = "Date",
   font = "libertinus"
 )
-}
+#> No file name provided
+#> Too long texts may give undesired results. Please consider shortening long fields.
+#> 
+#> 
+#> processing file: herbarium.Rmd
+#> 1/3                  
+#> 2/3 [unnamed-chunk-1]
+#> 3/3                  
+#> output file: herbarium.knit.md
+#> /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/x86_64/pandoc +RTS -K512m -RTS herbarium.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output /private/var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T/RtmpBfQBm6/file343f3cf53454/reference/labeleR_output/Herbarium.tex --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --embed-resources --standalone --highlight-style tango --pdf-engine pdflatex --variable graphics --include-in-header /var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T//RtmpBfQBm6/rmarkdown-str343f1388e5f7.html 
+#> ! LaTeX Error: File `setspace.sty' not found.
+#> 
+#> ! Emergency stop.
+#> <read *> 
+#> Error: LaTeX failed to compile /private/var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T/RtmpBfQBm6/file343f3cf53454/reference/labeleR_output/Herbarium.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See Herbarium.log for more info.
 ```

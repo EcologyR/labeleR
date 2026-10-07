@@ -1,0 +1,713 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage[]{libertinus}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[left=1cm,right=1cm,top=-1cm,bottom=-1cm]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{pgfpages} \usepackage{qrcode} \usepackage{pspicture} \usepackage{mdframed} \pgfpagesuselayout{4 on 1}[a4paper,border shrink=0mm]
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Bombus terrestris subsp. glumbumble } \\
+  {\fontsize{20pt}{100pt}\selectfont Apidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 05/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 1 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://static.wikia.nocookie.net/esharrypotter/images/b/b2/HM_Glumblumble.png/revision/latest?cb=20210127125033 } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Bombus terrestris subsp. glumbumble } \\
+  {\fontsize{20pt}{100pt}\selectfont Apidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 01/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 2 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://static.wikia.nocookie.net/esharrypotter/images/b/b2/HM_Glumblumble.png/revision/latest?cb=20210127125033 } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Bombus terrestris subsp. glumbumble } \\
+  {\fontsize{20pt}{100pt}\selectfont Apidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/11/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Cargan, Antrim Glens, Northern Ireland. } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 3 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://static.wikia.nocookie.net/esharrypotter/images/b/b2/HM_Glumblumble.png/revision/latest?cb=20210127125033 } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Bombus terrestris subsp. glumbumble } \\
+  {\fontsize{20pt}{100pt}\selectfont Apidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/12/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 4 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://static.wikia.nocookie.net/esharrypotter/images/b/b2/HM_Glumblumble.png/revision/latest?cb=20210127125033 } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Amata huebneri } \\
+  {\fontsize{20pt}{100pt}\selectfont Erebidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 05/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 1 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://harrypotter.fandom.com/wiki/Vampyr_Mosp?file=Vampyr_Mosp.png } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Amata huebneri } \\
+  {\fontsize{20pt}{100pt}\selectfont Erebidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 01/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Great Yarmouth, Norwich, United Kingdom } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 2 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://harrypotter.fandom.com/wiki/Vampyr_Mosp?file=Vampyr_Mosp.png } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Amata huebneri } \\
+  {\fontsize{20pt}{100pt}\selectfont Erebidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/11/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Cargan, Antrim Glens, Northern Ireland. } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 3 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://harrypotter.fandom.com/wiki/Vampyr_Mosp?file=Vampyr_Mosp.png } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Amata huebneri } \\
+  {\fontsize{20pt}{100pt}\selectfont Erebidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/12/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 4 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://harrypotter.fandom.com/wiki/Vampyr_Mosp?file=Vampyr_Mosp.png } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Arion hortensis } \\
+  {\fontsize{20pt}{100pt}\selectfont Arionidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 05/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 1 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://figuritaspop.es/wp-content/uploads/ronweasleyslug1_2.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Arion hortensis } \\
+  {\fontsize{20pt}{100pt}\selectfont Arionidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 01/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Great Yarmouth, Norwich, United Kingdom } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 2 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://figuritaspop.es/wp-content/uploads/ronweasleyslug1_2.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Arion hortensis } \\
+  {\fontsize{20pt}{100pt}\selectfont Arionidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/11/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Cargan, Antrim Glens, Northern Ireland. } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 3 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://figuritaspop.es/wp-content/uploads/ronweasleyslug1_2.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Arion hortensis } \\
+  {\fontsize{20pt}{100pt}\selectfont Arionidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/12/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 4 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://figuritaspop.es/wp-content/uploads/ronweasleyslug1_2.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Acromantula gigantea } \\
+  {\fontsize{20pt}{100pt}\selectfont Macroaranidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 05/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 1 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://mymagicwands.files.wordpress.com/2020/04/img_20200409_115122.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Acromantula gigantea } \\
+  {\fontsize{20pt}{100pt}\selectfont Macroaranidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 01/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 2 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://mymagicwands.files.wordpress.com/2020/04/img_20200409_115122.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Acromantula gigantea } \\
+  {\fontsize{20pt}{100pt}\selectfont Macroaranidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/11/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 3 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://mymagicwands.files.wordpress.com/2020/04/img_20200409_115122.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Acromantula gigantea } \\
+  {\fontsize{20pt}{100pt}\selectfont Macroaranidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/12/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 4 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://mymagicwands.files.wordpress.com/2020/04/img_20200409_115122.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Trorgssionis sp. 1 } \\
+  {\fontsize{20pt}{100pt}\selectfont Canellae } \\
+  {\fontsize{20pt}{100pt}\selectfont 10/5/23 } \\
+  {\fontsize{20pt}{100pt}\selectfont Grazalema mountain range (Cadiz, Spain) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 1 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://www.androidheadlines.com/wp-content/uploads/2021/11/google-search-fishing-troll.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Trorgssionis sp. 2 } \\
+  {\fontsize{20pt}{100pt}\selectfont Canellae } \\
+  {\fontsize{20pt}{100pt}\selectfont 10/5/23 } \\
+  {\fontsize{20pt}{100pt}\selectfont Grazalema mountain range (Cadiz, Spain) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 2 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://www.androidheadlines.com/wp-content/uploads/2021/11/google-search-fishing-troll.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Trorgssionis schetelonica } \\
+  {\fontsize{20pt}{100pt}\selectfont Canellae } \\
+  {\fontsize{20pt}{100pt}\selectfont 10/5/23 } \\
+  {\fontsize{20pt}{100pt}\selectfont Grazalema mountain range (Cadiz, Spain) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 1 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://www.androidheadlines.com/wp-content/uploads/2021/11/google-search-fishing-troll.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Trorgssionis schetelonica } \\
+  {\fontsize{20pt}{100pt}\selectfont Canellae } \\
+  {\fontsize{20pt}{100pt}\selectfont 10/5/23 } \\
+  {\fontsize{20pt}{100pt}\selectfont Grazalema mountain range (Cadiz, Spain) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 2 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://www.androidheadlines.com/wp-content/uploads/2021/11/google-search-fishing-troll.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Bombus terrestris subsp. glumbumble } \\
+  {\fontsize{20pt}{100pt}\selectfont Apidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 05/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 5 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://static.wikia.nocookie.net/esharrypotter/images/b/b2/HM_Glumblumble.png/revision/latest?cb=20210127125033 } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Bombus terrestris subsp. glumbumble } \\
+  {\fontsize{20pt}{100pt}\selectfont Apidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 01/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 6 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://static.wikia.nocookie.net/esharrypotter/images/b/b2/HM_Glumblumble.png/revision/latest?cb=20210127125033 } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Bombus terrestris subsp. glumbumble } \\
+  {\fontsize{20pt}{100pt}\selectfont Apidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/11/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Cargan, Antrim Glens, Northern Ireland. } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 7 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://static.wikia.nocookie.net/esharrypotter/images/b/b2/HM_Glumblumble.png/revision/latest?cb=20210127125033 } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Bombus terrestris subsp. glumbumble } \\
+  {\fontsize{20pt}{100pt}\selectfont Apidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/12/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 8 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://static.wikia.nocookie.net/esharrypotter/images/b/b2/HM_Glumblumble.png/revision/latest?cb=20210127125033 } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Amata huebneri } \\
+  {\fontsize{20pt}{100pt}\selectfont Erebidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 05/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 5 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://harrypotter.fandom.com/wiki/Vampyr_Mosp?file=Vampyr_Mosp.png } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Amata huebneri } \\
+  {\fontsize{20pt}{100pt}\selectfont Erebidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 01/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Great Yarmouth, Norwich, United Kingdom } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 6 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://harrypotter.fandom.com/wiki/Vampyr_Mosp?file=Vampyr_Mosp.png } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Amata huebneri } \\
+  {\fontsize{20pt}{100pt}\selectfont Erebidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/11/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Cargan, Antrim Glens, Northern Ireland. } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 7 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://harrypotter.fandom.com/wiki/Vampyr_Mosp?file=Vampyr_Mosp.png } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Amata huebneri } \\
+  {\fontsize{20pt}{100pt}\selectfont Erebidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/12/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 8 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://harrypotter.fandom.com/wiki/Vampyr_Mosp?file=Vampyr_Mosp.png } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Arion hortensis } \\
+  {\fontsize{20pt}{100pt}\selectfont Arionidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 05/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 5 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://figuritaspop.es/wp-content/uploads/ronweasleyslug1_2.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Arion hortensis } \\
+  {\fontsize{20pt}{100pt}\selectfont Arionidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 01/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Great Yarmouth, Norwich, United Kingdom } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 6 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://figuritaspop.es/wp-content/uploads/ronweasleyslug1_2.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Arion hortensis } \\
+  {\fontsize{20pt}{100pt}\selectfont Arionidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/11/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Cargan, Antrim Glens, Northern Ireland. } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 7 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://figuritaspop.es/wp-content/uploads/ronweasleyslug1_2.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Arion hortensis } \\
+  {\fontsize{20pt}{100pt}\selectfont Arionidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/12/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 8 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://figuritaspop.es/wp-content/uploads/ronweasleyslug1_2.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Acromantula gigantea } \\
+  {\fontsize{20pt}{100pt}\selectfont Macroaranidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 05/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 5 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://mymagicwands.files.wordpress.com/2020/04/img_20200409_115122.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Acromantula gigantea } \\
+  {\fontsize{20pt}{100pt}\selectfont Macroaranidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 01/09/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 6 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://mymagicwands.files.wordpress.com/2020/04/img_20200409_115122.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Acromantula gigantea } \\
+  {\fontsize{20pt}{100pt}\selectfont Macroaranidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/11/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 7 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://mymagicwands.files.wordpress.com/2020/04/img_20200409_115122.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Acromantula gigantea } \\
+  {\fontsize{20pt}{100pt}\selectfont Macroaranidae } \\
+  {\fontsize{20pt}{100pt}\selectfont 13/12/1992 } \\
+  {\fontsize{20pt}{100pt}\selectfont Hogwarts Gardens, Hogsmeade, Scotland (UK) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 8 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://mymagicwands.files.wordpress.com/2020/04/img_20200409_115122.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Trorgssionis sp. 1 } \\
+  {\fontsize{20pt}{100pt}\selectfont Canellae } \\
+  {\fontsize{20pt}{100pt}\selectfont 10/5/23 } \\
+  {\fontsize{20pt}{100pt}\selectfont Grazalema mountain range (Cadiz, Spain) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 5 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://www.androidheadlines.com/wp-content/uploads/2021/11/google-search-fishing-troll.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Trorgssionis sp. 2 } \\
+  {\fontsize{20pt}{100pt}\selectfont Canellae } \\
+  {\fontsize{20pt}{100pt}\selectfont 10/5/23 } \\
+  {\fontsize{20pt}{100pt}\selectfont Grazalema mountain range (Cadiz, Spain) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 6 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://www.androidheadlines.com/wp-content/uploads/2021/11/google-search-fishing-troll.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Trorgssionis schetelonica } \\
+  {\fontsize{20pt}{100pt}\selectfont Canellae } \\
+  {\fontsize{20pt}{100pt}\selectfont 10/5/23 } \\
+  {\fontsize{20pt}{100pt}\selectfont Grazalema mountain range (Cadiz, Spain) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 7 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://www.androidheadlines.com/wp-content/uploads/2021/11/google-search-fishing-troll.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill
+
+\begin{mdframed}[linewidth=1pt,linecolor=black]
+
+  \begin{minipage}[c]{0.7\textwidth}
+  {\fontsize{20pt}{100pt}\selectfont Trorgssionis schetelonica } \\
+  {\fontsize{20pt}{100pt}\selectfont Canellae } \\
+  {\fontsize{20pt}{100pt}\selectfont 10/5/23 } \\
+  {\fontsize{20pt}{100pt}\selectfont Grazalema mountain range (Cadiz, Spain) } \\
+  {\fontsize{20pt}{100pt}\selectfont Item 8 } \\
+  \end{minipage}
+  \hspace{0.01\textwidth}
+  \begin{minipage}[c]{0.05\textwidth} \qrcode[height=1.8in, version=5]{ https://www.androidheadlines.com/wp-content/uploads/2021/11/google-search-fishing-troll.jpg } 
+  \end{minipage}
+  \end{mdframed}
+
+\vfill \pagebreak
+
+\end{document}

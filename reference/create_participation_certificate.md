@@ -201,7 +201,6 @@ Ignacio Ramos-Gutierrez, Julia G. de Aledo, Francisco Rodriguez-Sanchez
 ## Examples
 
 ``` r
-if (FALSE) { # interactive()
 create_participation_certificate(
   data = participation.table,
   path = "labeleR_output",
@@ -221,5 +220,16 @@ create_participation_certificate(
   signature.pic = NULL,
   font = "libertinus"
 )
-}
+#> No file name provided
+#> 
+#> 
+#> processing file: participation.Rmd
+#> 1/1
+#> output file: participation.knit.md
+#> /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/x86_64/pandoc +RTS -K512m -RTS participation.knit.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output pandoc343f28de9f81.tex --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --embed-resources --standalone --highlight-style tango --pdf-engine pdflatex --variable graphics 
+#> ! LaTeX Error: File `libertinus.sty' not found.
+#> 
+#> ! Emergency stop.
+#> <read *> 
+#> Error: LaTeX failed to compile /private/var/folders/3_/l5pmqdn94qz35z1zz29038cm0000gn/T/RtmpBfQBm6/file343f3cf53454/reference/labeleR_output/Participacion_Severus Snape.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See Participacion_Severus Snape.log for more info.
 ```

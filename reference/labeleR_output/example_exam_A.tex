@@ -1,0 +1,166 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage[]{libertinus}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\begin{center}
+     \pagenumbering{gobble}
+     
+    {\fontsize{20pt}{20pt}\selectfont
+     \bf { Example test \\(A)\\ }
+    }
+     \vspace{2cm}
+     
+    {\fontsize{15pt}{20pt}\selectfont
+     Name: \dotfill Date: \dotfill \bigbreak
+    \dotfill
+    }
+    
+     \end{center}
+     \begin{flushleft}
+
+     \vfill
+     {\fontsize{15pt}{20pt}\selectfont\bf 1 .  In which Hogwarts house was Harry sorted in? }\\ \begin{minipage}[b][0ex][t]{0.25\textwidth}
+   \includegraphics[height=1.5in]{ image1.png }
+   \end{minipage}
+   \hspace{0.01\textwidth}
+   \begin{minipage}[b][0ex][t]{0.7\textwidth}
+   \begin{itemize}
+   {\fontsize{12pt}{5pt}\selectfont \item[a)] Gryffindor \\ \item[b)] Hufflepuff \\ \item[c)] Slytherin \\ \item[d)] Revenclaw \\ }
+   \end{itemize}
+   \end{minipage}
+   \vfill
+   {\fontsize{15pt}{20pt}\selectfont\bf 2 .  Which was Hogwarts' most famous tree? }\\ \begin{minipage}[b][0ex][t]{0.25\textwidth}
+   \includegraphics[height=1.5in]{ image2.png }
+   \end{minipage}
+   \hspace{0.01\textwidth}
+   \begin{minipage}[b][0ex][t]{0.7\textwidth}
+   \begin{itemize}
+   {\fontsize{12pt}{5pt}\selectfont \item[a)] The Whomping Willow \\ \item[b)] The Elder Alder \\ \item[c)] The Mighty Beech \\ \item[d)] The Robust Oak \\ }
+   \end{itemize}
+   \end{minipage}
+   \vfill
+   {\fontsize{15pt}{20pt}\selectfont\bf 3 .  Which of the following is not a middle name from Albus Dubledore: }\\ \begin{minipage}[b][0ex][t]{0.25\textwidth}
+   \includegraphics[height=1.5in]{ image3.png }
+   \end{minipage}
+   \hspace{0.01\textwidth}
+   \begin{minipage}[b][0ex][t]{0.7\textwidth}
+   \begin{itemize}
+   {\fontsize{12pt}{5pt}\selectfont \item[a)] Percival \\ \item[b)] Brian \\ \item[c)] Billius \\ \item[d)] Wulfric \\ }
+   \end{itemize}
+   \end{minipage}
+   \vfill
+    \pagebreak
+  {\fontsize{15pt}{20pt}\selectfont\bf 4 .  Who was Dobby? }\\ \begin{minipage}[b][0ex][t]{0.25\textwidth}
+   \includegraphics[height=1.5in]{ image4.png }
+   \end{minipage}
+   \hspace{0.01\textwidth}
+   \begin{minipage}[b][0ex][t]{0.7\textwidth}
+   \begin{itemize}
+   {\fontsize{12pt}{5pt}\selectfont \item[a)] A hippogryph \\ \item[b)] A muggle \\ \item[c)] A house elf \\ \item[d)] A Hogwarts teacher \\ }
+   \end{itemize}
+   \end{minipage}
+   \vfill
+   {\fontsize{15pt}{20pt}\selectfont\bf 5 .  Which is the nearest town to Hogwarts? }\\ \begin{minipage}[b][0ex][t]{0.25\textwidth}
+   \includegraphics[height=1.5in]{ image5.png }
+   \end{minipage}
+   \hspace{0.01\textwidth}
+   \begin{minipage}[b][0ex][t]{0.7\textwidth}
+   \begin{itemize}
+   {\fontsize{12pt}{5pt}\selectfont \item[a)] Hogsmeade \\ \item[b)] London \\ \item[c)] Little Hangleton \\ \item[d)] Godric's Hollow \\ }
+   \end{itemize}
+   \end{minipage}
+   \vfill
+   {\fontsize{15pt}{20pt}\selectfont\bf 6 .  Which was Longbottom's name? }\\ \begin{minipage}[b][0ex][t]{0.25\textwidth}
+   \includegraphics[height=1.5in]{ image6.png }
+   \end{minipage}
+   \hspace{0.01\textwidth}
+   \begin{minipage}[b][0ex][t]{0.7\textwidth}
+   \begin{itemize}
+   {\fontsize{12pt}{5pt}\selectfont \item[a)] Ronald \\ \item[b)] Bill \\ \item[c)] Neville \\ \item[d)] Luna \\ }
+   \end{itemize}
+   \end{minipage}
+   \vfill
+   {\fontsize{15pt}{20pt}\selectfont\bf 7 .  Who was Harry's Godfather? }\\ \begin{minipage}[b][0ex][t]{0.25\textwidth}
+   \includegraphics[height=1.5in]{ image7.png }
+   \end{minipage}
+   \hspace{0.01\textwidth}
+   \begin{minipage}[b][0ex][t]{0.7\textwidth}
+   \begin{itemize}
+   {\fontsize{12pt}{5pt}\selectfont \item[a)] Lucius Malfoy \\ \item[b)] Severus Snape \\ \item[c)] Remus Lupin \\ \item[d)] Sirius Black \\ }
+   \end{itemize}
+   \end{minipage}
+   \vfill
+    \pagebreak
+  \end{flushleft}
+ \pagebreak
+
+\end{document}
